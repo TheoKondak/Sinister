@@ -1,0 +1,197 @@
+@use 'configuration' as *;
+@use 'utility' as *;
+
+//+----------------------+
+// Importing Fonts
+//+----------------------+
+
+// You can load/import fonts to use easily with font face.
+
+// Example:
+@font-face {
+    // font-family: Roboto Condensed Regular;
+    // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
+    // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
+}
+
+@mixin fontName {
+    font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forget to add some fallback fonts
+}
+
+@mixin capitalize {
+    text-transform: capitalize;
+}
+.capitalize {
+    @include capitalize;
+}
+
+@mixin uppercase {
+    text-transform: uppercase;
+}
+.uppercase {
+    @include uppercase;
+}
+
+
+@mixin txtXs {
+    font-size: $txtXs;
+}
+.txtXs {
+    @include txtXs;
+}
+
+@mixin txtSm {
+    font-size: $txtSm;
+}
+.txtSm {
+    @include txtSm;
+}
+
+@mixin txtMd {
+    font-size: $txtMd;
+}
+.txtMd {
+    @include txtMd;
+}
+
+
+@mixin txtXl {
+    font-size: $txtXl;
+}
+.txtXl {
+    @include txtXl;
+}
+
+@mixin txtXxl {
+    font-size: $txtXxl;
+}
+.txtXxl {
+    @include txtXxl;
+}
+
+//+----------------------+
+// Responsive Font Sizes
+//+----------------------+
+@if $responsiveFontSizes {
+    :root {
+        font-size: $genericFontSize;
+
+        @media (max-width: $scrXxl) {
+            font-size: $fontRootXxl;
+        }
+
+        @media (max-width: $scrXl) {
+            font-size: $fontRootXl;
+        }
+
+        @media (max-width: $srcMd) {
+            font-size: $fontRootMd;
+        }
+
+        @media (max-width: $scrSm) {
+            font-size: $fontRootSm;
+        }
+
+        @media (max-width: $srcXs) {
+            font-size: $fontRootXs;
+        }
+    }
+}
+
+body {
+    line-height: 1.61803398875; //Golden Ratio
+
+
+h1 {
+    font-size: $fsH1;
+}
+
+h2 {
+    font-size: $fsH2;
+}
+
+h3 {
+    font-size: $fsH3;
+}
+
+h4 {
+    font-size: $fsH4;
+}
+
+h5 {
+    font-size: $fsH5;
+}
+
+h6 {
+    font-size: $fsH6;
+}
+
+span {
+    font-size: $fsSpan;
+}
+
+p{
+    font-size: $fsP;
+}
+
+a {
+    text-decoration: none;
+
+    font-size: $fsA;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    text-decoration: none;
+    font-size: $fsButton;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+em {
+    font-size: $fsEm;
+}
+
+small {
+    font-size: $fsSmall;
+}
+
+strong {
+    font-size: $fsStrong;
+}
+
+ul {
+    font-size: $fsUl;
+}
+
+ol {
+    font-size: $fsOl;
+}
+
+li {
+    @if $disListStyle {
+        @include liNoDec;
+    }
+
+    font-size: $fsLi;
+}
+
+hr {
+}
+
+br {
+}
+
+wbr {
+}
+
+div {
+}
+
+section {
+}
+}

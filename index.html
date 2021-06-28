@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sinisterScss Documentation & Examples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="sinister.css">
+</head>
+
+<body>
+
+    <div class="sinisterPage--wrapper f1-1-1 justifyCenter alignCenter">
+
+        <div class="sinister--header f1-1-1">
+            <div class="sinister--logo">
+                <h1>sinisterScss</h1>
+            </div>
+        </div>
+
+
+
+        <hr class='sinister--sectionHr' style='margin-top: 0;'>
+
+        <div class="sinister--section">
+            <h2 class='section-title'>Introduction</h2>
+            <p>Sinister Scss came out of need for my work workflow. Quite often I had to implement specific layouts, and
+                I had to write the same code again and again. So I thought why not try to write the code once, and save
+                time for ever? And that's how this project begun.</p>
+            <p>The project evolved over time, by adding new stuff to improve responsive behaviour, typography,
+                responsive typography, as well as a library of animations, dropbox shadows as well as add some
+                consistency in font sizes, spacing etc.</p>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>The Configuration</h3>
+        </div>
+
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3 class='mb-0'>Flex</h3>
+
+            <p>This is a library containing most of flex box properties in mixins and classes. </p>
+
+            <h4>How to Use</h4>
+            <p>This is a list of available flex mixins and classes:</p>
+
+            <ul class='utilityList pt-1 pb-1 f3-1-1'>
+                <li>flex</li>
+                <li>justifyCenter</li>
+                <li>justifyStart</li>
+                <li>justifyEnd</li>
+                <li>justifySpaceBetween</li>
+                <li>justifySpaceEvenly</li>
+                <li>justifySpaceAround</li>
+                <li>wrap</li>
+                <li>nowrap</li>
+                <li>alignStart</li>
+                <li>alignEnd</li>
+                <li>alignBaseline</li>
+                <li>alignCenter</li>
+                <li>alignStretch</li>
+                <li>contentStart</li>
+                <li>contentEnd</li>
+                <li>contentCenter</li>
+                <li>contentBetween</li>
+                <li>contentAround</li>
+                <li>contentStretch</li>
+                <li>flexColumn</li>
+                <li>flexRow</li>
+                <li>flexGrow</li>
+                <li>noGrow</li>
+                <li>flexShrink</li>
+                <li>noShrink</li>
+            </ul>
+
+            <strong>You can use any of the above as a mixin:</strong>
+
+            <h4>Example</h4>
+            <p>Let's say you have the following scss, and you want to make it flex, justify it in the center, and align
+                items in the center.</p>
+
+            <div class="codeBlock mt-1 mb-1 pb-1 pt-1">
+
+
+                <!--Div #1-->
+                <div class="Div"><span>&lt;</span><span>div class='containerName'</span><span>&gt;</span></div>
+
+                <!--Div #2-->
+                <div class="Div identation1"><span>&lt;</span><span>div class='item'</span><span>&gt;</span></div>
+
+
+                <div class='Div identation1'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+                <!--Div #3-->
+                <div class="Div identation1"><span>&lt;</span><span>div class='item'</span><span>&gt;</span></div>
+
+
+                <div class='Div identation1'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+
+                <div class='Div'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+
+
+            </div>
+
+            <h5>With Classes</h5>
+            <div class="codeBlock mt-1 mb-1 pb-1 pt-1">
+
+
+                <!--Div #1-->
+                <div class="Div"><span>&lt;</span><span>div class='containerName <span class="highlight">justifyCenter
+                            alignCenter</span>'</span><span>&gt;</span></div>
+
+                <!--Div #2-->
+                <div class="Div identation1"><span>&lt;</span><span>div class='item'</span><span>&gt;</span></div>
+
+
+                <div class='Div identation1'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+                <!--Div #3-->
+                <div class="Div identation1"><span>&lt;</span><span>div class='item'</span><span>&gt;</span></div>
+
+
+                <div class='Div identation1'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+
+                <div class='Div'><span>&lt;</span><span>/</span><span>div</span><span>&gt;</span></div>
+                <!-- End of Div -->
+
+            </div>
+
+            Adding those two classes, will make the element <span class="code">display:flex;</span>
+
+
+            <h5>With Mixins</h5>
+
+            <div class="codeBlock mt-1 mb-1 pb-1 pt-1">
+
+                <span>.containerName{</span><br>
+                <span class="identation1 highlight">@include justifyCenter;</span><br>
+                <span class="identation1 highlight">@include alignCenter;</span><br>
+                <span>}</span>
+
+            </div>
+
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Flex Grid</h3>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Responsive</h3>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Spacing</h3>
+
+            <div class="warning"><span>Mixins are not supported for this section.</span></div>
+
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Typography</h3>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Animations</h3>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Box Shadows</h3>
+        </div>
+
+        <hr class='sinister--sectionHr'>
+
+        <div class="sinister--section">
+            <h3>Other/Utility</h3>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

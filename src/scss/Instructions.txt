@@ -1,0 +1,12 @@
+https://sass-lang.com/documentation/at-rules/use
+
+
+To create a new file:
+Create a file in the right directory starting with "_" and then the name.
+Forward the file inside the _index.scss file of the directory. Every subdirectory should have such a file.
+
+
+If we create a  new subdirectory, create the _index.scss file, similar to the previous ones, and then make sure to add it to custom.scss using use.
+
+In  every new scss file we create, we need to add: some "@use ...; commands to import the other folders.
+Since we have "_index.scss" with all the files mapped, we can @use the whole folder. Example: @use '../config' as *;
