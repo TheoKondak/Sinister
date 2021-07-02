@@ -59,6 +59,14 @@
             gap: $zero;
         }
 
+        .gapR-#{$i}{
+            row-gap: $zero;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $zero;
+        }
+
     }
 
     @if $i == 1 {
@@ -112,6 +120,14 @@
 
         .gap-#{$i}{
             gap: $one;
+        }
+
+        .gapR-#{$i}{
+            row-gap: $one;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $one;
         }
     }
 
@@ -167,6 +183,14 @@
         .gap-#{$i}{
             gap: $two;
         }
+
+        .gapR-#{$i}{
+            row-gap: $two;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $two;
+        }
     }
 
     @if $i == 3 {
@@ -220,6 +244,14 @@
 
         .gap-#{$i}{
             gap: $three;
+        }
+
+        .gapR-#{$i}{
+            row-gap: $three;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $three;
         }
     }
 
@@ -275,6 +307,14 @@
         .gap-#{$i}{
             gap: $four;
         }
+
+        .gapR-#{$i}{
+            row-gap: $four;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $four;
+        }
     }
 
     @if $i == 5 {
@@ -329,5 +369,239 @@
         .gap-#{$i}{
             gap: $five;
         }
+
+        .gapR-#{$i}{
+            row-gap: $five;
+        }
+
+        .gapC-#{$i}{
+            column-gap: $five;
+        }
     }
 }
+
+
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MIXINS
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+//Unfortunately i can't find a way to incorporate the mixins inside the loop.
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  PADDING
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// -== 0 ==-
+@mixin p-0 {
+    padding-top: $zero !important;
+    padding-right: $zero !important;
+    padding-bottom: $zero !important;
+    padding-left: $zero !important;
+}
+
+@mixin pt-0 {padding-top: $zero !important;}
+@mixin pr-0 {padding-right: $zero !important;}
+@mixin pb-0 {padding-bottom: $zero !important;}
+@mixin pl-0 {padding-left: $zero !important;}
+
+
+// -== 1 ==-
+@mixin p-1 {
+    padding-top: $one !important;
+    padding-right: $one !important;
+    padding-bottom: $one !important;
+    padding-left: $one !important;
+}
+
+@mixin pt-1 {padding-top: $one !important;}
+@mixin pr-1 {padding-right: $one !important;}
+@mixin pb-1 {padding-bottom: $one !important;}
+@mixin pl-1 {padding-left: $one !important;}
+
+
+// -== 2 ==-
+@mixin p-2 {
+    padding-top: $two !important;
+    padding-right: $two !important;
+    padding-bottom: $two !important;
+    padding-left: $two !important;
+}
+
+@mixin pt-2 {padding-top: $two !important;}
+@mixin pr-2 {padding-right: $two !important;}
+@mixin pb-2 {padding-bottom: $two !important;}
+@mixin pl-2 {padding-left: $two !important;}
+
+
+// -== 3 ==-
+@mixin p-3 {
+    padding-top: $three !important;
+    padding-right: $three !important;
+    padding-bottom: $three !important;
+    padding-left: $three !important;
+}
+
+@mixin pt-3 {padding-top: $three !important;}
+@mixin pr-3 {padding-right: $three !important;}
+@mixin pb-3 {padding-bottom: $three !important;}
+@mixin pl-3 {padding-left: $three !important;}
+
+
+// -== 4 ==-
+@mixin p-4 {
+    padding-top: $four !important;
+    padding-right: $four !important;
+    padding-bottom: $four !important;
+    padding-left: $four !important;
+}
+
+@mixin pt-4 {padding-top: $four !important;}
+@mixin pr-4 {padding-right: $four !important;}
+@mixin pb-4 {padding-bottom: $four !important;}
+@mixin pl-4 {padding-left: $four !important;}
+
+
+// -== 5 ==-
+@mixin p-5 {
+    padding-top: $five !important;
+    padding-right: $five !important;
+    padding-bottom: $five !important;
+    padding-left: $five !important;
+}
+
+@mixin pt-5 {padding-top: $five !important;}
+@mixin pr-5 {padding-right: $five !important;}
+@mixin pb-5 {padding-bottom: $five !important;}
+@mixin pl-5 {padding-left: $five !important;}
+
+
+
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MARGIN
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// -== 0 ==-
+@mixin m-0 {
+    margin-top: $zero !important;
+    margin-right: $zero !important;
+    margin-bottom: $zero !important;
+    margin-left: $zero !important;
+}
+
+@mixin mt-0 {margin-top: $zero !important;}
+@mixin mr-0 {margin-right: $zero !important;}
+@mixin mb-0 {margin-bottom: $zero !important;}
+@mixin ml-0 {margin-left: $zero !important;}
+
+
+// -== 1 ==-
+@mixin m-1 {
+    margin-top: $one !important;
+    margin-right: $one !important;
+    margin-bottom: $one !important;
+    margin-left: $one !important;
+}
+
+@mixin mt-1 {margin-top: $one !important;}
+@mixin mr-1 {margin-right: $one !important;}
+@mixin mb-1 {margin-bottom: $one !important;}
+@mixin ml-1 {margin-left: $one !important;}
+
+
+// -== 2 ==-
+@mixin m-2 {
+    margin-top: $two !important;
+    margin-right: $two !important;
+    margin-bottom: $two !important;
+    margin-left: $two !important;
+}
+
+@mixin mt-2 {margin-top: $two !important;}
+@mixin mr-2 {margin-right: $two !important;}
+@mixin mb-2 {margin-bottom: $two !important;}
+@mixin ml-2 {margin-left: $two !important;}
+
+
+// -== 3 ==-
+@mixin m-3 {
+    margin-top: $three !important;
+    margin-right: $three !important;
+    margin-bottom: $three !important;
+    margin-left: $three !important;
+}
+
+@mixin mt-3 {margin-top: $three !important;}
+@mixin mr-3 {margin-right: $three !important;}
+@mixin mb-3 {margin-bottom: $three !important;}
+@mixin ml-3 {margin-left: $three !important;}
+
+
+// -== 4 ==-
+@mixin m-4 {
+    margin-top: $four !important;
+    margin-right: $four !important;
+    margin-bottom: $four !important;
+    margin-left: $four !important;
+}
+
+@mixin mt-4 {margin-top: $four !important;}
+@mixin mr-4 {margin-right: $four !important;}
+@mixin mb-4 {margin-bottom: $four !important;}
+@mixin ml-4 {margin-left: $four !important;}
+
+
+// -== 5 ==-
+@mixin m-5 {
+    margin-top: $five !important;
+    margin-right: $five !important;
+    margin-bottom: $five !important;
+    margin-left: $five !important;
+}
+
+@mixin mt-5 {margin-top: $five !important;}
+@mixin mr-5 {margin-right: $five !important;}
+@mixin mb-5 {margin-bottom: $five !important;}
+@mixin ml-5 {margin-left: $five !important;}
+
+
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  GAP
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// -== 0 ==-
+@mixin gap-0{gap: $zero !important}
+@mixin gapR-0{row-gap: $zero !important}
+@mixin gapC-0{column-gap: $zero !important}
+
+
+// -== 1 ==-
+@mixin gap-1{gap: $one !important}
+@mixin gapR-1{row-gap: $one !important}
+@mixin gapC-1{column-gap: $one !important}
+
+
+// -== 2 ==-
+@mixin gap-2{gap: $two !important}
+@mixin gapR-2{row-gap: $two !important}
+@mixin gapC-2{column-gap: $two !important}
+
+
+// -== 3 ==-
+@mixin gap-3{gap: $three !important}
+@mixin gapR-3{row-gap: $three !important}
+@mixin gapC-3{column-gap: $three !important}
+
+
+// -== 4 ==-
+@mixin gap-4{gap: $four !important}
+@mixin gapR-4{row-gap: $four !important}
+@mixin gapC-4{column-gap: $four !important}
+
+
+// -== 5 ==-
+@mixin gap-5{gap: $five !important}
+@mixin gapR-5{row-gap: $five !important}
+@mixin gapC-5{column-gap: $five !important}
