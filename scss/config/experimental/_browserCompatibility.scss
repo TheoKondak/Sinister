@@ -1,0 +1,142 @@
+@use '../configuration' as *;
+
+// Some browsers do not support specific commands yet. The purpose of browserCompatibility file is to target specific browsers to replace the non working commands with something else.
+//Source: https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge/#Safari_101
+
+//How to use:
+// You have to use the mixin and inside place the selectors you want. Unfortunately you can't use this mixin on the fly.
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MICROSOFT BROWSERS
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// INTERNET EXPLORER 6
+@mixin ie6 {
+    .ie6 {@content;}
+}
+
+// INTERNET EXPLORER 7
+@mixin ie7 {
+    * + html .ie7 {@content;}
+}
+
+
+// INTERNET EXPLORER 6 & 7
+@mixin ie67 {
+    .ie67 {@content;}
+}
+
+// INTERNET EXPLORER 8
+@mixin ie8 {
+    .ie8 {@content;}
+}
+
+
+// INTERNET EXPLORER 6, 7 & 8
+@mixin ie678 {
+    .ie678 {@content;}
+}
+
+// INTERNET EXPLORER 9
+@mixin ie9{
+    @media screen and (min-width:0\0) and (min-resolution: .001dpcm) {.ie9{@content;}
+    }
+}
+
+// INTERNET EXPLORER 9 and Above
+@mixin ie9up{
+    @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+        .ie9up {@content;}
+    }
+}
+
+// INTERNET EXPLORER 10
+@mixin ie10{
+    _:-ms-lang(x), .ie10 { @content; }
+}
+
+// INTERNET EXPLORER 10 & Above
+@mixin ie10up{
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .ie10up {@content;}
+    }
+}
+
+// INTERNET EXPLORER 9 & 10
+@mixin ie910{
+    .ie910{@content;}
+}
+
+// INTERNET EXPLORER 8, 9 & 10
+@mixin ie8910{
+    .ie8910 {@content;}
+}
+
+// INTERNET EXPLORER 11 & Above
+@mixin ie11up{
+    _:-ms-fullscreen, :root .ie11up {@content;}
+}
+
+// MS Edge
+@mixin edge{
+    @supports (-ms-ime-align:auto) {@content;}
+}
+
+
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MOZILLA FOUNDATION
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// GECKO
+@mixin gecko{
+    @supports (-ms-ime-align:auto) {@content;}
+}
+
+// QUANTUM ONLY (STYLO)
+@mixin stylo{
+    @-moz-document url-prefix() {@supports (animation: calc(0s)) {@content;}}
+}
+
+// LEGACY (PRE-STYLO)
+@mixin legacyGecko{
+    @-moz-document url-prefix() {
+        @supports not (animation: calc(0s)){@content;}
+    }
+}
+
+
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  WEBKIT
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// CHROME & SAFARI (ANY VERSION)
+@mixin chromeAndSafari{
+    @media screen and (-webkit-min-device-pixel-ratio:0){@content;}
+}
+
+// CHROME 29+
+@mixin chrome29up{
+    @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {@content;}
+}
+
+
+// SAFARI 7.1+
+@mixin safari71up{
+    _::-webkit-full-page-media, 
+    _:future,
+    :root .safari_only {
+        @content;
+    }
+}
+
+// SAFARI 6.1 TO 10
+@mixin safari61-10{
+    @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {@content;}
+}
+
+// SAFARI 10.1 & ABOVE
+@mixin safari101up{
+    @media not all and (min-resolution:.001dpcm) {@content;}
+}
