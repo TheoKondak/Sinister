@@ -123,12 +123,12 @@
 
 .alignBaseline {
     @include flex;
-    align-items: space-baseline;
+    align-items: baseline;
 }
 
 @mixin alignBaseline {
     @include flex;
-    align-items: space-baseline;
+    align-items: baseline;
 }
 
 .alignCenter {

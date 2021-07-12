@@ -32,36 +32,36 @@
     @include uppercase;
 }
 
-@mixin txtXs {
-    font-size: $txtXs;
+@mixin txtXs($scale: 1) {
+    font-size: calc(#{$txtXs} * #{$scale});
 }
 .txtXs {
     @include txtXs;
 }
 
-@mixin txtSm {
-    font-size: $txtSm;
+@mixin txtSm($scale: 1) {
+    font-size: calc(#{$txtSm} * #{$scale});
 }
 .txtSm {
     @include txtSm;
 }
 
-@mixin txtMd {
-    font-size: $txtMd;
+@mixin txtMd($scale: 1) {
+    font-size: calc(#{$txtMd} * #{$scale});
 }
 .txtMd {
     @include txtMd;
 }
 
-@mixin txtXl {
-    font-size: $txtXl;
+@mixin txtXl($scale: 1) {
+    font-size: calc(#{$txtXl} * #{$scale});
 }
 .txtXl {
     @include txtXl;
 }
 
-@mixin txtXxl {
-    font-size: $txtXxl;
+@mixin txtXxl($scale: 1) {
+    font-size: calc(#{$txtXxl} * #{$scale});
 }
 .txtXxl {
     @include txtXxl;
