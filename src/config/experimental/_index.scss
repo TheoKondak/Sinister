@@ -1,10 +1,2 @@
 @forward 'imageBox';
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  Dynamic Class
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-@mixin dClass($className: null){
-    #{className}{
-        @content;
-    }
-}
+@forward 'browserCompatibility';
