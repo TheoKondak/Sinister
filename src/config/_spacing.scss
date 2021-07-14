@@ -655,16 +655,16 @@
     }
 }
 @mixin gapR-0($scale: 1) {
-   > *{
-    margin-left: calc(#{$zero} * #{$scale}) !important;
-    margin-right: calc(#{$zero} * #{$scale}) !important;
-   }
+    > * {
+        margin-left: calc(#{$zero} * #{$scale}) !important;
+        margin-right: calc(#{$zero} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$zero} * #{$scale}) !important;
-      > *{
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
+        > * {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
     }
 }
 @mixin gapC-0($scale: 1) {
@@ -676,195 +676,195 @@
 
 // -== 1 ==-
 @mixin gap-1($scale: 1) {
-    > *{
+    > * {
         margin: calc(#{$one} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         gap: calc(#{$one} * #{$scale}) !important;
-      > *{
-        margin: 0 !important;
-      }
+        > * {
+            margin: 0 !important;
+        }
     }
 }
 @mixin gapR-1($scale: 1) {
-   > *{
-    margin-left: calc(#{$one} * #{$scale}) !important;
-    margin-right: calc(#{$one} * #{$scale}) !important;
-   }
+    > * {
+        margin-left: calc(#{$one} * #{$scale}) !important;
+        margin-right: calc(#{$one} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$one} * #{$scale}) !important;
-       > *{
-        margin-left: 0 !important;
-        margin-right: 0 !important; 
-       }
+        > * {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
     }
 }
 @mixin gapC-1($scale: 1) {
-    > *{
+    > * {
         margin-top: calc(#{$one} * #{$scale}) !important;
-        margin-bottom: calc(#{$one} * #{$scale}) !important; 
+        margin-bottom: calc(#{$one} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         column-gap: calc(#{$one} * #{$scale}) !important;
-       > *{
-        margin-top: 0 !important;
-        margin-bottom: 0 !important; 
-       }
+        > * {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
     }
 }
 
 // -== 2 ==-
 @mixin gap-2($scale: 1) {
-    > *{
-        margin: calc(#{$two} * #{$scale}) !important; 
+    > * {
+        margin: calc(#{$two} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         gap: calc(#{$two} * #{$scale}) !important;
-       > *{
-        margin: 0 !important; 
-       }
+        > * {
+            margin: 0 !important;
+        }
     }
 }
 @mixin gapR-2($scale: 1) {
-   > *{
-    margin-left: calc(#{$two} * #{$scale}) !important;
-    margin-right: calc(#{$two} * #{$scale}) !important; 
-   }
+    > * {
+        margin-left: calc(#{$two} * #{$scale}) !important;
+        margin-right: calc(#{$two} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$two} * #{$scale}) !important;
-        > *{
+        > * {
             margin-left: 0 !important;
-            margin-right: 0 !important; 
+            margin-right: 0 !important;
         }
     }
 }
 @mixin gapC-2($scale: 1) {
-    > *{
+    > * {
         margin-top: calc(#{$two} * #{$scale}) !important;
-        margin-bottom: calc(#{$two} * #{$scale}) !important; 
+        margin-bottom: calc(#{$two} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         column-gap: calc(#{$two} * #{$scale}) !important;
-        > *{
+        > * {
             margin-top: 0 !important;
-            margin-bottom: 0 !important; 
+            margin-bottom: 0 !important;
         }
     }
 }
 
 // -== 3 ==-
 @mixin gap-3($scale: 1) {
-    > *{
-        margin: calc(#{$three} * #{$scale}) !important; 
+    > * {
+        margin: calc(#{$three} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         gap: calc(#{$three} * #{$scale}) !important;
-       > *{
-        margin: 0 !important; 
-       }
+        > * {
+            margin: 0 !important;
+        }
     }
 }
 @mixin gapR-3($scale: 1) {
-   > *{
-    margin-left: calc(#{$three} * #{$scale}) !important;
-    margin-right: calc(#{$three} * #{$scale}) !important; 
-   }
+    > * {
+        margin-left: calc(#{$three} * #{$scale}) !important;
+        margin-right: calc(#{$three} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$three} * #{$scale}) !important;
-      > *{
-        margin-left: 0 !important;
-        margin-right: 0 !important; 
-      }
+        > * {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
     }
 }
 @mixin gapC-3($scale: 1) {
-   > *{
-    margin-top: calc(#{$three} * #{$scale}) !important;
-    margin-bottom: calc(#{$three} * #{$scale}) !important; 
-   }
+    > * {
+        margin-top: calc(#{$three} * #{$scale}) !important;
+        margin-bottom: calc(#{$three} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         column-gap: calc(#{$three} * #{$scale}) !important;
-        > *{
+        > * {
             margin-top: 0 !important;
-            margin-bottom: 0 !important; 
+            margin-bottom: 0 !important;
         }
     }
 }
 
 // -== 4 ==-
 @mixin gap-4($scale: 1) {
-    > *{
-        margin: calc(#{$four} * #{$scale}) !important; 
+    > * {
+        margin: calc(#{$four} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         gap: calc(#{$four} * #{$scale}) !important;
-        > *{
-            margin: 0 !important; 
+        > * {
+            margin: 0 !important;
         }
     }
 }
 @mixin gapR-4($scale: 1) {
-   > *{
-    margin-left: calc(#{$four} * #{$scale}) !important;
-    margin-right: calc(#{$four} * #{$scale}) !important; 
-   }
+    > * {
+        margin-left: calc(#{$four} * #{$scale}) !important;
+        margin-right: calc(#{$four} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$four} * #{$scale}) !important;
-     > *{
-        margin-left: 0 !important;
-        margin-right: 0 !important; 
-     }
+        > * {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
     }
 }
 @mixin gapC-4($scale: 1) {
-    > *{
+    > * {
         margin-top: calc(#{$four} * #{$scale}) !important;
-        margin-bottom: calc(#{$four} * #{$scale}) !important; 
+        margin-bottom: calc(#{$four} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         column-gap: calc(#{$four} * #{$scale}) !important;
-       > *{
-        margin-top: 0 !important;
-        margin-bottom: 0 !important; 
-       }
+        > * {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
     }
 }
 
 // -== 5 ==-
 @mixin gap-5($scale: 1) {
-    > *{
-        margin: calc(#{$five} * #{$scale}) !important; 
+    > * {
+        margin: calc(#{$five} * #{$scale}) !important;
     }
     @supports (gap: 1rem) {
         gap: calc(#{$five} * #{$scale}) !important;
-      > *{
-        margin: 0 !important; 
-      }
+        > * {
+            margin: 0 !important;
+        }
     }
 }
 @mixin gapR-5($scale: 1) {
-   > *{
-    margin-left: calc(#{$five} * #{$scale}) !important;
-    margin-right: calc(#{$five} * #{$scale}) !important; 
-   }
+    > * {
+        margin-left: calc(#{$five} * #{$scale}) !important;
+        margin-right: calc(#{$five} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         row-gap: calc(#{$five} * #{$scale}) !important;
-        > *{
+        > * {
             margin-left: 0 !important;
-            margin-right: 0 !important; 
+            margin-right: 0 !important;
         }
     }
 }
 @mixin gapC-5($scale: 1) {
-   > *{
-    margin-top: calc(#{$five} * #{$scale}) !important;
-    margin-bottom: calc(#{$five} * #{$scale}) !important; 
-   }
+    > * {
+        margin-top: calc(#{$five} * #{$scale}) !important;
+        margin-bottom: calc(#{$five} * #{$scale}) !important;
+    }
     @supports (gap: 1rem) {
         column-gap: calc(#{$five} * #{$scale}) !important;
-       > *{
-        margin-top: 0 !important;
-        margin-bottom: 0 !important; 
-       }
+        > * {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
     }
 }
