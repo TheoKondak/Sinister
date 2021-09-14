@@ -531,6 +531,17 @@
     padding-left: calc(#{$zero} * #{$scale}) !important;
 }
 
+@mixin px-0($scale: 1) {
+    padding-left: calc(#{$zero} * #{$scale}) !important;
+    padding-right: calc(#{$zero} * #{$scale}) !important;
+}
+
+
+@mixin py-0($scale: 1) {
+    padding-top: calc(#{$zero} * #{$scale}) !important;
+    padding-bottom: calc(#{$zero} * #{$scale}) !important;
+}
+
 // -== 1 ==-
 @mixin p-1($scale: 1) {
     padding-top: calc(#{$one} * #{$scale}) !important;
@@ -550,6 +561,17 @@
 }
 @mixin pl-1($scale: 1) {
     padding-left: calc(#{$one} * #{$scale}) !important;
+}
+
+@mixin px-1($scale: 1) {
+    padding-left: calc(#{$one} * #{$scale}) !important;
+    padding-right: calc(#{$one} * #{$scale}) !important;
+}
+
+
+@mixin py-1($scale: 1) {
+    padding-top: calc(#{$one} * #{$scale}) !important;
+    padding-bottom: calc(#{$one} * #{$scale}) !important;
 }
 
 // -== 2 ==-
@@ -573,6 +595,17 @@
     padding-left: calc(#{$two} * #{$scale}) !important;
 }
 
+@mixin px-2($scale: 1) {
+    padding-left: calc(#{$two} * #{$scale}) !important;
+    padding-right: calc(#{$two} * #{$scale}) !important;
+}
+
+
+@mixin py-2($scale: 1) {
+    padding-top: calc(#{$two} * #{$scale}) !important;
+    padding-bottom: calc(#{$two} * #{$scale}) !important;
+}
+
 // -== 3 ==-
 @mixin p-3($scale: 1) {
     padding-top: calc(#{$three} * #{$scale}) !important;
@@ -592,6 +625,17 @@
 }
 @mixin pl-3($scale: 1) {
     padding-left: calc(#{$three} * #{$scale}) !important;
+}
+
+@mixin px-3($scale: 1) {
+    padding-left: calc(#{$three} * #{$scale}) !important;
+    padding-right: calc(#{$three} * #{$scale}) !important;
+}
+
+
+@mixin py-3($scale: 1) {
+    padding-top: calc(#{$three} * #{$scale}) !important;
+    padding-bottom: calc(#{$three} * #{$scale}) !important;
 }
 
 // -== 4 ==-
@@ -615,6 +659,17 @@
     padding-left: calc(#{$four} * #{$scale}) !important;
 }
 
+@mixin px-4($scale: 1) {
+    padding-left: calc(#{$four} * #{$scale}) !important;
+    padding-right: calc(#{$four} * #{$scale}) !important;
+}
+
+
+@mixin py-4($scale: 1) {
+    padding-top: calc(#{$four} * #{$scale}) !important;
+    padding-bottom: calc(#{$four} * #{$scale}) !important;
+}
+
 // -== 5 ==-
 @mixin p-5($scale: 1) {
     padding-top: calc(#{$five} * #{$scale}) !important;
@@ -634,6 +689,17 @@
 }
 @mixin pl-5($scale: 1) {
     padding-left: calc(#{$five} * #{$scale}) !important;
+}
+
+@mixin px-5($scale: 1) {
+    padding-left: calc(#{$five} * #{$scale}) !important;
+    padding-right: calc(#{$five} * #{$scale}) !important;
+}
+
+
+@mixin py-5($scale: 1) {
+    padding-top: calc(#{$five} * #{$scale}) !important;
+    padding-bottom: calc(#{$five} * #{$scale}) !important;
 }
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -661,6 +727,17 @@
     margin-left: calc(#{$zero} * #{$scale}) !important;
 }
 
+@mixin mx-0($scale: 1) {
+    margin-left: calc(#{$zero} * #{$scale}) !important;
+    margin-right: calc(#{$zero} * #{$scale}) !important;
+}
+
+
+@mixin my-0($scale: 1) {
+    margin-top: calc(#{$zero} * #{$scale}) !important;
+    margin-bottom: calc(#{$zero} * #{$scale}) !important;
+}
+
 // -== 1 ==-
 @mixin m-1($scale: 1) {
     margin-top: calc(#{$one} * #{$scale}) !important;
@@ -680,6 +757,17 @@
 }
 @mixin ml-1($scale: 1) {
     margin-left: calc(#{$one} * #{$scale}) !important;
+}
+
+@mixin mx-1($scale: 1) {
+    margin-left: calc(#{$one} * #{$scale}) !important;
+    margin-right: calc(#{$one} * #{$scale}) !important;
+}
+
+
+@mixin my-1($scale: 1) {
+    margin-top: calc(#{$one} * #{$scale}) !important;
+    margin-bottom: calc(#{$one} * #{$scale}) !important;
 }
 
 // -== 2 ==-
@@ -703,6 +791,17 @@
     margin-left: calc(#{$two} * #{$scale}) !important;
 }
 
+@mixin mx-2($scale: 1) {
+    margin-left: calc(#{$two} * #{$scale}) !important;
+    margin-right: calc(#{$two} * #{$scale}) !important;
+}
+
+
+@mixin my-2($scale: 1) {
+    margin-top: calc(#{$two} * #{$scale}) !important;
+    margin-bottom: calc(#{$two} * #{$scale}) !important;
+}
+
 // -== 3 ==-
 @mixin m-3($scale: 1) {
     margin-top: calc(#{$three} * #{$scale}) !important;
@@ -722,6 +821,17 @@
 }
 @mixin ml-3($scale: 1) {
     margin-left: calc(#{$three} * #{$scale}) !important;
+}
+
+@mixin mx-3($scale: 1) {
+    margin-left: calc(#{$three} * #{$scale}) !important;
+    margin-right: calc(#{$three} * #{$scale}) !important;
+}
+
+
+@mixin my-3($scale: 1) {
+    margin-top: calc(#{$three} * #{$scale}) !important;
+    margin-bottom: calc(#{$three} * #{$scale}) !important;
 }
 
 // -== 4 ==-
@@ -745,6 +855,17 @@
     margin-left: calc(#{$four} * #{$scale}) !important;
 }
 
+@mixin mx-4($scale: 1) {
+    margin-left: calc(#{$four} * #{$scale}) !important;
+    margin-right: calc(#{$four} * #{$scale}) !important;
+}
+
+
+@mixin my-4($scale: 1) {
+    margin-top: calc(#{$four} * #{$scale}) !important;
+    margin-bottom: calc(#{$four} * #{$scale}) !important;
+}
+
 // -== 5 ==-
 @mixin m-5($scale: 1) {
     margin-top: calc(#{$five} * #{$scale}) !important;
@@ -764,6 +885,17 @@
 }
 @mixin ml-5($scale: 1) {
     margin-left: calc(#{$five} * #{$scale}) !important;
+}
+
+@mixin mx-5($scale: 1) {
+    margin-left: calc(#{$five} * #{$scale}) !important;
+    margin-right: calc(#{$five} * #{$scale}) !important;
+}
+
+
+@mixin my-5($scale: 1) {
+    margin-top: calc(#{$five} * #{$scale}) !important;
+    margin-bottom: calc(#{$five} * #{$scale}) !important;
 }
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
