@@ -22,6 +22,16 @@
             margin-bottom: $zero !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $zero !important;
+            margin-top: $zero !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $zero !important;
+            margin-right: $zero !important;
+        }
+
         .ml-#{$i} {
             margin-left: $zero !important;
         }
@@ -44,6 +54,16 @@
 
         .pb-#{$i} {
             padding-bottom: $zero !important;
+        }
+
+        .py-#{$i} {
+            padding-bottom: $zero !important;
+            padding-top: $zero !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $zero !important;
+            padding-right: $zero !important;
         }
 
         .pl-#{$i} {
@@ -84,6 +104,16 @@
             margin-bottom: $one !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $one !important;
+            margin-top: $one !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $one !important;
+            margin-right: $one !important;
+        }
+
         .ml-#{$i} {
             margin-left: $one !important;
         }
@@ -106,6 +136,16 @@
 
         .pb-#{$i} {
             padding-bottom: $one !important;
+        }
+
+        .py-#{$i} {
+            padding-bottom: $one !important;
+            padding-top: $one !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $one !important;
+            padding-right: $one !important;
         }
 
         .pl-#{$i} {
@@ -146,6 +186,16 @@
             margin-bottom: $two !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $two !important;
+            margin-top: $two !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $two !important;
+            margin-right: $two !important;
+        }
+
         .ml-#{$i} {
             margin-left: $two !important;
         }
@@ -169,6 +219,17 @@
         .pb-#{$i} {
             padding-bottom: $two !important;
         }
+
+        .py-#{$i} {
+            padding-bottom: $two !important;
+            padding-top: $two !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $two !important;
+            padding-right: $two !important;
+        }
+        
 
         .pl-#{$i} {
             padding-left: $two !important;
@@ -208,6 +269,16 @@
             margin-bottom: $three !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $three !important;
+            margin-top: $three !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $three !important;
+            margin-right: $three !important;
+        }
+
         .ml-#{$i} {
             margin-left: $three !important;
         }
@@ -230,6 +301,16 @@
 
         .pb-#{$i} {
             padding-bottom: $three !important;
+        }
+
+        .py-#{$i} {
+            padding-bottom: $three !important;
+            padding-top: $three !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $three !important;
+            padding-right: $three !important;
         }
 
         .pl-#{$i} {
@@ -270,6 +351,16 @@
             margin-bottom: $four !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $four !important;
+            margin-top: $four !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $four !important;
+            margin-right: $four !important;
+        }
+
         .ml-#{$i} {
             margin-left: $four !important;
         }
@@ -292,6 +383,16 @@
 
         .pb-#{$i} {
             padding-bottom: $four !important;
+        }
+
+        .py-#{$i} {
+            padding-bottom: $four !important;
+            padding-top: $four !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $four !important;
+            padding-right: $four !important;
         }
 
         .pl-#{$i} {
@@ -332,6 +433,16 @@
             margin-bottom: $five !important;
         }
 
+        .my-#{$i} {
+            margin-bottom: $five !important;
+            margin-top: $five !important;
+        }
+
+        .mx-#{$i} {
+            margin-left: $five !important;
+            margin-right: $five !important;
+        }
+
         .ml-#{$i} {
             margin-left: $five !important;
         }
@@ -354,6 +465,17 @@
 
         .pb-#{$i} {
             padding-bottom: $five !important;
+        }
+
+        
+        .py-#{$i} {
+            padding-bottom: $five !important;
+            padding-top: $five !important;
+        }
+
+        .px-#{$i} {
+            padding-left: $five !important;
+            padding-right: $five !important;
         }
 
         .pl-#{$i} {
