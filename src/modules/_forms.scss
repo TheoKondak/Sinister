@@ -1,12 +1,16 @@
 @use '../configuration' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  Custom card design
+//  RS Form Generic form 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-@mixin customCard{
+
+
+
+@mixin formCustom(){
 
 }
 
-.customCard{
-    @include customCard();
+
+.formCustom{
+
 }

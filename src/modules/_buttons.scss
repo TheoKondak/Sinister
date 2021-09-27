@@ -1,1 +1,13 @@
-@use '../config' as *;
+@use '../configuration' as *;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  Primary Button Mixin
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+@mixin buttonPrimary(){
+
+}
+
+
+.buttonPrimary{
+    @include buttonPrimary;
+}
