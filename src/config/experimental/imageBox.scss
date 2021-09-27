@@ -1,5 +1,4 @@
-@use '../../configuration' as *;
-
+@use "../../configuration" as *;
 
 // Goal is to reduce CLS issues with images.
 // Requires a parent element to act as container.
@@ -14,30 +13,30 @@
 //Source: https://web.dev/optimize-cls/
 //Source: https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
 
+@mixin imgWrapper(
+    $imgHeight: $imgBoxDefaultHeight,
+    $imgWidth: $imgBoxDefaultWidth,
+    $preloadBackground: $imgDefaultPreloadBackground
+) {
+    $aspectRatio: calc((#{$imgHeight} / #{$imgWidth}) * 100%);
 
-@mixin imgWrapper($imgHeight: $imgBoxDefaultHeight, $imgWidth: $imgBoxDefaultWidth, $preloadBackground: $imgDefaultPreloadBackground) {
+    width: 100%;
+    height: 0;
+    padding-bottom: $aspectRatio;
+    // 👆 image height / width * 100%
+    position: relative;
+    background: $preloadBackground;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
 
-$aspectRatio: calc(( #{$imgHeight} / #{$imgWidth}) * 100%);
-
+    img {
         width: 100%;
-        height: 0;
-        padding-bottom: $aspectRatio;
-        // 👆 image height / width * 100% 
-        position: relative;
-        background: $preloadBackground;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center center;
+        height: auto;
 
-        img {
-            width: 100%;
-            height: auto;
-
-            position: absolute;
-        }
-    
+        position: absolute;
+    }
 }
-
 
 // Example
 
@@ -47,6 +46,6 @@ $aspectRatio: calc(( #{$imgHeight} / #{$imgWidth}) * 100%);
 // First parameter (obligatory) is image height, then image width (obligatory) and finaly a background image (optional), color or gradient.
 // That's all. It should work. As usual needs testing.
 
-.imgWrapper{
+.imgWrapper {
     @include imgWrapper();
 }
