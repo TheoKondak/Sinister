@@ -1,3 +1,5 @@
+@use '../configuration' as *;
+
 @mixin mq($min:null, $max:null) {
     
     @if $min and $max{

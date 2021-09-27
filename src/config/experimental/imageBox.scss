@@ -1,3 +1,6 @@
+@use '../../configuration' as *;
+
+
 // Goal is to reduce CLS issues with images.
 // Requires a parent element to act as container.
 // Will give the container height (via padding) equal to the height of the image.
@@ -11,7 +14,6 @@
 //Source: https://web.dev/optimize-cls/
 //Source: https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
 
-@use '../configuration' as *;
 
 @mixin imgWrapper($imgHeight: $imgBoxDefaultHeight, $imgWidth: $imgBoxDefaultWidth, $preloadBackground: $imgDefaultPreloadBackground) {
 

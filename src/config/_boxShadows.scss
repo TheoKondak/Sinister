@@ -1,3 +1,5 @@
+@use '../configuration' as *;
+
 // Box Shadow Source https://getcssscan.com/css-box-shadow-examples
 
 @mixin boxShadow0{box-shadow: none}
