@@ -83,10 +83,5 @@ $defaultPrefixes: -webkit- -moz- -ms- -o-;
 
 
 
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  Background Overlay
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-@mixin bgOverlay($bgUrl: null, $linearGradiences: 'rgba(0,0,0,0), rgba(0,0,0,0)'){
-  background-image: linear-gradient(#{$linearGradiences}),
-  url(#{$url}#{$bgUrl});
-}
+
+
