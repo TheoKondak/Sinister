@@ -1,0 +1,22 @@
+@use '../../configuration' as *;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  Change color to SVG elements with css.
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+//Notes: 
+// 1.svgUrl must be in single or double quotes because it's a string.
+// 2. Need to test for side effects
+
+// src: https://stackoverflow.com/questions/21509982/change-svg-fill-color-in-before-or-after-css
+
+@mixin svgColor($svgUrl: null, $svgColor: null){
+
+    -webkit-mask: url(#{$svgUrl}) no-repeat 50% 50%;
+    mask: url(#{$svgUrl}) no-repeat 50% 50%;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+  
+    background-color: $svgColor;
+  
+  }
