@@ -1,0 +1,48 @@
+@mixin defaultFonts(
+    $isEnabled: false,
+    $url: (
+        1: (
+            ("https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap", "roboto"),
+        ),
+        2: (
+            ("https://fonts.googleapis.com/css2?family=Staatliches&display=swap", "Staatliches"),
+        ),
+    ),
+    $defaultFontFamily: "Roboto",
+    //Some elements require their own font, like font awesome etc.
+    // Add an element to this array
+    $classesToIgnore:
+        (
+            "et-pb": "ETmodules",
+            "fa" : "Font Awesome 5 Free"
+        )
+) {
+    @each $keyNumber in $url {
+        $fontFamily: nth($keyNumber, 2);
+        $src: nth($keyNumber, 1);
+
+        @import url(#{$src});
+    }
+
+    *,
+    html,
+    body {
+        font-family: $defaultFontFamily, Helvetica, Arial, Lucida, sans-serif !important;
+    }
+
+    @each $class, $font in $classesToIgnore {
+        html body [class*=#{$class}]{
+            font-family: #{$font} !important;
+        }
+    }
+}
+
+
+// HOW TO USE
+// @include defaultFonts(
+//     $isEnabled: true, 
+//     $url: (('https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap', 'roboto'),
+//     ('https://fonts.googleapis.com/css2?family=Staatliches&display=swap', 'Staatliches')
+//     ),
+//    $defaultFontFamily: 'Staatliches'
+// );

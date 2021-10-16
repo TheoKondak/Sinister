@@ -1,0 +1,230 @@
+@use '../configuration' as *;
+
+
+//Breakpoints
+// $srcXs: 480px;
+// $srcMd: 768px;
+// $desktop: 1200px;
+
+@mixin flexGridSelectors($property, $value) {
+    > * {
+        #{$property}: #{$value};
+    }
+}
+
+@mixin flexGridSelectorParent($property, $value) {
+    #{$property}: #{$value};
+}
+
+@mixin f1-1-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f1-1-1 {
+    @include f1-1-1;
+}
+
+@mixin f2-1-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 100%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f2-1-1 {
+    @include f2-1-1;
+}
+
+@mixin f2-2-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f2-2-1 {
+    @include f2-2-1;
+}
+
+@mixin f2-2-2 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f2-2-2 {
+    @include f2-2-2;
+}
+
+@mixin f3-2-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 32%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f3-2-1 {
+    @include f3-2-1;
+}
+
+@mixin f3-1-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 32%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f3-1-1 {
+    @include f3-1-1;
+}
+
+
+
+
+@mixin f3-3-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 32%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f3-3-1 {
+    @include f3-3-1;
+}
+
+@mixin f4-3-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 24%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 24%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f4-3-1 {
+    @include f4-3-1;
+}
+
+@mixin f4-2-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 24%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 48%);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f4-2-1 {
+    @include f4-2-1;
+}
+
+@mixin f4-1-1 {
+    @include flex;
+    @include wrap;
+
+    @media (min-width: $srcMd) {
+        @include flexGridSelectors(flex-basis, 24%);
+    }
+
+    @media (max-width: $srcMd) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+
+    @media (max-width: $srcXs) {
+        @include flexGridSelectorParent(flex-direction, column);
+    }
+}
+
+.f4-1-1 {
+    @include f4-1-1;
+}
