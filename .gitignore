@@ -108,3 +108,7 @@ dist
 
 #Node Modules
 .node_modules/
+
+
+#Ignore Instructions.txt
+**Instructions.txt**
