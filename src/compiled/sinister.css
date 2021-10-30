@@ -759,26 +759,6 @@
   }
 }
 
-.block {
-  display: block;
-}
-
-.liDecNone {
-  list-style: none;
-}
-
-.txtOverline {
-  text-decoration: overline;
-}
-
-.txtLineThrough {
-  text-decoration: line-through;
-}
-
-.txtUnderline {
-  text-decoration: underline;
-}
-
 .m-0 {
   margin-top: 0rem !important;
   margin-right: 0rem !important;
@@ -1247,6 +1227,26 @@
   column-gap: 4rem;
 }
 
+.block {
+  display: block;
+}
+
+.liDecNone {
+  list-style: none;
+}
+
+.txtOverline {
+  text-decoration: overline;
+}
+
+.txtLineThrough {
+  text-decoration: line-through;
+}
+
+.txtUnderline {
+  text-decoration: underline;
+}
+
 @font-face {}
 .capitalize {
   text-transform: capitalize;
@@ -1306,3 +1306,22 @@ body button:hover {
   height: auto;
   position: absolute;
 }
+
+.blur {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+}
+
+/*# sourceMappingURL=sinister.css.map */
