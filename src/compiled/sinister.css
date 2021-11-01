@@ -1324,4 +1324,12 @@ body button:hover {
   }
 }
 
+.default .someColor {
+  color: #f3a20c;
+}
+
+.dark .someColor {
+  color: #80560a;
+}
+
 /*# sourceMappingURL=sinister.css.map */

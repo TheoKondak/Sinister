@@ -4,13 +4,20 @@
 /* ================================== */
 //Ignore the above :)
 
-
-
-
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // COLOR PALETTE
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 $exampleColor: blue; // Do  not delete. Used in EXAMPLE.scss
+$colors: (
+  default: (
+    grey: #999,
+    orange: rgb(243, 162, 12),
+  ),
+  dark: (
+    grey: #666,
+    orange: rgb(128, 86, 10),
+  ),
+);
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // RESPONSIVE | BREAKPOINTS | ALSO USED IN FONT SIZE IN TYPOGRAPHY
@@ -29,7 +36,7 @@ $srcXs: 480px;
 $responsiveFontSizes: false;
 
 // Root Font Scalling
-$genericFontSize: .8vw;
+$genericFontSize: 0.8vw;
 $fontRootXxl: 1vw;
 $fontRootXl: 1vw;
 $fontRootMd: 2vw;
@@ -39,12 +46,11 @@ $fontRootXs: 4.6vw;
 //These font sizes work together with the Root font scalling.
 // First set the root scalling and then tune the variables bellow.
 // Class/Mixin Font Sizes
-$txtXs: .7rem;
-$txtSm: .9rem;
+$txtXs: 0.7rem;
+$txtSm: 0.9rem;
 $txtMd: 1rem;
 $txtXl: 1.4rem;
 $txtXxl: 1.6rem;
-
 
 //Set a font size for a particular element.
 // Change null to a value + units
@@ -85,7 +91,6 @@ $five: 4rem;
 //Set between true/false
 $disListStyle: false;
 
-
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // OTHER SETTINGS
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -97,7 +102,6 @@ $url: '../../../..';
 // Disable List Style for <li> items?
 //Set between true/false
 $disListStyle: false;
-
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // EXPERIMENTAL

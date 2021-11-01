@@ -1,0 +1,40 @@
+@use '../../configuration' as *;
+
+// I want to organise the colors in groups so we can apply them for more complex projects.
+
+//Source: https://clubmate.fi/sass-maps-syntax-examples-and-good-things
+// Create Dynamic colors
+
+@function colors($keys...) {
+  $value: $colors;
+
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+
+  @return $value;
+}
+
+// Example
+$colors: (
+  default: (
+    grey: #999,
+    orange: rgb(243, 162, 12),
+  ),
+  dark: (
+    grey: #666,
+    orange: rgb(128, 86, 10),
+  ),
+);
+
+.default {
+  .someColor {
+    color: colors(default, orange);
+  }
+}
+
+.dark {
+  .someColor {
+    color: colors(dark, orange);
+  }
+}
