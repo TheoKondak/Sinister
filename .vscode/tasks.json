@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    // Nice source: https://www.roboleary.net/vscode/2020/10/19/vscode-task-onstartup.html
+    // More documentation: https://code.visualstudio.com/Docs/editor/tasks
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Git pull",
+        "type": "shell",
+        "command": "git pull",
+        "windows": {
+          "command": "git pull"
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": { "runOn": "folderOpen" }
+      },
+      {
+        "label": "SASS Compile",
+        "type": "shell",
+        "command": "sass src/sinister.scss:src/compiled/sinister.css --watch",
+        "windows": {
+          "command": "sass src/sinister.scss:src/compiled/sinister.css --watch"
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": { "runOn": "folderOpen" }
+      }               
+    ]
+}

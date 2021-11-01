@@ -111,4 +111,4 @@ dist
 
 
 #Ignore Instructions.txt
-**Instructions.txt**
+**/src/Instructions.txt
