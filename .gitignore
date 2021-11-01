@@ -106,6 +106,9 @@ dist
 #VS Code Workspace
 *.code-workspace
 
+#VS Code Tasks
+*.vscode
+
 #Node Modules
 .node_modules/
 
