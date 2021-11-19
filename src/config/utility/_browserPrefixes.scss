@@ -1,4 +1,4 @@
-@use '../configuration' as *;
+@use '../../configuration' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  BROWSER PREFIXES MIXIN
@@ -21,13 +21,13 @@
 $defaultPrefixes: -webkit- -moz- -ms- -o-;
 
 @mixin prefix($property, $value, $prefixes: $defaultPrefixes) {
-    @each $prefix in $prefixes {
-      #{'-' + $prefix + '-' + $property}: $value;
-    }
-   
-    // Output standard non-prefixed declaration
-    #{$property}: $value;
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
   }
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
 
 //   Usage Example:
 //   .selector {
