@@ -1,1 +1,7 @@
 @use '../config' as *;
+
+.lol {
+  @include mqMax(map-get($breakpoints, Xl)) {
+    color: brown;
+  }
+}

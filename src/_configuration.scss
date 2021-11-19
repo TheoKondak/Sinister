@@ -4,9 +4,6 @@
 /* ================================== */
 //Ignore the above :)
 
-
-
-
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // COLOR PALETTE
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -15,11 +12,14 @@ $exampleColor: blue; // Do  not delete. Used in EXAMPLE.scss
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // RESPONSIVE | BREAKPOINTS | ALSO USED IN FONT SIZE IN TYPOGRAPHY
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-$scrXxl: 2560px;
-$scrXl: 1920px;
-$srcMd: 1200px;
-$scrSm: 724px;
-$srcXs: 480px;
+
+$breakpoints: (
+  'xxl': '2560px',
+  'xl': '1200px',
+  'md': '992px',
+  'sm': '768px',
+  'xs': '576px',
+);
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // TYPOGRAPHY
@@ -29,7 +29,7 @@ $srcXs: 480px;
 $responsiveFontSizes: false;
 
 // Root Font Scalling
-$genericFontSize: .8vw;
+$genericFontSize: 0.8vw;
 $fontRootXxl: 1vw;
 $fontRootXl: 1vw;
 $fontRootMd: 2vw;
@@ -39,12 +39,11 @@ $fontRootXs: 4.6vw;
 //These font sizes work together with the Root font scalling.
 // First set the root scalling and then tune the variables bellow.
 // Class/Mixin Font Sizes
-$txtXs: .7rem;
-$txtSm: .9rem;
+$txtXs: 0.7rem;
+$txtSm: 0.9rem;
 $txtMd: 1rem;
 $txtXl: 1.4rem;
 $txtXxl: 1.6rem;
-
 
 //Set a font size for a particular element.
 // Change null to a value + units
@@ -85,7 +84,6 @@ $five: 4rem;
 //Set between true/false
 $disListStyle: false;
 
-
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // OTHER SETTINGS
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -97,7 +95,6 @@ $url: '../../../..';
 // Disable List Style for <li> items?
 //Set between true/false
 $disListStyle: false;
-
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // EXPERIMENTAL
