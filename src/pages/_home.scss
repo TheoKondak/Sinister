@@ -2,6 +2,6 @@
 
 .lol {
   @include mqMax(map-get($breakpoints, Xl)) {
-    color: brown;
+    color: map-get($color, red);
   }
 }

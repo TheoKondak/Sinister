@@ -9,186 +9,191 @@
 
 // Example:
 @font-face {
-    // font-family: Roboto Condensed Regular;
-    // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
-    // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
+  // font-family: Roboto Condensed Regular;
+  // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
+  // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
 }
 
 @mixin fontName {
-    font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forget to add some fallback fonts
+  font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forget to add some fallback fonts
 }
 
 @mixin capitalize {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 .capitalize {
-    @include capitalize;
+  @include capitalize;
 }
 
 @mixin uppercase {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 .uppercase {
-    @include uppercase;
+  @include uppercase;
 }
 
 @mixin txtXs($scale: 1) {
-    font-size: calc(#{$txtXs} * #{$scale});
+  font-size: calc(#{map-get($fontSize, xs)} * #{$scale});
 }
 .txtXs {
-    @include txtXs;
+  @include txtXs;
 }
 
 @mixin txtSm($scale: 1) {
-    font-size: calc(#{$txtSm} * #{$scale});
+  font-size: calc(#{map-get($fontSize, sm)} * #{$scale});
 }
 .txtSm {
-    @include txtSm;
+  @include txtSm;
 }
 
 @mixin txtMd($scale: 1) {
-    font-size: calc(#{$txtMd} * #{$scale});
+  font-size: calc(#{map-get($fontSize, md)} * #{$scale});
 }
 .txtMd {
-    @include txtMd;
+  @include txtMd;
 }
 
 @mixin txtXl($scale: 1) {
-    font-size: calc(#{$txtXl} * #{$scale});
+  font-size: calc(#{map-get($fontSize, xl)} * #{$scale});
 }
 .txtXl {
-    @include txtXl;
+  @include txtXl;
 }
 
 @mixin txtXxl($scale: 1) {
-    font-size: calc(#{$txtXxl} * #{$scale});
+  font-size: calc(#{map-get($fontSize, xxl)} * #{$scale});
 }
 .txtXxl {
-    @include txtXxl;
+  @include txtXxl;
 }
 
 //+----------------------+
 // Responsive Font Sizes
 //+----------------------+
 @if $responsiveFontSizes {
-    :root {
-        font-size: $genericFontSize;
+  :root {
+    font-size: map-get($fontSize, generic);
 
-        @media (max-width: $scrXxl) {
-            font-size: $fontRootXxl;
-        }
-
-        @media (max-width: $scrXl) {
-            font-size: $fontRootXl;
-        }
-
-        @media (max-width: $srcMd) {
-            font-size: $fontRootMd;
-        }
-
-        @media (max-width: $scrSm) {
-            font-size: $fontRootSm;
-        }
-
-        @media (max-width: $srcXs) {
-            font-size: $fontRootXs;
-        }
+    @media (max-width: map-get($breakpoints, xxl)) {
+      font-size: map-get($fontSize, xxl);
     }
+
+    @media (max-width: map-get($breakpoints, xl)) {
+      font-size: map-get($fontSize, xl);
+    }
+
+    @media (max-width: map-get($breakpoints, md)) {
+      font-size: map-get($fontSize, md);
+    }
+
+    @media (max-width: map-get($breakpoints, sm)) {
+      font-size: map-get($fontSize, sm);
+    }
+
+    @media (max-width: map-get($breakpoints, xs)) {
+      font-size: map-get($fontSize, sm);
+    }
+  }
 }
 
 body {
-    line-height: 1.61803398875; //Golden Ratio
+  line-height: 1.61803398875; //Golden Ratio
 
-    h1 {
-        font-size: $fsH1;
+  h1 {
+    font-size: map-get($fontSize, h1);
+  }
+
+  h2 {
+    font-size: map-get($fontSize, h2);
+  }
+
+  h3 {
+    font-size: map-get($fontSize, h3);
+  }
+
+  h4 {
+    font-size: map-get($fontSize, h4);
+  }
+
+  h5 {
+    font-size: map-get($fontSize, h5);
+  }
+
+  h6 {
+    font-size: map-get($fontSize, h6);
+  }
+
+  span {
+    font-size: map-get($fontSize, span);
+  }
+
+  p {
+    font-size: map-get($fontSize, p);
+  }
+
+  a {
+    text-decoration: none;
+
+    font-size: map-get($fontSize, a);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  button {
+    text-decoration: none;
+    font-size: map-get($fontSize, button);
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  em {
+    font-size: map-get($fontSize, em);
+  }
+
+  small {
+    font-size: map-get($fontSize, small);
+  }
+
+  strong {
+    font-size: map-get($fontSize, strong);
+  }
+
+  ul {
+    font-size: map-get($fontSize, ul);
+  }
+
+  ol {
+    font-size: map-get($fontSize, ol);
+  }
+
+  li {
+    @if $disListStyle {
+      @include liNoDec;
     }
 
-    h2 {
-        font-size: $fsH2;
-    }
+    font-size: map-get($fontSize, xxl);
+  }
 
-    h3 {
-        font-size: $fsH3;
-    }
+  hr {
+    font-size: map-get($fontSize, hr);
+  }
 
-    h4 {
-        font-size: $fsH4;
-    }
+  br {
+    font-size: map-get($fontSize, br);
+  }
 
-    h5 {
-        font-size: $fsH5;
-    }
+  wbr {
+    font-size: map-get($fontSize, wbr);
+  }
 
-    h6 {
-        font-size: $fsH6;
-    }
+  div {
+    font-size: map-get($fontSize, div);
+  }
 
-    span {
-        font-size: $fsSpan;
-    }
-
-    p {
-        font-size: $fsP;
-    }
-
-    a {
-        text-decoration: none;
-
-        font-size: $fsA;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    button {
-        text-decoration: none;
-        font-size: $fsButton;
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    em {
-        font-size: $fsEm;
-    }
-
-    small {
-        font-size: $fsSmall;
-    }
-
-    strong {
-        font-size: $fsStrong;
-    }
-
-    ul {
-        font-size: $fsUl;
-    }
-
-    ol {
-        font-size: $fsOl;
-    }
-
-    li {
-        @if $disListStyle {
-            @include liNoDec;
-        }
-
-        font-size: $fsLi;
-    }
-
-    hr {
-    }
-
-    br {
-    }
-
-    wbr {
-    }
-
-    div {
-    }
-
-    section {
-    }
+  section {
+    font-size: map-get($fontSize, section);
+  }
 }

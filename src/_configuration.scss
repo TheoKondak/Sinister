@@ -7,12 +7,15 @@
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // COLOR PALETTE
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-$exampleColor: blue; // Do  not delete. Used in EXAMPLE.scss
+$color: (
+  'red': hsl(0, 100%, 50%),
+  'green': hsl(120, 100%, 25%),
+  'blue': hsl(240, 100%, 50%),
+);
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // RESPONSIVE | BREAKPOINTS | ALSO USED IN FONT SIZE IN TYPOGRAPHY
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-
 $breakpoints: (
   'xxl': '2560px',
   'xl': '1200px',
@@ -26,49 +29,55 @@ $breakpoints: (
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
 // Enable Responsive Font sizes
-$responsiveFontSizes: false;
+$responsiveFontSizes: true;
 
-// Root Font Scalling
-$genericFontSize: 0.8vw;
-$fontRootXxl: 1vw;
-$fontRootXl: 1vw;
-$fontRootMd: 2vw;
-$fontRootSm: 4.3vw;
-$fontRootXs: 4.6vw;
+$responsiveFontSize: (
+  'generic': 0.8vw,
+  'xxl': 1vw,
+  'xl': 1vw,
+  'md': 2vw,
+  'sm': 4.3vw,
+  'xs': 4.6vw,
+);
 
 //These font sizes work together with the Root font scalling.
 // First set the root scalling and then tune the variables bellow.
 // Class/Mixin Font Sizes
-$txtXs: 0.7rem;
-$txtSm: 0.9rem;
-$txtMd: 1rem;
-$txtXl: 1.4rem;
-$txtXxl: 1.6rem;
+
+// Set the default values for each element.
+$fontSize: (
+  'xxl': 1.6rem,
+  'xl': 1.4rem,
+  'md': 1rem,
+  'sm': 0.9rem,
+  'xs': 0.7rem,
+  'h1': null,
+  'h2': null,
+  'h3': null,
+  'h4': null,
+  'h5': null,
+  'h6': null,
+  'span': null,
+  'p': null,
+  'a': null,
+  'button': null,
+  'em': null,
+  'small': null,
+  'strong': null,
+  'q': null,
+  'ul': null,
+  'ol': null,
+  'li': null,
+  'hr': null,
+  'br': null,
+  'wbr': null,
+  'div': null,
+  'section': null,
+);
 
 //Set a font size for a particular element.
 // Change null to a value + units
 // Default Value is null
-$fsH1: null;
-$fsH2: null;
-$fsH3: null;
-$fsH4: null;
-$fsH5: null;
-$fsH6: null;
-$fsSpan: null;
-$fsP: null;
-$fsA: null;
-$fsButton: null;
-$fsEm: null;
-$fsSmall: null;
-$fsStrong: null;
-$fsUl: null;
-$fsOl: null;
-$fsLi: null;
-$fshr: null;
-$fsBr: null;
-$fsWbr: null;
-$fsDiv: null;
-$fsSection: null;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // SPACING
@@ -79,6 +88,15 @@ $two: 2rem;
 $three: 2.5rem;
 $four: 3rem;
 $five: 4rem;
+
+$spacing: (
+  'zero': '0',
+  'xxl': '4rem',
+  'xl': '3rem',
+  'md': '2.5rem',
+  'sm': '2rem',
+  'xs': '1.5rem',
+);
 
 // Disable List Style for <li> items?
 //Set between true/false
