@@ -17,11 +17,11 @@ $color: (
 // RESPONSIVE | BREAKPOINTS | ALSO USED IN FONT SIZE IN TYPOGRAPHY
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 $breakpoints: (
-  'xxl': '2560px',
-  'xl': '1200px',
-  'md': '992px',
-  'sm': '768px',
-  'xs': '576px',
+  xxl: 2560px,
+  xl: 1200px,
+  md: 992px,
+  sm: 768px,
+  xs: 576px,
 );
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -29,15 +29,15 @@ $breakpoints: (
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
 // Enable Responsive Font sizes
-$responsiveFontSizes: true;
+$responsiveFonts: false;
 
-$responsiveFontSize: (
-  'generic': 0.8vw,
-  'xxl': 1vw,
-  'xl': 1vw,
-  'md': 2vw,
-  'sm': 4.3vw,
-  'xs': 4.6vw,
+$responsiveFontSizes: (
+  generic: 0.8vw,
+  xxl: 1vw,
+  xl: 1vw,
+  md: 2vw,
+  sm: 4.3vw,
+  xs: 4.6vw,
 );
 
 //These font sizes work together with the Root font scalling.
@@ -45,57 +45,55 @@ $responsiveFontSize: (
 // Class/Mixin Font Sizes
 
 // Set the default values for each element.
-$fontSize: (
-  'xxl': 1.6rem,
-  'xl': 1.4rem,
-  'md': 1rem,
-  'sm': 0.9rem,
-  'xs': 0.7rem,
-  'h1': null,
-  'h2': null,
-  'h3': null,
-  'h4': null,
-  'h5': null,
-  'h6': null,
-  'span': null,
-  'p': null,
-  'a': null,
-  'button': null,
-  'em': null,
-  'small': null,
-  'strong': null,
-  'q': null,
-  'ul': null,
-  'ol': null,
-  'li': null,
-  'hr': null,
-  'br': null,
-  'wbr': null,
-  'div': null,
-  'section': null,
+$fontSizes: (
+  xxl: 1.6rem,
+  xl: 1.4rem,
+  md: 1rem,
+  sm: 0.9rem,
+  xs: 0.7rem,
+);
+
+$defaultFontSizes: (
+  h1: null,
+  h2: null,
+  h3: null,
+  h4: null,
+  h5: null,
+  h6: null,
+  span: null,
+  p: null,
+  a: null,
+  button: null,
+  em: null,
+  small: null,
+  strong: null,
+  q: null,
+  ul: null,
+  ol: null,
+  li: null,
+  hr: null,
+  br: null,
+  wbr: null,
+  div: null,
+  section: null,
 );
 
 //Set a font size for a particular element.
 // Change null to a value + units
 // Default Value is null
 
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// SPACING
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-$zero: 0rem;
-$one: 1.5rem;
-$two: 2rem;
-$three: 2.5rem;
-$four: 3rem;
-$five: 4rem;
-
+//Spacing
+// Add or remove spacing sizes.
+// For each key, a new class is being created.
+// Values can be type of number or string
+// Keys must be value type: number
 $spacing: (
-  'zero': '0',
-  'xxl': '4rem',
-  'xl': '3rem',
-  'md': '2.5rem',
-  'sm': '2rem',
-  'xs': '1.5rem',
+  0: 0rem,
+  1: 1.5rem,
+  2: 2rem,
+  3: 2.5231rem,
+  4: 3rem,
+  5: 4rem,
 );
 
 // Disable List Style for <li> items?
