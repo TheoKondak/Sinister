@@ -1,1124 +1,389 @@
+@use 'sass:map';
 @use '../configuration' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  MARGINS | PADDINGS | GAP
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
-@for $i from 0 through 5 {
-    @if $i == 0 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $zero !important;
-            margin-right: $zero !important;
-            margin-bottom: $zero !important;
-            margin-left: $zero !important;
-        }
-
-        .mt-#{$i} {
-            margin-top: $zero !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $zero !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $zero !important;
-            margin-top: $zero !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $zero !important;
-            margin-right: $zero !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $zero !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $zero !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $zero !important;
-            padding-right: $zero !important;
-            padding-bottom: $zero !important;
-            padding-left: $zero !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $zero !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $zero !important;
-        }
-
-        .py-#{$i} {
-            padding-bottom: $zero !important;
-            padding-top: $zero !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $zero !important;
-            padding-right: $zero !important;
-        }
-
-        .pl-#{$i} {
-            padding-left: $zero !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $zero !important;
-        }
-
-        .gap-#{$i} {
-            gap: $zero;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $zero;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $zero;
-        }
+@function contains($list, $var) {
+  $isTrue: null;
+  @each $key, $value in $list {
+    @if $key == $var {
+      $isTrue: true;
     }
+  }
 
-    @if $i == 1 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $one !important;
-            margin-right: $one !important;
-            margin-bottom: $one !important;
-            margin-left: $one !important;
-        }
+  @if $isTrue != true {
+    @warn 'Invalid $var provided in contains function: #{$var}';
+  }
 
-        .mt-#{$i} {
-            margin-top: $one !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $one !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $one !important;
-            margin-top: $one !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $one !important;
-            margin-right: $one !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $one !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $one !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $one !important;
-            padding-right: $one !important;
-            padding-bottom: $one !important;
-            padding-left: $one !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $one !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $one !important;
-        }
-
-        .py-#{$i} {
-            padding-bottom: $one !important;
-            padding-top: $one !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $one !important;
-            padding-right: $one !important;
-        }
-
-        .pl-#{$i} {
-            padding-left: $one !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $one !important;
-        }
-
-        .gap-#{$i} {
-            gap: $one;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $one;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $one;
-        }
-    }
-
-    @if $i == 2 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $two !important;
-            margin-right: $two !important;
-            margin-bottom: $two !important;
-            margin-left: $two !important;
-        }
-
-        .mt-#{$i} {
-            margin-top: $two !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $two !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $two !important;
-            margin-top: $two !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $two !important;
-            margin-right: $two !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $two !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $two !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $two !important;
-            padding-right: $two !important;
-            padding-bottom: $two !important;
-            padding-left: $two !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $two !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $two !important;
-        }
-
-        .py-#{$i} {
-            padding-bottom: $two !important;
-            padding-top: $two !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $two !important;
-            padding-right: $two !important;
-        }
-        
-
-        .pl-#{$i} {
-            padding-left: $two !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $two !important;
-        }
-
-        .gap-#{$i} {
-            gap: $two;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $two;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $two;
-        }
-    }
-
-    @if $i == 3 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $three !important;
-            margin-right: $three !important;
-            margin-bottom: $three !important;
-            margin-left: $three !important;
-        }
-
-        .mt-#{$i} {
-            margin-top: $three !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $three !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $three !important;
-            margin-top: $three !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $three !important;
-            margin-right: $three !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $three !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $three !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $three !important;
-            padding-right: $three !important;
-            padding-bottom: $three !important;
-            padding-left: $three !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $three !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $three !important;
-        }
-
-        .py-#{$i} {
-            padding-bottom: $three !important;
-            padding-top: $three !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $three !important;
-            padding-right: $three !important;
-        }
-
-        .pl-#{$i} {
-            padding-left: $three !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $three !important;
-        }
-
-        .gap-#{$i} {
-            gap: $three;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $three;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $three;
-        }
-    }
-
-    @if $i == 4 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $four !important;
-            margin-right: $four !important;
-            margin-bottom: $four !important;
-            margin-left: $four !important;
-        }
-
-        .mt-#{$i} {
-            margin-top: $four !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $four !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $four !important;
-            margin-top: $four !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $four !important;
-            margin-right: $four !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $four !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $four !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $four !important;
-            padding-right: $four !important;
-            padding-bottom: $four !important;
-            padding-left: $four !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $four !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $four !important;
-        }
-
-        .py-#{$i} {
-            padding-bottom: $four !important;
-            padding-top: $four !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $four !important;
-            padding-right: $four !important;
-        }
-
-        .pl-#{$i} {
-            padding-left: $four !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $four !important;
-        }
-
-        .gap-#{$i} {
-            gap: $four;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $four;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $four;
-        }
-    }
-
-    @if $i == 5 {
-        // Margins
-        .m-#{$i} {
-            margin-top: $five !important;
-            margin-right: $five !important;
-            margin-bottom: $five !important;
-            margin-left: $five !important;
-        }
-
-        .mt-#{$i} {
-            margin-top: $five !important;
-        }
-
-        .mb-#{$i} {
-            margin-bottom: $five !important;
-        }
-
-        .my-#{$i} {
-            margin-bottom: $five !important;
-            margin-top: $five !important;
-        }
-
-        .mx-#{$i} {
-            margin-left: $five !important;
-            margin-right: $five !important;
-        }
-
-        .ml-#{$i} {
-            margin-left: $five !important;
-        }
-
-        .mr-#{$i} {
-            margin-right: $five !important;
-        }
-
-        //Padding
-        .p-#{$i} {
-            padding-top: $five !important;
-            padding-right: $five !important;
-            padding-bottom: $five !important;
-            padding-left: $five !important;
-        }
-
-        .pt-#{$i} {
-            padding-top: $five !important;
-        }
-
-        .pb-#{$i} {
-            padding-bottom: $five !important;
-        }
-
-        
-        .py-#{$i} {
-            padding-bottom: $five !important;
-            padding-top: $five !important;
-        }
-
-        .px-#{$i} {
-            padding-left: $five !important;
-            padding-right: $five !important;
-        }
-
-        .pl-#{$i} {
-            padding-left: $five !important;
-        }
-
-        .pr-#{$i} {
-            padding-right: $five !important;
-        }
-
-        .gap-#{$i} {
-            gap: $five;
-        }
-
-        .gapR-#{$i} {
-            row-gap: $five;
-        }
-
-        .gapC-#{$i} {
-            column-gap: $five;
-        }
-    }
+  @return $isTrue;
 }
 
+$spacingProperties: (
+  margin: m,
+  padding: p,
+  gap: g,
+);
+
+$spacingDirection: (
+  generic: 'g',
+  top: 't',
+  right: 'r',
+  bottom: 'b',
+  left: 'l',
+  x-axis: 'x',
+  y-axis: 'y',
+);
+
+@each $spacingKey, $spacingVal in $spacing {
+  @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
+    @if type-of($spacingVal) == 'number' {
+      @each $propertyKey, $propertyValue in $spacingProperties {
+        @each $directionKey, $directionValue in $spacingDirection {
+          // X-AXIS
+          @if $directionKey == 'x-axis' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin-left: $spacingVal !important;
+                  margin-right: $spacingVal !important;
+                }
+                row-gap: $spacingVal !important;
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+          // Y-AXIS
+          @else if $directionKey == 'y-axis' {
+            $className: #{$propertyValue}#{$directionValue};
+
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin-top: $spacingVal !important;
+                  margin-bottom: $spacingVal !important;
+                }
+                column-gap: $spacingVal !important;
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+          // ALL DIRECTIONS
+          @else if $directionKey == 'generic' {
+            $className: #{$propertyValue}#{$directionValue};
+
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-right: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+                margin-left: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-right: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+                padding-left: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin: $spacingVal !important;
+                }
+                gap: $spacingVal !important;
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+
+          // DIRECTION TOP
+          @else if $directionKey == 'top' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+          // DIRECTION RIGHT
+          @else if $directionKey == 'right' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-right: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-right: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+          // DIRECTION BOTTOM
+          @else if $directionKey == 'bottom' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+
+          // DIRECTION LEFT
+          @else if $directionKey == 'left' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-left: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-left: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+              } @else {
+                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+              }
+            }
+          }
+        }
+      }
+    } @else {
+      @warn '$spacing values must be type of number but there are some of type: #{type-of($spacingVal)}';
+    }
+  } @else {
+    @warn '$spacing keys must be type of number or string but there are some of type: #{type-of($spacingKey)}';
+  }
+}
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  MIXINS
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-
+$key: 'hello';
 //Unfortunately i can't find a way to incorporate the mixins inside the loop.
+@mixin spacing($property, $direction, $value) {
+  // @debug 'Property: ' $property;
+  // @debug 'Direction: ' $direction;
+  // @debug 'Value: ' $value;
 
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  PADDING
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // MARGIN
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @if $property == 'm' {
+    @if $direction == 't' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'r' {
+      @if contains($spacing, $value) {
+        margin-right: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'b' {
+      @if contains($spacing, $value) {
+        margin-bottom: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'l' {
+      @if contains($spacing, $value) {
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'g' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
+        margin-right: map-get($spacing, $value);
+        margin-bottom: map-get($spacing, $value);
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
 
-// -== 0 ==-
-@mixin p-0($scale: 1) {
-    padding-top: calc(#{$zero} * #{$scale}) !important;
-    padding-right: calc(#{$zero} * #{$scale}) !important;
-    padding-bottom: calc(#{$zero} * #{$scale}) !important;
-    padding-left: calc(#{$zero} * #{$scale}) !important;
-}
+        margin-bottom: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        margin-right: map-get($spacing, $value);
 
-@mixin pt-0($scale: 1) {
-    padding-top: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin pr-0($scale: 1) {
-    padding-right: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin pb-0($scale: 1) {
-    padding-bottom: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin pl-0($scale: 1) {
-    padding-left: calc(#{$zero} * #{$scale}) !important;
-}
-
-@mixin px-0($scale: 1) {
-    padding-left: calc(#{$zero} * #{$scale}) !important;
-    padding-right: calc(#{$zero} * #{$scale}) !important;
-}
-
-
-@mixin py-0($scale: 1) {
-    padding-top: calc(#{$zero} * #{$scale}) !important;
-    padding-bottom: calc(#{$zero} * #{$scale}) !important;
-}
-
-// -== 1 ==-
-@mixin p-1($scale: 1) {
-    padding-top: calc(#{$one} * #{$scale}) !important;
-    padding-right: calc(#{$one} * #{$scale}) !important;
-    padding-bottom: calc(#{$one} * #{$scale}) !important;
-    padding-left: calc(#{$one} * #{$scale}) !important;
-}
-
-@mixin pt-1($scale: 1) {
-    padding-top: calc(#{$one} * #{$scale}) !important;
-}
-@mixin pr-1($scale: 1) {
-    padding-right: calc(#{$one} * #{$scale}) !important;
-}
-@mixin pb-1($scale: 1) {
-    padding-bottom: calc(#{$one} * #{$scale}) !important;
-}
-@mixin pl-1($scale: 1) {
-    padding-left: calc(#{$one} * #{$scale}) !important;
-}
-
-@mixin px-1($scale: 1) {
-    padding-left: calc(#{$one} * #{$scale}) !important;
-    padding-right: calc(#{$one} * #{$scale}) !important;
-}
-
-
-@mixin py-1($scale: 1) {
-    padding-top: calc(#{$one} * #{$scale}) !important;
-    padding-bottom: calc(#{$one} * #{$scale}) !important;
-}
-
-// -== 2 ==-
-@mixin p-2($scale: 1) {
-    padding-top: calc(#{$two} * #{$scale}) !important;
-    padding-right: calc(#{$two} * #{$scale}) !important;
-    padding-bottom: calc(#{$two} * #{$scale}) !important;
-    padding-left: calc(#{$two} * #{$scale}) !important;
-}
-
-@mixin pt-2($scale: 1) {
-    padding-top: calc(#{$two} * #{$scale}) !important;
-}
-@mixin pr-2($scale: 1) {
-    padding-right: calc(#{$two} * #{$scale}) !important;
-}
-@mixin pb-2($scale: 1) {
-    padding-bottom: calc(#{$two} * #{$scale}) !important;
-}
-@mixin pl-2($scale: 1) {
-    padding-left: calc(#{$two} * #{$scale}) !important;
-}
-
-@mixin px-2($scale: 1) {
-    padding-left: calc(#{$two} * #{$scale}) !important;
-    padding-right: calc(#{$two} * #{$scale}) !important;
-}
-
-
-@mixin py-2($scale: 1) {
-    padding-top: calc(#{$two} * #{$scale}) !important;
-    padding-bottom: calc(#{$two} * #{$scale}) !important;
-}
-
-// -== 3 ==-
-@mixin p-3($scale: 1) {
-    padding-top: calc(#{$three} * #{$scale}) !important;
-    padding-right: calc(#{$three} * #{$scale}) !important;
-    padding-bottom: calc(#{$three} * #{$scale}) !important;
-    padding-left: calc(#{$three} * #{$scale}) !important;
-}
-
-@mixin pt-3($scale: 1) {
-    padding-top: calc(#{$three} * #{$scale}) !important;
-}
-@mixin pr-3($scale: 1) {
-    padding-right: calc(#{$three} * #{$scale}) !important;
-}
-@mixin pb-3($scale: 1) {
-    padding-bottom: calc(#{$three} * #{$scale}) !important;
-}
-@mixin pl-3($scale: 1) {
-    padding-left: calc(#{$three} * #{$scale}) !important;
-}
-
-@mixin px-3($scale: 1) {
-    padding-left: calc(#{$three} * #{$scale}) !important;
-    padding-right: calc(#{$three} * #{$scale}) !important;
-}
-
-
-@mixin py-3($scale: 1) {
-    padding-top: calc(#{$three} * #{$scale}) !important;
-    padding-bottom: calc(#{$three} * #{$scale}) !important;
-}
-
-// -== 4 ==-
-@mixin p-4($scale: 1) {
-    padding-top: calc(#{$four} * #{$scale}) !important;
-    padding-right: calc(#{$four} * #{$scale}) !important;
-    padding-bottom: calc(#{$four} * #{$scale}) !important;
-    padding-left: calc(#{$four} * #{$scale}) !important;
-}
-
-@mixin pt-4($scale: 1) {
-    padding-top: calc(#{$four} * #{$scale}) !important;
-}
-@mixin pr-4($scale: 1) {
-    padding-right: calc(#{$four} * #{$scale}) !important;
-}
-@mixin pb-4($scale: 1) {
-    padding-bottom: calc(#{$four} * #{$scale}) !important;
-}
-@mixin pl-4($scale: 1) {
-    padding-left: calc(#{$four} * #{$scale}) !important;
-}
-
-@mixin px-4($scale: 1) {
-    padding-left: calc(#{$four} * #{$scale}) !important;
-    padding-right: calc(#{$four} * #{$scale}) !important;
-}
-
-
-@mixin py-4($scale: 1) {
-    padding-top: calc(#{$four} * #{$scale}) !important;
-    padding-bottom: calc(#{$four} * #{$scale}) !important;
-}
-
-// -== 5 ==-
-@mixin p-5($scale: 1) {
-    padding-top: calc(#{$five} * #{$scale}) !important;
-    padding-right: calc(#{$five} * #{$scale}) !important;
-    padding-bottom: calc(#{$five} * #{$scale}) !important;
-    padding-left: calc(#{$five} * #{$scale}) !important;
-}
-
-@mixin pt-5($scale: 1) {
-    padding-top: calc(#{$five} * #{$scale}) !important;
-}
-@mixin pr-5($scale: 1) {
-    padding-right: calc(#{$five} * #{$scale}) !important;
-}
-@mixin pb-5($scale: 1) {
-    padding-bottom: calc(#{$five} * #{$scale}) !important;
-}
-@mixin pl-5($scale: 1) {
-    padding-left: calc(#{$five} * #{$scale}) !important;
-}
-
-@mixin px-5($scale: 1) {
-    padding-left: calc(#{$five} * #{$scale}) !important;
-    padding-right: calc(#{$five} * #{$scale}) !important;
-}
-
-
-@mixin py-5($scale: 1) {
-    padding-top: calc(#{$five} * #{$scale}) !important;
-    padding-bottom: calc(#{$five} * #{$scale}) !important;
-}
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  MARGIN
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-
-// -== 0 ==-
-@mixin m-0($scale: 1) {
-    margin-top: calc(#{$zero} * #{$scale}) !important;
-    margin-right: calc(#{$zero} * #{$scale}) !important;
-    margin-bottom: calc(#{$zero} * #{$scale}) !important;
-    margin-left: calc(#{$zero} * #{$scale}) !important;
-}
-
-@mixin mt-0($scale: 1) {
-    margin-top: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin mr-0($scale: 1) {
-    margin-right: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin mb-0($scale: 1) {
-    margin-bottom: calc(#{$zero} * #{$scale}) !important;
-}
-@mixin ml-0($scale: 1) {
-    margin-left: calc(#{$zero} * #{$scale}) !important;
-}
-
-@mixin mx-0($scale: 1) {
-    margin-left: calc(#{$zero} * #{$scale}) !important;
-    margin-right: calc(#{$zero} * #{$scale}) !important;
-}
-
-
-@mixin my-0($scale: 1) {
-    margin-top: calc(#{$zero} * #{$scale}) !important;
-    margin-bottom: calc(#{$zero} * #{$scale}) !important;
-}
-
-// -== 1 ==-
-@mixin m-1($scale: 1) {
-    margin-top: calc(#{$one} * #{$scale}) !important;
-    margin-right: calc(#{$one} * #{$scale}) !important;
-    margin-bottom: calc(#{$one} * #{$scale}) !important;
-    margin-left: calc(#{$one} * #{$scale}) !important;
-}
-
-@mixin mt-1($scale: 1) {
-    margin-top: calc(#{$one} * #{$scale}) !important;
-}
-@mixin mr-1($scale: 1) {
-    margin-right: calc(#{$one} * #{$scale}) !important;
-}
-@mixin mb-1($scale: 1) {
-    margin-bottom: calc(#{$one} * #{$scale}) !important;
-}
-@mixin ml-1($scale: 1) {
-    margin-left: calc(#{$one} * #{$scale}) !important;
-}
-
-@mixin mx-1($scale: 1) {
-    margin-left: calc(#{$one} * #{$scale}) !important;
-    margin-right: calc(#{$one} * #{$scale}) !important;
-}
-
-
-@mixin my-1($scale: 1) {
-    margin-top: calc(#{$one} * #{$scale}) !important;
-    margin-bottom: calc(#{$one} * #{$scale}) !important;
-}
-
-// -== 2 ==-
-@mixin m-2($scale: 1) {
-    margin-top: calc(#{$two} * #{$scale}) !important;
-    margin-right: calc(#{$two} * #{$scale}) !important;
-    margin-bottom: calc(#{$two} * #{$scale}) !important;
-    margin-left: calc(#{$two} * #{$scale}) !important;
-}
-
-@mixin mt-2($scale: 1) {
-    margin-top: calc(#{$two} * #{$scale}) !important;
-}
-@mixin mr-2($scale: 1) {
-    margin-right: calc(#{$two} * #{$scale}) !important;
-}
-@mixin mb-2($scale: 1) {
-    margin-bottom: calc(#{$two} * #{$scale}) !important;
-}
-@mixin ml-2($scale: 1) {
-    margin-left: calc(#{$two} * #{$scale}) !important;
-}
-
-@mixin mx-2($scale: 1) {
-    margin-left: calc(#{$two} * #{$scale}) !important;
-    margin-right: calc(#{$two} * #{$scale}) !important;
-}
-
-
-@mixin my-2($scale: 1) {
-    margin-top: calc(#{$two} * #{$scale}) !important;
-    margin-bottom: calc(#{$two} * #{$scale}) !important;
-}
-
-// -== 3 ==-
-@mixin m-3($scale: 1) {
-    margin-top: calc(#{$three} * #{$scale}) !important;
-    margin-right: calc(#{$three} * #{$scale}) !important;
-    margin-bottom: calc(#{$three} * #{$scale}) !important;
-    margin-left: calc(#{$three} * #{$scale}) !important;
-}
-
-@mixin mt-3($scale: 1) {
-    margin-top: calc(#{$three} * #{$scale}) !important;
-}
-@mixin mr-3($scale: 1) {
-    margin-right: calc(#{$three} * #{$scale}) !important;
-}
-@mixin mb-3($scale: 1) {
-    margin-bottom: calc(#{$three} * #{$scale}) !important;
-}
-@mixin ml-3($scale: 1) {
-    margin-left: calc(#{$three} * #{$scale}) !important;
-}
-
-@mixin mx-3($scale: 1) {
-    margin-left: calc(#{$three} * #{$scale}) !important;
-    margin-right: calc(#{$three} * #{$scale}) !important;
-}
-
-
-@mixin my-3($scale: 1) {
-    margin-top: calc(#{$three} * #{$scale}) !important;
-    margin-bottom: calc(#{$three} * #{$scale}) !important;
-}
-
-// -== 4 ==-
-@mixin m-4($scale: 1) {
-    margin-top: calc(#{$four} * #{$scale}) !important;
-    margin-right: calc(#{$four} * #{$scale}) !important;
-    margin-bottom: calc(#{$four} * #{$scale}) !important;
-    margin-left: calc(#{$four} * #{$scale}) !important;
-}
-
-@mixin mt-4($scale: 1) {
-    margin-top: calc(#{$four} * #{$scale}) !important;
-}
-@mixin mr-4($scale: 1) {
-    margin-right: calc(#{$four} * #{$scale}) !important;
-}
-@mixin mb-4($scale: 1) {
-    margin-bottom: calc(#{$four} * #{$scale}) !important;
-}
-@mixin ml-4($scale: 1) {
-    margin-left: calc(#{$four} * #{$scale}) !important;
-}
-
-@mixin mx-4($scale: 1) {
-    margin-left: calc(#{$four} * #{$scale}) !important;
-    margin-right: calc(#{$four} * #{$scale}) !important;
-}
-
-
-@mixin my-4($scale: 1) {
-    margin-top: calc(#{$four} * #{$scale}) !important;
-    margin-bottom: calc(#{$four} * #{$scale}) !important;
-}
-
-// -== 5 ==-
-@mixin m-5($scale: 1) {
-    margin-top: calc(#{$five} * #{$scale}) !important;
-    margin-right: calc(#{$five} * #{$scale}) !important;
-    margin-bottom: calc(#{$five} * #{$scale}) !important;
-    margin-left: calc(#{$five} * #{$scale}) !important;
-}
-
-@mixin mt-5($scale: 1) {
-    margin-top: calc(#{$five} * #{$scale}) !important;
-}
-@mixin mr-5($scale: 1) {
-    margin-right: calc(#{$five} * #{$scale}) !important;
-}
-@mixin mb-5($scale: 1) {
-    margin-bottom: calc(#{$five} * #{$scale}) !important;
-}
-@mixin ml-5($scale: 1) {
-    margin-left: calc(#{$five} * #{$scale}) !important;
-}
-
-@mixin mx-5($scale: 1) {
-    margin-left: calc(#{$five} * #{$scale}) !important;
-    margin-right: calc(#{$five} * #{$scale}) !important;
-}
-
-
-@mixin my-5($scale: 1) {
-    margin-top: calc(#{$five} * #{$scale}) !important;
-    margin-bottom: calc(#{$five} * #{$scale}) !important;
-}
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  GAP
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// -== 0 ==-
-@mixin gap-0($scale: 1) {
-    @supports (gap: 1rem) {
-        gap: calc(#{$zero} * #{$scale}) !important;
-        margin: 0 !important;
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else {
+      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
     }
-}
-@mixin gapR-0($scale: 1) {
-    > * {
-        margin-left: calc(#{$zero} * #{$scale}) !important;
-        margin-right: calc(#{$zero} * #{$scale}) !important;
+  }
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // PADDING
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @else if $property == 'p' {
+    @if $direction == 't' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'r' {
+      @if contains($spacing, $value) {
+        padding-right: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'b' {
+      @if contains($spacing, $value) {
+        padding-bottom: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'l' {
+      @if contains($spacing, $value) {
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'g' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+        padding-right: map-get($spacing, $value);
+        padding-bottom: map-get($spacing, $value);
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+
+        padding-bottom: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        padding-right: map-get($spacing, $value);
+
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else {
+      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
     }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$zero} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
+  }
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // GAP
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @else if $property == 'g' {
+    @if $direction == 'g' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-top: map-get($spacing, $value) !important;
+          margin-right: map-get($spacing, $value) !important;
+          margin-bottom: map-get($spacing, $value) !important;
+          margin-left: map-get($spacing, $value) !important;
         }
-    }
-}
-@mixin gapC-0($scale: 1) {
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$zero} * #{$scale}) !important;
-        margin: 0 !important;
-    }
-}
+        gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-top: map-get($spacing, $value) !important;
 
-// -== 1 ==-
-@mixin gap-1($scale: 1) {
-    > * {
-        margin: calc(#{$one} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        gap: calc(#{$one} * #{$scale}) !important;
-        > * {
-            margin: 0 !important;
+          margin-bottom: map-get($spacing, $value) !important;
         }
-    }
-}
-@mixin gapR-1($scale: 1) {
-    > * {
-        margin-left: calc(#{$one} * #{$scale}) !important;
-        margin-right: calc(#{$one} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$one} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-    }
-}
-@mixin gapC-1($scale: 1) {
-    > * {
-        margin-top: calc(#{$one} * #{$scale}) !important;
-        margin-bottom: calc(#{$one} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$one} * #{$scale}) !important;
-        > * {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-    }
-}
+        column-gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-right: map-get($spacing, $value) !important;
 
-// -== 2 ==-
-@mixin gap-2($scale: 1) {
-    > * {
-        margin: calc(#{$two} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        gap: calc(#{$two} * #{$scale}) !important;
-        > * {
-            margin: 0 !important;
+          margin-left: map-get($spacing, $value) !important;
         }
+        row-gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+      }
+    } @else {
+      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
     }
-}
-@mixin gapR-2($scale: 1) {
-    > * {
-        margin-left: calc(#{$two} * #{$scale}) !important;
-        margin-right: calc(#{$two} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$two} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-    }
-}
-@mixin gapC-2($scale: 1) {
-    > * {
-        margin-top: calc(#{$two} * #{$scale}) !important;
-        margin-bottom: calc(#{$two} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$two} * #{$scale}) !important;
-        > * {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-    }
-}
-
-// -== 3 ==-
-@mixin gap-3($scale: 1) {
-    > * {
-        margin: calc(#{$three} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        gap: calc(#{$three} * #{$scale}) !important;
-        > * {
-            margin: 0 !important;
-        }
-    }
-}
-@mixin gapR-3($scale: 1) {
-    > * {
-        margin-left: calc(#{$three} * #{$scale}) !important;
-        margin-right: calc(#{$three} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$three} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-    }
-}
-@mixin gapC-3($scale: 1) {
-    > * {
-        margin-top: calc(#{$three} * #{$scale}) !important;
-        margin-bottom: calc(#{$three} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$three} * #{$scale}) !important;
-        > * {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-    }
-}
-
-// -== 4 ==-
-@mixin gap-4($scale: 1) {
-    > * {
-        margin: calc(#{$four} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        gap: calc(#{$four} * #{$scale}) !important;
-        > * {
-            margin: 0 !important;
-        }
-    }
-}
-@mixin gapR-4($scale: 1) {
-    > * {
-        margin-left: calc(#{$four} * #{$scale}) !important;
-        margin-right: calc(#{$four} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$four} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-    }
-}
-@mixin gapC-4($scale: 1) {
-    > * {
-        margin-top: calc(#{$four} * #{$scale}) !important;
-        margin-bottom: calc(#{$four} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$four} * #{$scale}) !important;
-        > * {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-    }
-}
-
-// -== 5 ==-
-@mixin gap-5($scale: 1) {
-    > * {
-        margin: calc(#{$five} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        gap: calc(#{$five} * #{$scale}) !important;
-        > * {
-            margin: 0 !important;
-        }
-    }
-}
-@mixin gapR-5($scale: 1) {
-    > * {
-        margin-left: calc(#{$five} * #{$scale}) !important;
-        margin-right: calc(#{$five} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        row-gap: calc(#{$five} * #{$scale}) !important;
-        > * {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-    }
-}
-@mixin gapC-5($scale: 1) {
-    > * {
-        margin-top: calc(#{$five} * #{$scale}) !important;
-        margin-bottom: calc(#{$five} * #{$scale}) !important;
-    }
-    @supports (gap: 1rem) {
-        column-gap: calc(#{$five} * #{$scale}) !important;
-        > * {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-        }
-    }
+  } @else {
+    @warn 'Invalid Property provided in spacing mixin: #{$property}';
+    // @warn 'Ίντα κάεινσ εκεί ωρέ κοπέλι; Η ιδιότητα #{$property} που με δωκες εν φτουρεί';
+  }
 }
