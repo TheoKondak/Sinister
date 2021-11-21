@@ -33,35 +33,35 @@
 }
 
 @mixin txtXs($scale: 1) {
-  font-size: calc(#{map-get($fontSize, xs)} * #{$scale});
+  font-size: calc(#{map-get($fontSizes, xs)} * #{$scale});
 }
 .txtXs {
   @include txtXs;
 }
 
 @mixin txtSm($scale: 1) {
-  font-size: calc(#{map-get($fontSize, sm)} * #{$scale});
+  font-size: calc(#{map-get($fontSizes, sm)} * #{$scale});
 }
 .txtSm {
   @include txtSm;
 }
 
 @mixin txtMd($scale: 1) {
-  font-size: calc(#{map-get($fontSize, md)} * #{$scale});
+  font-size: calc(#{map-get($fontSizes, md)} * #{$scale});
 }
 .txtMd {
   @include txtMd;
 }
 
 @mixin txtXl($scale: 1) {
-  font-size: calc(#{map-get($fontSize, xl)} * #{$scale});
+  font-size: calc(#{map-get($fontSizes, xl)} * #{$scale});
 }
 .txtXl {
   @include txtXl;
 }
 
 @mixin txtXxl($scale: 1) {
-  font-size: calc(#{map-get($fontSize, xxl)} * #{$scale});
+  font-size: calc(#{map-get($fontSizes, xxl)} * #{$scale});
 }
 .txtXxl {
   @include txtXxl;
@@ -72,26 +72,26 @@
 //+----------------------+
 @if $responsiveFontSizes {
   :root {
-    font-size: map-get($fontSize, generic);
+    font-size: map-get($fontSizes, generic);
 
     @media (max-width: map-get($breakpoints, xxl)) {
-      font-size: map-get($fontSize, xxl);
+      font-size: map-get($fontSizes, xxl);
     }
 
     @media (max-width: map-get($breakpoints, xl)) {
-      font-size: map-get($fontSize, xl);
+      font-size: map-get($fontSizes, xl);
     }
 
     @media (max-width: map-get($breakpoints, md)) {
-      font-size: map-get($fontSize, md);
+      font-size: map-get($fontSizes, md);
     }
 
     @media (max-width: map-get($breakpoints, sm)) {
-      font-size: map-get($fontSize, sm);
+      font-size: map-get($fontSizes, sm);
     }
 
     @media (max-width: map-get($breakpoints, xs)) {
-      font-size: map-get($fontSize, sm);
+      font-size: map-get($fontSizes, sm);
     }
   }
 }
@@ -100,41 +100,41 @@ body {
   line-height: 1.61803398875; //Golden Ratio
 
   h1 {
-    font-size: map-get($fontSize, h1);
+    font-size: map-get($fontSizes, h1);
   }
 
   h2 {
-    font-size: map-get($fontSize, h2);
+    font-size: map-get($fontSizes, h2);
   }
 
   h3 {
-    font-size: map-get($fontSize, h3);
+    font-size: map-get($fontSizes, h3);
   }
 
   h4 {
-    font-size: map-get($fontSize, h4);
+    font-size: map-get($fontSizes, h4);
   }
 
   h5 {
-    font-size: map-get($fontSize, h5);
+    font-size: map-get($fontSizes, h5);
   }
 
   h6 {
-    font-size: map-get($fontSize, h6);
+    font-size: map-get($fontSizes, h6);
   }
 
   span {
-    font-size: map-get($fontSize, span);
+    font-size: map-get($fontSizes, span);
   }
 
   p {
-    font-size: map-get($fontSize, p);
+    font-size: map-get($fontSizes, p);
   }
 
   a {
     text-decoration: none;
 
-    font-size: map-get($fontSize, a);
+    font-size: map-get($fontSizes, a);
 
     &:hover {
       text-decoration: none;
@@ -143,30 +143,30 @@ body {
 
   button {
     text-decoration: none;
-    font-size: map-get($fontSize, button);
+    font-size: map-get($fontSizes, button);
     &:hover {
       text-decoration: none;
     }
   }
 
   em {
-    font-size: map-get($fontSize, em);
+    font-size: map-get($fontSizes, em);
   }
 
   small {
-    font-size: map-get($fontSize, small);
+    font-size: map-get($fontSizes, small);
   }
 
   strong {
-    font-size: map-get($fontSize, strong);
+    font-size: map-get($fontSizes, strong);
   }
 
   ul {
-    font-size: map-get($fontSize, ul);
+    font-size: map-get($fontSizes, ul);
   }
 
   ol {
-    font-size: map-get($fontSize, ol);
+    font-size: map-get($fontSizes, ol);
   }
 
   li {
@@ -174,26 +174,26 @@ body {
       @include liNoDec;
     }
 
-    font-size: map-get($fontSize, xxl);
+    font-size: map-get($fontSizes, xxl);
   }
 
   hr {
-    font-size: map-get($fontSize, hr);
+    font-size: map-get($fontSizes, hr);
   }
 
   br {
-    font-size: map-get($fontSize, br);
+    font-size: map-get($fontSizes, br);
   }
 
   wbr {
-    font-size: map-get($fontSize, wbr);
+    font-size: map-get($fontSizes, wbr);
   }
 
   div {
-    font-size: map-get($fontSize, div);
+    font-size: map-get($fontSizes, div);
   }
 
   section {
-    font-size: map-get($fontSize, section);
+    font-size: map-get($fontSizes, section);
   }
 }
