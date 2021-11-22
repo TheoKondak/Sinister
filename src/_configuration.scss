@@ -94,6 +94,7 @@ $spacing: (
   3: 2.5231rem,
   4: 3rem,
   5: 4rem,
+  6: 14rem,
 );
 
 // Disable List Style for <li> items?
@@ -120,3 +121,73 @@ $disListStyle: false;
 $imgBoxDefaultHeight: 80;
 $imgBoxDefaultWidth: 100;
 $imgDefaultPreloadBackground: none;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// ALTERNATIVE CONFIGURATION using one map for all config
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// Does not work yet, need to replace old maps and refactor scss components
+$configuration: (
+  color: (
+    'red': hsl(0, 100%, 50%),
+    'green': hsl(120, 100%, 25%),
+    'blue': hsl(240, 100%, 50%),
+  ),
+  breakpoints: (
+    xxl: 2560px,
+    xl: 1200px,
+    md: 992px,
+    sm: 768px,
+    xs: 576px,
+  ),
+  responsiveFonts: false,
+  responsiveFontSizes: (
+    generic: 0.8vw,
+    xxl: 1vw,
+    xl: 1vw,
+    md: 2vw,
+    sm: 4.3vw,
+    xs: 4.6vw,
+  ),
+  fontSizes: (
+    xxl: 1.6rem,
+    xl: 1.4rem,
+    md: 1rem,
+    sm: 0.9rem,
+    xs: 0.7rem,
+  ),
+  defaultFontSizes: (
+    h1: null,
+    h2: null,
+    h3: null,
+    h4: null,
+    h5: null,
+    h6: null,
+    span: null,
+    p: null,
+    a: null,
+    button: null,
+    em: null,
+    small: null,
+    strong: null,
+    q: null,
+    ul: null,
+    ol: null,
+    li: null,
+    hr: null,
+    br: null,
+    wbr: null,
+    div: null,
+    section: null,
+  ),
+  spacing: (
+    0: 0rem,
+    1: 1.5rem,
+    2: 2rem,
+    3: 2.5rem,
+    4: 3rem,
+    5: 4rem,
+    6: 5rem,
+  ),
+  url: '../../../..',
+);
