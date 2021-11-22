@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass: string';
 @use '../configuration' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -14,7 +15,7 @@
   }
 
   @if $isTrue != true {
-    @warn 'Invalid $var provided in contains function: #{$var}';
+    @warn string.unquote('Invalid $var provided in contains function:') #{$var};
   }
 
   @return $isTrue;
@@ -64,7 +65,7 @@ $spacingDirection: (
                 }
                 row-gap: $spacingVal !important;
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
               }
             }
           }
@@ -92,7 +93,7 @@ $spacingDirection: (
                 }
                 column-gap: $spacingVal !important;
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote('Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
               }
             }
           }
@@ -123,7 +124,7 @@ $spacingDirection: (
                 }
                 gap: $spacingVal !important;
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
               }
             }
           }
@@ -144,7 +145,7 @@ $spacingDirection: (
               @else if $propertyValue == 'g' {
                 //gap does not support single direction
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
               }
             }
           }
@@ -164,7 +165,7 @@ $spacingDirection: (
               @else if $propertyValue == 'g' {
                 //gap does not support single direction
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
               }
             }
           }
@@ -184,7 +185,7 @@ $spacingDirection: (
               @else if $propertyValue == 'g' {
                 //gap does not support single direction
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
               }
             }
           }
@@ -204,17 +205,17 @@ $spacingDirection: (
               // GAP
               @else if $propertyValue == 'g' {
               } @else {
-                @warn 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic';
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
               }
             }
           }
         }
       }
     } @else {
-      @warn '$spacing values must be type of number but there are some of type: #{type-of($spacingVal)}';
+      @warn string.unquote( '$spacing values must be type of number but there are some of type:') #{type-of($spacingVal)};
     }
   } @else {
-    @warn '$spacing keys must be type of number or string but there are some of type: #{type-of($spacingKey)}';
+    @warn string.unquote( '$spacing keys must be type of number or string but there are some of type:') #{type-of($spacingKey)};
   }
 }
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -235,25 +236,25 @@ $key: 'hello';
       @if contains($spacing, $value) {
         margin-top: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin:') #{$value};
       }
     } @else if $direction == 'r' {
       @if contains($spacing, $value) {
         margin-right: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'b' {
       @if contains($spacing, $value) {
         margin-bottom: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'l' {
       @if contains($spacing, $value) {
         margin-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'g' {
       @if contains($spacing, $value) {
@@ -262,7 +263,7 @@ $key: 'hello';
         margin-bottom: map-get($spacing, $value);
         margin-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'y' {
       @if contains($spacing, $value) {
@@ -270,7 +271,7 @@ $key: 'hello';
 
         margin-bottom: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'x' {
       @if contains($spacing, $value) {
@@ -278,10 +279,10 @@ $key: 'hello';
 
         margin-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else {
-      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
+      @warn string.unquote( 'Invalid Property provided in spacing mixin:)' #{$direction};
     }
   }
   //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -292,25 +293,25 @@ $key: 'hello';
       @if contains($spacing, $value) {
         padding-top: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin:') #{$value};
       }
     } @else if $direction == 'r' {
       @if contains($spacing, $value) {
         padding-right: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'b' {
       @if contains($spacing, $value) {
         padding-bottom: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'l' {
       @if contains($spacing, $value) {
         padding-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'g' {
       @if contains($spacing, $value) {
@@ -319,7 +320,7 @@ $key: 'hello';
         padding-bottom: map-get($spacing, $value);
         padding-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'y' {
       @if contains($spacing, $value) {
@@ -327,7 +328,7 @@ $key: 'hello';
 
         padding-bottom: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'x' {
       @if contains($spacing, $value) {
@@ -335,10 +336,10 @@ $key: 'hello';
 
         padding-left: map-get($spacing, $value);
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else {
-      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
+      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}';
     }
   }
   //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -355,7 +356,7 @@ $key: 'hello';
         }
         gap: map-get($spacing, $value) !important;
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'y' {
       @if contains($spacing, $value) {
@@ -366,7 +367,7 @@ $key: 'hello';
         }
         column-gap: map-get($spacing, $value) !important;
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else if $direction == 'x' {
       @if contains($spacing, $value) {
@@ -377,13 +378,13 @@ $key: 'hello';
         }
         row-gap: map-get($spacing, $value) !important;
       } @else {
-        @warn 'Invalid Value provided in spacing mixin: #{$value}';
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}';
       }
     } @else {
-      @warn 'Invalid Property provided in spacing mixin: #{$direction}';
+      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}';
     }
   } @else {
-    @warn 'Invalid Property provided in spacing mixin: #{$property}';
-    // @warn 'Ίντα κάεινσ εκεί ωρέ κοπέλι; Η ιδιότητα #{$property} που με δωκες εν φτουρεί';
+    @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$property}';
+    // @warn string.unquote( 'Ίντα κάεινσ εκεί ωρέ κοπέλι; Η ιδιότητα #{$property} που με δωκες εν φτουρεί';
   }
 }
