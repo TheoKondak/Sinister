@@ -1,0 +1,64 @@
+@use '../../config' as *;
+
+@mixin stackedContent($numberOfItems: 3, $startingHeight: 60px, $itemHeight: 100px, $singleItemMarginTop: 50vh, $background: white) {
+  //   position: sticky;
+  //   top: 120px;
+
+  height: ($numberOfItems + 1) * $singleItemMarginTop;
+
+  @include mqMin(726px) {
+    height: ($numberOfItems + 3) * $singleItemMarginTop;
+  }
+
+  z-index: 1;
+
+  @for $i from 1 through $numberOfItems {
+    > div {
+      background: $background;
+      height: $itemHeight;
+
+      @if $i == 1 {
+        &:first-child {
+          position: sticky;
+          top: $startingHeight;
+          margin-top: 0;
+          z-index: 2;
+        }
+      } @else {
+        &:nth-child(#{$i}) {
+          position: sticky;
+          top: $startingHeight;
+          margin-top: $singleItemMarginTop;
+          z-index: $i + 1;
+        }
+
+        &:last-child {
+          margin-top: 0;
+          // margin-bottom: calc(80vh - #{$itemHeight});
+        }
+      }
+    }
+  }
+}
+
+.item-701 #t4-section-9 {
+  //   @include p-0;
+}
+
+.stackedContent {
+  &--container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none;
+    @include mqMin(1200px) {
+      display: block;
+    }
+  }
+  @include stackedContent($numberOfItems: 5, $startingHeight: 82px, $itemHeight: 462px);
+
+  &--item {
+    > div {
+      flex: 0 0 48%;
+    }
+  }
+}
