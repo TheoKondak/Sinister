@@ -4,4 +4,11 @@
   @include mqMax(map-get($breakpoints, Xl)) {
     color: map-get($color, red);
   }
+
+  @include spacing(m, l, 6);
+}
+
+.lal {
+  $newSpacing: map-deep-get($configuration, spacing);
+  // $newSpacings: map-values($newSpacing);
 }
