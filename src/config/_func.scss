@@ -1,0 +1,23 @@
+@use 'sass:string';
+// Access Data in Deep nested Map
+//src: https://css-tricks.com/snippets/sass/deep-getset-maps/
+
+@function map-deep-get($map, $keys...) {
+  @if $map {
+    @if $keys {
+      @each $key in $keys {
+        @if type-of($keys) == arglist {
+          $map: map-get($map, $key);
+        } @else {
+          @warn string.unquote('Invalid $key property type provided. Expected "arglist" but recieved:') #{type-of($key)};
+        }
+      }
+    } @else {
+      @warn string.unquote('Invalid "$keys" provided in contains function:') #{$keys};
+    }
+  } @else {
+    @warn string.unquote('Invalid "$map" provided in contains function:') #{$map};
+  }
+
+  @return $map;
+}
