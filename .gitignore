@@ -115,3 +115,9 @@ dist
 
 #Ignore Instructions.txt
 **/src/Instructions.txt
+
+
+
+
+#Ignore Compiled CSS
+**/compiled/
