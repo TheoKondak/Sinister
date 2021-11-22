@@ -14,17 +14,17 @@
       @content;
     }
   } @else {
-    @error "Invalid Input";
+    @warn "Invalid Input";
   }
 }
 
-@mixin mqMin($min) {
+@mixin mqMin($min: 120px) {
   @media (min-width: $min) {
     @content;
   }
 }
 
-@mixin mqMax($max) {
+@mixin mqMax($max: 4096px) {
   @media (max-width: $max) {
     @content;
   }
