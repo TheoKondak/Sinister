@@ -1,64 +1,45 @@
-@use '../../config' as *;
+// @use '../../config/index' as *;
+@use 'sass:string';
+@use '../responsive';
 
-@mixin stackedContent($numberOfItems: 3, $startingHeight: 60px, $itemHeight: 100px, $singleItemMarginTop: 50vh, $background: white) {
-  //   position: sticky;
-  //   top: 120px;
+// Inspiration: https://css-tricks.com/stacked-cards-with-sticky-positioning-and-a-dash-of-sass/
 
-  height: ($numberOfItems + 1) * $singleItemMarginTop;
-
-  @include mqMin(726px) {
-    height: ($numberOfItems + 3) * $singleItemMarginTop;
-  }
-
+@mixin stackedContent($numberOfItems: 3, $startingHeight: 60px, $responsiveStackedContent: true, $responsiveMargin: 80vh, $breakpoint: 570px) {
   z-index: 1;
 
-  @for $i from 1 through $numberOfItems {
-    > div {
-      background: $background;
-      height: $itemHeight;
+  @if type-of($numberOfItems) == number {
+    @if $numberOfItems > 0 {
+      @for $i from 1 through $numberOfItems {
+        > div {
+          &:nth-child(#{$i}n) {
+            position: sticky;
+            top: $startingHeight;
+            z-index: $i + 1;
+          }
 
-      @if $i == 1 {
-        &:first-child {
-          position: sticky;
-          top: $startingHeight;
-          margin-top: 0;
-          z-index: 2;
-        }
-      } @else {
-        &:nth-child(#{$i}) {
-          position: sticky;
-          top: $startingHeight;
-          margin-top: $singleItemMarginTop;
-          z-index: $i + 1;
-        }
+          @if $responsiveStackedContent {
+            @if type-of($responsiveStackedContent) == bool {
+              @media (max-width: $breakpoint) {
+                margin-top: $responsiveMargin;
 
-        &:last-child {
-          margin-top: 0;
-          // margin-bottom: calc(80vh - #{$itemHeight});
+                &:first-child {
+                  margin-top: 0;
+                }
+
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            } @else {
+              @warn string.unquote('$responsiveStackedContent must be type of bool but it is:') #{type-of($responsiveStackedContent)};
+            }
+          }
         }
       }
+    } @else {
+      @warn string.unquote('Invalid $numberOfItems value. Minimum 1, Recieved:') #{$numberOfItems};
     }
-  }
-}
-
-.item-701 #t4-section-9 {
-  //   @include p-0;
-}
-
-.stackedContent {
-  &--container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: none;
-    @include mqMin(1200px) {
-      display: block;
-    }
-  }
-  @include stackedContent($numberOfItems: 5, $startingHeight: 82px, $itemHeight: 462px);
-
-  &--item {
-    > div {
-      flex: 0 0 48%;
-    }
+  } @else {
+    @warn string.unquote('$numberOfItems must be type of number but it is:') #{type-of($numberOfItems)};
   }
 }
