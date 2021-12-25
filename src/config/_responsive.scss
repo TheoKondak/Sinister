@@ -1,4 +1,5 @@
 @use '../configuration' as *;
+@use 'func' as f;
 
 @mixin mq($min: 120px, $max: 4096px) {
   @if $min and $max {
@@ -29,3 +30,14 @@
     @content;
   }
 }
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// Default Breakpoints
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// So you can use them as variables in media queries etc.
+$smartphone: f.get(breakpoints, xs);
+$tabletSmall: f.get(breakpoints, sm);
+$tabletLarge: f.get(breakpoints, md);
+$desktop-small: f.get(breakpoints, l);
+$desktopMedium: f.get(breakpoints, xl);
+$desktopLarge: f.get(breakpoints, xxl);
