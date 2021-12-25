@@ -133,7 +133,22 @@ $configuration: (
     'secondary': hsl(120, 100%, 25%),
     'blue': hsl(240, 100%, 50%),
   ),
+  // Functionality is missing.
+  font-family:
+    (
+      example: (
+        font-name: '',
+        format: 'ttf',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCondensedRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
+        ),
+      ),
+    ),
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
   // Experimental - > Bootstrap overide
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
   bootstrap:
     (
       // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
@@ -162,13 +177,22 @@ $configuration: (
           bs-dark: #212529,
         ),
     ),
-  breakpoints: (
-    xxl: 2560px,
-    xl: 1200px,
-    md: 992px,
-    sm: 768px,
-    xs: 576px,
-  ),
+  // You can add new breakpoints, or edit the ones bellow, but do not delete any of the default breakpoints
+  breakpoints:
+    (
+      // $desktopLarge
+      xxl: 2560px,
+      // $desktopMedium
+      xl: 1980px,
+      // $desktop-small
+      l: 1460px,
+      // $tabletLarge
+      md: 1200px,
+      // $tabletSmall
+      sm: 768px,
+      // $smartphone
+      xs: 576px,
+    ),
   responsiveFonts: false,
   responsiveFontSizes: (
     generic: 0.8vw,
