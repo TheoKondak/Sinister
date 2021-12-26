@@ -1,0 +1,11 @@
+$display: (none, inline, inline-block, block, table, table-cell, table-row, flex, inline-flex);
+
+@each $displayValue in $display {
+  .d-#{$displayValue} {
+    display: $displayValue;
+  }
+}
+
+div {
+  color: black;
+}

@@ -1517,6 +1517,18 @@ div {
 }
 
 @font-face {}
+@font-face {
+  font-family: "Roboto Condensed Regular";
+  src: url("../../../../images/fonts/RobotoCondensedRegular.ttf") format("ttf"), url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap") format("ttf");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../../../images/fonts/RobotoCRegular.ttf") format("ttfs"), url("https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap") format("ttfs");
+}
+@font-face {
+  font-family: "Robotao";
+  src: url("../../../../images/fonts/RobotoCRegular.ttf") format("ttfs"), url("https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap") format("ttfs");
+}
 .capitalize {
   text-transform: capitalize;
 }
@@ -1598,39 +1610,6 @@ body li {
 @media (max-width: 576px) {
   .lal {
     display: none;
-  }
-}
-
-.imgWrapper {
-  width: 100%;
-  height: 0;
-  padding-bottom: calc((80 / 100) * 100%);
-  position: relative;
-  background: none;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
-.imgWrapper img {
-  width: 100%;
-  height: auto;
-  position: absolute;
-}
-
-.blur {
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-}
-@supports not (backdrop-filter: blur(1px)) {
-  .blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -webkit-filter: blur(4px);
   }
 }
 

@@ -1,13 +1,11 @@
-@use '../config' as *;
+@use '../sin' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  Primary Button Mixin
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-@mixin buttonPrimary(){
-
+@mixin buttonPrimary() {
 }
 
-
-.buttonPrimary{
-    @include buttonPrimary;
+.buttonPrimary {
+  @include buttonPrimary;
 }

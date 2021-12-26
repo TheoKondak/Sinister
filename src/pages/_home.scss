@@ -1,4 +1,4 @@
-@use '../config' as *;
+@use '../sin' as *;
 
 .lol {
   @include mqMax(map-get($breakpoints, Xl)) {
@@ -16,7 +16,6 @@
   background: getMap($configuration, bootstrap, color, bs-blue);
 
   $lol: set($configuration, 'bootstrap color bs-blue', red);
-
   @include mqMax($smartphone) {
     display: none;
   }

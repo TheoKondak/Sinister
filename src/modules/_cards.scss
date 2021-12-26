@@ -1,12 +1,11 @@
-@use '../config' as *;
+@use '../sin' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  Custom card design
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-@mixin customCard{
-
+@mixin customCard {
 }
 
-.customCard{
-    @include customCard();
+.customCard {
+  @include customCard();
 }
