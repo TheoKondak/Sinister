@@ -25,24 +25,23 @@ $font-families: f.get(font-family);
     font-family: f.getMap($font-family, font-name);
 
     // Itterate throught the array of URLs, for fallback urls.
-    $length: length(f.getMap($font-family, url));
 
-    @for $i from 1 through $length {
-      // @debug nth(f.getMap($font-family, url), $i);
-      // Deep get function gets access to font family from @each, then the url array, and then each url
-      // format is static for now
+    @for $i from 1 through length(f.get($font-family)) {
+      // For every font-family decladed in _configuration.scss
 
-      @debug $length;
-      // Fallbacks don't work
-      @if $i == 1 {
-        @debug 'first';
-        src: url(nth(f.getMap($font-family, url), $i)) format(f.getMap($font-family, format)), // Format is optional
-      } @else if $i == $length {
-        @debug 'last';
-        url: url(nth(f.getMap($font-family, url), $i)) format(f.getMap($font-family, format)); // Format is optional
+      $length: length(f.getMap($font-family, url)); // lenth of url array
+
+      @if $length == 0 {
+        @warn '@font-face url contains no data, or invalid data. Edit it in _configuration.scss';
+      } @else if $length == 1 {
+        src: url(nth(f.getMap($font-family, url), 1)) format(f.getMap($font-family, format)); // Format is optional
+      } @else if $length == 2 {
+        src: url(nth(f.getMap($font-family, url), 1)) format(f.getMap($font-family, format)),
+          // Format is optional
+          url(nth(f.getMap($font-family, url), 2))
+            format(f.getMap($font-family, format)); // Format is optional
       } @else {
-        @debug 'generic';
-        url: url(nth(f.getMap($font-family, url), $i)) format(f.getMap($font-family, format)), // Format is optional 
+        @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
       }
     }
   }

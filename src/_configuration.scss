@@ -136,13 +136,31 @@ $configuration: (
   // Functionality is missing.
   font-family:
     (
-      example: (
-        font-name: '',
+      (
+        font-name: 'Roboto Condensed Regular',
         format: 'ttf',
         url: (
           // First URL is the default, the rest are fallback URLs
           '../../../../images/fonts/RobotoCondensedRegular.ttf',
           'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
+        ),
+      ),
+      (
+        font-name: 'Roboto',
+        format: 'ttfs',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap',
+        ),
+      ),
+      (
+        font-name: 'Robotao',
+        format: 'ttfs',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap',
         ),
       ),
     ),
