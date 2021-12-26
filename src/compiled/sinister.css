@@ -1592,6 +1592,15 @@ body li {
 .lol {
   margin-left: 14rem;
 }
+.lal {
+  background: #0d6efd;
+}
+@media (max-width: 576px) {
+  .lal {
+    display: none;
+  }
+}
+
 .imgWrapper {
   width: 100%;
   height: 0;
