@@ -784,73 +784,6 @@
   }
 }
 
-.responsiveYT {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-}
-.responsiveYT iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.responsiveMap {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-.responsiveMap iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
-.d-none {
-  display: none;
-}
-
-.d-inline {
-  display: inline;
-}
-
-.d-inline-block {
-  display: inline-block;
-}
-
-.d-block {
-  display: block;
-}
-
-.d-table {
-  display: table;
-}
-
-.d-table-cell {
-  display: table-cell;
-}
-
-.d-table-row {
-  display: table-row;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.d-inline-flex {
-  display: inline-flex;
-}
-
-div {
-  color: black;
-}
-
 .mg-0 {
   margin-top: 0rem !important;
   margin-right: 0rem !important;
@@ -1516,18 +1449,110 @@ div {
   }
 }
 
+.imgWrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: calc((80 / 100) * 100%);
+  position: relative;
+  background: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+.imgWrapper img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.blur {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+}
+
+.responsiveYT {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.responsiveYT iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.responsiveMap {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.responsiveMap iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-table {
+  display: table;
+}
+
+.d-table-cell {
+  display: table-cell;
+}
+
+.d-table-row {
+  display: table-row;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+div {
+  color: black;
+}
+
 @font-face {}
 @font-face {
-  font-family: "Roboto Condensed Regular";
-  src: url("../../../../images/fonts/RobotoCondensedRegular.ttf") format("ttf"), url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap") format("ttf");
-}
-@font-face {
-  font-family: "Roboto";
-  src: url("../../../../images/fonts/RobotoCRegular.ttf") format("ttfs"), url("https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap") format("ttfs");
-}
-@font-face {
-  font-family: "Robotao";
-  src: url("../../../../images/fonts/RobotoCRegular.ttf") format("ttfs"), url("https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap") format("ttfs");
+  font-family: getMap(get(font-family), font-name);
+  src: url(getMap(get(font-family), url)) format(getMap(get(font-family), format));
 }
 .capitalize {
   text-transform: capitalize;
@@ -1604,10 +1629,16 @@ body li {
 .lol {
   margin-left: 14rem;
 }
+@media (max-width: ) {
+  .lol {
+    color: red;
+  }
+}
+
 .lal {
   background: #0d6efd;
 }
-@media (max-width: 576px) {
+@media (max-width: get(breakpoints, xs)) {
   .lal {
     display: none;
   }

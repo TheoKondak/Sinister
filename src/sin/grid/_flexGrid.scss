@@ -1,4 +1,4 @@
-@use '../configuration' as *;
+@use '../../configuration' as *;
 @use 'flex' as *;
 
 @mixin flexGridSelectors($property, $value) {

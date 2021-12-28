@@ -1,8 +1,8 @@
 @use '../sin' as *;
 
 .lol {
-  @include mqMax(map-get($breakpoints, Xl)) {
-    color: map-get($color, red);
+  @include mqMax(get($desktop-small)) {
+    color: get(colors, primary);
   }
 
   @include spacing(m, l, 6);
@@ -15,7 +15,7 @@
   // @debug getMap($configuration, bootstrap, color, bs-blue);
   background: getMap($configuration, bootstrap, color, bs-blue);
 
-  $lol: set($configuration, 'bootstrap color bs-blue', red);
+  // $lol: set($configuration, 'bootstrap color bs-blue', red);
   @include mqMax($smartphone) {
     display: none;
   }

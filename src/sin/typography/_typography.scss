@@ -1,7 +1,7 @@
 @use 'sass:map';
-@use '../configuration' as *;
-@use 'utility';
-@use 'func' as f;
+@use '../../configuration' as *;
+@use '../utility';
+@use '../modules/func';
 
 //+----------------------+
 // Importing Fonts
@@ -16,30 +16,30 @@
   // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
 }
 
-$font-families: f.get(font-family);
+$font-families: get(font-family);
 // Itterate through font families map
 @each $font-family in $font-families {
-  // @debug f.getMap($font-family, font-name);
+  // @debug getMap($font-family, font-name);
   @font-face {
     // Use deep get function from func
-    font-family: f.getMap($font-family, font-name);
+    font-family: getMap($font-family, font-name);
 
     // Itterate throught the array of URLs, for fallback urls.
 
-    @for $i from 1 through length(f.get($font-family)) {
+    @for $i from 1 through length(get($font-family)) {
       // For every font-family decladed in _configuration.scss
 
-      $length: length(f.getMap($font-family, url)); // lenth of url array
+      $length: length(getMap($font-family, url)); // lenth of url array
 
       @if $length == 0 {
         @warn '@font-face url contains no data, or invalid data. Edit it in _configuration.scss';
       } @else if $length == 1 {
-        src: url(nth(f.getMap($font-family, url), 1)) format(f.getMap($font-family, format)); // Format is optional
+        src: url(nth(getMap($font-family, url), 1)) format(getMap($font-family, format)); // Format is optional
       } @else if $length == 2 {
-        src: url(nth(f.getMap($font-family, url), 1)) format(f.getMap($font-family, format)),
+        src: url(nth(getMap($font-family, url), 1)) format(getMap($font-family, format)),
           // Format is optional
-          url(nth(f.getMap($font-family, url), 2))
-            format(f.getMap($font-family, format)); // Format is optional
+          url(nth(getMap($font-family, url), 2))
+            format(getMap($font-family, format)); // Format is optional
       } @else {
         @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
       }
