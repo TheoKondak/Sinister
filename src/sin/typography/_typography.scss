@@ -32,7 +32,7 @@ $font-families: get(font-family);
       $length: length(getMap($font-family, url)); // lenth of url array
 
       @if $length == 0 {
-        @warn '@font-face url contains no data, or invalid data. Edit it in _configuration.scss';
+        @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
       } @else if $length == 1 {
         src: url(nth(getMap($font-family, url), 1)) format(getMap($font-family, format)); // Format is optional
       } @else if $length == 2 {
