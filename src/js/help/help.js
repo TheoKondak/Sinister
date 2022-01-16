@@ -4,6 +4,8 @@ const data = await getSin('./src/js/help/help.json');
 
 export const help = (help) => {
   if (help) {
+    console.log('');
+    console.log('==HELP==');
     for (const [key, dat] of Object.entries(data)) {
       if (typeof dat === 'string') {
         console.log(key + ': ' + dat);
