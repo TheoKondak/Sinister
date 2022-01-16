@@ -18,10 +18,10 @@ export const menuBgOnScroll = new IntersectionObserver(function (entries, sectio
         target.classList.add('nav-scrolled');
       }
 
-      console.log('Add Nav Scrolled');
+      // console.log('Add Nav Scrolled');
     } else {
       target.classList.remove('nav-scrolled');
-      console.log('Remove Nav Scrolled');
+      // console.log('Remove Nav Scrolled');
     }
   });
 }, menuBgOnScrollOptions.observerOptions);
