@@ -2390,7 +2390,7 @@ header {
 .nav-scrolled {
   --text: #333;
   --text-inverse: #f4f4f4;
-  --background: #f4f4f4;
+  --background: blue;
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 

@@ -8,9 +8,9 @@
       {
         "label": "SASS Compile",
         "type": "shell",
-        "command": "sass src/sinister.scss:src/compiled/sinister.css --watch",
+        "command": "sass src/sass/sinister.scss:src/compiled/sinister.css --watch",
         "windows": {
-          "command": "sass src/sinister.scss:src/compiled/sinister.css --watch"
+          "command": "sass src/sass/sinister.scss:src/compiled/sinister.css --watch"
         },
         "presentation": {
           "reveal": "always",

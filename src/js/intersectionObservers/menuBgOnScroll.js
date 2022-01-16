@@ -12,7 +12,12 @@ const target = document.querySelector(menuBgOnScrollOptions.target);
 export const menuBgOnScroll = new IntersectionObserver(function (entries, sectionOneObserver) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
-      target.classList.add('nav-scrolled');
+      if (!target) {
+        console.log('lol');
+      } else {
+        target.classList.add('nav-scrolled');
+      }
+
       console.log('Add Nav Scrolled');
     } else {
       target.classList.remove('nav-scrolled');

@@ -1,0 +1,390 @@
+@use 'sass:map';
+@use 'sass:string';
+@use '../../../configuration' as *;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MARGINS | PADDINGS | GAP
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+@function contains($list, $var) {
+  $isTrue: null;
+  @each $key, $value in $list {
+    @if $key == $var {
+      $isTrue: true;
+    }
+  }
+
+  @if $isTrue != true {
+    @warn string.unquote('Invalid $var provided in contains function:') #{$var};
+  }
+
+  @return $isTrue;
+}
+
+$spacingProperties: (
+  margin: m,
+  padding: p,
+  gap: g,
+);
+
+$spacingDirection: (
+  generic: 'g',
+  top: 't',
+  right: 'r',
+  bottom: 'b',
+  left: 'l',
+  x-axis: 'x',
+  y-axis: 'y',
+);
+
+@each $spacingKey, $spacingVal in $spacing {
+  @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
+    @if type-of($spacingVal) == 'number' {
+      @each $propertyKey, $propertyValue in $spacingProperties {
+        @each $directionKey, $directionValue in $spacingDirection {
+          // X-AXIS
+          @if $directionKey == 'x-axis' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin-left: $spacingVal !important;
+                  margin-right: $spacingVal !important;
+                }
+                row-gap: $spacingVal !important;
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+              }
+            }
+          }
+          // Y-AXIS
+          @else if $directionKey == 'y-axis' {
+            $className: #{$propertyValue}#{$directionValue};
+
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin-top: $spacingVal !important;
+                  margin-bottom: $spacingVal !important;
+                }
+                column-gap: $spacingVal !important;
+              } @else {
+                @warn string.unquote('Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+              }
+            }
+          }
+          // ALL DIRECTIONS
+          @else if $directionKey == 'generic' {
+            $className: #{$propertyValue}#{$directionValue};
+
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+                margin-right: $spacingVal !important;
+                margin-bottom: $spacingVal !important;
+                margin-left: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+                padding-right: $spacingVal !important;
+                padding-bottom: $spacingVal !important;
+                padding-left: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                // Fallback for older browsers
+                @supports not (gap: 2rem) {
+                  margin: $spacingVal !important;
+                }
+                gap: $spacingVal !important;
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+              }
+            }
+          }
+
+          // DIRECTION TOP
+          @else if $directionKey == 'top' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-top: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-top: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+              }
+            }
+          }
+          // DIRECTION RIGHT
+          @else if $directionKey == 'right' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-right: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-right: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+              }
+            }
+          }
+          // DIRECTION BOTTOM
+          @else if $directionKey == 'bottom' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-bottom: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-bottom: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+                //gap does not support single direction
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+              }
+            }
+          }
+
+          // DIRECTION LEFT
+          @else if $directionKey == 'left' {
+            $className: #{$propertyValue}#{$directionValue};
+            .#{$className}-#{$spacingKey} {
+              // MARGIN
+              @if $propertyValue == 'm' {
+                margin-left: $spacingVal !important;
+              }
+              // PADDING
+              @else if $propertyValue == 'p' {
+                padding-left: $spacingVal !important;
+              }
+              // GAP
+              @else if $propertyValue == 'g' {
+              } @else {
+                @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+              }
+            }
+          }
+        }
+      }
+    } @else {
+      @warn string.unquote( '$spacing values must be type of number but there are some of type:') #{type-of($spacingVal)};
+    }
+  } @else {
+    @warn string.unquote( '$spacing keys must be type of number or string but there are some of type:') #{type-of($spacingKey)};
+  }
+}
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  MIXINS
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+$key: 'hello';
+//Unfortunately i can't find a way to incorporate the mixins inside the loop.
+@mixin spacing($property, $direction, $value) {
+  // @debug 'Property: ' $property;
+  // @debug 'Direction: ' $direction;
+  // @debug 'Value: ' $value;
+
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // MARGIN
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @if $property == 'm' {
+    @if $direction == 't' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin:') #{$value};
+      }
+    } @else if $direction == 'r' {
+      @if contains($spacing, $value) {
+        margin-right: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'b' {
+      @if contains($spacing, $value) {
+        margin-bottom: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'l' {
+      @if contains($spacing, $value) {
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'g' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
+        margin-right: map-get($spacing, $value);
+        margin-bottom: map-get($spacing, $value);
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        margin-top: map-get($spacing, $value);
+
+        margin-bottom: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        margin-right: map-get($spacing, $value);
+
+        margin-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else {
+      @warn string.unquote( 'Invalid Property provided in spacing mixin:)') #{$direction};
+    }
+  }
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // PADDING
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @else if $property == 'p' {
+    @if $direction == 't' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin:') #{$value};
+      }
+    } @else if $direction == 'r' {
+      @if contains($spacing, $value) {
+        padding-right: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'b' {
+      @if contains($spacing, $value) {
+        padding-bottom: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'l' {
+      @if contains($spacing, $value) {
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'g' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+        padding-right: map-get($spacing, $value);
+        padding-bottom: map-get($spacing, $value);
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        padding-top: map-get($spacing, $value);
+
+        padding-bottom: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        padding-right: map-get($spacing, $value);
+
+        padding-left: map-get($spacing, $value);
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else {
+      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}');
+    }
+  }
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // GAP
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  @else if $property == 'g' {
+    @if $direction == 'g' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-top: map-get($spacing, $value) !important;
+          margin-right: map-get($spacing, $value) !important;
+          margin-bottom: map-get($spacing, $value) !important;
+          margin-left: map-get($spacing, $value) !important;
+        }
+        gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'y' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-top: map-get($spacing, $value) !important;
+
+          margin-bottom: map-get($spacing, $value) !important;
+        }
+        column-gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else if $direction == 'x' {
+      @if contains($spacing, $value) {
+        @supports not (gap: 2rem) {
+          margin-right: map-get($spacing, $value) !important;
+
+          margin-left: map-get($spacing, $value) !important;
+        }
+        row-gap: map-get($spacing, $value) !important;
+      } @else {
+        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
+      }
+    } @else {
+      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}');
+    }
+  } @else {
+    @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$property}');
+    // @warn string.unquote( 'Ίντα κάεινσ εκεί ωρέ κοπέλι; Η ιδιότητα #{$property} που με δωκες εν φτουρεί';
+  }
+}

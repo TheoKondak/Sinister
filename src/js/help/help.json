@@ -1,0 +1,7 @@
+{
+  "menuBgOnScroll": {
+    "target": "The element that is being targeted to have the background changed. Ex the navbar section",
+    "triggerElement": "The element relative to which the change will trigger. Ex the masthead section",
+    "observerOptions": "Documentation: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options"
+  }
+}
