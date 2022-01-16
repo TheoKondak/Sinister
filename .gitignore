@@ -121,6 +121,5 @@ dist
 
 #Ignore Compiled CSS
 **/compiled/
-src/compiled/sinister.css
-src/compiled/sinister.css
+src/compiled/
 src/config/_spacingUpd.scss
