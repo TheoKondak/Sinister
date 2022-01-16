@@ -1,4 +1,4 @@
-@use '../../../configuration' as *;
+@use '../../../sin' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  Change color to SVG elements with css.
@@ -31,7 +31,7 @@
     // Right
     1rem,
     // Bottom
-    null // Left,,
+    null // Left,,,
   )
 ) {
   @if $isImage {
