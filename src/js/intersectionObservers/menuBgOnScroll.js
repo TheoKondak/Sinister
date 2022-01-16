@@ -6,22 +6,29 @@ import { getSin } from '../getSin.js';
 
 const data = await getSin(); // Get sin calls the sin.json file options for JS related options.
 const menuBgOnScrollOptions = data.menuBgOnScroll;
-
 const target = document.querySelector(menuBgOnScrollOptions.target);
+
+if (typeof menuBgOnScrollOptions.target === 'string') {
+  const targetFirstChar = menuBgOnScrollOptions.target.charAt(0); // To find out if its an html tag, class or id
+} else {
+  console.log('"target" in sin.json must be type of string.');
+  console.log('Example "navbar", ".navbar", "#navbar"');
+}
+
+const className = menuBgOnScrollOptions.className;
 
 export const menuBgOnScroll = new IntersectionObserver(function (entries, sectionOneObserver) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       if (!target) {
-        console.log('lol');
+        console.log('target in sin.json cannot be empty');
       } else {
-        target.classList.add('nav-scrolled');
+        console.log(target);
+        target.classList.add(className);
       }
-
-      // console.log('Add Nav Scrolled');
     } else {
-      target.classList.remove('nav-scrolled');
-      // console.log('Remove Nav Scrolled');
+      target.classList.remove(className);
     }
+    return;
   });
 }, menuBgOnScrollOptions.observerOptions);

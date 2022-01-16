@@ -1,8 +1,10 @@
 {
+  "production": false,
   "help": true,
   "menuBgOnScroll": {
-    "target": "header",
+    "target": "#navbarId",
     "triggerElement": ".home-intro",
+    "className": "nav-scrolled",
     "observerOptions": {
       "rootMargin": "-200px 0px 0px 0px",
       "threshold": "0.2"
