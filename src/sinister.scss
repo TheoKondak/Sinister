@@ -1,8 +1,8 @@
-@use 'sin/misc/warning-message-start';
+@use 'sass/misc/warning-message-start';
 
-@use 'sin';
-// @use 'modules';
+@use 'sass';
+@use 'modules';
 @use 'pages';
-// @use 'sinister/experimental';
+@use 'sass/experimental';
 
-@use 'sin/misc/warning-message-eof';
+@use 'sass/misc/warning-message-eof';
