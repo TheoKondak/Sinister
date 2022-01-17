@@ -1,6 +1,6 @@
 {
-  "name": "sinisterscss",
-  "version": "0.0.1",
+  "name": "sinister",
+  "version": "0.2.1",
   "description": "Some SCSS mixins and some css classes to make creating html layout and adding some design easier. Also, it tries to improve cross browser compatibility, as well as to enable the programmer to write code for specific browsers and browser versions only.",
   "main": "index.js",
   "scripts": {
