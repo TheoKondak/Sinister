@@ -11,19 +11,18 @@ const target = document.querySelector(menuBgOnScrollOptions.target);
 if (typeof menuBgOnScrollOptions.target === 'string') {
   const targetFirstChar = menuBgOnScrollOptions.target.charAt(0); // To find out if its an html tag, class or id
 } else {
-  console.log('"target" in sin.json must be type of string.');
-  console.log('Example "navbar", ".navbar", "#navbar"');
+  console.warn('"target" in sin.json must be type of string.');
+  console.warn('Example "navbar", ".navbar", "#navbar"');
 }
 
 const className = menuBgOnScrollOptions.className;
 
-export const menuBgOnScroll = new IntersectionObserver(function (entries, sectionOneObserver) {
+export const menuBgOnScroll = new IntersectionObserver(function (entries, menuBgOnScroll) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       if (!target) {
-        console.log('target in sin.json cannot be empty');
+        console.error('target in sin.json cannot be empty');
       } else {
-        console.log(target);
         target.classList.add(className);
       }
     } else {
