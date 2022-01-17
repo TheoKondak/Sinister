@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/TheoKondak/sinisterScss#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.3",
+    "browser-sync": "^2.27.7",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^5.0.0"
+    "gulp-sass": "^5.1.0"
   },
   "dependencies": {
     "gulp-scss-combine": "^1.0.0",
