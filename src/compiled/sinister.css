@@ -2270,6 +2270,106 @@ body button:hover {
 body li {
   font-size: 1.6rem;
 }
+@keyframes scaleImage {
+  0% {
+    transform: scale(1);
+  }
+  18% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+.fullscreen.menu-grid--container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  position: absolute;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.fullscreen.menu-grid--container .menu-grid--background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.fullscreen.menu-grid--container .menu-grid--background {
+  height: 100%;
+  width: 100%;
+}
+.fullscreen.menu-grid--container .menu-grid--item {
+  border: 1px solid white;
+  display: -webkit-box !important;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box !important;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox !important;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex !important;
+  /* NEW - Chrome */
+  display: flex !important;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  justify-content: flex-end;
+  display: -webkit-box !important;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box !important;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox !important;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex !important;
+  /* NEW - Chrome */
+  display: flex !important;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: flex-end;
+}
+.fullscreen.menu-grid--container .menu-grid--item .title {
+  color: white;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  padding-bottom: 0;
+}
+
+.scale-in {
+  animation: scaleImage 4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
+  animation-fill-mode: forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
 .lol {
   margin-left: 14rem;
 }
