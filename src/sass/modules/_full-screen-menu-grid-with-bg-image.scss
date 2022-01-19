@@ -1,0 +1,97 @@
+@use '../sin' as *;
+
+@keyframes scaleImage {
+  0% {
+    transform: scale(1);
+  }
+  18% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+    // display: none;
+  }
+}
+
+.fullscreen.menu-grid--container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  overflow: hidden;
+
+  .menu-grid--background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .menu-grid--background {
+    height: 100%;
+    width: 100%;
+    // opacity: 1;
+  }
+
+  position: absolute;
+
+  background-size: cover;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  .menu-grid--item {
+    border: 1px solid white;
+
+    @include justifyEnd;
+    @include alignEnd;
+
+    .title {
+      color: white;
+      text-transform: uppercase;
+      padding: 0.5rem;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.scale-in {
+  animation: scaleImage 4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
+  animation-fill-mode: forwards;
+  // z-index: 2;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out;
+  // animation-fill-mode: forwards;
+}

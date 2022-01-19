@@ -1,13 +1,19 @@
 {
-  "production": false,
-  "help": true,
+  "production": true,
+  "help": false,
   "menuBgOnScroll": {
     "target": "#navbarId",
     "triggerElement": ".home-intro",
     "className": "nav-scrolled",
     "observerOptions": {
-      "rootMargin": "-200px 0px 0px 0px",
-      "threshold": "0.2"
+      "rootMargin": "-10% 0px 0px 0px",
+      "threshold": "0"
     }
+  },
+  "fullScreenMenuGrid": {
+    "container": ".menu-grid--container",
+    "item": ".menu-grid--item",
+    "delay": "200",
+    "background": [{ "home": "https://vastphotos.com//files/uploads/photos/10684/hero-l.jpg" }, { "factory-one": "https://vastphotos.com/files/uploads/photos/10702/hero-m.jpg" }, { "contract": "https://iso.500px.com/wp-content/uploads/2014/07/big-one.jpg" }, { "complements": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-4.jpg?w=1500&ssl=1" }, { "kitchens": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-10.jpg?w=1500&ssl=1" }, { "portfolio": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-3.jpg?w=1500&ssl=1" }, { "news": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-12.jpg?w=1500&ssl=1" }, { "download": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-11.jpg?w=1500&ssl=1" }, { "contacts": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-6.jpg?w=1500&ssl=1" }]
   }
 }
