@@ -4,9 +4,6 @@
   0% {
     transform: scale(1);
   }
-  18% {
-    transform: scale(1);
-  }
 
   100% {
     transform: scale(1.05);
@@ -15,7 +12,7 @@
 
 @keyframes fadeIn {
   0% {
-    opacity: 0.5;
+    opacity: 0.8;
   }
   100% {
     opacity: 1;
@@ -26,9 +23,9 @@
   0% {
     opacity: 1;
   }
+
   100% {
-    opacity: 0.2;
-    // display: none;
+    opacity: 0.8;
   }
 }
 
@@ -81,17 +78,22 @@
 }
 
 .scale-in {
-  animation: scaleImage 4s ease-in-out;
+  animation: scaleImage 6s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .fade-in {
-  animation: fadeIn 0.2s ease-in;
+  animation: fadeIn 0.5s ease-in;
   animation-fill-mode: forwards;
   // z-index: 2;
 }
 
 .fade-out {
-  animation: fadeOut 0.3s ease-out;
+  animation: fadeOut 0.8s ease-out;
   // animation-fill-mode: forwards;
+}
+
+.hidden {
+  animation: fadeOut 0.4s ease-out;
+  display: none;
 }
