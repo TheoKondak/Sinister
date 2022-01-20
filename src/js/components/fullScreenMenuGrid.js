@@ -20,17 +20,12 @@ export const fullScreenMenuGrid = () => {
       menuItemClass = typeof childNode.innerText != 'undefined' && childNode.innerText; // For some reason for each item i get undefined. I can't solve it now, but this is a workaround.
     });
 
-    menuItemsContent.push(menuItemClass.toLocaleLowerCase());
+    console.log(menuItemClass.replace(/\s+/g, '-').toLowerCase());
 
-    item.classList.add(menuItemClass.toLocaleLowerCase()); // Add a unique class to the menu grid item
+    menuItemsContent.push(menuItemClass.replace(/\s+/g, '-').toLocaleLowerCase());
+
+    item.classList.add(menuItemClass.replace(/\s+/g, '-').toLocaleLowerCase()); // Add a unique class to the menu grid item
   });
-
-  setTimeout(() => {
-    console.log('this is the first message');
-  }, 5000);
-  setTimeout(() => {
-    console.log('this is the second message');
-  }, 3000);
 
   menuItemsContent.forEach((menuItem) => {
     const newImage = document.createElement('img');
@@ -39,13 +34,14 @@ export const fullScreenMenuGrid = () => {
       const currentMenuKey = Object.keys(data.fullScreenMenuGrid.background[menuItemId]);
       const currentMenuUrl = Object.values(data.fullScreenMenuGrid.background[menuItemId]);
 
-      if (menuItem == currentMenuKey) {
+      if (menuItem == currentMenuKey[0].replace(/\s+/g, '-').toLocaleLowerCase()) {
         setTimeout(function () {
           backgroundImageContainer.classList.add('scale-in');
         }, 100);
 
         newImage.src = currentMenuUrl;
-        backgroundImageContainer.insertBefore(newImage, document.querySelector('.default-image')).classList.add('menu-grid--background', 'hidden', menuItem);
+
+        backgroundImageContainer.insertBefore(newImage, document.querySelector('.default-image')).classList.add('menu-grid--background', 'hidden', menuItem.replace(/\s+/g, '-').toLocaleLowerCase());
       }
 
       // ENTERED ITEM
@@ -54,7 +50,6 @@ export const fullScreenMenuGrid = () => {
         newImage.classList.add('fade-in');
         setTimeout(() => {
           backgroundImageContainer.classList.add('scale-in');
-          console.log('lol');
         }, 1000);
       });
 
