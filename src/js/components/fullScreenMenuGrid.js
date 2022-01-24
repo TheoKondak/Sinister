@@ -19,9 +19,6 @@ export const fullScreenMenuGrid = () => {
       // Add class to items
       menuItemClass = typeof childNode.innerText != 'undefined' && childNode.innerText; // For some reason for each item i get undefined. I can't solve it now, but this is a workaround.
     });
-
-    console.log(menuItemClass.replace(/\s+/g, '-').toLowerCase());
-
     menuItemsContent.push(menuItemClass.replace(/\s+/g, '-').toLocaleLowerCase());
 
     item.classList.add(menuItemClass.replace(/\s+/g, '-').toLocaleLowerCase()); // Add a unique class to the menu grid item
@@ -34,7 +31,7 @@ export const fullScreenMenuGrid = () => {
       const currentMenuKey = Object.keys(data.fullScreenMenuGrid.background[menuItemId]);
       const currentMenuUrl = Object.values(data.fullScreenMenuGrid.background[menuItemId]);
 
-      if (menuItem == currentMenuKey[0].replace(/\s+/g, '-').toLocaleLowerCase()) {
+      if (menuItem.replace(/\s+/g, '-').toLocaleLowerCase() === currentMenuKey[0].replace(/\s+/g, '-').toLocaleLowerCase()) {
         setTimeout(function () {
           backgroundImageContainer.classList.add('scale-in');
         }, 100);
@@ -52,6 +49,8 @@ export const fullScreenMenuGrid = () => {
           backgroundImageContainer.classList.add('scale-in');
         }, 1000);
       });
+
+      setTimeout(() => {}, 4800);
 
       // LEFT ITEM
       document.querySelector('.' + menuItem).addEventListener('mouseleave', (e) => {

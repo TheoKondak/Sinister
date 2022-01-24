@@ -1,4 +1,4 @@
-@use '../config' as *;
+@use '../sin' as *;
 
 @keyframes scaleImage {
   0% {
@@ -10,9 +10,9 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
-    opacity: 0.8;
+    opacity: 0.4;
   }
   100% {
     opacity: 1;
@@ -25,7 +25,7 @@
   }
 
   100% {
-    opacity: 0.8;
+    opacity: 0.4;
   }
 }
 
@@ -84,6 +84,7 @@
     @include justifyEnd;
     @include alignEnd;
 
+    .title,
     .title {
       color: white;
       font-size: 1.5rem;
@@ -94,23 +95,30 @@
   }
 }
 
+.fill-container {
+  @include justifyEnd;
+  @include alignEnd;
+  height: 100%;
+  width: 100%;
+}
+
 .scale-in {
   animation: scaleImage 6s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .fade-in {
-  animation: fadeIn 10.5s ease-in;
+  animation: fade-in 0.9s ease-in-out;
   animation-fill-mode: forwards;
   // z-index: 2;
 }
 
 .fade-out {
-  animation: fadeOut 10.8s ease-out;
+  animation: fadeOut 0.8s ease-out;
   // animation-fill-mode: forwards;
 }
 
 .hidden {
-  animation: fadeOut 10.4s ease-out;
+  animation: fadeOut 0.4s ease-out;
   display: none;
 }
