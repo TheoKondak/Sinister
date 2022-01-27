@@ -1,4 +1,4 @@
-import { menuBgOnScroll } from './intersectionObservers/menuBgOnScroll.js';
+import { menuBgOnScroll } from './components/menuBgOnScroll.js';
 import { fullScreenMenuGrid } from './components/fullScreenMenuGrid.js';
 import { getSin } from './getSin.js';
 import { help } from './help/help.js';
@@ -24,6 +24,6 @@ if (typeof data.production === 'boolean') {
 // menuBgOnScroll.observe(document.querySelector(data.menuBgOnScroll.triggerElement));
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// Fullscreen Menu Grid
+// Exports
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-fullScreenMenuGrid();
+export { getSin, fullScreenMenuGrid, menuBgOnScroll };
