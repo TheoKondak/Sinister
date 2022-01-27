@@ -4,8 +4,10 @@ import { getSin } from '../getSin.js';
 // Obsolete Method of calling data
 
 export const fullScreenMenuGrid = (data) => {
-  const backgroundImageContainer = document.querySelector('.menu-grid--background-container');
-  const backgroundImage = document.querySelector('.menu-grid--background');
+  const { backgroundContainerSelector } = data;
+
+  const backgroundImageContainer = document.querySelector(backgroundContainerSelector);
+  // const backgroundImage = document.querySelector('.menu-grid--background');
 
   const menuItemsArray = []; // An array that will hold all the menu items
   const menuItemsContent = [];
