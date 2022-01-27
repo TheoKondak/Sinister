@@ -1,17 +1,16 @@
 import { getSin } from '../getSin.js';
 
-const data = await getSin(); // Get sin calls the sin.json file options for JS related options.
+// const data = await getSin(); // Get sin calls the sin.json file options for JS related options.
+// Obsolete Method of calling data
 
-const backgroundImageContainer = document.querySelector('.menu-grid--background-container');
-const backgroundImage = document.querySelector('.menu-grid--background');
-const menuItemsArray = []; // An array that will hold all the menu items
+export const fullScreenMenuGrid = (data) => {
+  const backgroundImageContainer = document.querySelector('.menu-grid--background-container');
+  const backgroundImage = document.querySelector('.menu-grid--background');
 
-document.querySelectorAll('.fill-container').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
-
-export const fullScreenMenuGrid = () => {
+  const menuItemsArray = []; // An array that will hold all the menu items
   const menuItemsContent = [];
   let menuItemClass = '';
-
+  document.querySelectorAll('.fill-container').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
   // For each menu item
   menuItemsArray.forEach((item) => {
     // For each child node
@@ -27,9 +26,9 @@ export const fullScreenMenuGrid = () => {
   menuItemsContent.forEach((menuItem) => {
     const newImage = document.createElement('img');
 
-    for (const menuItemId in data.fullScreenMenuGrid.background) {
-      const currentMenuKey = Object.keys(data.fullScreenMenuGrid.background[menuItemId]);
-      const currentMenuUrl = Object.values(data.fullScreenMenuGrid.background[menuItemId]);
+    for (const menuItemId in data.background) {
+      const currentMenuKey = Object.keys(data.background[menuItemId]);
+      const currentMenuUrl = Object.values(data.background[menuItemId]);
 
       if (menuItem.replace(/\s+/g, '-').toLocaleLowerCase() === currentMenuKey[0].replace(/\s+/g, '-').toLocaleLowerCase()) {
         setTimeout(function () {
