@@ -6,7 +6,7 @@ const backgroundImageContainer = document.querySelector('.menu-grid--background-
 const backgroundImage = document.querySelector('.menu-grid--background');
 const menuItemsArray = []; // An array that will hold all the menu items
 
-document.querySelectorAll('.menu-grid--item').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
+document.querySelectorAll('.fill-container').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
 
 export const fullScreenMenuGrid = () => {
   const menuItemsContent = [];
@@ -17,7 +17,7 @@ export const fullScreenMenuGrid = () => {
     // For each child node
     item.childNodes.forEach((childNode) => {
       // Add class to items
-      menuItemClass = typeof childNode.innerText != 'undefined' && childNode.innerText; // For some reason for each item i get undefined. I can't solve it now, but this is a workaround.
+      menuItemClass = typeof childNode.innerText === 'string' && childNode.innerText; // For some reason for each item i get undefined. I can't solve it now, but this is a workaround.
     });
     menuItemsContent.push(menuItemClass.replace(/\s+/g, '-').toLocaleLowerCase());
 
