@@ -3,16 +3,24 @@ import { getSin } from '../getSin.js';
 // const data = await getSin(); // Get sin calls the sin.json file options for JS related options.
 // Obsolete Method of calling data
 
-export const fullScreenMenuGrid = (data) => {
-  const { backgroundContainerSelector } = data;
+export const fullScreenMenuGrid = (
+  data = {
+    // Default values
+    containerSelector: '.menu-grid--container',
+    backgroundContainerSelector: '.menu-grid--background-container',
+    scaleInDelay: '4000',
+    background: [{ dummy: '' }, { home: 'https://vastphotos.com//files/uploads/photos/10684/hero-l.jpg' }, { kitchens: 'https://vastphotos.com/files/uploads/photos/10702/hero-m.jpg' }, { 'modern-kitchens': 'https://iso.500px.com/wp-content/uploads/2014/07/big-one.jpg' }, { 'transitional kitchens': 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-4.jpg?w=1500&ssl=1' }, { baths: 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-10.jpg?w=1500&ssl=1' }, { closets: 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-3.jpg?w=1500&ssl=1' }, { about: 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-12.jpg?w=1500&ssl=1' }, { contact: 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-11.jpg?w=1500&ssl=1' }, { 'request a consultation': 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/landscape-photography-tips-6.jpg?w=1500&ssl=1' }],
+  }
+) => {
+  const { containerSelector, backgroundContainerSelector, scaleInDelay } = data; // destructure data
 
-  const backgroundImageContainer = document.querySelector(backgroundContainerSelector);
-  // const backgroundImage = document.querySelector('.menu-grid--background');
+  const moduleContainer = document.querySelector(containerSelector);
+  const backgroundImageContainer = moduleContainer.querySelector(backgroundContainerSelector);
 
   const menuItemsArray = []; // An array that will hold all the menu items
   const menuItemsContent = [];
   let menuItemClass = '';
-  document.querySelectorAll('.fill-container').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
+  moduleContainer.querySelectorAll('.fill-container').forEach((userItem) => menuItemsArray.push(userItem)); // Find the menu items, add them to the menuItemsArray
   // For each menu item
   menuItemsArray.forEach((item) => {
     // For each child node
@@ -46,12 +54,11 @@ export const fullScreenMenuGrid = (data) => {
       document.querySelector('.' + menuItem).addEventListener('mouseenter', (e) => {
         newImage.classList.remove('hidden');
         newImage.classList.add('fade-in');
+
         setTimeout(() => {
           backgroundImageContainer.classList.add('scale-in');
-        }, 1000);
+        }, scaleInDelay);
       });
-
-      setTimeout(() => {}, 4800);
 
       // LEFT ITEM
       document.querySelector('.' + menuItem).addEventListener('mouseleave', (e) => {
