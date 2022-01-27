@@ -1,8 +1,3 @@
-import { getSin } from '../getSin.js';
-
-// const data = await getSin(); // Get sin calls the sin.json file options for JS related options.
-// Obsolete Method of calling data
-
 export const fullScreenMenuGrid = (
   data = {
     // Default values
