@@ -1,7 +1,6 @@
 @use 'sass:map';
-@use '../../../sin' as *;
-@use '../utility';
-@use '../modules/func';
+@use '../../sinConfig' as *;
+@use '../modules/func' as f;
 
 //+----------------------+
 // Importing Fonts
@@ -16,30 +15,32 @@
   // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
 }
 
-$font-families: get(font-family);
+$font-families: f.get(font-family);
+
 // Itterate through font families map
 @each $font-family in $font-families {
-  // @debug getMap($font-family, font-name);
+  // @debug f.get(font-family, font-name);
+
   @font-face {
-    // Use deep get function from func
-    font-family: getMap($font-family, font-name);
+    // Use deep default sass map-get
+    font-family: map-get($font-family, font-name);
 
     // Itterate throught the array of URLs, for fallback urls.
 
-    @for $i from 1 through length(get($font-family)) {
+    @for $i from 1 through length(f.get($font-family)) {
       // For every font-family decladed in _configuration.scss
 
-      $length: length(getMap($font-family, url)); // lenth of url array
+      $length: length(map-get($font-family, url)); // lenth of url array
 
       @if $length == 0 {
         @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
       } @else if $length == 1 {
-        src: url(nth(getMap($font-family, url), 1)) format(getMap($font-family, format)); // Format is optional
+        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)); // Format is optional
       } @else if $length == 2 {
-        src: url(nth(getMap($font-family, url), 1)) format(getMap($font-family, format)),
+        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)),
           // Format is optional
-          url(nth(getMap($font-family, url), 2))
-            format(getMap($font-family, format)); // Format is optional
+          url(nth(map-get($font-family, url), 2))
+            format(map-get($font-family, format)); // Format is optional
       } @else {
         @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
       }
@@ -48,7 +49,7 @@ $font-families: get(font-family);
 }
 
 @mixin fontName {
-  font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forget to add some fallback fonts
+  font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forf.get to add some fallback fonts
 }
 
 @mixin capitalize {
@@ -66,35 +67,35 @@ $font-families: get(font-family);
 }
 
 @mixin txtXs($scale: 1) {
-  font-size: calc(#{map-get($fontSizes, xs)} * #{$scale});
+  font-size: calc(#{f.get(fontSizes, xs)} * #{$scale});
 }
 .txtXs {
   @include txtXs;
 }
 
 @mixin txtSm($scale: 1) {
-  font-size: calc(#{map-get($fontSizes, sm)} * #{$scale});
+  font-size: calc(#{f.get(fontSizes, sm)} * #{$scale});
 }
 .txtSm {
   @include txtSm;
 }
 
 @mixin txtMd($scale: 1) {
-  font-size: calc(#{map-get($fontSizes, md)} * #{$scale});
+  font-size: calc(#{f.get(fontSizes, md)} * #{$scale});
 }
 .txtMd {
   @include txtMd;
 }
 
 @mixin txtXl($scale: 1) {
-  font-size: calc(#{map-get($fontSizes, xl)} * #{$scale});
+  font-size: calc(#{f.get(fontSizes, xl)} * #{$scale});
 }
 .txtXl {
   @include txtXl;
 }
 
 @mixin txtXxl($scale: 1) {
-  font-size: calc(#{map-get($fontSizes, xxl)} * #{$scale});
+  font-size: calc(#{f.get(fontSizes, xxl)} * #{$scale});
 }
 .txtXxl {
   @include txtXxl;
@@ -103,28 +104,28 @@ $font-families: get(font-family);
 //+----------------------+
 // Responsive Font Sizes
 //+----------------------+
-@if $responsiveFontSizes {
+@if f.get(responsiveFontSizes) {
   :root {
-    font-size: map-get($fontSizes, generic);
+    font-size: f.get(fontSizes, generic);
 
-    @media (max-width: map-get($breakpoints, xxl)) {
-      font-size: map-get($fontSizes, xxl);
+    @media (max-width: f.get(breakpoints, xxl)) {
+      font-size: f.get(fontSizes, xxl);
     }
 
-    @media (max-width: map-get($breakpoints, xl)) {
-      font-size: map-get($fontSizes, xl);
+    @media (max-width: f.get(breakpoints, xl)) {
+      font-size: f.get(fontSizes, xl);
     }
 
-    @media (max-width: map-get($breakpoints, md)) {
-      font-size: map-get($fontSizes, md);
+    @media (max-width: f.get(breakpoints, md)) {
+      font-size: f.get(fontSizes, md);
     }
 
-    @media (max-width: map-get($breakpoints, sm)) {
-      font-size: map-get($fontSizes, sm);
+    @media (max-width: f.get(breakpoints, sm)) {
+      font-size: f.get(fontSizes, sm);
     }
 
-    @media (max-width: map-get($breakpoints, xs)) {
-      font-size: map-get($fontSizes, sm);
+    @media (max-width: f.get(breakpoints, xs)) {
+      font-size: f.get(fontSizes, sm);
     }
   }
 }
@@ -133,41 +134,41 @@ body {
   line-height: 1.61803398875; //Golden Ratio
 
   h1 {
-    font-size: map-get($fontSizes, h1);
+    font-size: f.get(fontSizes, h1);
   }
 
   h2 {
-    font-size: map-get($fontSizes, h2);
+    font-size: f.get(fontSizes, h2);
   }
 
   h3 {
-    font-size: map-get($fontSizes, h3);
+    font-size: f.get(fontSizes, h3);
   }
 
   h4 {
-    font-size: map-get($fontSizes, h4);
+    font-size: f.get(fontSizes, h4);
   }
 
   h5 {
-    font-size: map-get($fontSizes, h5);
+    font-size: f.get(fontSizes, h5);
   }
 
   h6 {
-    font-size: map-get($fontSizes, h6);
+    font-size: f.get(fontSizes, h6);
   }
 
   span {
-    font-size: map-get($fontSizes, span);
+    font-size: f.get(fontSizes, span);
   }
 
   p {
-    font-size: map-get($fontSizes, p);
+    font-size: f.get(fontSizes, p);
   }
 
   a {
     text-decoration: none;
 
-    font-size: map-get($fontSizes, a);
+    font-size: f.get(fontSizes, a);
 
     &:hover {
       text-decoration: none;
@@ -176,57 +177,61 @@ body {
 
   button {
     text-decoration: none;
-    font-size: map-get($fontSizes, button);
+    font-size: f.get(fontSizes, button);
     &:hover {
       text-decoration: none;
     }
   }
 
   em {
-    font-size: map-get($fontSizes, em);
+    font-size: f.get(fontSizes, em);
   }
 
   small {
-    font-size: map-get($fontSizes, small);
+    font-size: f.get(fontSizes, small);
   }
 
   strong {
-    font-size: map-get($fontSizes, strong);
+    font-size: f.get(fontSizes, strong);
   }
 
   ul {
-    font-size: map-get($fontSizes, ul);
+    font-size: f.get(fontSizes, ul);
   }
 
   ol {
-    font-size: map-get($fontSizes, ol);
+    font-size: f.get(fontSizes, ol);
+  }
+
+  @mixin liNoDec {
+    list-style: none;
   }
 
   li {
-    @if $disListStyle {
+    @if f.get(disListStyle) {
       @include liNoDec;
     }
 
-    font-size: map-get($fontSizes, xxl);
+    font-size: f.get(fontSizes, xxl);
   }
 
   hr {
-    font-size: map-get($fontSizes, hr);
+    font-size: f.get(fontSizes, hr);
   }
 
   br {
-    font-size: map-get($fontSizes, br);
+    font-size: f.get(fontSizes, br);
   }
 
   wbr {
-    font-size: map-get($fontSizes, wbr);
+    font-size: f.get(fontSizes, wbr);
   }
 
   div {
-    font-size: map-get($fontSizes, div);
+    font-size: f.get(fontSizes, div);
   }
 
   section {
-    font-size: map-get($fontSizes, section);
+    font-size: f.get(fontSizes, section);
   }
 }

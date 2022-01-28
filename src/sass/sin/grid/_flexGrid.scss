@@ -1,5 +1,6 @@
-@use '../../../sin' as *;
+@use '../../sinConfig' as *;
 @use 'flex' as *;
+@use '../modules/func' as f;
 
 @mixin flexGridSelectors($property, $value) {
   > * {
@@ -15,15 +16,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -36,15 +37,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 100%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -57,15 +58,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -78,15 +79,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -99,15 +100,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 32%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -120,15 +121,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 32%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -141,15 +142,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 32%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -162,15 +163,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 24%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 24%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -183,15 +184,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 24%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 48%);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }
@@ -204,15 +205,15 @@
   @include flex;
   @include wrap;
 
-  @media (min-width: map-get($breakpoints, md)) {
+  @media (min-width: f.get(breakpoints, md)) {
     @include flexGridSelectors(flex-basis, 24%);
   }
 
-  @media (max-width: map-get($breakpoints, md)) {
+  @media (max-width: f.get(breakpoints, md)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 
-  @media (max-width: map-get($breakpoints, xs)) {
+  @media (max-width: f.get(breakpoints, xs)) {
     @include flexGridSelectorParent(flex-direction, column);
   }
 }

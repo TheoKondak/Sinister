@@ -1,7 +1,7 @@
 @use '../sin' as *;
 
 .lol {
-  @include mqMax(get($desktop-small)) {
+  @include mqMax(get(breakpoints, xs)) {
     color: get(colors, primary);
   }
 
@@ -17,6 +17,6 @@
 
   // $lol: set($configuration, 'bootstrap color bs-blue', red);
   @include mqMax($smartphone) {
-    display: none;
+    // display: none;
   }
 }

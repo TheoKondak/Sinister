@@ -1,4 +1,4 @@
-@use '../../../sin' as *;
+@use '../../sinConfig' as *;
 
 @mixin txtOverline {
   text-decoration: overline;
