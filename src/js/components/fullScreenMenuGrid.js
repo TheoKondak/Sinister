@@ -47,8 +47,10 @@ export const fullScreenMenuGrid = (
 
       // ENTERED ITEM
       document.querySelector('.' + menuItem).addEventListener('mouseenter', (e) => {
-        newImage.classList.remove('hidden');
-        newImage.classList.add('fade-in');
+        setTimeout(() => {
+          newImage.classList.remove('hidden');
+          newImage.classList.add('fade-in');
+        }, 0); // set a delay in ms
 
         setTimeout(() => {
           backgroundImageContainer.classList.add('scale-in');
@@ -57,9 +59,11 @@ export const fullScreenMenuGrid = (
 
       // LEFT ITEM
       document.querySelector('.' + menuItem).addEventListener('mouseleave', (e) => {
-        newImage.classList.remove('fade-in');
+        setTimeout(() => {
+          newImage.classList.remove('fade-in');
 
-        newImage.classList.add('hidden');
+          newImage.classList.add('hidden');
+        }, 0); // set a delay in ms
 
         backgroundImageContainer.classList.remove('scale-in');
         setTimeout(() => {}, 800);
