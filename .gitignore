@@ -123,3 +123,5 @@ dist
 **/compiled/
 src/compiled/
 src/config/_spacingUpd.scss
+src/compiled/sinister.css
+src/compiled/sinister.css.map
