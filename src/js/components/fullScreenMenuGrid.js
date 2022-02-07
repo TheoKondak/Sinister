@@ -50,7 +50,7 @@ export const fullScreenMenuGrid = (
         setTimeout(() => {
           newImage.classList.remove('hidden');
           newImage.classList.add('fade-in');
-        }, 0); // set a delay in ms
+        }, 40); // set a delay in ms
 
         setTimeout(() => {
           backgroundImageContainer.classList.add('scale-in');
@@ -63,7 +63,7 @@ export const fullScreenMenuGrid = (
           newImage.classList.remove('fade-in');
 
           newImage.classList.add('hidden');
-        }, 0); // set a delay in ms
+        }, 40); // set a delay in ms
 
         backgroundImageContainer.classList.remove('scale-in');
         setTimeout(() => {}, 800);
