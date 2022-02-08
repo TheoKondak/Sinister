@@ -1,6 +1,5 @@
 import { menuBgOnScroll } from './components/menuBgOnScroll.js';
 import { fullScreenMenuGrid } from './components/fullScreenMenuGrid.js';
-import { test } from './components/test.js';
 import { getSin } from './getSin.js';
 import { help } from './help/help.js';
 
@@ -22,4 +21,4 @@ if (typeof data.production === 'boolean') {
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // Exports
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-export { getSin, fullScreenMenuGrid, menuBgOnScroll, test };
+export { getSin, fullScreenMenuGrid, menuBgOnScroll };
