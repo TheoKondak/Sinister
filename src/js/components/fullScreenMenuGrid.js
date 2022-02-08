@@ -39,7 +39,6 @@ export class fullScreenMenuGrid {
         const currentMenuUrl = Object.values(background[menuItemId]);
 
         if (menuItem.replace(/\s+/g, '-').toLocaleLowerCase() === currentMenuKey[0].replace(/\s+/g, '-').toLocaleLowerCase()) {
-          console.log(menuItem + ' ' + currentMenuKey[0]);
           setTimeout(function () {
             backgroundImageContainer.classList.add('scale-in');
           }, scaleInDelay);

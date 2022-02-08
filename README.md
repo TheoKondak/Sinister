@@ -159,7 +159,7 @@ testGrid.init({
 `containerSelector` : \[STRING\] The container selector. This must be a unique query selector.\
 `backgroundContainerSelector`: \[STRING\] Selector for the background images container'. This must be a unique query selector.\
 `defaultImage`: \[STRING\] Selector for the default background image. This must be a unique query selector. This is the default background image, before any of the items is being hovered.\
-`background`: \[OBJECT\] Background requires an object. The key must be the content of the anchor, and the value must be a string with an image URL. Create one for each item in the grid.\
+`background`: \[ARRAY OF OBJECTS \] Background requires an object. The key must be the content of the anchor, and the value must be a string with an image URL. Create one for each item in the grid. For now there is a bug where the first item of the array must be a dummy item. \
 `scaleInDelay`: \[STRING\] Optional, set the delay before the scale in animation happens.\
 `fadeAnimationDelay`: \[STRING\] Optional, set the delay of the fade in / fade out animation while hovering on an item.\
 
