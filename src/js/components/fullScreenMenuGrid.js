@@ -1,4 +1,4 @@
-export class fullScreenMenuGrid {
+export class FullScreenMenuGrid {
   init(
     data = {
       // Default values

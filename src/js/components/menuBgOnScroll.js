@@ -17,7 +17,7 @@ if (typeof menuBgOnScrollOptions.target === 'string') {
 
 const className = menuBgOnScrollOptions.className;
 
-export const menuBgOnScroll = new IntersectionObserver(function (entries, menuBgOnScroll) {
+export const MenuBgOnScroll = new IntersectionObserver(function (entries, menuBgOnScroll) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       if (!target) {
