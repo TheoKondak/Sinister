@@ -1,5 +1,6 @@
 import { menuBgOnScroll } from './components/menuBgOnScroll.js';
 import { fullScreenMenuGrid } from './components/fullScreenMenuGrid.js';
+import { test } from './components/test.js';
 import { getSin } from './getSin.js';
 import { help } from './help/help.js';
 
@@ -19,11 +20,6 @@ if (typeof data.production === 'boolean') {
 }
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// Menu Background On Scroll
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// menuBgOnScroll.observe(document.querySelector(data.menuBgOnScroll.triggerElement));
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // Exports
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-export { getSin, fullScreenMenuGrid, menuBgOnScroll };
+export { getSin, fullScreenMenuGrid, menuBgOnScroll, test };

@@ -86,7 +86,8 @@
     }
   }
 
-  &--background-container {
+  &--background-container,
+  &--background-container-test {
     position: absolute;
     top: 0;
     left: 0;
