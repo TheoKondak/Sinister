@@ -117,11 +117,15 @@ dist
 **/src/Instructions.txt
 
 
-
+# Package
+package-lock.json
 
 #Ignore Compiled CSS
-**/compiled/
-src/compiled/
-src/config/_spacingUpd.scss
 src/compiled/sinister.css
 src/compiled/sinister.css.map
+
+
+#other files & Folders
+assets/
+DEFAULTindex.html/
+*.jpg
