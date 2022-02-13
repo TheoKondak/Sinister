@@ -4,7 +4,26 @@
 //  RS Form Generic form
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
-@mixin formCustom() {
+@mixin form() {
+  .formresponsive {
+    // Is required Asterix
+    .formRequired {
+    }
+
+    // Labels
+    .formControlLabel {
+    }
+
+    // Input
+    input {
+      &[type='text'] {
+      }
+    }
+
+    // Textarea
+    textarea {
+    }
+  }
 }
 
 .formCustom {
