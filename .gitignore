@@ -127,5 +127,6 @@ src/compiled/sinister.css.map
 
 #other files & Folders
 assets/
-DEFAULTindex.html/
+DEFAULTindex.html
+index.html
 *.jpg
