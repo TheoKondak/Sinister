@@ -1,14 +1,20 @@
-# sinister
+# SINISTER
 
-An SCSS utility library
+# !! WARNING: This project is not tested enough for production, unless you know what you are doing and you do your own debuging !!
 
-Website with prefix data: http://shouldiprefix.com/#background-image-options
+An SCSS and JS utility library.
+
+This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project. It also intends to host some JS components, that will add functionality to a website, and perform various tasks.
+
+This is a one man project. I only work on the project only when I have some free time, and I do some basic testing, but be aware that some things might not work as intended.
 
 # Setup the data
 
+sinConfig hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families and many more. Browse the file to see which options are available.
+
 ## Importing sinister to a new file
 
-First you must import sin folder and use it as a default.
+The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file you have to use the `@use` . [Read More](https://sass-lang.com/documentation/at-rules/use)
 
 ex.
 
@@ -18,6 +24,8 @@ ex.
 ```
 
 Keep in mind that the path is relative, so depending on your current files location, the example code might be different
+
+For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
 
 ## Accessing the config data
 
