@@ -163,4 +163,26 @@ testGrid.init({
 `scaleInDelay`: \[STRING\] Optional, set the delay before the scale in animation happens.\
 `fadeAnimationDelay`: \[STRING\] Optional, set the delay of the fade in / fade out animation while hovering on an item.\
 
+## Check Overflow
+
+In order to use position sticky, overflow must be set to overflow visible for all parent elements. See more here: https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working
+
+How to Use it:
+
+Import the module to custom js file in order to be able to use it.
+
+```
+import { CheckOverflow } from './sinLoader.js';
+```
+
+The function takes as input the selector of the item you want to apply `position: sticky;`
+
+Now in your js file call the function like that.
+
+```
+CheckOverflow('.make-me-sticky');
+```
+
+If there is a parent element with problematic overflow property, it will be console logged with all the required details.
+
 ##
