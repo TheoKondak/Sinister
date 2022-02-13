@@ -130,3 +130,4 @@ assets/
 DEFAULTindex.html
 index.html
 *.jpg
+src/js/custom.js
