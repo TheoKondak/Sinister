@@ -1,0 +1,13 @@
+{
+  "name": "@get-sinister/sass",
+  "version": "0.5.1",
+  "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
+  "main": "installation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "foo": "type _sinConfig.scss",
+    "install": "node installation.js"
+  },
+  "author": "Theodoros Kondakos",
+  "license": "ISC"
+}
