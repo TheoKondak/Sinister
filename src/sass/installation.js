@@ -1,22 +1,48 @@
 const fs = require('fs');
 
+const pathPrefix = './../../..';
+
 // Folders to create
-const paths = ['./../../../scss', './../../../scss/pages', './../../../scss/modules'];
+const paths = ['/scss', '/scss/pages', '/scss/modules'];
 
 // Files to create
 const files = [
   {
-    path: './../../../scss/_sinConfig.scss',
-    npmLocation: './_sinConfig.scss',
+    path: '/scss/_sinConfig.scss',
+    npmLocation: './init/_sinConfig.scss',
+  },
+  {
+    path: '/scss/_sin.scss',
+    npmLocation: './init/_sin.scss',
+  },
+  {
+    path: '/scss/custom.scss',
+    npmLocation: './init/custom.scss',
+  },
+  {
+    path: '/scss/modules/_index.scss',
+    npmLocation: './init/modules/_index.scss',
+  },
+  {
+    path: '/scss/modules/_example.scss',
+    npmLocation: './init/modules/_example.scss',
+  },
+  {
+    path: '/scss/pages/_index.scss',
+    npmLocation: './init/pages/_index.scss',
+  },
+  {
+    path: '/scss/pages/_example.scss',
+    npmLocation: './init/pages/_example.scss',
   },
 ];
 
 // Create a new directory
 const newDirectory = (path) => {
-  console.log('======');
-  console.log('Creating new directory...');
   fs.access(path, (error) => {
+    console.log('======');
     console.log('Access to write new folder "' + path + '" granted...');
+    console.log('Creating new directory...');
     // To check if the given directory
     // already exists or not
     if (error) {
@@ -26,7 +52,7 @@ const newDirectory = (path) => {
         if (error) {
           console.log(error);
         } else {
-          console.log('New Directory: "' + path + '" created successfully !!');
+          console.log('New Directory: "' + path + '"  successfully created.');
         }
       });
     } else {
@@ -37,10 +63,10 @@ const newDirectory = (path) => {
 
 // Create a new file and load data
 const newFile = (filePath, fileLocationData) => {
-  console.log('======');
-  console.log('Creating new file...');
   fs.access(filePath, (error) => {
-    console.log('Access to write new file in "' + filePath + '" granted...');
+    console.log('======');
+    console.log('Access to write new file in ".' + filePath + '" granted...');
+    console.log('Creating new file...');
     // To check if the given directory
     // already exists or not
     if (error) {
@@ -54,18 +80,18 @@ const newFile = (filePath, fileLocationData) => {
           if (error) {
             console.log(error);
           } else {
-            console.log('New file: "' + filePath + '" created successfully !!');
+            console.log('New file: ".' + filePath + '" created successfully !!');
           }
         }
       );
     } else {
-      console.warn('Directory: "' + filePath + '" already exists.');
+      console.warn('Directory: ".' + filePath + '" already exists.');
     }
   });
 };
 
 // Create Directories
-paths.map((path) => newDirectory(path));
+paths.map((path) => newDirectory(pathPrefix + path));
 
 // Create Files
-files.map((file) => newFile(file.path, file.npmLocation));
+files.map((file) => newFile(pathPrefix + file.path, file.npmLocation));

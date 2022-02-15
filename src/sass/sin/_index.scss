@@ -1,4 +1,8 @@
-@forward '../sinConfig';
+// Old way to load sinConfig
+// @forward '../sinConfig';
+
+// New appraoch for npm
+@forward '../../../../scss/sinConfig';
 @forward 'modules';
 @forward 'misc';
 @forward 'grid';
