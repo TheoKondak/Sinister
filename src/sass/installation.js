@@ -1,19 +1,22 @@
 const fs = require('fs');
 
 // Folders to create
-const paths = ['./scss', './scss/pages', './scss/modules'];
+const paths = ['./../../../scss', './../../../scss/pages', './../../../scss/modules'];
 
 // Files to create
 const files = [
   {
-    path: './scss/_sinConfig.scss',
-    npmLocation: './node_modules/@get-sinister/sass/_sinConfig.scss',
+    path: './../../../scss/_sinConfig.scss',
+    npmLocation: './_sinConfig.scss',
   },
 ];
 
 // Create a new directory
 const newDirectory = (path) => {
+  console.log('======');
+  console.log('Creating new directory...');
   fs.access(path, (error) => {
+    console.log('Access to write new folder "' + path + '" granted...');
     // To check if the given directory
     // already exists or not
     if (error) {
@@ -34,7 +37,10 @@ const newDirectory = (path) => {
 
 // Create a new file and load data
 const newFile = (filePath, fileLocationData) => {
+  console.log('======');
+  console.log('Creating new file...');
   fs.access(filePath, (error) => {
+    console.log('Access to write new file in "' + filePath + '" granted...');
     // To check if the given directory
     // already exists or not
     if (error) {
@@ -48,7 +54,7 @@ const newFile = (filePath, fileLocationData) => {
           if (error) {
             console.log(error);
           } else {
-            console.log('New Directory: "' + filePath + '" created successfully !!');
+            console.log('New file: "' + filePath + '" created successfully !!');
           }
         }
       );
