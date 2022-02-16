@@ -104,7 +104,7 @@ $font-families: f.get(font-family);
 //+----------------------+
 // Responsive Font Sizes
 //+----------------------+
-@if f.get(responsiveFontSizes) {
+@if f.get(responsiveFonts) {
   :root {
     font-size: f.get(fontSizes, generic);
 
