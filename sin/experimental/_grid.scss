@@ -1,1 +1,21 @@
 @use '../../../../../scss/sinConfig' as *;
+
+// Syntax
+// Min width
+// Template Columns
+// Template Rows
+@mixin gridTest(
+  $min-width-query: 'xs',
+  $grid-template-columns: (
+    1fr 1fr 1fr,
+  ),
+  $grid-template-rows: (
+    1fr 1fr 1fr,
+  )
+) {
+  @include mqMin($min-width-query) {
+    display: grid;
+    grid-template-columns: $grid-template-columns;
+    grid-template-rows: $grid-template-rows;
+  }
+}
