@@ -1,0 +1,48 @@
+@use '../../../../../scss/sinConfig' as *;
+@use '../modules/func' as f;
+
+// Goal is to reduce CLS issues with images.
+// Requires a parent element to act as container.
+// Will give the container height (via padding) equal to the height of the image.
+// Would be ideal to use attr(), but it seems it's not supported at all yet.
+// So instead, I have to figure a way to give padding equal to the height of the image
+
+// We can also use a background image or color to fill the space before the image loads.
+
+// Note: there might be a way to implement this without the need for parent via ::after
+
+//Source: https://web.dev/optimize-cls/
+//Source: https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
+
+@mixin imgWrapper($imgHeight: f.get(imgBoxDefaultHeight), $imgWidth: f.get(imgBoxDefaultWidth), $preloadBackground: f.get(imgDefaultPreloadBackground)) {
+  $aspectRatio: calc((#{$imgHeight} / #{$imgWidth}) * 100%);
+
+  width: 100%;
+  height: 0;
+  padding-bottom: $aspectRatio;
+  // 👆 image height / width * 100%
+  position: relative;
+  background: $preloadBackground;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+
+  img {
+    width: 100%;
+    height: auto;
+
+    position: absolute;
+  }
+}
+
+// Example
+
+// Let's say there is an element that has no width/height html attributes and is causing CLS issues.
+// You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
+// The mixin takes three parameters. There is a default value for each, that can be changed in the configuration.scss
+// First parameter (obligatory) is image height, then image width (obligatory) and finaly a background image (optional), color or gradient.
+// That's all. It should work. As usual needs testing.
+
+.imgWrapper {
+  @include imgWrapper();
+}

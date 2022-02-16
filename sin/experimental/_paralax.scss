@@ -1,0 +1,7 @@
+@use '../../../../../scss/sinConfig' as *;
+
+// Used with background css property
+
+@mixin paralax {
+  background-attachment: fixed;
+}

@@ -1,0 +1,140 @@
+// Does not work yet, need to replace old maps and refactor scss components
+$configuration: (
+  colors: (
+    'primary': hsl(0, 100%, 50%),
+    'secondary': hsl(120, 100%, 25%),
+    'blue': hsl(240, 100%, 50%),
+  ),
+  // Functionality is missing.
+  font-family:
+    (
+      (
+        font-name: 'Roboto Condensed Regular',
+        format: 'ttf',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCondensedRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap',
+        ),
+      ),
+      (
+        font-name: 'Roboto',
+        format: 'ttfs',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap',
+        ),
+      ),
+      (
+        font-name: 'Robotao',
+        format: 'ttfs',
+        url: (
+          // First URL is the default, the rest are fallback URLs
+          '../../../../images/fonts/RobotoCRegular.ttf',
+          'https://fonts.googleapis.com/css2?family=Roboto:wdisplay=swap',
+        ),
+      ),
+    ),
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  // Experimental - > Bootstrap overide
+  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+  bootstrap:
+    (
+      // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
+      color:
+        (
+          bs-blue: #0d6efd,
+          bs-indigo: #6610f2,
+          bs-purple: #6f42c1,
+          bs-pink: #d63384,
+          bs-red: #dc3545,
+          bs-orange: #fd7e14,
+          bs-yellow: #ffc107,
+          bs-green: #198754,
+          bs-teal: #20c997,
+          bs-cyan: #0dcaf0,
+          bs-white: #fff,
+          bs-gray: #6c757d,
+          bs-gray-dark: #343a40,
+          bs-primary: #0d6efd,
+          bs-secondary: #6c757d,
+          bs-success: #198754,
+          bs-info: #0dcaf0,
+          bs-warning: #ffc107,
+          bs-danger: #dc3545,
+          bs-light: #f8f9fa,
+          bs-dark: #212529,
+        ),
+    ),
+  // You can add new breakpoints, or edit the ones bellow, but do not delete any of the default breakpoints
+  breakpoints:
+    (
+      // $desktopLarge
+      xxl: 2560px,
+      // $desktopMedium
+      xl: 1980px,
+      // $desktop-small
+      l: 1460px,
+      // $tabletLarge
+      md: 1200px,
+      // $tabletSmall
+      sm: 768px,
+      // $smartphone
+      xs: 576px,
+    ),
+  responsiveFonts: false,
+  responsiveFontSizes: (
+    generic: 0.8vw,
+    xxl: 1vw,
+    xl: 1vw,
+    md: 2vw,
+    sm: 4.3vw,
+    xs: 4.6vw,
+  ),
+  fontSizes: (
+    xxl: 1.6rem,
+    xl: 1.4rem,
+    md: 1rem,
+    sm: 0.9rem,
+    xs: 0.7rem,
+  ),
+  defaultFontSizes: (
+    h1: null,
+    h2: null,
+    h3: null,
+    h4: null,
+    h5: null,
+    h6: null,
+    span: null,
+    p: null,
+    a: null,
+    button: null,
+    em: null,
+    small: null,
+    strong: null,
+    q: null,
+    ul: null,
+    ol: null,
+    li: null,
+    hr: null,
+    br: null,
+    wbr: null,
+    div: null,
+    section: null,
+  ),
+  disListStyle: false,
+  spacing: (
+    0: 0rem,
+    1: 1.5rem,
+    2: 2rem,
+    3: 2.5rem,
+    4: 3rem,
+    5: 4rem,
+    6: 5rem,
+  ),
+  url: '../../../..',
+  imgBoxDefaultHeight: 80,
+  imgBoxDefaultWidth: 100,
+  imgDefaultPreloadBackground: none,
+);

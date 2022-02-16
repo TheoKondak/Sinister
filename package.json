@@ -1,33 +1,13 @@
 {
-  "name": "sinister",
-  "version": "0.5.01",
-  "description": "An SCSS and JS utility library.",
+  "name": "@get-sinister/sass",
+  "version": "0.5.22",
+  "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheoKondak/sinisterScss.git"
-  },
-  "keywords": [
-    "SCSS",
-    "Mixins",
-    "Utility",
-    "Design",
-    "Layout"
-  ],
-  "author": "Theodoros Kondakos",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TheoKondak/sinisterScss/issues"
-  },
-  "homepage": "https://github.com/TheoKondak/sinisterScss#readme",
-  "devDependencies": {
-    "browser-sync": "^2.27.7",
-    "gulp-sass": "^5.1.0"
+    "postinstall": "node installation.js"
   },
   "dependencies": {
-    "sinister-sass": "^0.5.0",
-    "uniq": "^1.0.1"
-  }
+    "sass": "^1.49.7"
+  },
+  "author": "Theodoros Kondakos",
+  "license": "ISC"
 }

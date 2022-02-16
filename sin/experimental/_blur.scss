@@ -1,0 +1,30 @@
+@use '../../../../../scss/sinConfig' as *;
+
+@mixin blur(
+  $blurRadius: 4px,
+  $blurBackground: rgba(255, 255, 255, 0.3),
+  $linesOfText: (
+    'Smartphone': 4,
+    'Tablet': 2,
+    'Desktop': 1,
+  )
+) {
+  background: $blurBackground;
+
+  backdrop-filter: blur($blurRadius);
+  @supports not (backdrop-filter: blur(1px)) {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    filter: blur($blurRadius);
+    -o-filter: blur($blurRadius);
+    -ms-filter: blur($blurRadius);
+    -moz-filter: blur($blurRadius);
+    -webkit-filter: blur($blurRadius);
+  }
+}
+
+.blur {
+  @include blur;
+}

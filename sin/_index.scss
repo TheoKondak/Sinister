@@ -1,0 +1,11 @@
+// Old way to load sinConfig
+// @forward '../sinConfig';
+
+// New appraoch for npm
+@forward '../../../../scss/sinConfig';
+@forward 'modules';
+@forward 'misc';
+@forward 'grid';
+@forward 'experimental';
+@forward 'utility';
+@forward 'typography';

@@ -1,0 +1,43 @@
+@use '../../../../../scss/sinConfig' as *;
+// @use 'func' as f;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// Default Breakpoints
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// So you can use them as variables in media queries etc.
+$smartphone: get(breakpoints, xs);
+$tabletSmall: get(breakpoints, sm);
+$tabletLarge: get(breakpoints, md);
+$desktop-small: get(breakpoints, l);
+$desktopMedium: get(breakpoints, xl);
+$desktopLarge: get(breakpoints, xxl);
+
+@mixin mq($min: 120px, $max: 4096px) {
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min and not $max {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if not $min and $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid Input";
+  }
+}
+
+@mixin mqMin($min: 120px) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin mqMax($max: 4096px) {
+  @media (max-width: $max) {
+    @content;
+  }
+}

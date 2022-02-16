@@ -1,0 +1,44 @@
+@use '../../../../../scss/sinConfig' as *;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  BROWSER PREFIXES MIXIN
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+// CHECK: https://css-tricks.com/is-vendor-prefixing-dead/
+// List of prefixes 2021
+
+// Source: https://css-tricks.com/snippets/sass/mixin-prefix-properties/
+// Mixin to prefix a property
+// @author Hugo Giraudel
+// @param {String} $property - Property name
+// @param {*} $value - Property value
+// @param {List} $prefixes (()) - List of prefixes to print
+
+// Android: -webkit-
+// Chrome: -webkit-
+// Firefox: -moz-
+// Internet Explorer: -ms-
+// iOS: -webkit-
+// Opera: -o-
+// Safari: -webkit
+$defaultPrefixes: -webkit- -moz- -ms- -o-;
+
+@mixin prefix($property, $value, $prefixes: $defaultPrefixes) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+//   Usage Example:
+//   .selector {
+//     @include prefix(transform, rotate(45deg), webkit ms);
+//   }
+
+// .selector {
+//     -webkit-transform: rotate(45deg);
+//     -ms-transform: rotate(45deg);
+//     transform: rotate(45deg);
+//   }
