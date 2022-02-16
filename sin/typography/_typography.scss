@@ -212,7 +212,7 @@ body {
       @include liNoDec;
     }
 
-    font-size: f.get(fontSizes, xxl);
+    font-size: f.get(fontSizes, li);
   }
 
   hr {
