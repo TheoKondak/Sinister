@@ -2,21 +2,21 @@
 
 # WARNING:
 
-# !! This project is not tested enough for production, unless you know what you are doing and you do your own debuging !!
+# !! This project is not tested enough for production unless you know what you are doing and you do your own debugging !!
 
-A SCSS and JS utility library.
+An SCSS and JS utility library.
 
-This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project. It also intends to host some JS components, that will add functionality to a website, and perform various tasks for more see `@get-sinister/js` (under construction).
+This project intends to act as a last-layer CSS override for CMS systems or for an SCSS organization platform for any other project. It also intends to host some JS components, that will add functionality to a website, and perform various tasks for more see `@get-sinister/js` (under construction).
 
-This is a one man project. I only work on the project only when I have some free time, and I do some basic testing, but be aware that some things might not work as intended.
+This is a one-man project. I only work on the project only when I have some free time, and I do some basic testing, but be aware that some things might not work as intended.
 
 # Setup the data
 
-`_sinConfig` hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families and many more. Browse the file to see which options are available.
+`_sinConfig` hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families, and many more. Browse the file to see which options are available.
 
 ## Importing sinister to a new file
 
-The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file you have to use the `@use` . [Read More](https://sass-lang.com/documentation/at-rules/use)
+The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file, you have to use the `@use`. [Read More](https://sass-lang.com/documentation/at-rules/use)
 
 ex.
 
@@ -25,7 +25,7 @@ ex.
 
 ```
 
-Keep in mind that the path is relative, so depending on your current files location, the example code might be different
+Keep in mind that the path is relative.
 
 For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
 
@@ -41,7 +41,7 @@ You can access the config data with the "get" function. "get" function will only
  get(property, value)
 ```
 
-For example if you want to access the colors from the palette:
+For example, if you want to access the colors from the palette:
 
 ### Example
 
@@ -73,7 +73,7 @@ $primary-color: get(colors, primary);
 
 ## The `getMap` function
 
-The "getMap" function works similar to "get" function, but in addition it requires the name of the map as an input.
+The "getMap" function works similar to "get" function, but in addition, it requires the name of the map as an input.
 
 If we would like to access the primary color, as with the "get" example:
 
@@ -115,9 +115,9 @@ getMap($configuration, bootstrap, color, bs-blue);
 
 ## [`EXPERIMENTAL`] `@include grid-template`
 
-Grid-template is an attempt to make responsive design more straight forward by organising the grid for various media queries.
+Grid-template is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
 
-It is a mixin that recieves as an input list of arguements. The first arguement is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns, and optionaly a list of grid rows.
+It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns and optionally a list of grid rows.
 
 ### Syntax:
 
@@ -130,7 +130,7 @@ It is a mixin that recieves as an input list of arguements. The first arguement 
 `$grid-template-rows` [css: `grid-template-row`]. Set the number of rows for the current list item. This is an optional field.
 [Read More about grid template rows & columns](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-columnsgrid-template-rows)
 
-Note: 1fr is a fraction unit, and its a preferred unit for grids.
+Note: 1fr is a fraction unit and it's a preferred unit for grids.
 
 ### Example:
 

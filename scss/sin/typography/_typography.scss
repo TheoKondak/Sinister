@@ -1,0 +1,237 @@
+@use 'sass:map';
+@use '../../../../../scss/sinConfig' as *;
+@use '../modules/func' as f;
+
+//+----------------------+
+// Importing Fonts
+//+----------------------+
+
+// You can load/import fonts to use easily with font face.
+
+// Example:
+@font-face {
+  // font-family: Roboto Condensed Regular;
+  // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
+  // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
+}
+
+$font-families: f.get(font-family);
+
+// Itterate through font families map
+@each $font-family in $font-families {
+  // @debug f.get(font-family, font-name);
+
+  @font-face {
+    // Use deep default sass map-get
+    font-family: map-get($font-family, font-name);
+
+    // Itterate throught the array of URLs, for fallback urls.
+
+    @for $i from 1 through length(f.get($font-family)) {
+      // For every font-family decladed in _configuration.scss
+
+      $length: length(map-get($font-family, url)); // lenth of url array
+
+      @if $length == 0 {
+        @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
+      } @else if $length == 1 {
+        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)); // Format is optional
+      } @else if $length == 2 {
+        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)),
+          // Format is optional
+          url(nth(map-get($font-family, url), 2))
+            format(map-get($font-family, format)); // Format is optional
+      } @else {
+        @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
+      }
+    }
+  }
+}
+
+@mixin fontName {
+  font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forf.get to add some fallback fonts
+}
+
+@mixin capitalize {
+  text-transform: capitalize;
+}
+.capitalize {
+  @include capitalize;
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+}
+.uppercase {
+  @include uppercase;
+}
+
+@mixin txtXs($scale: 1) {
+  font-size: calc(#{f.get(fontSizes, xs)} * #{$scale});
+}
+.txtXs {
+  @include txtXs;
+}
+
+@mixin txtSm($scale: 1) {
+  font-size: calc(#{f.get(fontSizes, sm)} * #{$scale});
+}
+.txtSm {
+  @include txtSm;
+}
+
+@mixin txtMd($scale: 1) {
+  font-size: calc(#{f.get(fontSizes, md)} * #{$scale});
+}
+.txtMd {
+  @include txtMd;
+}
+
+@mixin txtXl($scale: 1) {
+  font-size: calc(#{f.get(fontSizes, xl)} * #{$scale});
+}
+.txtXl {
+  @include txtXl;
+}
+
+@mixin txtXxl($scale: 1) {
+  font-size: calc(#{f.get(fontSizes, xxl)} * #{$scale});
+}
+.txtXxl {
+  @include txtXxl;
+}
+
+//+----------------------+
+// Responsive Font Sizes
+//+----------------------+
+@if f.get(responsiveFonts) {
+  :root {
+    font-size: f.get(fontSizes, generic);
+
+    @media (max-width: f.get(breakpoints, xxl)) {
+      font-size: f.get(fontSizes, xxl);
+    }
+
+    @media (max-width: f.get(breakpoints, xl)) {
+      font-size: f.get(fontSizes, xl);
+    }
+
+    @media (max-width: f.get(breakpoints, md)) {
+      font-size: f.get(fontSizes, md);
+    }
+
+    @media (max-width: f.get(breakpoints, sm)) {
+      font-size: f.get(fontSizes, sm);
+    }
+
+    @media (max-width: f.get(breakpoints, xs)) {
+      font-size: f.get(fontSizes, sm);
+    }
+  }
+}
+
+body {
+  // line-height: 1.61803398875; //Golden Ratio
+
+  h1 {
+    font-size: f.get(defaultFontSizes, h1);
+  }
+
+  h2 {
+    font-size: f.get(defaultFontSizes, h2);
+  }
+
+  h3 {
+    font-size: f.get(defaultFontSizes, h3);
+  }
+
+  h4 {
+    font-size: f.get(defaultFontSizes, h4);
+  }
+
+  h5 {
+    font-size: f.get(defaultFontSizes, h5);
+  }
+
+  h6 {
+    font-size: f.get(defaultFontSizes, h6);
+  }
+
+  span {
+    font-size: f.get(defaultFontSizes, span);
+  }
+
+  p {
+    font-size: f.get(defaultFontSizes, p);
+  }
+
+  a {
+    text-decoration: none;
+
+    font-size: f.get(defaultFontSizes, a);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  button {
+    text-decoration: none;
+    font-size: f.get(defaultFontSizes, button);
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  em {
+    font-size: f.get(defaultFontSizes, em);
+  }
+
+  small {
+    font-size: f.get(defaultFontSizes, small);
+  }
+
+  strong {
+    font-size: f.get(defaultFontSizes, strong);
+  }
+
+  ul {
+    font-size: f.get(defaultFontSizes, ul);
+  }
+
+  ol {
+    font-size: f.get(defaultFontSizes, ol);
+  }
+
+  @mixin liNoDec {
+    list-style: none;
+  }
+
+  li {
+    @if f.get(disListStyle) {
+      @include liNoDec;
+    }
+
+    font-size: f.get(defaultFontSizes, li);
+  }
+
+  hr {
+    font-size: f.get(defaultFontSizes, hr);
+  }
+
+  br {
+    font-size: f.get(defaultFontSizes, br);
+  }
+
+  wbr {
+    font-size: f.get(defaultFontSizes, wbr);
+  }
+
+  div {
+    font-size: f.get(defaultFontSizes, div);
+  }
+
+  section {
+    font-size: f.get(defaultFontSizes, section);
+  }
+}
