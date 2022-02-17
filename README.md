@@ -31,7 +31,7 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 
 ## Accessing the config data
 
-### The "get" function
+## The `get` function
 
 You can access the config data with the "get" function. "get" function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.
 
@@ -69,7 +69,7 @@ Or you can assign it to a new local variable so you can call it easier.
 $primary-color: get(colors, primary);
 ```
 
-### The "getMap" function
+## The `getMap` function
 
 The "getMap" function works similar to "get" function, but in addition it requires the name of the map as an input.
 
@@ -108,5 +108,33 @@ To retrieve the code use:
 ```
 getMap($configuration, bootstrap, color, bs-blue);
 ```
+
+# Mixins
+
+## `@include grid-template`
+
+Grid-template is an attempt to make responsive design more straight forward by organising the grid for various media queries.
+
+Syntax:
+The first arguement is a string. It can be an empty string for setting a default value, and then you can use any breakpoint.
+The second arguement is a grid template column. Set the number of rows and collumns for each breakpoint.
+The third arguement is a grid template row. Set the number of rows and collumns for each breakpoint.
+[Read More about grid template rows & columns](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-columnsgrid-template-rows)
+
+Note: 1fr is a fraction unit, and its a preferred unit for grids.
+
+```
+@include gridTest($min-width-query, $grid-template-columns, $grid-template-rows);
+```
+
+Example:
+
+```
+.example--container{
+  @include gridTest(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
+}
+```
+
+This will set a grid, with 1 column as default and xs screens, 2 columns and 2 rows for md screens and 3 columns for lg screens.
 
 ##
