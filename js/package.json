@@ -1,0 +1,19 @@
+{
+  "name": "js",
+  "version": "0.1.2",
+  "description": "Various JS tools to help you build interfaces, effects, animations etc",
+  "main": "sinLoader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoKondak/Sinister.git"
+  },
+  "author": "Theodoros Kondakos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheoKondak/Sinister/issues"
+  },
+  "homepage": "https://github.com/TheoKondak/Sinister#readme"
+}

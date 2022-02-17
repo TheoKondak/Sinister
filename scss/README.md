@@ -113,7 +113,7 @@ getMap($configuration, bootstrap, color, bs-blue);
 
 # Mixins
 
-## [`EXPERIMENTAL`] `@include grid-template`
+### [`EXPERIMENTAL`] `@include grid-template`
 
 Grid-template is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
 

@@ -1,0 +1,12 @@
+{
+  production Set production mode to true when you are ready to go live.,
+  help Set help to true or false to toggle help,
+  menuBgOnScroll {
+    target The element that is being targeted to have the background changed. Ex the navbar section '#navbar',
+    triggerElement The element relative to which the change will trigger. Ex the masthead section '#masthead',
+    className Optional, change the name of the class that will be triggered. Dedault  'nav-scrolled',
+    observerOptions Documentation httpsdeveloper.mozilla.orgen-USdocsWebAPIIntersection_Observer_API#intersection_observer_options
+  },
+  test true,
+  tests true
+}
