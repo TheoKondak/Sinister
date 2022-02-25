@@ -1,8 +1,10 @@
 @use '../../../../../scss/sinConfig' as *;
+@use './../modules/func' as f;
+@use 'sass:list';
 
 // Box Shadow Source https://getcssscan.com/css-box-shadow-examples
 
-$boxshadows: (
+$boxShadowList: (
   0: (
     none,
   ),
@@ -160,3 +162,11 @@ $boxshadows: (
     rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset,
   ),
 );
+
+@mixin boxshadow($boxshadowId) {
+  @if type-of($boxshadowId) == 'number' {
+    @debug f.getMap($boxShadowList, $boxshadowId);
+  } @else {
+    @warn 'boxshadow mixin requires a boxshadow id number from 0 to #{list.length($boxShadowList)}';
+  }
+}
