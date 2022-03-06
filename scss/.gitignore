@@ -132,4 +132,4 @@ index.html
 *.jpg
 src/js/custom.js
 /src/compiled/
-gitignored/compiled/
+gitignored/
