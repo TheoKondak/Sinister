@@ -133,16 +133,32 @@
   @return $result;
 }
 
+// Contains function returns true or false. Checks if a value is present in a list inside sinConfig
+@function contains($list, $var) {
+  $isTrue: null;
+  @each $key, $value in get($list) {
+    @if $key == $var {
+      $isTrue: true;
+    }
+  }
+
+  @if $isTrue != true {
+    @warn string.unquote('Invalid $var provided in contains function:') #{$var};
+  }
+
+  @return $isTrue;
+}
+
 // Function to easily get colors
 @function color($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
-    @warn 'Color function needs a valid input. It requires a color key from sinConfig. The current value is: null. See bellow for available colors';
+    @debug 'Color function received no input.';
     @debug 'Available colors: ';
     @each $colorId, $color in get(colors) {
       @debug ' #{$colorId}: #{$color}';
     }
-    @return null;
+    @return '---';
   } @else {
     // Check if $key is part of the colors map
     @if not map.has-key(get(colors), $key) {
@@ -152,10 +168,29 @@
         @debug ' #{$colorId}: #{$color}';
       }
 
-      @return null;
+      @return '---';
     } @else {
       // Value exists so return value
       @return get(colors, $key);
     }
+  }
+}
+
+// Spacing Function
+@function spacing($value: 0, $scale: 1) {
+  @if map.has-key(get(spacing), $value) and type-of($scale) == 'number' {
+    // If the $value is 0, instead of error return the default, but send a warning during compilation.
+    @if $value == 0 {
+      @warn 'Spacing function used, with a 0 as an input. This will return a spacing value of #{$value}';
+    }
+    @return calc(#{get(spacing, $value)} * #{$scale});
+  } @else {
+    @warn 'Either $value does not exist in sinConfig, or scale is not a number. See bellow for more.';
+    @debug 'Your input: $value: #{$value}, $scale: #{$scale}';
+    @debug 'Available spacings $values';
+    @each $spacingId, $spacing in get(spacing) {
+      @debug ' #{$spacingId}: #{$spacing}';
+    }
+    @error 'Spacing function error.';
   }
 }
