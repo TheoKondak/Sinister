@@ -120,6 +120,30 @@ getMap($configuration, bootstrap, color, bs-blue);
 
 <br>
 
+### Access Color Data
+
+Since Sinister 0.6.01 function `color()` is available. Function color is part of a new approach when it comes to accessing data.
+
+Function `color()` takes as an input a color from the colors list declared in \_sinConfig.
+
+### Example:
+
+Let's say we wanted to access the primary color from our \_sinConfig file.
+
+The old way:
+
+```
+color: get(colors, primary);
+```
+
+Now it's just:
+
+```
+color: color(primary);
+```
+
+<br>
+
 # Mixins
 
 ### [`EXPERIMENTAL`] `@include grid-template`
