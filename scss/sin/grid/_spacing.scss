@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'sass:string';
+@use 'sass:list';
 @use '../../../../../scss/sinConfig' as *;
 @use './../modules/func' as f;
 
@@ -21,6 +22,35 @@ $spacingDirection: (
   left: 'l',
   x-axis: 'x',
   y-axis: 'y',
+);
+
+$spacingDirections: (
+  g: (
+    top,
+    right,
+    bottom,
+    left,
+  ),
+  x: (
+    top,
+    bottom,
+  ),
+  y: (
+    left,
+    right,
+  ),
+  t: (
+    top,
+  ),
+  r: (
+    right,
+  ),
+  b: (
+    bottom,
+  ),
+  l: (
+    left,
+  ),
 );
 
 // Create Classes
@@ -206,11 +236,77 @@ $spacingDirection: (
   }
 }
 
+@function case($map, $value) {
+  @return map-get($map, $value);
+}
+
+@function spacing-css() {
+  @return '';
+}
+
+// @debug case($spacingProperties, margin);
+
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  MIXINS
+//  MIXIN
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 $key: '';
-//Unfortunately i can't find a way to incorporate the mixins inside the loop.
+
+//Beta Spacing
+@mixin beta-spacing($args...) {
+  $breakpoint: null;
+  $property: null;
+  $direction: g;
+  $value: 0;
+  $scale: 1;
+
+  // Check that there are arguements
+  @if (length($args) > 0) {
+    @each $arg in $args {
+      // Check if the list contains a breakpoint.
+      @if f.list-contains(f.get(breakpoints), list.nth($arg, 1)) {
+        // If true, update variables
+        $breakpoint: list.nth($arg, 1);
+        $property: list.nth($arg, 2);
+        $direction: list.nth($arg, 3);
+        $value: list.nth($arg, 4);
+        $scale: list.nth($arg, 5);
+
+        @media (min-width: f.get(breakpoints, $breakpoint)) {
+          // Check if property exists in spacingProeprties Map
+          @if f.list-contains($spacingProperties, $property) {
+            @if (f.list-contains($spacingDirection, $direction) and f.list-contains(f.get(spacing), $value)) {
+              // render the css
+              // @debug f.return-map-key($spacingProperties, $property);
+              @debug f.return-map-key($spacingProperties, $property);
+              @each $currentDirection in map-get($spacingDirections, $direction) {
+                #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: #{f.get(spacing, $value)};
+              }
+            }
+          } @else {
+            @warn 'Wrong spacing mixin property.';
+            @debug 'Available spacings $values';
+            @each $spacingKey, $spacingProperty in $spacingProperties {
+              @debug ' #{$spacingKey}: #{$spacingProperty}';
+            }
+          }
+        }
+      } @else if (f.list-contains($spacingProperties, list.nth($arg, 1))) {
+        // If true update variables
+        $property: list.nth($arg, 1);
+        $direction: list.nth($arg, 2);
+        $value: list.nth($arg, 3);
+        $scale: list.nth($arg, 4);
+        // @debug 'does not contain breakpoint';
+      } @else {
+        @error 'Invalid input in spacing mixin. See documentation for more.';
+      }
+    }
+  } @else {
+    @warn "Spacing mixin called without arguements.";
+  }
+}
+
+// Unfortunately i cant find a way to incorporate the mixins inside the loop.
 @mixin spacing($property, $direction, $value, $scale: 1) {
   // @debug 'Property: ' $property;
   // @debug 'Direction: ' $direction;

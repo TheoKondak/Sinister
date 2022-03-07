@@ -1,5 +1,6 @@
 @use 'sass:string';
 @use 'sass:map';
+@use 'sass:list';
 @use '../../../../../scss/sinConfig' as *;
 
 // Access Data in Deep nested Map
@@ -147,6 +148,33 @@
   }
 
   @return $isTrue;
+}
+
+@function list-contains($list, $val) {
+  $isTrue: false;
+  @each $key, $value in $list {
+    @if $key == $val or $value == $val {
+      $isTrue: true;
+    }
+  }
+
+  @if $isTrue != true {
+    // @warn string.unquote('Invalid $val provided in contains function:') #{$val};
+  }
+
+  @return $isTrue;
+}
+
+// Return value of a map
+@function return-map-key($map, $val) {
+  @for $i from 1 to length($map) {
+    // @debug list.nth($map, $i);
+    @debug $i;
+    @if $val == list.nth($map, $i) {
+    }
+  }
+
+  @return 'nil';
 }
 
 // Function to easily get colors
