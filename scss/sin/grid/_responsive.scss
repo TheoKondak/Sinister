@@ -1,5 +1,5 @@
 @use '../../../../../scss/sinConfig' as *;
-// @use 'func' as f;
+@use './../modules' as f;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 // Default Breakpoints
@@ -14,30 +14,110 @@ $desktopLarge: get(breakpoints, xxl);
 
 @mixin mq($min: 120px, $max: 4096px) {
   @if $min and $max {
-    @media (min-width: $min) and (max-width: $max) {
-      @content;
-    }
-  } @else if $min and not $max {
-    @media (min-width: $min) {
-      @content;
-    }
-  } @else if not $min and $max {
-    @media (max-width: $max) {
-      @content;
+    // @media (min-width: $min) and (max-width: $max) {
+    //   @content;
+    // }
+
+    @if type-of($min) == 'number' and type-of($max) == 'number' {
+      @if unitless($min) and unitless($max) {
+        @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+          @content;
+        }
+      } @else if unitless($min) and not unitless($max) {
+        @media (min-width: #{$min}px) and (max-width: #{$max}) {
+          @content;
+        }
+      } @else if not unitless($min) and unitless($max) {
+        @media (min-width: #{$min}) and (max-width: #{$max}px) {
+          @content;
+        }
+      } @else {
+        @media (min-width: $min) and (max-width: $max) {
+          @content;
+        }
+      }
+    } @else if type-of($min) == 'string' and type-of($max) == 'string' {
+      @if f.list-contains(f.get(breakpoints), $min) and f.list-contains(f.get(breakpoints), $max) {
+        @media (min-width: f.get(breakpoints, $min)) and (max-width: f.get(breakpoints, $max)) {
+          @content;
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
+    } @else if type-of($min) == 'string' and type-of($max) == 'number' {
+      @if f.list-contains(f.get(breakpoints), $min) {
+        @if unitless($max) {
+          @media (min-width: f.get(breakpoints, $min)) and (max-width: #{$max}px) {
+            @content;
+          }
+        } @else {
+          @media (min-width: f.get(breakpoints, $min)) and (max-width: $max) {
+            @content;
+          }
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
+    } @else if type-of($min) == 'number' and type-of($max) == 'string' {
+      @if f.list-contains(f.get(breakpoints), $max) {
+        @if unitless($min) {
+          @media (min-width: #{$min}px) and (max-width: f.get(breakpoints, $max)) {
+            @content;
+          }
+        } @else {
+          @media (min-width: $min) and (max-width: f.get(breakpoints, $max)) {
+            @content;
+          }
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
     }
   } @else {
-    @warn "Invalid Input";
+    @warn "Invalid Input. Expected an minimun and a maximum value. It can either be a number with units, or a breakpoint.";
   }
 }
 
 @mixin mqMin($min: 120px) {
-  @media (min-width: $min) {
-    @content;
+  @if type-of($min) == 'number' {
+    @if unitless($min) {
+      @media (min-width: #{$min}px) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $min) {
+        @content;
+      }
+    }
+  } @else if type-of($min) == 'string' {
+    @if f.list-contains(f.get(breakpoints), $min) {
+      @media (min-width: f.get(breakpoints, $min)) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+    }
   }
 }
 
 @mixin mqMax($max: 4096px) {
-  @media (max-width: $max) {
-    @content;
+  @if type-of($max) == 'number' {
+    @if unitless($max) {
+      @media (max-width: #{$max}px) {
+        @content;
+      }
+    } @else {
+      @media (max-width: $max) {
+        @content;
+      }
+    }
+  } @else if type-of($max) == 'string' {
+    @if f.list-contains(f.get(breakpoints), $max) {
+      @media (max-width: f.get(breakpoints, $max)) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid input at mqMax. It requires a numeric value with units, or a breakpoint. You provided: #{$max}';
+    }
   }
 }
