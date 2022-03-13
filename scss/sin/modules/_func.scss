@@ -167,14 +167,11 @@
 
 // Return value of a map
 @function return-map-key($map, $val) {
-  @for $i from 1 to length($map) {
-    // @debug list.nth($map, $i);
-    @debug $i;
-    @if $val == list.nth($map, $i) {
+  @each $key, $value in $map {
+    @if $val == $value {
+      @return $key;
     }
   }
-
-  @return 'nil';
 }
 
 // Function to easily get colors

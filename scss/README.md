@@ -175,4 +175,33 @@ Note: 1fr is a fraction unit and it's a preferred unit for grids.
 
 This will set a grid, with 1 column as default and xs screens, 2 columns and 2 rows for md screens and 3 columns for lg screens.
 
+### `@include spacing`
+
+This mixin will help with the spacing properties workflow. It works with margin, padding and gap properties.
+
+The mixin takes a list of inputs, where it requires a breakpoint, the type of the spacing, a spacing value from sinConfig, and optionally a number that will scale the spacing value if needed to give more flexibility.
+
+### Syntax
+
+```
+@include spacing(($breakpoint, $spacing-property, $spacing-property-value, $scale))
+```
+
+Please note that the mixin accepts margins, paddings and gaps. The gap property though does not behave as the other two. Instead it accepts values for all directions (`g`), for columns (`x`) and for rows (`y`). Nevertheless if you put an left or right or top or bottom, it will still work, but it will translate it to x,y axis.
+
+### Example
+
+```
+@include spacing((m l 1 1.1), (xs m l 2 1.2), (md m l 3));
+
+```
+
+The second arguement of the list `(xs m l 2 1.2)` will create a rule, for screens larger than `xs` that will add a margin-left, of 2 , and then will scale it by 1.2.
+You might have noticed that the first list element `(m l 1)` does not contain a breakpoint. This will act as a global rule, which then will be overwritten by the rest of the rules depending on the screen size.
+And finally, the third element, does not contain a scale arguement. So for `md` screens and above, the scale will be the default, which is 1.
+
 ##
+
+```
+
+```

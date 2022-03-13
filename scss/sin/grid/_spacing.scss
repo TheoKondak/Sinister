@@ -252,7 +252,7 @@ $spacingDirections: (
 $key: '';
 
 //Beta Spacing
-@mixin beta-spacing($args...) {
+@mixin spacing($args...) {
   $breakpoint: null;
   $property: null;
   $direction: g;
@@ -275,11 +275,21 @@ $key: '';
           // Check if property exists in spacingProeprties Map
           @if f.list-contains($spacingProperties, $property) {
             @if (f.list-contains($spacingDirection, $direction) and f.list-contains(f.get(spacing), $value)) {
-              // render the css
-              // @debug f.return-map-key($spacingProperties, $property);
-              @debug f.return-map-key($spacingProperties, $property);
-              @each $currentDirection in map-get($spacingDirections, $direction) {
-                #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: #{f.get(spacing, $value)};
+              // Check if property is gap, if yes, then we only have x, y axis.
+              @if $property == g {
+                @if $direction == 't' or $direction == 'b' {
+                  row-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                } @else if $direction == 'l' or $direction == 'r' {
+                  column-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                } @else if $direction == 'g' {
+                  gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                } @else {
+                  @warn 'Invalid spacing arguements';
+                }
+              } @else {
+                @each $currentDirection in map-get($spacingDirections, $direction) {
+                  #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{f.get(spacing, $value)} * #{$scale});
+                }
               }
             }
           } @else {
@@ -291,183 +301,46 @@ $key: '';
           }
         }
       } @else if (f.list-contains($spacingProperties, list.nth($arg, 1))) {
+        // check if it is a spacing property
         // If true update variables
         $property: list.nth($arg, 1);
         $direction: list.nth($arg, 2);
         $value: list.nth($arg, 3);
         $scale: list.nth($arg, 4);
         // @debug 'does not contain breakpoint';
+
+        // Check if property exists in spacingProeprties Map
+        @if f.list-contains($spacingProperties, $property) {
+          @if (f.list-contains($spacingDirection, $direction) and f.list-contains(f.get(spacing), $value)) {
+            // Check if property is gap, if yes, then we only have x, y axis.
+            @if $property == g {
+              @if $direction == 't' or $direction == 'b' {
+                row-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+              } @else if $direction == 'l' or $direction == 'r' {
+                column-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+              } @else if $direction == 'g' {
+                gap: calc(#{f.get(spacing, $value)} * #{$scale});
+              } @else {
+                @warn 'Invalid spacing arguements';
+              }
+            } @else {
+              @each $currentDirection in map-get($spacingDirections, $direction) {
+                #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{f.get(spacing, $value)} * #{$scale});
+              }
+            }
+          }
+        } @else {
+          @warn 'Wrong spacing mixin property.';
+          @debug 'Available spacings $values';
+          @each $spacingKey, $spacingProperty in $spacingProperties {
+            @debug ' #{$spacingKey}: #{$spacingProperty}';
+          }
+        }
       } @else {
         @error 'Invalid input in spacing mixin. See documentation for more.';
       }
     }
   } @else {
     @warn "Spacing mixin called without arguements.";
-  }
-}
-
-// Unfortunately i cant find a way to incorporate the mixins inside the loop.
-@mixin spacing($property, $direction, $value, $scale: 1) {
-  // @debug 'Property: ' $property;
-  // @debug 'Direction: ' $direction;
-  // @debug 'Value: ' $value;
-
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  // MARGIN
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  @if $property == 'm' {
-    @if $direction == 't' {
-      @if f.contains(spacing, $value) {
-        margin-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'r' {
-      @if f.contains(spacing, $value) {
-        margin-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'b' {
-      @if f.contains(spacing, $value) {
-        margin-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'l' {
-      @if f.contains(spacing, $value) {
-        margin-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'g' {
-      @if f.contains(spacing, $value) {
-        margin-top: calc(#{f.get(spacing, $value)} * #{$scale});
-        margin-right: calc(#{f.get(spacing, $value)} * #{$scale});
-        margin-bottom: calc(#{f.get(spacing, $value)} * #{$scale});
-        margin-left: calc(#{f.get(spacing, $value)} * #{$scale});
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'y' {
-      @if f.contains(spacing, $value) {
-        margin-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-        margin-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'x' {
-      @if f.contains(spacing, $value) {
-        margin-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-        margin-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else {
-      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}');
-    }
-  }
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  // PADDING
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  @else if $property == 'p' {
-    @if $direction == 't' {
-      @if f.contains(spacing, $value) {
-        padding-top: calc(#{f.get(spacing, $value)} * #{$scale});
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'r' {
-      @if f.contains(spacing, $value) {
-        padding-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'b' {
-      @if f.contains(spacing, $value) {
-        padding-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'l' {
-      @if f.contains(spacing, $value) {
-        padding-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'g' {
-      @if f.contains(spacing, $value) {
-        padding-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        padding-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        padding-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        padding-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'y' {
-      @if f.contains(spacing, $value) {
-        padding-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-        padding-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'x' {
-      @if f.contains(spacing, $value) {
-        padding-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-        padding-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else {
-      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}');
-    }
-  }
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  // GAP
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-  @else if $property == 'g' {
-    @if $direction == 'g' {
-      @if f.contains(spacing, $value) {
-        @supports not (gap: 2rem) {
-          margin-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-          margin-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-          margin-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-          margin-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        }
-        gap: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'y' {
-      @if f.contains(spacing, $value) {
-        @supports not (gap: 2rem) {
-          margin-top: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-          margin-bottom: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        }
-        column-gap: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else if $direction == 'x' {
-      @if f.contains(spacing, $value) {
-        @supports not (gap: 2rem) {
-          margin-right: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-
-          margin-left: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-        }
-        row-gap: calc(#{f.get(spacing, $value)} * #{$scale}) !important;
-      } @else {
-        @warn string.unquote( 'Invalid Value provided in spacing mixin: #{$value}');
-      }
-    } @else {
-      @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$direction}');
-    }
-  } @else {
-    @warn string.unquote( 'Invalid Property provided in spacing mixin: #{$property}');
   }
 }
