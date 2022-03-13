@@ -184,11 +184,12 @@ The mixin takes a list of inputs, where it requires a breakpoint, the type of th
 ### Syntax
 
 ```
-@include spacing(($breakpoint, $spacing-property, $spacing-property-value, $scale))
+@include spacing(($breakpoint, $spacing-property, $spacing-direction, $spacing-property-value, $scale))
 ```
 
 - `$breakpoint`: accepts a breakpoint from sinConfig, (`xs`,`md`,`lg`, etc)
 - `$spacing-property`: `m` for Margin, `p` for padding and `g` for gap.
+- `$spacing-direction`: `t`: top, `r`: right, `b`: bottom, `l`: left, `x`: x-axis, `y`: y-axis, `g`: both x and y axis.
 - `$spacing-property-value`: that's spacing value from sinConfig. By default 0 - 6
 - `$scale`: This is a multiplier of the `$spacing-property-value`. This is optional.
 
@@ -204,7 +205,7 @@ The second arguement of the list `(xs m l 2 1.2)` will create a rule, for screen
 You might have noticed that the first list element `(m l 1)` does not contain a breakpoint. This will act as a global rule, which then will be overwritten by the rest of the rules depending on the screen size.
 And finally, the third element, does not contain a scale arguement. So for `md` screens and above, the scale will be the default, which is 1.
 
-## `@include mq`
+## `@include mqXXX()`
 
 This is a media query mixin and it comes in three flavors. `mq($min, $max)`, `mqMin($min)` and `mqMax($max)`.
 
