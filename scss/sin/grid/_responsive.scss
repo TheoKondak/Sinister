@@ -37,21 +37,21 @@ $desktopLarge: get(breakpoints, xxl);
         }
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'string' {
-      @if f.list-contains(f.get(breakpoints), $min) and f.list-contains(f.get(breakpoints), $max) {
-        @media (min-width: f.get(breakpoints, $min)) and (max-width: f.get(breakpoints, $max)) {
+      @if list-contains(get(breakpoints), $min) and list-contains(get(breakpoints), $max) {
+        @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
           @content;
         }
       } @else {
         @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'number' {
-      @if f.list-contains(f.get(breakpoints), $min) {
+      @if list-contains(get(breakpoints), $min) {
         @if unitless($max) {
-          @media (min-width: f.get(breakpoints, $min)) and (max-width: #{$max}px) {
+          @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
             @content;
           }
         } @else {
-          @media (min-width: f.get(breakpoints, $min)) and (max-width: $max) {
+          @media (min-width: get(breakpoints, $min)) and (max-width: $max) {
             @content;
           }
         }
@@ -59,13 +59,13 @@ $desktopLarge: get(breakpoints, xxl);
         @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
       }
     } @else if type-of($min) == 'number' and type-of($max) == 'string' {
-      @if f.list-contains(f.get(breakpoints), $max) {
+      @if list-contains(get(breakpoints), $max) {
         @if unitless($min) {
-          @media (min-width: #{$min}px) and (max-width: f.get(breakpoints, $max)) {
+          @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
             @content;
           }
         } @else {
-          @media (min-width: $min) and (max-width: f.get(breakpoints, $max)) {
+          @media (min-width: $min) and (max-width: get(breakpoints, $max)) {
             @content;
           }
         }
@@ -90,8 +90,8 @@ $desktopLarge: get(breakpoints, xxl);
       }
     }
   } @else if type-of($min) == 'string' {
-    @if f.list-contains(f.get(breakpoints), $min) {
-      @media (min-width: f.get(breakpoints, $min)) {
+    @if list-contains(get(breakpoints), $min) {
+      @media (min-width: get(breakpoints, $min)) {
         @content;
       }
     } @else {
@@ -112,8 +112,8 @@ $desktopLarge: get(breakpoints, xxl);
       }
     }
   } @else if type-of($max) == 'string' {
-    @if f.list-contains(f.get(breakpoints), $max) {
-      @media (max-width: f.get(breakpoints, $max)) {
+    @if list-contains(get(breakpoints), $max) {
+      @media (max-width: get(breakpoints, $max)) {
         @content;
       }
     } @else {

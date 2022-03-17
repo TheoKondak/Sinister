@@ -1,0 +1,37 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sinConfig' as *;
+
+// Get Values from any map
+
+// Syntax:
+//   ...: getMap($map, key, key);
+
+// Where map can be any map,
+// Similar to get, only now you have to declare the map. Example:
+//  ...: getMap($configuration, spacing, xxl);
+// If a value is nested further deep, you can use the syntax bellow.
+//  background: getMap($map          , parent   , child, child);
+//  background: getMap($configuration, bootstrap, color, bs-success);
+// Will return the color set for the specific value pair.
+
+@function getMap($map, $keys...) {
+  @if $map {
+    @if $keys {
+      @each $key in $keys {
+        @if type-of($keys) == arglist {
+          $map: map-get($map, $key);
+        } @else {
+          @warn string.unquote('Invalid $key property type provided. Expected "arglist" but recieved:') #{type-of($key)};
+        }
+      }
+    } @else {
+      @warn string.unquote('Invalid "$keys" provided in contains function:') #{$keys};
+    }
+  } @else {
+    @warn string.unquote('Invalid "$map" provided in contains function:') #{$map};
+  }
+
+  @return $map;
+}

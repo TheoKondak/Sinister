@@ -1,0 +1,24 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sinConfig' as *;
+@use './get-func' as *;
+
+// Spacing Function
+@function spacing($value: 0, $scale: 1) {
+  @if map.has-key(get(spacing), $value) and type-of($scale) == 'number' {
+    // If the $value is 0, instead of error return the default, but send a warning during compilation.
+    @if $value == 0 {
+      @warn 'Spacing function used, with a 0 as an input. This will return a spacing value of #{$value}';
+    }
+    @return calc(#{get(spacing, $value)} * #{$scale});
+  } @else {
+    @warn 'Either $value does not exist in sinConfig, or scale is not a number. See bellow for more.';
+    @debug 'Your input: $value: #{$value}, $scale: #{$scale}';
+    @debug 'Available spacings $values';
+    @each $spacingId, $spacing in get(spacing) {
+      @debug ' #{$spacingId}: #{$spacing}';
+    }
+    @error 'Spacing function error.';
+  }
+}

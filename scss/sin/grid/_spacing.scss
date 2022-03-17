@@ -2,7 +2,7 @@
 @use 'sass:string';
 @use 'sass:list';
 @use '../../../../../scss/sinConfig' as *;
-@use './../modules/func' as f;
+@use './../modules' as *;
 
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  MARGINS | PADDINGS | GAP
@@ -54,7 +54,7 @@ $spacingDirections: (
 );
 
 // Create Classes
-@each $spacingKey, $spacingVal in f.get(spacing) {
+@each $spacingKey, $spacingVal in get(spacing) {
   @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
     @if type-of($spacingVal) == 'number' {
       @each $propertyKey, $propertyValue in $spacingProperties {
@@ -263,7 +263,7 @@ $key: '';
   @if (length($args) > 0) {
     @each $arg in $args {
       // Check if the list contains a breakpoint.
-      @if f.list-contains(f.get(breakpoints), list.nth($arg, 1)) {
+      @if list-contains(get(breakpoints), list.nth($arg, 1)) {
         // If true, update variables
         $breakpoint: list.nth($arg, 1);
         $property: list.nth($arg, 2);
@@ -271,24 +271,24 @@ $key: '';
         $value: list.nth($arg, 4);
         $scale: list.nth($arg, 5);
 
-        @media (min-width: f.get(breakpoints, $breakpoint)) {
+        @media (min-width: get(breakpoints, $breakpoint)) {
           // Check if property exists in spacingProeprties Map
-          @if f.list-contains($spacingProperties, $property) {
-            @if (f.list-contains($spacingDirection, $direction) and f.list-contains(f.get(spacing), $value)) {
+          @if list-contains($spacingProperties, $property) {
+            @if (list-contains($spacingDirection, $direction) and list-contains(get(spacing), $value)) {
               // Check if property is gap, if yes, then we only have x, y axis.
               @if $property == g {
                 @if $direction == 't' or $direction == 'b' {
-                  row-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                  row-gap: calc(#{get(spacing, $value)} * #{$scale});
                 } @else if $direction == 'l' or $direction == 'r' {
-                  column-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                  column-gap: calc(#{get(spacing, $value)} * #{$scale});
                 } @else if $direction == 'g' {
-                  gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                  gap: calc(#{get(spacing, $value)} * #{$scale});
                 } @else {
                   @warn 'Invalid spacing arguements';
                 }
               } @else {
                 @each $currentDirection in map-get($spacingDirections, $direction) {
-                  #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{f.get(spacing, $value)} * #{$scale});
+                  #{return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
                 }
               }
             }
@@ -300,7 +300,7 @@ $key: '';
             }
           }
         }
-      } @else if (f.list-contains($spacingProperties, list.nth($arg, 1))) {
+      } @else if (list-contains($spacingProperties, list.nth($arg, 1))) {
         // check if it is a spacing property
         // If true update variables
         $property: list.nth($arg, 1);
@@ -310,22 +310,22 @@ $key: '';
         // @debug 'does not contain breakpoint';
 
         // Check if property exists in spacingProeprties Map
-        @if f.list-contains($spacingProperties, $property) {
-          @if (f.list-contains($spacingDirection, $direction) and f.list-contains(f.get(spacing), $value)) {
+        @if list-contains($spacingProperties, $property) {
+          @if (list-contains($spacingDirection, $direction) and list-contains(get(spacing), $value)) {
             // Check if property is gap, if yes, then we only have x, y axis.
             @if $property == g {
               @if $direction == 't' or $direction == 'b' {
-                row-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                row-gap: calc(#{get(spacing, $value)} * #{$scale});
               } @else if $direction == 'l' or $direction == 'r' {
-                column-gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                column-gap: calc(#{get(spacing, $value)} * #{$scale});
               } @else if $direction == 'g' {
-                gap: calc(#{f.get(spacing, $value)} * #{$scale});
+                gap: calc(#{get(spacing, $value)} * #{$scale});
               } @else {
                 @warn 'Invalid spacing arguements';
               }
             } @else {
               @each $currentDirection in map-get($spacingDirections, $direction) {
-                #{f.return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{f.get(spacing, $value)} * #{$scale});
+                #{return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
               }
             }
           }

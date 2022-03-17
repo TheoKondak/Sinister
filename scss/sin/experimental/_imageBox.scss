@@ -1,5 +1,5 @@
 @use '../../../../../scss/sinConfig' as *;
-@use '../modules/func' as f;
+@use '../modules' as *;
 
 // Goal is to reduce CLS issues with images.
 // Requires a parent element to act as container.
@@ -14,7 +14,7 @@
 //Source: https://web.dev/optimize-cls/
 //Source: https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
 
-@mixin imgWrapper($imgHeight: f.get(imgBoxDefaultHeight), $imgWidth: f.get(imgBoxDefaultWidth), $preloadBackground: f.get(imgDefaultPreloadBackground)) {
+@mixin imgWrapper($imgHeight: get(imgBoxDefaultHeight), $imgWidth: get(imgBoxDefaultWidth), $preloadBackground: get(imgDefaultPreloadBackground)) {
   $aspectRatio: calc((#{$imgHeight} / #{$imgWidth}) * 100%);
 
   width: 100%;
