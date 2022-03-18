@@ -1,0 +1,15 @@
+@use './strip-unit-func' as *;
+
+// Check whether min width is larger or equal with max width
+@function too-large-min-width($min-width, $max-width) {
+  @if $min-width > $max-width {
+    @debug 'true';
+    @return true;
+  } @else if strip-unit($min-width) == strip-unit($max-width) {
+    @debug 'equal';
+    @return false;
+  } @else {
+    @debug 'false';
+    @return false;
+  }
+}

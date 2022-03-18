@@ -1,58 +1,58 @@
 @use '../../../../../scss/sinConfig' as *;
-@use './../modules' as f;
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// Default Breakpoints
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-// So you can use them as variables in media queries etc.
-$smartphone: get(breakpoints, xs);
-$tabletSmall: get(breakpoints, sm);
-$tabletLarge: get(breakpoints, md);
-$desktop-small: get(breakpoints, l);
-$desktopMedium: get(breakpoints, xl);
-$desktopLarge: get(breakpoints, xxl);
+@use './../modules/get-func' as *;
+@use './../modules/func' as *;
+@use './../modules/strip-unit-func' as *;
+@use './../modules/too-large-min-width-func' as *;
 
 @mixin mq($min: 120px, $max: 4096px) {
   @if $min and $max {
-    // @media (min-width: $min) and (max-width: $max) {
-    //   @content;
-    // }
-
     @if type-of($min) == 'number' and type-of($max) == 'number' {
       @if unitless($min) and unitless($max) {
-        @media (min-width: #{$min}px) and (max-width: #{$max}px) {
-          @content;
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+            @content;
+          }
         }
       } @else if unitless($min) and not unitless($max) {
-        @media (min-width: #{$min}px) and (max-width: #{$max}) {
-          @content;
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}px) and (max-width: #{$max}) {
+            @content;
+          }
         }
       } @else if not unitless($min) and unitless($max) {
-        @media (min-width: #{$min}) and (max-width: #{$max}px) {
-          @content;
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}) and (max-width: #{$max}px) {
+            @content;
+          }
         }
       } @else {
-        @media (min-width: $min) and (max-width: $max) {
-          @content;
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: $min) and (max-width: $max) {
+            @content;
+          }
         }
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'string' {
       @if list-contains(get(breakpoints), $min) and list-contains(get(breakpoints), $max) {
-        @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
-          @content;
+        @if not too-large-min-width(get(breakpoints, $min), get(breakpoints, $max)) {
+          @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
+            @content;
+          }
         }
       } @else {
         @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'number' {
       @if list-contains(get(breakpoints), $min) {
-        @if unitless($max) {
-          @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
-            @content;
-          }
-        } @else {
-          @media (min-width: get(breakpoints, $min)) and (max-width: $max) {
-            @content;
+        @if not too-large-min-width(get(breakpoints, $min), $max) {
+          @if unitless($max) {
+            @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
+              @content;
+            }
+          } @else {
+            @media (min-width: get(breakpoints, $min)) and (max-width: $max) {
+              @content;
+            }
           }
         }
       } @else {
@@ -60,13 +60,15 @@ $desktopLarge: get(breakpoints, xxl);
       }
     } @else if type-of($min) == 'number' and type-of($max) == 'string' {
       @if list-contains(get(breakpoints), $max) {
-        @if unitless($min) {
-          @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
-            @content;
-          }
-        } @else {
-          @media (min-width: $min) and (max-width: get(breakpoints, $max)) {
-            @content;
+        @if not too-large-min-width($min, get(breakpoints, $max)) {
+          @if unitless($min) {
+            @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
+              @content;
+            }
+          } @else {
+            @media (min-width: $min) and (max-width: get(breakpoints, $max)) {
+              @content;
+            }
           }
         }
       } @else {
@@ -91,7 +93,7 @@ $desktopLarge: get(breakpoints, xxl);
     }
   } @else if type-of($min) == 'string' {
     @if list-contains(get(breakpoints), $min) {
-      @media (min-width: get(breakpoints, $min)) {
+      @media (min-width: #{get(breakpoints, $min)}) {
         @content;
       }
     } @else {

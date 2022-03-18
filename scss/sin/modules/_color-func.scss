@@ -1,0 +1,32 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sinConfig' as *;
+@use './get-func' as *;
+
+// Function to easily get colors
+@function color($key: null) {
+  // Check if input is null.
+  @if (type-of($key) == 'null') {
+    @debug 'Color function received no input.';
+    @debug 'Available colors: ';
+    @each $colorId, $color in get(colors) {
+      @debug ' #{$colorId}: #{$color}';
+    }
+    @return '---';
+  } @else {
+    // Check if $key is part of the colors map
+    @if not map.has-key(get(colors), $key) {
+      @warn 'Color function needs a valid input. It requires a color key from sinConfig. The current value is: `#{$key}`. See bellow for available colors';
+      @debug 'Available colors: ';
+      @each $colorId, $color in get(colors) {
+        @debug ' #{$colorId}: #{$color}';
+      }
+
+      @return '---';
+    } @else {
+      // Value exists so return value
+      @return get(colors, $key);
+    }
+  }
+}

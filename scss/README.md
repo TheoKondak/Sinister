@@ -38,7 +38,7 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 
 ## Accessing the config data
 
-## The `get` function
+## The `get()` function
 
 You can access the config data with the "get" function. "get" function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.
 
@@ -78,7 +78,7 @@ Or you can assign it to a new local variable so you can call it easier.
 $primary-color: get(colors, primary);
 ```
 
-## The `getMap` function
+## The `getMap()` function
 
 The "getMap" function works similar to "get" function, but in addition, it requires the name of the map as an input.
 
@@ -144,7 +144,46 @@ color: color(primary);
 
 <br>
 
+# More Functions
+
+## The `sinConfig()` function
+
+This function will make a bulk print of the `_sinConfig.scss` settings and options to the terminal.
+
+### Syntax
+
+```
+@debug sinconfig();
+```
+
+Note that the `()` are required after the function call.
+
+This will print a list of settings available to the `_sinConfig.scss`. It will print just first level childs otherwise it would be chaotic.
+
+The data will have this format:
+
+```
+<setting>:
+option
+option
+option
+
+-----
+```
+
+And also value pair format:
+
+```
+setting:
+option-key option-value
+option-key option-value
+
+-----
+```
+
 # Mixins
+
+<br>
 
 ## [`EXPERIMENTAL`] `@include grid-template`
 
@@ -174,6 +213,8 @@ Note: 1fr is a fraction unit and it's a preferred unit for grids.
 ```
 
 This will set a grid, with 1 column as default and xs screens, 2 columns and 2 rows for md screens and 3 columns for lg screens.
+<br>
+<br>
 
 ## `@include spacing()`
 

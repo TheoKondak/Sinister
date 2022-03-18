@@ -1,6 +1,5 @@
 @use '../../../../../scss/sinConfig' as *;
-@use './../grid/_responsive.scss' as responsive;
-@use './../modules/_func.scss' as f;
+@use './../grid/_responsive.scss' as *;
 
 // Syntax
 // Min width
@@ -14,7 +13,7 @@
         grid-template-columns: $grid-template-columns;
         grid-template-rows: $grid-template-rows;
       } @else {
-        @include responsive.mqMin(get(breakpoints, #{$min-width-query})) {
+        @include mqMin($min-width-query) {
           display: grid;
           grid-template-columns: $grid-template-columns;
           grid-template-rows: $grid-template-rows;

@@ -1,9 +1,10 @@
 {
   "name": "@get-sinister/sass",
-  "version": "0.6.12",
+  "version": "0.6.37",
   "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
   "scripts": {
-    "postinstall": "node installation.js"
+    "postinstall": "node installation.js",
+    "migrate": "node migration.js"
   },
   "dependencies": {
     "sass": "^1.49.7"

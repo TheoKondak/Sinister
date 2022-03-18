@@ -1,0 +1,52 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sinConfig' as *;
+@use './../grid/_responsive.scss' as responsive;
+@use './get-func' as *;
+
+// Function to easily get font sizes
+@function fs($key: null) {
+  // Check if input is null.
+  @if (type-of($key) == 'null') {
+    @debug 'Font size function received no input.';
+    @debug 'Available font sizes: ';
+    @each $fs-id, $fs in get(fontSizes) {
+      @debug ' #{$fs-id}: #{$fs}';
+    }
+    @return '---';
+  } @else {
+    // Check if $key is part of the font sizes map
+    @if not map.has-key(get(fontSizes), $key) {
+      @warn 'fs function needs a valid input. It requires a font size key from sinConfig. The current value is: `#{$key}`. See bellow for available font sizes';
+      @debug 'Available font sizes: ';
+      @each $fs-id, $fs in get(fontSizes) {
+        @debug ' #{$fs-id}: #{$fs}';
+      }
+
+      @return '---';
+    } @else {
+      // Value exists so return value
+      @return get(fontSizes, $key);
+    }
+  }
+}
+
+// @mixin fs($args...) {
+//   @if (length($args) > 0) {
+//     @debug $args;
+//     @each $min-width-query, $fs in $args {
+//       @if ($min-width-query == '') {
+//         // font-size: $fs;
+//         @debug $fs;
+//       } @else {
+//         @include responsive.mqMin(get(breakpoints, #{$min-width-query})) {
+//           // font-size: $fs;
+//           @debug $fs;
+//         }
+//       }
+//     }
+//   } @else {
+//     @warn "fs mixin requires a list of arguements: ($min-width-query, $fs)";
+//   }
+// }
