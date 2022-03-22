@@ -1,0 +1,13 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use './func' as f;
+@use '../../../../../scss/sin.config' as *;
+
+// help function will print a map, by default it prints the whole configuration
+
+@function help($help-map: $configuration) {
+  $help-result: '';
+
+  @return 'nada';
+}
