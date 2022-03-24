@@ -2,7 +2,7 @@
 @use 'sass:map';
 @use 'sass:string';
 
-@function set-config($new-map, $original-map: $sininister-default-configuration, $debug: false) {
+@function set-config($new-map, $original-map: $sininister-default-configuration) {
   $processing-map: ();
   $return-map: ();
 
