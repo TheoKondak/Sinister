@@ -1,0 +1,16 @@
+@use './get-func' as *;
+
+@function contains($list, $val) {
+  $isTrue: false;
+  @each $key, $value in $list {
+    @if $key == $val or $value == $val {
+      $isTrue: true;
+    }
+  }
+
+  @if $isTrue != true {
+    @warn string.unquote('Invalid $val provided in contains function:') #{$val};
+  }
+
+  @return $isTrue;
+}
