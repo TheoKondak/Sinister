@@ -336,6 +336,42 @@ If `help()` is called without any parameter, it will display the whole map (by d
 
 ### Example
 
+```
+@debug help(colors);
+@debug hlp(colors);
+
+@debug hlp(breakpoints);
+```
+
+## @function type()
+
+The `type()` function is an advanced type function. The advantage of this function is that it can check multiple data types at once. So if you want to check if a variable is `string` or `number`, or `bool`, now you can do it in one line!
+
+### Syntax
+
+```
+
+@debug type($data, $data-types);
+
+```
+
+> By having 'datatypes' as a single arguement you can get printed a list of SASS data types!
+
+### Example
+
+```
+$justAVar: 'this is a string variable';
+
+@if type($justAVar, (null, number, map, bool)){
+  // Do something
+}@else if type($justAVar, string){
+  // Do something else
+}
+
+@debug type(datatypes); // Will return a list of SASS Data types
+
+```
+
 # Mixins
 
 <br>

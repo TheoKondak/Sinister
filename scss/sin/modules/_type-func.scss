@@ -1,0 +1,29 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sin.config' as *;
+@use './get-func' as *;
+
+@function type($data: null, $data-types: ()) {
+  $isTrue: false;
+  $data-types: ('null', bool, string, color, number, list, map);
+
+  @if $data == 'datatypes' {
+    @debug 'List of SASS data types:';
+    @each $data-type in $data-types {
+      @debug '- #{$data-type}';
+    }
+    @return 'End of data types';
+  } @else {
+    @if length($data-types) >= 1 {
+      @each $data-type in $data-types {
+        @if type-of($data) == $data-type {
+          $isTrue: true;
+        }
+      }
+    } @else {
+      @warn 'type() called without arguements.';
+    }
+    @return $isTrue;
+  }
+}
