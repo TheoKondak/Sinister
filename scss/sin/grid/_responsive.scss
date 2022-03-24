@@ -1,6 +1,6 @@
 @use '../../../../../scss/sin.config' as *;
 @use './../modules/get-func' as *;
-@use './../modules/func' as *;
+@use './../modules/contains-func' as *;
 @use './../modules/strip-unit-func' as *;
 @use './../modules/too-large-min-width-func' as *;
 
@@ -33,7 +33,7 @@
         }
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'string' {
-      @if list-contains(get(breakpoints), $min) and list-contains(get(breakpoints), $max) {
+      @if contains(get(breakpoints), $min) and contains(get(breakpoints), $max) {
         @if not too-large-min-width(get(breakpoints, $min), get(breakpoints, $max)) {
           @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
             @content;
@@ -43,7 +43,7 @@
         @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
       }
     } @else if type-of($min) == 'string' and type-of($max) == 'number' {
-      @if list-contains(get(breakpoints), $min) {
+      @if contains(get(breakpoints), $min) {
         @if not too-large-min-width(get(breakpoints, $min), $max) {
           @if unitless($max) {
             @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
@@ -59,7 +59,7 @@
         @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
       }
     } @else if type-of($min) == 'number' and type-of($max) == 'string' {
-      @if list-contains(get(breakpoints), $max) {
+      @if contains(get(breakpoints), $max) {
         @if not too-large-min-width($min, get(breakpoints, $max)) {
           @if unitless($min) {
             @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
@@ -92,7 +92,7 @@
       }
     }
   } @else if type-of($min) == 'string' {
-    @if list-contains(get(breakpoints), $min) {
+    @if contains(get(breakpoints), $min) {
       @media (min-width: #{get(breakpoints, $min)}) {
         @content;
       }
@@ -114,7 +114,7 @@
       }
     }
   } @else if type-of($max) == 'string' {
-    @if list-contains(get(breakpoints), $max) {
+    @if contains(get(breakpoints), $max) {
       @media (max-width: get(breakpoints, $max)) {
         @content;
       }
