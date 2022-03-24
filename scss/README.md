@@ -146,19 +146,19 @@ color: color(primary);
 
 # More Functions
 
-## The `sinConfig()` function
+## `@function help()`
 
-This function will make a bulk print of the `_sinConfig.scss` settings and options to the terminal.
+This function will make a bulk print of the `_help-func.scss` settings and options to the terminal.
 
 ### Syntax
 
 ```
-@debug sinconfig();
+@debug help();
 ```
 
 Note that the `()` are required after the function call.
 
-This will print a list of settings available to the `_sinConfig.scss`. It will print just first level childs otherwise it would be chaotic.
+This will print a list of settings available to the `_help-func.scss`. It will print just first level childs otherwise it would be chaotic.
 
 The data will have this format:
 
@@ -180,6 +180,161 @@ option-key option-value
 
 -----
 ```
+
+## `@function set-config()`
+
+Since version 0.6.5, the configuration of sinister has changed. These are breaking changes. What has changed, is that sinister configuration file is inside sinister engine now, with some default values for some fields like breakpoints etc.
+
+The `set-config()` function will let you update the configuration of sinister at will. You can add more colors, font-sizes, breakpoints etc, using the `set-config()` function.
+
+### Setup
+
+The first step to setup a new configuration file for a project, is similar to setting up Webpack, Babel, PostCSS. It requires a config file.
+
+- The config file must sit inside the `scss` folder, where `_sin.scss` is.
+- The name of the file must be `_sin.config.scss`.
+- Import the `set-config()` function by using: `@use '../node_modules/@get-sinister/sass/sin/modules/set-config-func' as *;`
+- The file must have an scss variable called `$configuration`.
+
+> Keep in min that you cannot add new keys to `$configuration`, you can only update existing keys.
+
+After setting up the above, you will be able to start using the set config function.
+
+### Syntax
+
+```
+$configuration: set-config(
+  $new-map,
+  $original-map,
+)
+
+```
+
+<br>
+
+- The `$new-map` is the map the you have to create. You can do that in a couple of ways.
+
+The first way is to create a new variable, and set a map there.
+
+```
+$new-config: (
+  (
+    colors: (
+      new-color-1: #111,
+      new-color-2: #222,
+    ),
+    breakpoints: (
+      new-breakpoint-1: 1px,
+      new-breakpoint-2: 2px,
+    ),
+  )
+);
+
+$configuration: set-config($new-config);
+```
+
+The second method is to simply create the map while calling the `set-config()` function.
+
+```
+$new-config: set-config(
+(
+  colors:(
+    new-color-1: #111,
+    new-color-2: #222,
+  ),
+  breakpoints: (
+    new-breakpoint-1: 1px,
+    new-breakpoint-2: 2px,
+  )
+),
+
+)
+```
+
+In both cases you will end up with a `$configuration` map that contains the values set. So the final result will be:
+
+```
+$configuration: (
+   colors:(
+    new-color-1: #111,
+    new-color-2: #222,
+  ),
+  breakpoints: (
+    new-breakpoint-1: 1px,
+    new-breakpoint-2: 2px,
+  )
+)
+```
+
+<br>
+
+- The `$original-map` is optional. By default it is reffering the default sinister configuration file. You can set it up though so it inherits multiple configuration maps.
+
+So let's say besides our default `$configuration` map, we want to have another setup map that for example is specific to a part of a project. You can chain maps and add them together. `set-config()` will return a merged final version.
+
+```
+$project-1: set-config(
+  (
+    colors: (
+      color-1: #111,
+    ),
+    breakpoints: (
+      new-breakpoint: 1px,
+    ),
+  ),
+);
+
+$project-2: set-config(
+  (
+    colors: (
+      color-4: #444,
+    ),
+    breakpoints: (
+      and-another-breakpoint: 3px
+    ),
+    fontSizes: (
+      new-font-size: 3.4rem
+    )
+  ),
+  $project-1,
+);
+
+$configuration: set-config(
+  (
+    colors: (
+      color-5: #555,
+      color-6: #666,
+    ),
+  ),
+  $project-2
+);
+
+```
+
+So we begin by defining `$project-1`. Then we define some new values in `$project-2` and pass we pass `$project-1` data into it, and lastly, we add the compined data to `$configuration`. So now the data of `$project-1`, `$project-2` and `$configuration` are combined and are available to use in the project.
+
+## @function help()
+
+The help function is a supportive function. It will print the data of `$configuration` or any other map available.
+
+### Syntax
+
+```
+@debug help($config-sub-key, $config-map);
+```
+
+or
+
+```
+@debug hlp($config-sub-key, $config-map);
+```
+
+- `$config-sub-key`: Must be a key belonging to the reference map.
+- `$config-map`: By default this is the `$configuration` map. Nevertheless, you can call help for other custom maps by assigning a new map.
+
+If `help()` is called without any parameter, it will display the whole map (by default the `$configuration` map).
+
+### Example
 
 # Mixins
 

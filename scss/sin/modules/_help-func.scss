@@ -1,0 +1,63 @@
+@use '../../../../../scss/sin.config' as *;
+@use './get-func' as *;
+@use './getMap-func' as *;
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+
+@function help($config-sub-key: null, $config-map: $configuration) {
+  // Check if $config-map is a map and it's not empty
+  @if type-of($config-map) == map and length($config-map) >= 1 {
+    @if $config-sub-key == null {
+      @debug 'Printing sinister configuration:';
+      @debug '=====';
+      @each $config-key, $config-val in $config-map {
+        @if $config-key == 'font-family' or $config-key == 'bootstrap' {
+          @each $font-family-property in get($config-key) {
+            @each $property in $font-family-property {
+              @debug $property;
+            }
+            @debug ' ';
+          }
+        } @else {
+          @if type-of($config-val) == map {
+            @debug '-=#{$config-key}=-';
+            @each $key, $value in $config-val {
+              @debug '- #{$key}: #{$value}';
+            }
+            @debug ' ';
+          } @else if $config-val == string or $config-val == number or $config-val == null or $config-val == bool {
+            @debug '#{$config-key}: #{$key}';
+          }
+        }
+      }
+
+      @debug '=====';
+    } @else if type-of($config-sub-key) == string and length($config-sub-key) > 0 {
+      @if map.has-key($config-map, $config-sub-key) {
+        $type-of-config-sub-map: type-of(getMap($config-map, $config-sub-key));
+
+        @debug 'Printing sinister configuration for #{$config-sub-key}';
+        @debug '=====';
+        @if $type-of-config-sub-map == map {
+          @debug '-=#{$config-sub-key}=-';
+          @each $key, $value in getMap($config-map, $config-sub-key) {
+            @debug '- #{$key}: #{$value}';
+          }
+        } @else if $type-of-config-sub-map == string or $type-of-config-sub-map == number or $type-of-config-sub-map == null or $type-of-config-sub-map == bool {
+          @debug '-#{$config-sub-key}: #{getMap($config-map, $config-sub-key)}';
+        }
+      } @else {
+        @warn 'help() was called with invalid arguement. ${$config-sub-key} is not part of the configuration';
+      }
+    }
+  } @else {
+    @error 'help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of #{length($config-map)}.';
+  }
+
+  @return 'End of help()';
+}
+
+@function hlp($config-sub-key: null, $config-map: $configuration) {
+  @return help($config-sub-key, $config-map);
+}
