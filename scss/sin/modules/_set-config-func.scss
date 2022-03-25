@@ -1,28 +1,35 @@
 @use './../sininister-default-configuration' as *;
 @use 'sass:map';
 @use 'sass:string';
+@use 'sass:list';
+@use './type-func' as *;
 
 @function set-config($new-map, $original-map: $sininister-default-configuration) {
   $processing-map: ();
-  $return-map: ();
+  $return-map: $original-map;
 
-  @if (type-of($new-map) == 'map') {
+  @if (type($new-map, (map))) {
     @each $original-key, $original-value in $original-map {
       @each $new-key, $new-value in $new-map {
         @if $original-key == $new-key {
           @if (type-of($new-value) == 'map') {
+            // Update the temporary map
             $processing-map: map.set($processing-map, $original-key, map.merge($original-value, $new-value));
+            // Pass the data to the original map
             $return-map: map.merge($original-map, map.set($processing-map, $original-key, map.merge($original-value, $new-value)));
-          } @else if (type-of($new-value) == 'string') {
-            @debug 'its a string';
           } @else if (type-of($new-value) == 'list') {
-            @debug 'Its a list';
-          } @else if (type-of($new-value) == 'bool') {
-            @debug 'Its a bool';
+            $processing-map: map.set($processing-map, $original-key, list.append($original-value, $new-value));
+            $return-map: map.merge($original-map, map.set($processing-map, $original-key, list.append($original-value, $new-value)));
+          } @else if (type-of($new-value) == 'string') or (type-of($new-value) == 'bool') or (type-of($new-value) == 'number') or (type-of($new-value) == 'color') or (type-of($new-value) == 'null') {
+            $processing-map: map.set($processing-map, $original-key, $new-value);
+            $return-map: map.merge($original-map, map.set($processing-map, $original-key, $new-value));
           }
         }
       }
     }
+
+    @return $return-map;
+  } @else if type($new-map, (list)) {
     @return $return-map;
   } @else {
     @error 'setConfig function was called with invalid input. Was expecting a map but instead received: #{type-of($new-map)}';
