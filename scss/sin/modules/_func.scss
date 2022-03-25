@@ -6,10 +6,10 @@
 // Contains function returns true or false. Checks if a value is present in a list inside sinConfig
 
 // Return value of a map
-@function return-map-key($map, $val) {
-  @each $key, $value in $map {
-    @if $val == $value {
-      @return $key;
-    }
-  }
-}
+// @function contains($map, $val) {
+//   @each $key, $value in $map {
+//     @if $val == $value {
+//       @return $key;
+//     }
+//   }
+// }
