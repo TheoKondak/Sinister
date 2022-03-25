@@ -5,29 +5,47 @@
 @use 'sass:map';
 @use 'sass:list';
 
+// @debug $configuration;
+
 @function help($config-sub-key: null, $config-map: $configuration) {
   // Check if $config-map is a map and it's not empty
   @if type-of($config-map) == map and length($config-map) >= 1 {
+    // Check if a key is passed, if not print the whole map.
     @if $config-sub-key == null {
       @debug 'Printing sinister configuration:';
       @debug '=====';
+
+      // For every value pair in the map
       @each $config-key, $config-val in $config-map {
+        // Some exceptions
         @if $config-key == 'font-family' or $config-key == 'bootstrap' {
           @each $font-family-property in get($config-key) {
             @each $property in $font-family-property {
               @debug $property;
             }
-            @debug ' ';
+            @debug '';
           }
         } @else {
-          @if type-of($config-val) == map {
+          @if (type-of($config-val) == map) {
             @debug '-=#{$config-key}=-';
             @each $key, $value in $config-val {
-              @debug '- #{$key}: #{$value}';
+              @debug '- #{$key}: "#{$value}"';
             }
-            @debug ' ';
-          } @else if $config-val == string or $config-val == number or $config-val == null or $config-val == bool {
-            @debug '#{$config-key}: #{$key}';
+            @debug '';
+          } @else if (type-of($config-val) == list) {
+            @debug '-=#{$config-key}=-';
+            @each $key, $value in $config-val {
+              @debug '- #{$key}';
+            }
+            @debug '';
+          } @else if (type-of($config-val) == string) or (type-of($config-val) == number) or (type-of($config-val) == bool) or (type-of($config-val) == color) {
+            @debug '#{$config-key}: "#{$config-val}"';
+            @debug '';
+          } @else if (type-of($config-val) == null) {
+            @debug '#{$config-key}: "null"';
+            @debug '';
+          } @else {
+            @warn 'Unknown data type in help "#{$config-key}". Recieved: #{type-of($config-val)}';
           }
         }
       }
