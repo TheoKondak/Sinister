@@ -55,7 +55,7 @@ $spacingDirections: (
 
 // Create Classes
 
-@if get(compileClasses) {
+@if get(compile-classes) {
   @each $spacingKey, $spacingVal in get(spacing) {
     @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
       @if type-of($spacingVal) == 'number' {
@@ -285,7 +285,7 @@ $key: '';
                 }
               } @else {
                 @each $currentDirection in map-get($spacingDirections, $direction) {
-                  #{return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  #{contains($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
                 }
               }
             }
@@ -322,7 +322,7 @@ $key: '';
               }
             } @else {
               @each $currentDirection in map-get($spacingDirections, $direction) {
-                #{return-map-key($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                #{contains($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
               }
             }
           }
