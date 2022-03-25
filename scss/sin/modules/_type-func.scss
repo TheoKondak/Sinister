@@ -1,16 +1,15 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
-@use '../../../../../scss/sin.config' as *;
-@use './get-func' as *;
 
 @function type($data: null, $data-types: ()) {
   $isTrue: false;
-  $data-types: ('null', bool, string, color, number, list, map);
+  $data-types-list: ('null', bool, string, color, number, list, map);
 
+  // If the input is datatypes, it will print all data types available in SASS (from the map above)
   @if $data == 'datatypes' {
     @debug 'List of SASS data types:';
-    @each $data-type in $data-types {
+    @each $data-type in $data-types-list {
       @debug '- #{$data-type}';
     }
     @return 'End of data types';
