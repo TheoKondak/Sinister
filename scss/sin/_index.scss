@@ -3,6 +3,7 @@
 
 // New appraoch for npm
 @forward '../../../../scss/sin.config';
+@forward './misc/warning-message-start';
 @forward 'modules';
 @forward 'misc';
 @forward 'grid';
