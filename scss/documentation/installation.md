@@ -2,7 +2,7 @@
 
 <br>
 
-To install sinister, [download node](https://nodejs.dev/download/).
+To install sinister, [download node](https://nodejs.org/en/).
 
 Then open a terminal inside the project and type:
 
