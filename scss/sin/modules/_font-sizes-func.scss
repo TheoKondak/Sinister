@@ -14,7 +14,7 @@
     @each $fs-id, $fs in get(fontSizes) {
       @debug ' #{$fs-id}: #{$fs}';
     }
-    @return '---';
+    @return null;
   } @else {
     // Check if $key is part of the font sizes map
     @if not map.has-key(get(fontSizes), $key) {
