@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use '../../../../../scss/sin.config' as *;
 @use '../modules' as *;
+@use '../grid/responsive' as *;
 
 //+----------------------+
 // Importing Fonts
@@ -64,41 +65,6 @@ $font-families: get(font-family);
 }
 .uppercase {
   @include uppercase;
-}
-
-@mixin txtXs($scale: 1) {
-  font-size: calc(#{get(fontSizes, xs)} * #{$scale});
-}
-.txtXs {
-  @include txtXs;
-}
-
-@mixin txtSm($scale: 1) {
-  font-size: calc(#{get(fontSizes, sm)} * #{$scale});
-}
-.txtSm {
-  @include txtSm;
-}
-
-@mixin txtMd($scale: 1) {
-  font-size: calc(#{get(fontSizes, md)} * #{$scale});
-}
-.txtMd {
-  @include txtMd;
-}
-
-@mixin txtXl($scale: 1) {
-  font-size: calc(#{get(fontSizes, xl)} * #{$scale});
-}
-.txtXl {
-  @include txtXl;
-}
-
-@mixin txtXxl($scale: 1) {
-  font-size: calc(#{get(fontSizes, xxl)} * #{$scale});
-}
-.txtXxl {
-  @include txtXxl;
 }
 
 //+----------------------+
@@ -233,5 +199,33 @@ body {
 
   section {
     font-size: get(defaultFontSizes, section);
+  }
+}
+
+// Font Size Mixin
+@mixin font-size($fs: 1rem, $scale: 1) {
+  font-size: font-size($fs);
+}
+
+// Generate Font classes
+
+// If enabled
+@if get(compile-font-classes) {
+  // For each font size in font sizes in sinconfig
+  @each $fs-key, $fs-value in get(fontSizes) {
+    // For each breakpoint
+    @each $breakpoint-key, $breakpoint-value in get(breakpoints) {
+      @include mqMin($breakpoint-value) {
+        .#{$breakpoint-key}-min-#{$fs-key} {
+          font-size: $fs-value;
+        }
+      }
+
+      @include mqMax($breakpoint-value) {
+        .#{$breakpoint-key}-max-#{$fs-key} {
+          font-size: $fs-value;
+        }
+      }
+    }
   }
 }
