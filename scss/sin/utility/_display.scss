@@ -17,13 +17,13 @@
 
       @each $breakpoint in map-get($configuration, breakpoints) {
         // $breakpoint-value: map-values($breakpoint);
-        .min-#{nth($breakpoint, 1)}-#{$displayValue} {
+        .#{nth($breakpoint, 1)}-min-#{$displayValue} {
           @include media-q.mqMin(nth($breakpoint, 2)) {
             display: $displayValue;
           }
         }
 
-        .max-#{nth($breakpoint, 1)}-#{$displayValue} {
+        .#{nth($breakpoint, 1)}-max-#{$displayValue} {
           @include media-q.mqMax(nth($breakpoint, 2)) {
             display: $displayValue;
           }
