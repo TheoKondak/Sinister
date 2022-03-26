@@ -55,7 +55,7 @@ $spacingDirections: (
 
 // Create Classes
 
-@if get(compile-classes) {
+@if get(compile-spacing-classes) {
   @each $spacingKey, $spacingVal in get(spacing) {
     @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
       @if type-of($spacingVal) == 'number' {
