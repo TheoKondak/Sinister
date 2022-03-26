@@ -1,3 +1,7 @@
+# Functions
+
+<br>
+
 ## Accessing the config data
 
 ## `@function get()`
