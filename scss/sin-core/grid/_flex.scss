@@ -1,0 +1,278 @@
+@use '../../../../../scss/sin.config' as *;
+
+$flex-args: (row, row-reverse, column, column-reverse, nowrap, wrap, wrap-reverse, flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left);
+
+//+----------------------+
+// FLEX PROPERTIES
+//+----------------------+
+
+@mixin flex {
+  display: flex !important;
+}
+
+.flex {
+  @include flex;
+}
+
+.justifyCenter {
+  @include flex;
+  justify-content: center;
+}
+
+@mixin justifyCenter {
+  @include flex;
+  justify-content: center;
+}
+
+.justifyStart {
+  @include flex;
+  justify-content: flex-start;
+}
+
+@mixin justifyStart {
+  @include flex;
+  justify-content: flex-start;
+}
+
+.justifyEnd {
+  @include flex;
+  justify-content: flex-end;
+}
+
+@mixin justifyEnd {
+  @include flex;
+  justify-content: flex-end;
+}
+
+.justifySpaceBetween {
+  @include flex;
+  justify-content: space-between;
+}
+
+@mixin justifySpaceBetween {
+  @include flex;
+  justify-content: space-between;
+}
+
+.justifySpaceEvenly {
+  @include flex;
+  justify-content: space-evenly;
+}
+
+@mixin justifySpaceEvenly {
+  @include flex;
+  justify-content: space-evenly;
+}
+
+.justifySpaceAround {
+  @include flex;
+  justify-content: space-around;
+}
+
+@mixin justifySpaceAround {
+  @include flex;
+  justify-content: space-around;
+}
+
+.wrap {
+  @include flex;
+  flex-wrap: wrap;
+}
+
+@mixin wrap {
+  @include flex;
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  @include flex;
+  flex-wrap: nowrap;
+}
+
+@mixin nowrap {
+  @include flex;
+  flex-wrap: nowrap;
+}
+
+.alignStart {
+  @include flex;
+  align-items: flex-start;
+}
+
+@mixin alignStart {
+  @include flex;
+  align-items: flex-start;
+}
+
+.alignEnd {
+  @include flex;
+  align-items: flex-end;
+}
+
+@mixin alignEnd {
+  @include flex;
+  align-items: flex-end;
+}
+
+.alignBaseline {
+  @include flex;
+  align-items: baseline;
+}
+
+@mixin alignBaseline {
+  @include flex;
+  align-items: baseline;
+}
+
+.alignCenter {
+  @include flex;
+  align-items: center;
+}
+
+@mixin alignCenter {
+  @include flex;
+  align-items: center;
+}
+
+.alignStretch {
+  @include flex;
+  align-items: stretch;
+}
+
+@mixin alignStretch {
+  @include flex;
+  align-items: stretch;
+}
+
+.contentStart {
+  @include flex;
+  align-content: flex-start;
+}
+
+@mixin contentStart {
+  @include flex;
+  align-content: flex-start;
+}
+
+.contentEnd {
+  @include flex;
+  align-content: flex-end;
+}
+
+@mixin contentEnd {
+  @include flex;
+  align-content: flex-end;
+}
+
+.contentCenter {
+  @include flex;
+  align-content: center;
+}
+
+@mixin contentCenter {
+  @include flex;
+  align-content: center;
+}
+
+.contentBetween {
+  @include flex;
+  align-content: space-between;
+}
+
+@mixin contentBetween {
+  @include flex;
+  align-content: space-between;
+}
+
+.contentAround {
+  @include flex;
+  align-content: space-around;
+}
+
+@mixin contentAround {
+  @include flex;
+  align-content: space-around;
+}
+
+.contentStretch {
+  @include flex;
+  align-content: stretch;
+}
+
+@mixin contentStretch {
+  @include flex;
+  align-content: stretch;
+}
+
+.flexColumn {
+  @include flex;
+  flex-direction: column;
+}
+
+@mixin flexColumn {
+  @include flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  @include flex;
+  flex-direction: row;
+}
+
+@mixin flexRow {
+  @include flex;
+  flex-direction: row;
+}
+
+.flexGrow {
+  @include flex;
+  flex-grow: 1;
+}
+
+@mixin flexGrow {
+  @include flex;
+  flex-grow: 1;
+}
+
+.noGrow {
+  @include flex;
+  flex-grow: 0;
+}
+
+@mixin noGrow {
+  @include flex;
+  flex-grow: 0;
+}
+
+.flexShrink {
+  @include flex;
+  flex-shrink: 1;
+}
+
+@mixin flexShrink {
+  @include flex;
+  flex-shrink: 1;
+}
+
+.noShrink {
+  @include flex;
+  flex-shrink: 0;
+}
+
+@mixin noShrink {
+  @include flex;
+  flex-shrink: 0;
+}
+
+@mixin centerContent {
+  @include justifyCenter;
+  @include alignCenter;
+}
+
+.centerContent {
+  @include centerContent;
+}
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+// Extra
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
