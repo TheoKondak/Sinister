@@ -1,6 +1,11 @@
 @use '../../../../../scss/sin.config' as *;
 @use '../modules' as *;
 
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
 // Goal is to reduce CLS issues with images.
 // Requires a parent element to act as container.
 // Will give the container height (via padding) equal to the height of the image.
@@ -14,15 +19,28 @@
 //Source: https://web.dev/optimize-cls/
 //Source: https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
 
-@mixin imgWrapper($imgHeight: get(imgBoxDefaultHeight), $imgWidth: get(imgBoxDefaultWidth), $preloadBackground: get(imgDefaultPreloadBackground)) {
-  $aspectRatio: calc((#{$imgHeight} / #{$imgWidth}) * 100%);
+/// Image Wrapper , explanation above, and example bellow
+///
+/// @param  {number}  $image-height - The height of the image
+/// @param  {number}  $image-width - The width of the image
+/// @param  {color | string}  $preload-background - Takes a css background property. Accepts colors and urls.
+///
+
+@mixin image-wrapper($image-height: get(image-wrapper, img-box-default-height), $image-width: get(image-wrapper, img-box-default-width), $preload-background: get(image-wrapper, img-default-preload-background)) {
+  $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);
 
   width: 100%;
   height: 0;
   padding-bottom: $aspectRatio;
   // 👆 image height / width * 100%
   position: relative;
-  background: $preloadBackground;
+
+  @if type-of($preload-background) == 'string' {
+    background: url('#{$preload-background}');
+  } @else if type-of($preload-background) == 'color' {
+    background: $preload-background;
+  }
+
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -43,6 +61,6 @@
 // First parameter (obligatory) is image height, then image width (obligatory) and finaly a background image (optional), color or gradient.
 // That's all. It should work. As usual needs testing.
 
-.imgWrapper {
-  @include imgWrapper();
+.image-wrapper {
+  @include image-wrapper();
 }
