@@ -1,10 +1,17 @@
 @use '../../../../../scss/sin.config' as *;
 @use './../grid/_responsive.scss' as *;
 
-// Syntax
-// Min width
-// Template Columns
-// Template Rows
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Replace `$search` with `$replace` in `$string`.
+/// @param  {String}  $min-width-query - Initial string
+/// @param  {list}    $grid-template-columns - Substring to replace
+/// @param  {list}    $grid-template-rows ('') - New value
+/// @return {String}  Updated string
+///
 @mixin grid-template($args...) {
   @if (length($args) > 0) {
     @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {

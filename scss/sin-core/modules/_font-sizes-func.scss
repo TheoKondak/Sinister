@@ -5,7 +5,11 @@
 @use './../grid/_responsive.scss' as responsive;
 @use './get-func' as *;
 
-// Function to easily get font sizes
+/// Function to easily get font sizes
+///
+/// @param  {type}  $variable - A key from `colors` map that exists in `_sin.config.scss`.
+/// @return {type}  description
+///
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
@@ -35,22 +39,3 @@
 @function font-size($key: null) {
   @return fs($key);
 }
-
-// @mixin fs($args...) {
-//   @if (length($args) > 0) {
-//     @debug $args;
-//     @each $min-width-query, $fs in $args {
-//       @if ($min-width-query == '') {
-//         // font-size: $fs;
-//         @debug $fs;
-//       } @else {
-//         @include responsive.mqMin(get(breakpoints, #{$min-width-query})) {
-//           // font-size: $fs;
-//           @debug $fs;
-//         }
-//       }
-//     }
-//   } @else {
-//     @warn "fs mixin requires a list of arguements: ($min-width-query, $fs)";
-//   }
-// }

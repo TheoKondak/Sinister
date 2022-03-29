@@ -4,7 +4,10 @@
 @use '../../../../../scss/sin.config' as *;
 @use './getMap-func' as *;
 
-// Box Shadow Source https://getcssscan.com/css-box-shadow-examples
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///  Box Shadow Source https://getcssscan.com/css-box-shadow-examples
 
 $boxShadowList: (
   1: (
@@ -165,7 +168,10 @@ $boxShadowList: (
   ),
 );
 
-// Function to easily get colors
+/// Get the box shadow from the $boxShadowList in order to feed it into the mixin
+/// @param  {number}  $boxshadowId - The ID of the box shadow from the $boxShadowList
+/// @return {list} - Returns a list of box shadow css properties to the mixin
+///
 @function box-shadow($boxshadowId) {
   @if type-of($boxshadowId) == 'number' and $boxshadowId >= 0 and $boxshadowId < list.length($boxShadowList) {
     @return getMap($boxShadowList, $boxshadowId);
@@ -175,6 +181,9 @@ $boxShadowList: (
   }
 }
 
+/// Function/Mixin Name /  Short Description
+/// @param  {type}  $boxshadowId - The ID of the box shadow from the $boxShadowList
+///
 @mixin boxshadow($boxshadowId) {
   @if type-of($boxshadowId) == 'number' {
     box-shadow: box-shadow($boxshadowId);

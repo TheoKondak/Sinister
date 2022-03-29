@@ -4,10 +4,21 @@
 @use '../../../../../scss/sin.config' as *;
 @use './get-func' as *;
 
-// Function to easily get colors
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Function/Mixin Name /  Short Description
+///
+/// @param  {string}  $key - A key from `colors` map that exists in `_sin.config.scss`.
+/// @return {color}  - Returns a CSS color
+///
 @function color($key: null) {
   // Check if input is null.
+
   @if (type-of($key) == 'null') {
+    // Return a list of available colors
     @debug 'Color function received no input.';
     @debug 'Available colors: ';
     @each $colorId, $color in get(colors) {

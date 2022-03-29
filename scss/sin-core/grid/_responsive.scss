@@ -4,6 +4,15 @@
 @use './../modules/strip-unit-func' as *;
 @use './../modules/too-large-min-width-func' as *;
 
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Generic Media Query Mixin
+/// @param  {number}  $min - Breakpoint from which the query will kick in
+/// @param  {number}  $max - Breakpoint will work up to $max
+///
 @mixin mq($min: 120px, $max: 4096px) {
   @if $min and $max {
     @if type-of($min) == 'number' and type-of($max) == 'number' {
@@ -80,6 +89,9 @@
   }
 }
 
+/// Minimum Media Query
+/// @param  {number}  $min - Breakpoint from which the query will kick in
+///
 @mixin mqMin($min: 120px) {
   @if type-of($min) == 'number' {
     @if unitless($min) {
@@ -102,6 +114,9 @@
   }
 }
 
+/// Media Query Max
+/// @param  {number}  $max - Breakpoint will work up to $max
+///
 @mixin mqMax($max: 4096px) {
   @if type-of($max) == 'number' {
     @if unitless($max) {
