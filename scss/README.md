@@ -49,6 +49,11 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 - Place untested mixins and functions in experimental
 - Do more testing to basic functions like `set-config()`, `type()` etc
 - Update flex approach. Remove obsolete classes, and find a better way to utilize grid via mixins
+- Add flex mixin, to create responsive grid.
+  - Logic similar to grid. ex `@include flex(('', properties/values)('xs', properties/values))`
+- Add function that creates classes from maps of data `breakpoint-property-value`, ex `xs-display-none`.
+  - Add a map of properties and a bull value to enable/disable some class
+  - Add documentation about class generation options
 
 ##
 
