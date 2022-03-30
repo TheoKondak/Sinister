@@ -27,4 +27,11 @@
 }
 
 // Prefix is available as a global variable
+$prefix-url: prefix-url();
 $prefix: prefix-url();
+
+/// @example
+// background-image: url('#{prefix-url}/theimage.jpg');
+// background-image: url('#{prefix()}/theimage.jpg');
+// background-image: url('#{$prefix}/theimage.jpg');
+// Will return either development url or production url depending on configuration
