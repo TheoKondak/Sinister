@@ -5,7 +5,12 @@
 @use 'sass:map';
 @use 'sass:list';
 
-/// Function/Mixin Name /  Short Description
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Prefix URL Function
 ///
 /// @param  {string}  $image-url - The URL that prefixes an image while in development
 /// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.

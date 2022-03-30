@@ -2,9 +2,20 @@
 @use 'sass:map';
 @use 'sass:list';
 
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Type Check Function
+///
+/// @param  {*}  $data - The variable you want it's type checked
+/// @param  {list}  $data-types - A list of data types.
+/// @return {type}  -  If the $data belong to any type from $data-types, it returns truth
+
 @function type($data: null, $data-types: ()) {
   $isTrue: false;
-  $data-types-list: ('null', bool, string, color, number, list, map);
+  $data-types-list: ('null', bool, string, color, number, list, arglist, map);
 
   // If the input is datatypes, it will print all data types available in SASS (from the map above)
   @if $data == 'datatypes' {

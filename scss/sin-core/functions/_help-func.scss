@@ -5,7 +5,17 @@
 @use 'sass:map';
 @use 'sass:list';
 
-// @debug $configuration;
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Help function
+///
+/// @param  {string}  $config-sub-key - A key that you want it's values returned
+/// @param  {map} $config-map - An optional parameter to set a different map instead of configuration
+/// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only.
+///
 
 @function help($config-sub-key: null, $config-map: $configuration) {
   // Check if $config-map is a map and it's not empty
