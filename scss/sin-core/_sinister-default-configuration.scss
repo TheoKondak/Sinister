@@ -56,8 +56,8 @@ $sinister-default-configuration: (
         ),
     ),
   // You can add new breakpoints, or edit the ones bellow, but do not delete any of the default breakpoints
-  responsiveFonts: false,
-  responsiveFontSizes: (
+  
+  responsive-font-sizes: (
     generic: 0.8vw,
     xxl: 1vw,
     xl: 1vw,
@@ -65,14 +65,14 @@ $sinister-default-configuration: (
     sm: 4.3vw,
     xs: 4.6vw,
   ),
-  fontSizes: (
+  font-sizes: (
     xxl: 1.6rem,
     xl: 1.4rem,
     md: 1rem,
     sm: 0.9rem,
     xs: 0.7rem,
   ),
-  defaultFontSizes: (
+  default-font-sizes: (
     h1: null,
     h2: null,
     h3: null,
@@ -96,7 +96,7 @@ $sinister-default-configuration: (
     div: null,
     section: null,
   ),
-  disListStyle: false,
+  
   spacing: (
     0: 0rem,
     1: 1.5rem,
@@ -107,10 +107,20 @@ $sinister-default-configuration: (
     6: 5rem,
     xxl: 12rem,
   ),
-  url: '../../../..',
-  imgBoxDefaultHeight: 80,
-  imgBoxDefaultWidth: 100,
-  imgDefaultPreloadBackground: none,
+global: (
+  production: true,
+  disable-list-style: false,
+  responsive-fonts: false,
+  development-url: '../../../..',
+  production-url: 'www.google.com',
+),
+
+image-wrapper: (
+  img-box-default-height: 80,
+  img-box-default-width: 100,
+  img-default-preload-background: none,
+),
+
   compile-spacing-classes: false,
   compile-display-classes: false,
   compile-font-classes: false,
