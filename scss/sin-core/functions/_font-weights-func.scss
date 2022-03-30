@@ -1,0 +1,46 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../scss/sin.config' as *;
+@use './../grid/_responsive.scss' as responsive;
+@use './get-func' as *;
+
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Function to easily access font weights
+///
+/// @param  {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
+/// @return {number}  - Returns the font weight value
+///
+@function fw($key: null) {
+  // Check if input is null.
+  @if (type-of($key) == 'null') {
+    @debug 'Font weight function received no input.';
+    @debug 'Available font weights: ';
+    @each $fs-id, $fs in get(font-weights) {
+      @debug ' #{$fs-id}: #{$fs}';
+    }
+    @return null;
+  } @else {
+    // Check if $key is part of the font weights map
+    @if not map.has-key(get(font-weights), $key) {
+      @warn 'Font weight function needs a valid input. It requires a font weight key from sinConfig. The current value is: `#{$key}`. See bellow for available font weights';
+      @debug 'Available font weights: ';
+      @each $fw-id, $fw in get(font-weights) {
+        @debug ' #{$fw-id}: #{$fw}';
+      }
+
+      @return '---';
+    } @else {
+      // Value exists so return value
+      @return get(font-weights, $key);
+    }
+  }
+}
+
+@function font-weight($key: null) {
+  @return fs($key);
+}

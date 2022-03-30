@@ -65,6 +65,26 @@ $sinister-default-configuration: (
     sm: 4.3vw,
     xs: 4.6vw,
   ),
+  font-weights: (
+    // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+    // Note Not all fonts support all font weights
+    thin-hairline: 100,
+    extra-light: 200,
+    ultra-light: 200,
+    light: 300,
+    normal: 400,
+    regular: 400,
+    medium: 500,
+    semi-bold: 600,
+    demi-bold: 600,
+    bold: 700,
+    extra-bold: 800,
+    ultra-bold: 800,
+    black: 900,
+    heavy: 900,
+    extra-black: 950,
+    ultra-black: 950,
+  ),
   font-sizes: (
     xxl: 1.6rem,
     xl: 1.4rem,
