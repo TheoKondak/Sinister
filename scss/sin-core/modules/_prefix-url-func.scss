@@ -1,0 +1,30 @@
+@use '../../../../../scss/sin.config' as *;
+@use './get-func' as *;
+@use './getMap-func' as *;
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+
+/// Function/Mixin Name /  Short Description
+///
+/// @param  {bool}  $production - If true, it means that the website is in production mode
+/// @param  {string}  $development-url - The URL that prefixes an image while in development
+/// @param  {string}  $production-url - The URL that prefixes an image while in production
+/// @return {string}  - Returns a URL depending on wheather site is on production or development mode.
+///
+
+@function prefix-url($production-url: get(global, production-url), $development-url: get(global, development-url), $production: get(global, production)) {
+  @if $production {
+    @return $production-url;
+  } @else {
+    @return $development-url;
+  }
+}
+
+// Shorter function call
+@function prefix($production-url: get(global, production-url), $development-url: get(global, development-url), $production: get(global, production)) {
+  @return prefix-url($production-url, $development-url, $production);
+}
+
+// Prefix is available as a global variable
+$prefix: prefix-url();
