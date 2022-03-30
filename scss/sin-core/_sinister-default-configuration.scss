@@ -30,7 +30,7 @@ $sinister-default-configuration: (
   bootstrap:
     (
       // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
-      color:
+      bootstrap-color:
         (
           bs-blue: #0d6efd,
           bs-indigo: #6610f2,
