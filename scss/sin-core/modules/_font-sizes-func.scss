@@ -5,33 +5,38 @@
 @use './../grid/_responsive.scss' as responsive;
 @use './get-func' as *;
 
-/// Function to easily get font sizes
 ///
-/// @param  {type}  $variable - A key from `colors` map that exists in `_sin.config.scss`.
-/// @return {type}  description
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Function to easily access font sizes
+///
+/// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
+/// @return {number}  - Returns the font size value
 ///
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
     @debug 'Font size function received no input.';
     @debug 'Available font sizes: ';
-    @each $fs-id, $fs in get(fontSizes) {
+    @each $fs-id, $fs in get(font-sizes) {
       @debug ' #{$fs-id}: #{$fs}';
     }
     @return null;
   } @else {
     // Check if $key is part of the font sizes map
-    @if not map.has-key(get(fontSizes), $key) {
+    @if not map.has-key(get(font-sizes), $key) {
       @warn 'fs function needs a valid input. It requires a font size key from sinConfig. The current value is: `#{$key}`. See bellow for available font sizes';
       @debug 'Available font sizes: ';
-      @each $fs-id, $fs in get(fontSizes) {
+      @each $fs-id, $fs in get(font-sizes) {
         @debug ' #{$fs-id}: #{$fs}';
       }
 
       @return '---';
     } @else {
       // Value exists so return value
-      @return get(fontSizes, $key);
+      @return get(font-sizes, $key);
     }
   }
 }
