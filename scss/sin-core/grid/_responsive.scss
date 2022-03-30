@@ -1,8 +1,8 @@
 @use '../../../../../scss/sin.config' as *;
-@use './../modules/get-func' as *;
-@use './../modules/contains-func' as *;
-@use './../modules/strip-unit-func' as *;
-@use './../modules/too-large-min-width-func' as *;
+@use './../functions/get-func' as *;
+@use './../functions/contains-func' as *;
+@use './../functions/strip-unit-func' as *;
+@use './../functions/too-large-min-width-func' as *;
 
 ///
 /// @author Theodoros Kondakos

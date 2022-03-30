@@ -1,6 +1,6 @@
 @use '../../../../../scss/sin.config' as *;
 @use '../grid/responsive' as media-q;
-@use '../modules/get-func' as *;
+@use '../functions/get-func' as *;
 
 @if get(compile-display-classes) {
   $display: (none, inline, inline-block, block, table, table-cell, table-row, flex, inline-flex);

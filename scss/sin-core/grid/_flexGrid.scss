@@ -1,6 +1,6 @@
 @use '../../../../../scss/sin.config' as *;
 @use 'flex' as *;
-@use '../modules' as *;
+@use '../functions' as *;
 
 @mixin flexGridSelectors($property, $value) {
   > * {
