@@ -49,10 +49,6 @@ $font-families: get(font-family);
   }
 }
 
-@mixin fontName {
-  font-family: Roboto Conndensed Regular, Arial, sans-serif; // Dont forget to add some fallback fonts
-}
-
 @mixin capitalize {
   text-transform: capitalize;
 }
@@ -70,28 +66,18 @@ $font-families: get(font-family);
 //+----------------------+
 // Responsive Font Sizes
 //+----------------------+
-@if get(responsiveFonts) {
+@if get(global, responsive-fonts) {
   :root {
-    font-size: get(fontSizes, generic);
+    font-size: get(responsive-font-sizes, generic);
 
-    @media (max-width: get(breakpoints, xxl)) {
-      font-size: get(fontSizes, xxl);
-    }
-
-    @media (max-width: get(breakpoints, xl)) {
-      font-size: get(fontSizes, xl);
-    }
-
-    @media (max-width: get(breakpoints, md)) {
-      font-size: get(fontSizes, md);
-    }
-
-    @media (max-width: get(breakpoints, sm)) {
-      font-size: get(fontSizes, sm);
-    }
-
-    @media (max-width: get(breakpoints, xs)) {
-      font-size: get(fontSizes, sm);
+    @each $responsive-font-size-key, $responsive-font-size-value in get(responsive-font-sizes) {
+      @each $breakpoint-key, $breakpoint-value in get(breakpoints) {
+        @if $breakpoint-key == $responsive-font-size-key {
+          @include mqMin($breakpoint-key) {
+            font-size: $responsive-font-size-value;
+          }
+        }
+      }
     }
   }
 }
@@ -100,41 +86,41 @@ body {
   // line-height: 1.61803398875; //Golden Ratio
 
   h1 {
-    font-size: get(defaultFontSizes, h1);
+    font-size: get(default-font-sizes, h1);
   }
 
   h2 {
-    font-size: get(defaultFontSizes, h2);
+    font-size: get(default-font-sizes, h2);
   }
 
   h3 {
-    font-size: get(defaultFontSizes, h3);
+    font-size: get(default-font-sizes, h3);
   }
 
   h4 {
-    font-size: get(defaultFontSizes, h4);
+    font-size: get(default-font-sizes, h4);
   }
 
   h5 {
-    font-size: get(defaultFontSizes, h5);
+    font-size: get(default-font-sizes, h5);
   }
 
   h6 {
-    font-size: get(defaultFontSizes, h6);
+    font-size: get(default-font-sizes, h6);
   }
 
   span {
-    font-size: get(defaultFontSizes, span);
+    font-size: get(default-font-sizes, span);
   }
 
   p {
-    font-size: get(defaultFontSizes, p);
+    font-size: get(default-font-sizes, p);
   }
 
   a {
     text-decoration: none;
 
-    font-size: get(defaultFontSizes, a);
+    font-size: get(default-font-sizes, a);
 
     &:hover {
       text-decoration: none;
@@ -142,63 +128,59 @@ body {
   }
 
   button {
-    text-decoration: none;
-    font-size: get(defaultFontSizes, button);
-    &:hover {
-      text-decoration: none;
-    }
+    font-size: get(default-font-sizes, button);
   }
 
   em {
-    font-size: get(defaultFontSizes, em);
+    font-size: get(default-font-sizes, em);
   }
 
   small {
-    font-size: get(defaultFontSizes, small);
+    font-size: get(default-font-sizes, small);
   }
 
   strong {
-    font-size: get(defaultFontSizes, strong);
+    font-size: get(default-font-sizes, strong);
   }
 
   ul {
-    font-size: get(defaultFontSizes, ul);
+    font-size: get(default-font-sizes, ul);
   }
 
   ol {
-    font-size: get(defaultFontSizes, ol);
+    font-size: get(default-font-sizes, ol);
   }
 
-  @mixin liNoDec {
+  @mixin disable-list-style {
     list-style: none;
   }
 
   li {
-    @if get(disListStyle) {
-      @include liNoDec;
+    @if get(global, disable-list-style) {
+      @include disable-list-style;
     }
 
-    font-size: get(defaultFontSizes, li);
+    font-size: get(default-font-sizes, li);
   }
 
   hr {
-    font-size: get(defaultFontSizes, hr);
+    font-size: get(default-font-sizes, hr);
   }
 
   br {
-    font-size: get(defaultFontSizes, br);
+    font-size: get(default-font-sizes, br);
   }
 
   wbr {
-    font-size: get(defaultFontSizes, wbr);
+    font-size: get(default-font-sizes, wbr);
   }
 
   div {
-    font-size: get(defaultFontSizes, div);
+    font-size: get(default-font-sizes, div);
   }
 
   section {
-    font-size: get(defaultFontSizes, section);
+    font-size: get(default-font-sizes, section);
   }
 }
 
@@ -212,7 +194,7 @@ body {
 // If enabled
 @if get(compile-font-classes) {
   // For each font size in font sizes in sinconfig
-  @each $fs-key, $fs-value in get(fontSizes) {
+  @each $fs-key, $fs-value in get(font-sizes) {
     // For each breakpoint
     @each $breakpoint-key, $breakpoint-value in get(breakpoints) {
       @include mqMin($breakpoint-value) {

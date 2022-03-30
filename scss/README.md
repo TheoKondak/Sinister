@@ -54,6 +54,14 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 - Add function that creates classes from maps of data `breakpoint-property-value`, ex `xs-display-none`.
   - Add a map of properties and a bull value to enable/disable some class
   - Add documentation about class generation options
+- Documentation needed for
+  - Image-wrapper
+  - Typography
+    - Responsive font sizes
+    - Default font sizes
+    - disable-list-style mixin and global config variable
+  - prefix
+  - development/production
 
 ##
 

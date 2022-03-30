@@ -287,7 +287,7 @@ $project-2: set-config(
     breakpoints: (
       and-another-breakpoint: 3px
     ),
-    fontSizes: (
+    font-sizes: (
       new-font-size: 3.4rem
     )
   ),
