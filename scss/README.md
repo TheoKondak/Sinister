@@ -64,7 +64,7 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
   - Responsive font sizes
   - Default font sizes
   - disable-list-style mixin and global config variable
-- prefix
+- prefix url func
 
 ##
 

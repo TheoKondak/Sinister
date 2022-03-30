@@ -7,31 +7,27 @@
 
 /// Function/Mixin Name /  Short Description
 ///
-/// @param  {bool}  $production - If true, it means that the website is in production mode
-/// @param  {string}  $development-url - The URL that prefixes an image while in development
-/// @param  {string}  $production-url - The URL that prefixes an image while in production
-/// @return {string}  - Returns a URL depending on wheather site is on production or development mode.
+/// @param  {string}  $image-url - The URL that prefixes an image while in development
+/// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.
 ///
 
-@function prefix-url($production-url: get(global, production-url), $development-url: get(global, development-url), $production: get(global, production)) {
+@function prefix-url($image-url: '') {
+  $production: get(global, production);
+  $production-url: get(global, production-url);
+  $development-url: get(global, development-url);
+
   @if $production {
-    @return $production-url;
+    @return string.unquote('url("#{$production-url}/#{$image-url}")');
   } @else {
-    @return $development-url;
+    @return string.unquote('url("#{$development-url}/#{$image-url}")');
   }
 }
 
 // Shorter function call
-@function prefix($production-url: get(global, production-url), $development-url: get(global, development-url), $production: get(global, production)) {
-  @return prefix-url($production-url, $development-url, $production);
+@function prefix($image-url: '') {
+  @return prefix-url($image-url);
 }
 
-// Prefix is available as a global variable
-$prefix-url: prefix-url();
-$prefix: prefix-url();
-
 /// @example
-// background-image: url('#{prefix-url}/theimage.jpg');
-// background-image: url('#{prefix()}/theimage.jpg');
-// background-image: url('#{$prefix}/theimage.jpg');
+// background-image: prefix-url('images/just-an-image.webp');
 // Will return either development url or production url depending on configuration
