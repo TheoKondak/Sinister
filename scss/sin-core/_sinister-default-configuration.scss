@@ -125,7 +125,8 @@ $sinister-default-configuration: (
     4: 3rem,
     5: 4rem,
     6: 5rem,
-    xxl: 12rem,
+    auto: auto,
+    inherit: inherit
   ),
 global: (
   production: true,

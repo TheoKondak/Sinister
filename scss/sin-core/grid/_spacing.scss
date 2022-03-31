@@ -4,14 +4,25 @@
 @use '../../../../../scss/sin.config' as *;
 @use './../functions' as *;
 
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  MARGINS | PADDINGS | GAP
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Setting up some data required by the classes and the mixins
+/// @parameter {map} $spacingProperties - Properties that have to do with spacing like margin, padding and gap.
+/// @parameter {map} $spacingDirection - Directions that a spacing property can have.
+/// @parameter {map} $spacingDirections - A list of possible directions for each spacing property. That is required because of gap property.
+///
 
 $spacingProperties: (
   margin: m,
   padding: p,
   gap: g,
+  // Not the best practice, but I need the data in both ways
+  m: margin,
+  p: padding,
+  g: gap,
 );
 
 $spacingDirection: (
@@ -53,7 +64,9 @@ $spacingDirections: (
   ),
 );
 
-// Create Classes
+/// Generate spacing related parameters
+/// @parameter {bool} compile-spacing-classes - Sinister configuration property, if true will generate spacing classes.
+///
 
 @if get(compile-spacing-classes) {
   @each $spacingKey, $spacingVal in get(spacing) {
@@ -239,14 +252,13 @@ $spacingDirections: (
   }
 }
 
-@function case($map, $value) {
-  @return map-get($map, $value);
-}
-
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-//  MIXIN
-//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
-$key: '';
+/// Setting up some data required by the classes and the mixins
+/// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
+/// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
+/// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
+/// @parameter {string} $value - A spacing value from spacing in Sinister configuration
+/// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+///
 
 //Beta Spacing
 @mixin spacing($args...) {
@@ -266,17 +278,27 @@ $key: '';
         $property: list.nth($arg, 2);
         $direction: list.nth($arg, 3);
         $value: list.nth($arg, 4);
-        $scale: list.nth($arg, 5);
+
+        // If there is a scale arguement it should be in final position.
+        @if length($arg) == 4 {
+          $scale: 1;
+        } @else {
+          @if (type-of(list.nth($arg, length($arg))) == 'number') {
+            $scale: list.nth($arg, length($arg));
+          } @else {
+            @warn unquote('Scale must be a type of number. Instead provided:') type-of(list.nth($arg, length($arg)));
+          }
+        }
 
         @media (min-width: get(breakpoints, $breakpoint)) {
           // Check if property exists in spacingProeprties Map
-          @if contains($spacingProperties, $property) {
-            @if (contains($spacingDirection, $direction) and contains(get(spacing), $value)) {
+          @if (contains($spacingProperties, $property) and contains(get(spacing), $value)) {
+            @if (contains($spacingDirection, $direction)) {
               // Check if property is gap, if yes, then we only have x, y axis.
               @if $property == g {
-                @if $direction == 't' or $direction == 'b' {
+                @if $direction == 't' or $direction == 'b' or $direction == 'y' {
                   row-gap: calc(#{get(spacing, $value)} * #{$scale});
-                } @else if $direction == 'l' or $direction == 'r' {
+                } @else if $direction == 'l' or $direction == 'r' or $direction == 'x' {
                   column-gap: calc(#{get(spacing, $value)} * #{$scale});
                 } @else if $direction == 'g' {
                   gap: calc(#{get(spacing, $value)} * #{$scale});
@@ -285,7 +307,11 @@ $key: '';
                 }
               } @else {
                 @each $currentDirection in map-get($spacingDirections, $direction) {
-                  #{contains($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  @if $value == 'auto' or $value == 'inherit' {
+                    #{getMap($spacingProperties, $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                  } @else {
+                    #{getMap($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  }
                 }
               }
             }
@@ -297,23 +323,34 @@ $key: '';
             }
           }
         }
+
+        // Else check if it's contained in spacin properties
       } @else if (contains($spacingProperties, list.nth($arg, 1))) {
         // check if it is a spacing property
         // If true update variables
         $property: list.nth($arg, 1);
         $direction: list.nth($arg, 2);
         $value: list.nth($arg, 3);
-        $scale: list.nth($arg, 4);
-        // @debug 'does not contain breakpoint';
 
-        // Check if property exists in spacingProeprties Map
-        @if contains($spacingProperties, $property) {
-          @if (contains($spacingDirection, $direction) and contains(get(spacing), $value)) {
+        // If there is a scale arguement it should be in final position.
+        @if length($arg) == 3 {
+          $scale: 1;
+        } @else {
+          @if (type-of(list.nth($arg, length($arg))) == 'number') {
+            $scale: list.nth($arg, length($arg));
+          } @else {
+            @warn unquote('Scale must be a type of number. Instead provided:') type-of(list.nth($arg, length($arg)));
+          }
+        }
+
+        // Check if property exists in $spacingProeprties Map
+        @if (contains($spacingProperties, $property) and contains(get(spacing), $value)) {
+          @if (contains($spacingDirection, $direction)) {
             // Check if property is gap, if yes, then we only have x, y axis.
             @if $property == g {
-              @if $direction == 't' or $direction == 'b' {
+              @if $direction == 't' or $direction == 'b' or $direction == 'y' {
                 row-gap: calc(#{get(spacing, $value)} * #{$scale});
-              } @else if $direction == 'l' or $direction == 'r' {
+              } @else if $direction == 'l' or $direction == 'r' or $direction == 'x' {
                 column-gap: calc(#{get(spacing, $value)} * #{$scale});
               } @else if $direction == 'g' {
                 gap: calc(#{get(spacing, $value)} * #{$scale});
@@ -322,7 +359,11 @@ $key: '';
               }
             } @else {
               @each $currentDirection in map-get($spacingDirections, $direction) {
-                #{contains($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                @if $value == 'auto' or $value == 'inherit' {
+                  #{getMap($spacingProperties, $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                } @else {
+                  #{getMap($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                }
               }
             }
           }
