@@ -2,9 +2,17 @@
 
 $flex-args: (row, row-reverse, column, column-reverse, nowrap, wrap, wrap-reverse, flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left);
 
-//+----------------------+
-// FLEX PROPERTIES
-//+----------------------+
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Spacing
+///
+/// @param  {number}  $min-width - A minimum width value.
+/// @param  {number}  $max-width - A maximum width value.
+///
+
 
 @mixin flex {
   display: flex !important;

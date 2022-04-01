@@ -1,5 +1,18 @@
 @use './strip-unit-func' as *;
 
+
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// Spacing
+///
+/// @param  {number}  $min-width - A minimum width value.
+/// @param  {number}  $max-width - A maximum width value.
+/// @return {bool}  - Returns an updated map that is a merge of $new-map and $original-map.
+///
+
 // Check whether min width is larger or equal with max width
 @function too-large-min-width($min-width, $max-width) {
   @if $min-width > $max-width {
