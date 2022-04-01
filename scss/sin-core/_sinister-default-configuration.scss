@@ -142,8 +142,12 @@ image-wrapper: (
   img-default-preload-background: none,
 ),
 
-  compile-spacing-classes: false,
-  compile-display-classes: false,
-  compile-font-classes: false,
+
+
+generate-classes: (
+    spacing: false,
+    display: false,
+    fonts: false,
+  )
 
 );
