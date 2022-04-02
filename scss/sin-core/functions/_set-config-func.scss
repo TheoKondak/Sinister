@@ -16,26 +16,26 @@
 /// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
 ///
 
-@function set-config($new-map, $add-maps: $sinister-default-configuration) {
+@function set-config($new-map) {
   $processing-map: ();
-  $return-map: $add-maps;
+  $return-map: ();
+  $config-map: $sinister-default-configuration;
 
   @if (type($new-map, (map))) {
-    @each $original-key, $original-value in $add-maps {
+    @each $original-key, $original-value in $config-map {
       @each $new-key, $new-value in $new-map {
         @if $original-key == $new-key {
           @if (type($new-value, (map))) {
             // Update the temporary map
             $processing-map: map.set($processing-map, $original-key, map.merge($original-value, $new-value));
             // Pass the data to the original map
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, map.merge($original-value, $new-value)));
+            $return-map: map.merge($config-map, map.set($processing-map, $original-key, map.merge($original-value, $new-value)));
           } @else if (type($new-value, (list))) {
             $processing-map: map.set($processing-map, $original-key, list.append($original-value, $new-value));
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, list.append($original-value, $new-value)));
-          // } @else if (type-of($new-value) == 'string') or (type-of($new-value) == 'bool') or (type-of($new-value) == 'number') or (type-of($new-value) == 'color') or (type-of($new-value) == 'null') {
+            $return-map: map.merge($config-map, map.set($processing-map, $original-key, list.append($original-value, $new-value)));
           } @else if (type($new-value, ('string', 'bool', 'number', 'color', null))) {
             $processing-map: map.set($processing-map, $original-key, $new-value);
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, $new-value));
+            $return-map: map.merge($config-map, map.set($processing-map, $original-key, $new-value));
           }
         }
       }
