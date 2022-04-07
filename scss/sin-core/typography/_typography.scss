@@ -1,5 +1,7 @@
 @use 'sass:map';
-@use '../../../../../scss/sin.config' as *;
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+
 @use '../functions' as *;
 @use '../grid/responsive' as *;
 
@@ -18,36 +20,38 @@
 
 $font-families: get(font-family);
 
-// Itterate through font families map
-@each $font-family in $font-families {
-  // @debug get(font-family, font-name);
+// @if type($font-families, (map)) and length($font-families) >= 1 {
+//   // Itterate through font families map
+//   @each $font-family in $font-families {
+//     // @debug get(font-family, font-name);
 
-  @font-face {
-    // Use deep default sass map-get
-    font-family: map-get($font-family, font-name);
+//     @font-face {
+//       // Use deep default sass map-get
+//       font-family: map-get($font-family, font-name);
 
-    // Itterate throught the array of URLs, for fallback urls.
+//       // Itterate throught the array of URLs, for fallback urls.
 
-    @for $i from 1 through length(get($font-family)) {
-      // For every font-family decladed in _configuration.scss
+//       @for $i from 1 through length(get($font-family)) {
+//         // For every font-family decladed in _configuration.scss
 
-      $length: length(map-get($font-family, url)); // lenth of url array
+//         $length: length(map-get($font-family, url)); // lenth of url array
 
-      @if $length == 0 {
-        @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
-      } @else if $length == 1 {
-        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)); // Format is optional
-      } @else if $length == 2 {
-        src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)),
-          // Format is optional
-          url(nth(map-get($font-family, url), 2))
-            format(map-get($font-family, format)); // Format is optional
-      } @else {
-        @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
-      }
-    }
-  }
-}
+//         @if $length == 0 {
+//           @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
+//         } @else if $length == 1 {
+//           src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)); // Format is optional
+//         } @else if $length == 2 {
+//           src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)),
+//             // Format is optional
+//             url(nth(map-get($font-family, url), 2))
+//               format(map-get($font-family, format)); // Format is optional
+//         } @else {
+//           @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
+//         }
+//       }
+//     }
+//   }
+// }
 
 @mixin capitalize {
   text-transform: capitalize;

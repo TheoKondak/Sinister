@@ -1,9 +1,6 @@
 $sinister-default-configuration: (
   colors: (
-    'primary': hsl(40, 100%, 50%),
-    'secondary': hsl(120, 100%, 25%),
-    'blue': hsl(240, 100%, 50%),
-    'primary-pink': 'pink',
+    
   ),
   breakpoints: (
     // $desktopLarge
@@ -133,7 +130,7 @@ global: (
   disable-list-style: false,
   responsive-fonts: false,
   development-url: '../../../..',
-  production-url: 'www.google.com',
+  production-url: '#',
 ),
 
 image-wrapper: (
@@ -141,9 +138,6 @@ image-wrapper: (
   img-box-default-width: 100,
   img-default-preload-background: none,
 ),
-
-
-
 generate-classes: (
     spacing: false,
     display: false,

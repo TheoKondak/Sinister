@@ -1,4 +1,4 @@
-@use '../../../../../scss/sin.config' as *;
+@use '../../../../../sin.config' as *;
 @use './get-func' as *;
 @use './getMap-func' as *;
 @use 'sass:string';
@@ -36,7 +36,7 @@
             @debug '';
           }
         } @else {
-          @if (type-of($config-val) == map) {
+          @if (type-of($config-val)) {
             @debug '-=#{$config-key}=-';
             @each $key, $value in $config-val {
               @debug '- #{$key}: "#{$value}"';
