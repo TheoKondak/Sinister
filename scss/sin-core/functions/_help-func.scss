@@ -1,6 +1,7 @@
 @use '../../../../../sin.config' as *;
 @use './get-func' as *;
 @use './getMap-func' as *;
+@use './type-func' as *;
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
@@ -36,19 +37,24 @@
             @debug '';
           }
         } @else {
-          @if (type-of($config-val)) {
+          // @debug type-of($config-val);
+
+          @if (type($config-val, (map))) {
             @debug '-=#{$config-key}=-';
             @each $key, $value in $config-val {
               @debug '- #{$key}: "#{$value}"';
+              // @debug 'YOOO';
+              // @debug $key;
+              // @debug $value;
             }
             @debug '';
-          } @else if (type-of($config-val) == list) {
+          } @else if (type($config-val, (list))) {
             @debug '-=#{$config-key}=-';
             @each $key, $value in $config-val {
               @debug '- #{$key}';
             }
             @debug '';
-          } @else if (type-of($config-val) == string) or (type-of($config-val) == number) or (type-of($config-val) == bool) or (type-of($config-val) == color) {
+          } @else if type($config-val, (string, number, bool, color)) {
             @debug '#{$config-key}: "#{$config-val}"';
             @debug '';
           } @else if (type-of($config-val) == null) {

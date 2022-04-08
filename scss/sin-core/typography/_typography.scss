@@ -18,7 +18,7 @@
   // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
 }
 
-$font-families: get(font-family);
+// $font-families: get(font-family);
 
 // @if type($font-families, (map)) and length($font-families) >= 1 {
 //   // Itterate through font families map
