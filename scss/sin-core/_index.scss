@@ -1,7 +1,3 @@
-// Old way to load sinConfig
-// @forward '../sinConfig';
-
-// New appraoch for npm
 @forward '../../../../sin.config';
 @forward './misc/warning-message-start';
 @forward 'functions';
