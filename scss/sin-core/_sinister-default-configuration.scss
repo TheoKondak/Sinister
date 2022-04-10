@@ -124,7 +124,7 @@ $sinister-default-configuration: (
     unset: unset
   ),
 global: (
-  production: true,
+  production: false,
   disable-list-style: false,
   responsive-fonts: false,
   warning-messages-toggle: false,

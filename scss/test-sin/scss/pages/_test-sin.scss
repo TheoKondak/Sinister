@@ -1,0 +1,7 @@
+@use '../sin' as *;
+
+.sin-test {
+  @include spacing((xs, m, x, auto));
+}
+
+@debug get(global, warning-messages-toggle);
