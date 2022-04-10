@@ -43,11 +43,11 @@ $spacingDirections: (
     bottom,
     left,
   ),
-  x: (
+  y: (
     top,
     bottom,
   ),
-  y: (
+  x: (
     left,
     right,
   ),
@@ -97,7 +97,7 @@ $spacingDirections: (
                     margin-right: $spacingVal !important;
                   }
                   row-gap: $spacingVal !important;
-                } 
+                }
                 // @else {
                 //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
                 // }
@@ -126,7 +126,7 @@ $spacingDirections: (
                     margin-bottom: $spacingVal !important;
                   }
                   column-gap: $spacingVal !important;
-                } 
+                }
                 // @else {
                 //   @warn string.unquote('Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
                 // }
@@ -158,7 +158,7 @@ $spacingDirections: (
                     margin: $spacingVal !important;
                   }
                   gap: $spacingVal !important;
-                } 
+                }
                 // @else {
                 //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
                 // }
@@ -222,7 +222,7 @@ $spacingDirections: (
                 // GAP
                 @else if $propertyValue == 'g' {
                   //gap does not support single direction
-                } 
+                }
                 // @else {
                 //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
                 // }
@@ -251,7 +251,7 @@ $spacingDirections: (
             }
           }
         }
-      } 
+      }
       // @else {
       //   @warn string.unquote( '$spacing values must be type of number but there are some of type:') #{type-of($spacingVal)};
       // }
