@@ -133,3 +133,10 @@ index.html
 src/js/custom.js
 /src/compiled/
 gitignored/
+
+# Test Sin
+ test-sin/node_modules/
+ test-sin/_sin.scss
+ test-sin/_custom.scss
+ test-sin/pages/_index.scss
+ test-sin/compilled.css.map
