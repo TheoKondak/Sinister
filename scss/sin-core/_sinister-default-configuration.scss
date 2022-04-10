@@ -120,12 +120,14 @@ $sinister-default-configuration: (
     5: 4rem,
     6: 5rem,
     auto: auto,
-    inherit: inherit
+    inherit: inherit,
+    unset: unset
   ),
 global: (
   production: true,
   disable-list-style: false,
   responsive-fonts: false,
+  warning-messages-toggle: false,
   development-url: '../../../..',
   production-url: '#',
 ),
