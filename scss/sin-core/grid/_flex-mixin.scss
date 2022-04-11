@@ -1,0 +1,144 @@
+@use 'sass:list';
+@use 'sass:map';
+@use '../functions' as *;
+@use '../../../../../sin.config' as *;
+
+// NOT LOADING
+
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+// $flex-args: (
+//   r: row,
+//   rr: row-reverse,
+//   cl: column,
+//   cr: column-reverse,
+//   nw: nowrap,
+//   w: wrap,
+//   wr: wrap-reverse,
+//   fs: flex-start,
+//   fe: flex-end,
+//   c: center,
+//   sb: space-between,
+//   sa: space-around,
+//   se: space-evenly,
+//   st: start,
+//   ed: end,
+//   l: left,
+// );
+
+$align-items: (
+  ai-str: stretch,
+  ai-fs: flex-start,
+  ai-fe: flex-end,
+  ai-c: center,
+  ai-bl: baseline,
+  ai-fbl: 'first baseline',
+  ai-lbl: 'last baseline',
+  ai-st: start,
+  ai-ed: end,
+  ai-sst: self-start,
+  ai-sed: self-end,
+  ai-sf: safe,
+  ai-usf: unsafe,
+);
+
+// Flex Parent Element Properties
+$align-content: (
+  ac-fs: flex-start,
+  ac-fe: flex-end,
+  ac-c: center,
+  ac-sb: space-between,
+  ac-sa: space-around,
+  ac-se: space-evenly,
+  ac-strai-: stretch,
+  ac-st: start,
+  ac-ed: end,
+  ac-bl: baseline,
+  ac-fbl: 'first baseline',
+  ac-lbl: 'last baseline',
+  ac-sf: safe,
+  ac-usf: unsafe,
+);
+
+$justify-content: (
+  jc-fs: flex-start,
+  jc-fe: flex-end,
+  jc-c: center,
+  jc-sb: space-between,
+  jc-sa: space-around,
+  jc-se: space-evenly,
+  jc-st: start,
+  jc-ed: end,
+  jc-l: left,
+  jc-r: right,
+  jc-sf: safe,
+  jc-usf: unsafe,
+);
+
+$flex-direction: (
+  r: row,
+  cl: column,
+  r-r: row-reverse,
+  cl-r: column-reverse,
+);
+
+$wrap: (
+  w-nw: nowrap,
+  w-w: wrap,
+  w-wr: wrap-reverse,
+);
+
+$gap: (
+  g: gap,
+  rg: row-gap,
+  cg: column-gap,
+);
+
+// Flex Child Element Proeperties
+$child-properties: (
+  order: order,
+  // Unsupported
+  fg: flex-grow,
+  fs: flex-shrink,
+);
+
+$align-self: (
+  au: auto,
+  fs: flex-start,
+  fe: flex-end,
+  c: center,
+  bl: baseline,
+  str: stretch,
+);
+
+/// flex-parent
+///
+/// @param  {number}  $min-width - A minimum width value.
+/// @param  {number}  $max-width - A maximum width value.
+///
+
+@mixin flex-parent($args...) {
+  // It takes a list of lists
+  // Itterate / check first level map
+  @if (length($args) > 0) and type($args, 'arglist') {
+    @each $sin-arg in $args {
+      // Itterate / Check second level map
+      @if (length($sin-arg) > 0) and type($args, 'arglist') {
+        @each $flex-properties-list in $sin-arg {
+          //  Check if Breakpoint exists in breakpoints
+          @debug $flex-properties-list;
+          @if contains(get(breakpoints), list.nth($flex-properties-list, 1)) {
+            // Check the rest arguements, if they exist, render the css else, continue
+            // @if contains(getMap($align-items)) {
+            // }
+          } @else {
+            @debug 'no bp';
+          }
+        }
+      }
+    }
+  }
+}
