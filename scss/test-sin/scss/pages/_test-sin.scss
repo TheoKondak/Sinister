@@ -1,7 +1,19 @@
 @use '../sin' as *;
 
 .sin-test {
-  @include spacing((xs, m, x, auto));
-}
+  // @include spacing((m, x, unset), (xs, m, x, 2), (m, y, 4, 0.5), (md, m, y, 2, 0.2));
 
-@debug get(global, warning-messages-toggle);
+  $lol: (ai-c, jc-c, ac-c, fd-cl, (x, 6));
+
+  $lal: (md, jc-c, ac-c, fd-r, w-w, (x, 3, 2));
+
+  // color: color(ririka);
+  @include flex-parent($lol, $lal);
+}
+// Check the rest arguements, if they exist, render the css else, continue
+// @debug contains(getMap($align-items), $flex-properties-list);
+// @if contains(getMap($align-items), $flex-properties-list) {
+//   @debug 'contains';
+// } @else {
+//   @debug 'does not contain';
+// }
