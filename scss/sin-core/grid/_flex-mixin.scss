@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use '../functions' as *;
+@use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
 // NOT LOADING
@@ -9,25 +10,6 @@
 /// @author Theodoros Kondakos
 /// @link   https://github.com/TheoKondak
 ///
-
-// $flex-args: (
-//   r: row,
-//   rr: row-reverse,
-//   cl: column,
-//   cr: column-reverse,
-//   nw: nowrap,
-//   w: wrap,
-//   wr: wrap-reverse,
-//   fs: flex-start,
-//   fe: flex-end,
-//   c: center,
-//   sb: space-between,
-//   sa: space-around,
-//   se: space-evenly,
-//   st: start,
-//   ed: end,
-//   l: left,
-// );
 
 $align-items: (
   ai-str: stretch,
@@ -79,10 +61,10 @@ $justify-content: (
 );
 
 $flex-direction: (
-  r: row,
-  cl: column,
-  r-r: row-reverse,
-  cl-r: column-reverse,
+  fd-r: row,
+  fd-cl: column,
+  fd-rr: row-reverse,
+  fd-clr: column-reverse,
 );
 
 $wrap: (
@@ -121,21 +103,75 @@ $align-self: (
 ///
 
 @mixin flex-parent($args...) {
+  display: flex;
   // It takes a list of lists
   // Itterate / check first level map
   @if (length($args) > 0) and type($args, 'arglist') {
     @each $sin-arg in $args {
-      // Itterate / Check second level map
       @if (length($sin-arg) > 0) and type($args, 'arglist') {
-        @each $flex-properties-list in $sin-arg {
-          //  Check if Breakpoint exists in breakpoints
-          @debug $flex-properties-list;
-          @if contains(get(breakpoints), list.nth($flex-properties-list, 1)) {
-            // Check the rest arguements, if they exist, render the css else, continue
-            // @if contains(getMap($align-items)) {
-            // }
-          } @else {
-            @debug 'no bp';
+        @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
+          @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
+            @each $cur-arg in $sin-arg {
+              // Flex Direction
+              @if contains($flex-direction, $cur-arg) {
+                flex-direction: #{map-get($flex-direction, $cur-arg)};
+              }
+
+              // Flex Wrap
+              @if contains($wrap, $cur-arg) {
+                flex-wrap: #{map-get($wrap, $cur-arg)};
+              }
+
+              // Justify Content
+              @if contains($justify-content, $cur-arg) {
+                justify-content: #{map-get($justify-content, $cur-arg)};
+              }
+
+              // Align Items
+              @if contains($align-content, $cur-arg) {
+                align-content: #{map-get($align-content, $cur-arg)};
+              }
+
+              // Gap
+              @if type($cur-arg, (list)) and contains($spacingDirection, list.nth($cur-arg, 1)) {
+                @if length($cur-arg) == 2 {
+                  @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
+                } @else if length($cur-arg) == 3 {
+                  @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
+                }
+              }
+            }
+          }
+        } @else {
+          @each $cur-arg in $sin-arg {
+            // Flex Direction
+            @if contains($flex-direction, $cur-arg) {
+              flex-direction: #{map-get($flex-direction, $cur-arg)};
+            }
+
+            // Flex Wrap
+            @if contains($wrap, $cur-arg) {
+              flex-wrap: #{map-get($wrap, $cur-arg)};
+            }
+
+            // Justify Content
+            @if contains($justify-content, $cur-arg) {
+              justify-content: #{map-get($justify-content, $cur-arg)};
+            }
+
+            // Align Items
+            @if contains($align-content, $cur-arg) {
+              align-content: #{map-get($align-content, $cur-arg)};
+            }
+
+            // Gap
+            @if type($cur-arg, (list)) and contains($spacingDirection, list.nth($cur-arg, 1)) {
+              @if length($cur-arg) == 2 {
+                @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
+              } @else if length($cur-arg) == 3 {
+                @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
+              }
+            }
           }
         }
       }
