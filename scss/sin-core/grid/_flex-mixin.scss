@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:math';
 @use '../functions' as *;
 @use './spacing' as *;
 @use '../../../../../sin.config' as *;
@@ -96,6 +97,9 @@ $align-self: (
   str: stretch,
 );
 
+// Width
+$width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer', unset);
+
 /// flex-parent
 ///
 /// @param  {number}  $min-width - A minimum width value.
@@ -144,6 +148,29 @@ $align-self: (
                   @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
                 }
               }
+
+              // Flex | Flex Basis
+              @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+                @if type(list.nth($cur-arg, 2), (number)) {
+                  @if math.is-unitless(list.nth($cur-arg, 2)) {
+                    @if type(list.nth($cur-arg, 3), (number)) or contains($width, list.nth($cur-arg, 3)) {
+                      > * {
+                        flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)});
+                      }
+                    }
+                  } @else {
+                    @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
+                  }
+                } @else {
+                  @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
+                }
+              } @else if length($cur-arg) == 1 {
+                @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains($width, $cur-arg) {
+                  > * {
+                    flex: #{$cur-arg};
+                  }
+                }
+              }
             }
           }
         } @else {
@@ -179,6 +206,29 @@ $align-self: (
                 @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
               } @else if length($cur-arg) == 3 {
                 @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
+              }
+            }
+
+            // Flex | Flex Basis
+            @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+              @if type(list.nth($cur-arg, 2), (number)) {
+                @if math.is-unitless(list.nth($cur-arg, 2)) {
+                  @if type(list.nth($cur-arg, 3), (number)) or contains($width, list.nth($cur-arg, 3)) {
+                    > * {
+                      flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} #{list.nth($cur-arg, 3)};
+                    }
+                  }
+                } @else {
+                  @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
+                }
+              } @else {
+                @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
+              }
+            } @else if length($cur-arg) == 1 {
+              @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains($width, $cur-arg) {
+                > * {
+                  flex: #{$cur-arg};
+                }
               }
             }
           }
