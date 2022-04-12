@@ -127,9 +127,13 @@ $align-self: (
                 justify-content: #{map-get($justify-content, $cur-arg)};
               }
 
-              // Align Items
+              // Align Content
               @if contains($align-content, $cur-arg) {
                 align-content: #{map-get($align-content, $cur-arg)};
+              }
+              // Align Items
+              @if contains($align-items, $cur-arg) {
+                align-items: #{map-get($align-items, $cur-arg)};
               }
 
               // Gap
@@ -159,9 +163,14 @@ $align-self: (
               justify-content: #{map-get($justify-content, $cur-arg)};
             }
 
-            // Align Items
+            // Align Content
             @if contains($align-content, $cur-arg) {
               align-content: #{map-get($align-content, $cur-arg)};
+            }
+
+            // Align Items
+            @if contains($align-items, $cur-arg) {
+              align-items: #{map-get($align-items, $cur-arg)};
             }
 
             // Gap

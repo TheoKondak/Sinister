@@ -1,6 +1,6 @@
 {
   "name": "@get-sinister/sass",
-  "version": "0.6.60-beta.0",
+  "version": "0.6.60-beta.4",
   "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
   "scripts": {
     "migrate": "node migration.js",
