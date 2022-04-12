@@ -106,7 +106,7 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
 /// @param  {number}  $max-width - A maximum width value.
 ///
 
-@mixin flex-parent($args...) {
+@mixin flex($args...) {
   display: flex;
   // It takes a list of lists
   // Itterate / check first level map
