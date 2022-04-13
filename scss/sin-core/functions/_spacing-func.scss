@@ -21,9 +21,7 @@
 @function spacing($value: 0, $scale: 1) {
   @if map.has-key(get(spacing), $value) and type-of($scale) == 'number' {
     // If the $value is 0, instead of error return the default, but send a warning during compilation.
-    @if $value == 0 {
-      @warn 'Spacing function used, with a 0 as an input. This will return a spacing value of #{$value}';
-    }
+
     @return calc(#{get(spacing, $value)} * #{$scale});
   } @else {
     @warn 'Either $value does not exist in sinConfig, or scale is not a number. See bellow for more.';
