@@ -2,8 +2,8 @@
 @use 'sass:string';
 @use 'sass:list';
 @use '../../../../../sin.config' as *;
-
 @use './../functions' as *;
+@use '../misc/css-properties' as *;
 
 ///
 /// @author Theodoros Kondakos
@@ -11,59 +11,10 @@
 ///
 
 /// Setting up some data required by the classes and the mixins
-/// @parameter {map} $spacingProperties - Properties that have to do with spacing like margin, padding and gap.
-/// @parameter {map} $spacingDirection - Directions that a spacing property can have.
+/// @parameter {map} getMap($css-properties, spacing, spacing-properties) - Properties that have to do with spacing like margin, padding and gap.
+/// @parameter {map} getMap($css-properties, spacing, spacing-direction)- Directions that a spacing property can have.
 /// @parameter {map} $spacingDirections - A list of possible directions for each spacing property. That is required because of gap property.
 ///
-
-$spacingProperties: (
-  margin: m,
-  padding: p,
-  gap: g,
-  // Not the best practice, but I need the data in both ways
-  m: margin,
-  p: padding,
-  g: gap,
-);
-
-$spacingDirection: (
-  generic: 'g',
-  top: 't',
-  right: 'r',
-  bottom: 'b',
-  left: 'l',
-  x-axis: 'x',
-  y-axis: 'y',
-);
-
-$spacingDirections: (
-  g: (
-    top,
-    right,
-    bottom,
-    left,
-  ),
-  y: (
-    top,
-    bottom,
-  ),
-  x: (
-    left,
-    right,
-  ),
-  t: (
-    top,
-  ),
-  r: (
-    right,
-  ),
-  b: (
-    bottom,
-  ),
-  l: (
-    left,
-  ),
-);
 
 /// Generate spacing related parameters
 /// @parameter {bool} compile-spacing-classes - Sinister configuration property, if true will generate spacing classes.
@@ -73,8 +24,8 @@ $spacingDirections: (
   @each $spacingKey, $spacingVal in get(spacing) {
     @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
       @if type-of($spacingVal) == 'number' {
-        @each $propertyKey, $propertyValue in $spacingProperties {
-          @each $directionKey, $directionValue in $spacingDirection {
+        @each $propertyKey, $propertyValue in getMap($css-properties, spacing, spacing-properties) {
+          @each $directionKey, $directionValue in getMap($css-properties, spacing, spacing-direction) {
             // X-AXIS
             @if $directionKey == 'x-axis' {
               $className: #{$propertyValue}#{$directionValue};
@@ -99,7 +50,7 @@ $spacingDirections: (
                   row-gap: $spacingVal !important;
                 }
                 // @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
                 // }
               }
             }
@@ -128,7 +79,7 @@ $spacingDirections: (
                   column-gap: $spacingVal !important;
                 }
                 // @else {
-                //   @warn string.unquote('Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+                //   @warn string.unquote('Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
                 // }
               }
             }
@@ -160,7 +111,7 @@ $spacingDirections: (
                   gap: $spacingVal !important;
                 }
                 // @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "$spacingProperties" item without defining the logic') #{$spacingProperties};
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
                 // }
               }
             }
@@ -182,7 +133,7 @@ $spacingDirections: (
                   //gap does not support single direction
                 }
                 //  @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
                 // }
               }
             }
@@ -203,7 +154,7 @@ $spacingDirections: (
                   //gap does not support single direction
                 }
                 //  @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
                 // }
               }
             }
@@ -224,7 +175,7 @@ $spacingDirections: (
                   //gap does not support single direction
                 }
                 // @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
                 // }
               }
             }
@@ -245,7 +196,7 @@ $spacingDirections: (
                 @else if $propertyValue == 'g' {
                 }
                 // @else {
-                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new $spacingProperties item without defining the logic');
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
                 // }
               }
             }
@@ -279,6 +230,7 @@ $spacingDirections: (
 
   // Check that there are arguements
   @if (length($args) > 0) {
+    // For each arguement
     @each $arg in $args {
       // Check if the list contains a breakpoint.
       @if contains(get(breakpoints), list.nth($arg, 1)) {
@@ -301,8 +253,8 @@ $spacingDirections: (
 
         @media (min-width: get(breakpoints, $breakpoint)) {
           // Check if property exists in spacingProeprties Map
-          @if (contains($spacingProperties, $property) and contains(get(spacing), $value)) {
-            @if (contains($spacingDirection, $direction)) {
+          @if (contains(getMap($css-properties, spacing, spacing-properties), $property) and contains(get(spacing), $value)) {
+            @if (contains(getMap($css-properties, spacing, spacing-direction), $direction)) {
               // Check if property is gap, if yes, then we only have x, y axis.
               @if $property == g {
                 @if $direction == 't' or $direction == 'b' or $direction == 'y' {
@@ -315,11 +267,11 @@ $spacingDirections: (
                   @warn 'Invalid spacing arguements';
                 }
               } @else {
-                @each $currentDirection in map-get($spacingDirections, $direction) {
+                @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
                   @if $value == 'auto' or $value == 'inherit' {
-                    #{getMap($spacingProperties, $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
                   } @else {
-                    #{getMap($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
                   }
                 }
               }
@@ -327,14 +279,14 @@ $spacingDirections: (
           } @else {
             @warn 'Wrong spacing mixin property.';
             @debug 'Available spacings $values';
-            @each $spacingKey, $spacingProperty in $spacingProperties {
+            @each $spacingKey, $spacingProperty in getMap($css-properties, spacing, spacing-properties) {
               @debug ' #{$spacingKey}: #{$spacingProperty}';
             }
           }
         }
 
         // Else check if it's contained in spacin properties
-      } @else if (contains($spacingProperties, list.nth($arg, 1))) {
+      } @else if (contains(getMap($css-properties, spacing, spacing-properties), list.nth($arg, 1))) {
         // check if it is a spacing property
         // If true update variables
         $property: list.nth($arg, 1);
@@ -353,8 +305,8 @@ $spacingDirections: (
         }
 
         // Check if property exists in $spacingProeprties Map
-        @if (contains($spacingProperties, $property) and contains(get(spacing), $value)) {
-          @if (contains($spacingDirection, $direction)) {
+        @if (contains(getMap($css-properties, spacing, spacing-properties), $property) and contains(get(spacing), $value)) {
+          @if (contains(getMap($css-properties, spacing, spacing-direction), $direction)) {
             // Check if property is gap, if yes, then we only have x, y axis.
             @if $property == g {
               @if $direction == 't' or $direction == 'b' or $direction == 'y' {
@@ -367,11 +319,11 @@ $spacingDirections: (
                 @warn 'Invalid spacing arguements';
               }
             } @else {
-              @each $currentDirection in map-get($spacingDirections, $direction) {
+              @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
                 @if $value == 'auto' or $value == 'inherit' {
-                  #{getMap($spacingProperties, $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
                 } @else {
-                  #{getMap($spacingProperties, $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
                 }
               }
             }
@@ -379,7 +331,7 @@ $spacingDirections: (
         } @else {
           @warn 'Wrong spacing mixin property.';
           @debug 'Available spacings $values';
-          @each $spacingKey, $spacingProperty in $spacingProperties {
+          @each $spacingKey, $spacingProperty in getMap($css-properties, spacing, spacing-properties) {
             @debug ' #{$spacingKey}: #{$spacingProperty}';
           }
         }
@@ -388,6 +340,6 @@ $spacingDirections: (
       }
     }
   } @else {
-    @warn "Spacing mixin called without arguements.";
+    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:');
   }
 }
