@@ -37,7 +37,8 @@ This will set a grid, with 1 column as default and xs screens, 2 columns and 2 r
 
 This mixin will help with the spacing properties workflow. It works with margin, padding and gap properties.
 
-The mixin takes a list of inputs, where it requires a breakpoint, the type of the spacing, a spacing value from sinConfig, and optionally a number that will scale the spacing value if needed to give more flexibility.
+The mixin takes a list of lists as input.
+Each list can have a breakpoint property from `sin.config`, the type of the spacing, a spacing value from `sin.config`, and optionally a number that will scale the spacing value if needed to give more flexibility.
 
 ### Syntax
 
@@ -55,13 +56,51 @@ Please note that the mixin accepts margins, paddings and gaps. The gap property 
 
 ### Example
 
+#### Sinister syntax
+
 ```
-@include spacing((m l 1 1.1), (xs m l 2 1.2), (md m l 3));
+.sin{
+    @include spacing(
+        (m, g, 1),
+        (xs, m, t, 1),
+        (md, p, b, 2, 21),
+        (xl, g, x, 1),
+        (xxl, g, l, 2, .4)
+        );
+    }
+
 ```
 
-The second arguement of the list `(xs m l 2 1.2)` will create a rule, for screens larger than `xs` that will add a margin-left, of 2 , and then will scale it by 1.2.
-You might have noticed that the first list element `(m l 1)` does not contain a breakpoint. This will act as a global rule, which then will be overwritten by the rest of the rules depending on the screen size.
-And finally, the third element, does not contain a scale arguement. So for `md` screens and above, the scale will be the default, which is 1.
+#### CSS Output
+
+```
+.sin {
+  margin-top: calc(1.5rem * 1);
+  margin-right: calc(1.5rem * 1);
+  margin-bottom: calc(1.5rem * 1);
+  margin-left: calc(1.5rem * 1);
+}
+@media (min-width: 576px) {
+  .sin {
+    margin-top: calc(1.5rem * 1);
+  }
+}
+@media (min-width: 1200px) {
+  .sin {
+    padding-bottom: calc(2rem * 21);
+  }
+}
+@media (min-width: 1980px) {
+  .sin {
+    column-gap: calc(1.5rem * 1);
+  }
+}
+@media (min-width: 2560px) {
+  .sin {
+    column-gap: calc(2rem * 0.4);
+  }
+}
+```
 
 ## `@include mqXXX()`
 
@@ -72,15 +111,21 @@ The `$min` and `$max` values, can by a number with values, or a breakpoint. In c
 ### Syntax
 
 ```
+
 mq($min, $max)
+
 ```
 
 ```
+
 mqMin($min)
+
 ```
 
 ```
+
 mqMax($max)
+
 ```
 
 - `$min`: The minimum screen size from which the content will become active.
@@ -89,17 +134,23 @@ mqMax($max)
 ## Example
 
 ```
+
 @include mqMin(xs){
-  display: block;
+display: block;
 }
 @include mqMin(40em){
-  display: inline;
+display: inline;
 }
 @include mqMax(573px){
-  display: inline-block;
+display: inline-block;
 }
 
 @include mq(md, xl){
-  display: none;
+display: none;
 }
+
+```
+
+```
+
 ```
