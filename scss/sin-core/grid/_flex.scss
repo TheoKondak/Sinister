@@ -8,261 +8,261 @@
 /// @link   https://github.com/TheoKondak
 ///
 
-@mixin flex {
+@mixin d-flex {
   display: flex !important;
 }
 
 .flex {
-  @include flex;
+  @include d-flex;
 }
 
 .justifyCenter {
-  @include flex;
+  @include d-flex;
   justify-content: center;
 }
 
 @mixin justifyCenter {
-  @include flex;
+  @include d-flex;
   justify-content: center;
 }
 
 .justifyStart {
-  @include flex;
+  @include d-flex;
   justify-content: flex-start;
 }
 
 @mixin justifyStart {
-  @include flex;
+  @include d-flex;
   justify-content: flex-start;
 }
 
 .justifyEnd {
-  @include flex;
+  @include d-flex;
   justify-content: flex-end;
 }
 
 @mixin justifyEnd {
-  @include flex;
+  @include d-flex;
   justify-content: flex-end;
 }
 
 .justifySpaceBetween {
-  @include flex;
+  @include d-flex;
   justify-content: space-between;
 }
 
 @mixin justifySpaceBetween {
-  @include flex;
+  @include d-flex;
   justify-content: space-between;
 }
 
 .justifySpaceEvenly {
-  @include flex;
+  @include d-flex;
   justify-content: space-evenly;
 }
 
 @mixin justifySpaceEvenly {
-  @include flex;
+  @include d-flex;
   justify-content: space-evenly;
 }
 
 .justifySpaceAround {
-  @include flex;
+  @include d-flex;
   justify-content: space-around;
 }
 
 @mixin justifySpaceAround {
-  @include flex;
+  @include d-flex;
   justify-content: space-around;
 }
 
 .wrap {
-  @include flex;
+  @include d-flex;
   flex-wrap: wrap;
 }
 
 @mixin wrap {
-  @include flex;
+  @include d-flex;
   flex-wrap: wrap;
 }
 
 .nowrap {
-  @include flex;
+  @include d-flex;
   flex-wrap: nowrap;
 }
 
 @mixin nowrap {
-  @include flex;
+  @include d-flex;
   flex-wrap: nowrap;
 }
 
 .alignStart {
-  @include flex;
+  @include d-flex;
   align-items: flex-start;
 }
 
 @mixin alignStart {
-  @include flex;
+  @include d-flex;
   align-items: flex-start;
 }
 
 .alignEnd {
-  @include flex;
+  @include d-flex;
   align-items: flex-end;
 }
 
 @mixin alignEnd {
-  @include flex;
+  @include d-flex;
   align-items: flex-end;
 }
 
 .alignBaseline {
-  @include flex;
+  @include d-flex;
   align-items: baseline;
 }
 
 @mixin alignBaseline {
-  @include flex;
+  @include d-flex;
   align-items: baseline;
 }
 
 .alignCenter {
-  @include flex;
+  @include d-flex;
   align-items: center;
 }
 
 @mixin alignCenter {
-  @include flex;
+  @include d-flex;
   align-items: center;
 }
 
 .alignStretch {
-  @include flex;
+  @include d-flex;
   align-items: stretch;
 }
 
 @mixin alignStretch {
-  @include flex;
+  @include d-flex;
   align-items: stretch;
 }
 
 .contentStart {
-  @include flex;
+  @include d-flex;
   align-content: flex-start;
 }
 
 @mixin contentStart {
-  @include flex;
+  @include d-flex;
   align-content: flex-start;
 }
 
 .contentEnd {
-  @include flex;
+  @include d-flex;
   align-content: flex-end;
 }
 
 @mixin contentEnd {
-  @include flex;
+  @include d-flex;
   align-content: flex-end;
 }
 
 .contentCenter {
-  @include flex;
+  @include d-flex;
   align-content: center;
 }
 
 @mixin contentCenter {
-  @include flex;
+  @include d-flex;
   align-content: center;
 }
 
 .contentBetween {
-  @include flex;
+  @include d-flex;
   align-content: space-between;
 }
 
 @mixin contentBetween {
-  @include flex;
+  @include d-flex;
   align-content: space-between;
 }
 
 .contentAround {
-  @include flex;
+  @include d-flex;
   align-content: space-around;
 }
 
 @mixin contentAround {
-  @include flex;
+  @include d-flex;
   align-content: space-around;
 }
 
 .contentStretch {
-  @include flex;
+  @include d-flex;
   align-content: stretch;
 }
 
 @mixin contentStretch {
-  @include flex;
+  @include d-flex;
   align-content: stretch;
 }
 
 .flexColumn {
-  @include flex;
+  @include d-flex;
   flex-direction: column;
 }
 
 @mixin flexColumn {
-  @include flex;
+  @include d-flex;
   flex-direction: column;
 }
 
 .flexRow {
-  @include flex;
+  @include d-flex;
   flex-direction: row;
 }
 
 @mixin flexRow {
-  @include flex;
+  @include d-flex;
   flex-direction: row;
 }
 
 .flexGrow {
-  @include flex;
+  @include d-flex;
   flex-grow: 1;
 }
 
 @mixin flexGrow {
-  @include flex;
+  @include d-flex;
   flex-grow: 1;
 }
 
 .noGrow {
-  @include flex;
+  @include d-flex;
   flex-grow: 0;
 }
 
 @mixin noGrow {
-  @include flex;
+  @include d-flex;
   flex-grow: 0;
 }
 
 .flexShrink {
-  @include flex;
+  @include d-flex;
   flex-shrink: 1;
 }
 
 @mixin flexShrink {
-  @include flex;
+  @include d-flex;
   flex-shrink: 1;
 }
 
 .noShrink {
-  @include flex;
+  @include d-flex;
   flex-shrink: 0;
 }
 
 @mixin noShrink {
-  @include flex;
+  @include d-flex;
   flex-shrink: 0;
 }
 
