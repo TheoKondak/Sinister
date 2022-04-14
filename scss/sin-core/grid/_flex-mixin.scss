@@ -109,5 +109,7 @@
         }
       }
     }
+  } @else {
+    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:');
   }
 }
