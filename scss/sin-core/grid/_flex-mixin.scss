@@ -107,7 +107,6 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
 ///
 
 @mixin flex($args...) {
-  display: flex;
   // It takes a list of lists
   // Itterate / check first level map
   @if (length($args) > 0) and type($args, 'arglist') {
@@ -115,6 +114,7 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
       @if (length($sin-arg) > 0) and type($args, 'arglist') {
         @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
           @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
+            display: flex;
             @each $cur-arg in $sin-arg {
               // Flex Direction
               @if contains($flex-direction, $cur-arg) {
@@ -148,9 +148,8 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
                   @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
                 }
               }
-
               // Flex | Flex Basis
-              @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+              @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
                 @if type(list.nth($cur-arg, 2), (number)) {
                   @if math.is-unitless(list.nth($cur-arg, 2)) {
                     @if type(list.nth($cur-arg, 3), (number)) or contains($width, list.nth($cur-arg, 3)) {
@@ -170,11 +169,14 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
                     flex: #{$cur-arg};
                   }
                 }
+              } @else {
+                @warn unquote('Invalid input. Please check the syntax of your list properties. ');
               }
             }
           }
         } @else {
           @each $cur-arg in $sin-arg {
+            display: flex;
             // Flex Direction
             @if contains($flex-direction, $cur-arg) {
               flex-direction: #{map-get($flex-direction, $cur-arg)};
