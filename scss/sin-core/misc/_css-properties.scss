@@ -50,16 +50,6 @@ $css-properties: (
       w-w: wrap,
       w-wr: wrap-reverse,
     ),
-    gap: (
-      g: gap,
-      rg: row-gap,
-      cg: column-gap,
-    ),
-    child-properties: (
-      ord: order,
-      fg: flex-grow,
-      fs: flex-shrink,
-    ),
     align-self: (
       as-au: auto,
       as-fs: flex-start,
@@ -78,5 +68,49 @@ $css-properties: (
     revert,
     'revert-layer',
     unset,
+  ),
+  spacing: (
+    spacing-properties: (
+      m: margin,
+      p: padding,
+      g: gap,
+    ),
+    spacing-direction: (
+      generic: 'g',
+      top: 't',
+      right: 'r',
+      bottom: 'b',
+      left: 'l',
+      x-axis: 'x',
+      y-axis: 'y',
+    ),
+    spacing-directions: (
+      g: (
+        top,
+        right,
+        bottom,
+        left,
+      ),
+      y: (
+        top,
+        bottom,
+      ),
+      x: (
+        left,
+        right,
+      ),
+      t: (
+        top,
+      ),
+      r: (
+        right,
+      ),
+      b: (
+        bottom,
+      ),
+      l: (
+        left,
+      ),
+    ),
   ),
 );
