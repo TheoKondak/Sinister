@@ -6,7 +6,16 @@
 @use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
-// NOT LOADING
+///
+/// @author Theodoros Kondakos
+/// @link   https://github.com/TheoKondak
+///
+
+/// flex-parent
+///
+/// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
+///
+/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
 
 @mixin flex-properties($cur-arg) {
   // Flex Direction
@@ -62,7 +71,6 @@
   // If the list has a single arguement, it is flex-basis
   @else if length($cur-arg) == 1 {
     @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
-      @debug 'single arguement';
       > * {
         flex: #{$cur-arg};
       }
@@ -72,25 +80,21 @@
   }
 }
 
-///
-/// @author Theodoros Kondakos
-/// @link   https://github.com/TheoKondak
-///
-
 /// flex-parent
 ///
-/// @param  {number}  $min-width - A minimum width value.
-/// @param  {number}  $max-width - A maximum width value.
+/// @param  {arglist}  $args... - A list of lists. The second level list, takes a breakpoint from sin.config, and abreviations of flex properties. All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
 ///
 @mixin flex($args...) {
-  // It takes a list of lists
+  // It takes a list of Sins
   // Itterate / check first level map
   @if (length($args) > 0) and type($args, 'arglist') {
     @each $sin-arg in $args {
       @if (length($sin-arg) > 0) and type($args, 'arglist') {
+        // If the Sin contains an existing breakpoint
         @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
           @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
             display: flex;
+            // For each list, check the input properties
             @each $cur-arg in $sin-arg {
               // Load All the properties from flex properties mixin
               @include flex-properties($cur-arg);
@@ -98,6 +102,7 @@
           }
         } @else {
           display: flex;
+          // For each list, check the input properties
           @each $cur-arg in $sin-arg {
             @include flex-properties($cur-arg);
           }
