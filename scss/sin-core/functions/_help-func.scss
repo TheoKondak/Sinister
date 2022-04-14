@@ -2,9 +2,11 @@
 @use './get-func' as *;
 @use './getMap-func' as *;
 @use './type-func' as *;
+@use './contains-func' as *;
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
+@use '../misc/css-properties' as *;
 
 ///
 /// @author Theodoros Kondakos
@@ -15,20 +17,22 @@
 ///
 /// @param  {string}  $config-sub-key - A key that you want it's values returned
 /// @param  {map} $config-map - An optional parameter to set a different map instead of configuration
-/// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only.
+/// @param {string} $intro-msg - A string that will work as a title, or intro text for the help context
+/// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
 ///
 
-@function help($config-sub-key: null, $config-map: $configuration) {
+@function help($config-sub-key: null, $config-map: $configuration, $intro-msg: 'Printing sinister configuration:') {
   // Check if $config-map is a map and it's not empty
   @if type-of($config-map) == map and length($config-map) >= 1 {
     // Check if a key is passed, if not print the whole map.
     @if $config-sub-key == null {
-      @debug 'Printing sinister configuration:';
+      @debug $intro-msg;
       @debug '=====';
 
       // For every value pair in the map
       @each $config-key, $config-val in $config-map {
         // Some exceptions
+
         @if $config-key == 'font-family' or $config-key == 'bootstrap' {
           @each $font-family-property in get($config-key) {
             @each $property in $font-family-property {
@@ -37,15 +41,26 @@
             @debug '';
           }
         } @else {
-          // @debug type-of($config-val);
+          // For Print CSS properties
+          @if type($config-val, (map)) and contains($css-properties, $config-val) {
+            @if type($config-val, (map)) {
+              @each $cur-key, $cur-val in $config-val {
+                @debug '';
+                @debug '-=#{$cur-key}=-';
 
-          @if (type($config-val, (map))) {
+                @each $current-key, $current-value in $cur-val {
+                  @debug '-#{$current-value}: #{$current-key}';
+                }
+              }
+            } @else if type($config-val, (list)) {
+              @each $cur-val in $config-val {
+                @debug '- #{$cur-key}';
+              }
+            }
+          } @else if type($config-val, (map)) {
             @debug '-=#{$config-key}=-';
             @each $key, $value in $config-val {
               @debug '- #{$key}: "#{$value}"';
-              // @debug 'YOOO';
-              // @debug $key;
-              // @debug $value;
             }
             @debug '';
           } @else if (type($config-val, (list))) {
