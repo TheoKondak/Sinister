@@ -2,110 +2,86 @@
 @use 'sass:map';
 @use 'sass:math';
 @use '../functions' as *;
+@use '../misc/css-properties' as *;
 @use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
 // NOT LOADING
+
+@mixin flex-properties($cur-arg) {
+  // Flex Direction
+  @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
+    flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
+  }
+
+  // Flex Wrap
+  @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
+    flex-wrap: #{map-get(getMap($css-properties, flex, wrap), $cur-arg)};
+  }
+
+  // Justify Content
+  @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
+    justify-content: #{map-get(getMap($css-properties, flex, justify-content), $cur-arg)};
+  }
+
+  // Align Content
+  @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
+    align-content: #{map-get(getMap($css-properties, flex, align-content), $cur-arg)};
+  }
+  // Align Items
+  @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
+    align-items: #{map-get(getMap($css-properties, flex, align-items), $cur-arg)};
+  }
+
+  // Gap
+  @if type($cur-arg, (list)) and contains($spacingDirection, list.nth($cur-arg, 1)) {
+    @if length($cur-arg) == 2 {
+      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
+    } @else if length($cur-arg) == 3 {
+      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
+    }
+  }
+  // Flex | Flex Basis
+
+  // If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
+  @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+    @if type(list.nth($cur-arg, 2), (number)) {
+      @if math.is-unitless(list.nth($cur-arg, 2)) {
+        @if type(list.nth($cur-arg, 3), (number)) or contains(getMap($css-properties, flex, width), list.nth($cur-arg, 3)) {
+          > * {
+            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)});
+          }
+        }
+      } @else {
+        @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
+      }
+    } @else {
+      @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
+    }
+  }
+  // If the list has a single arguement, it is flex-basis
+  @else if length($cur-arg) == 1 {
+    @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
+      @debug 'single arguement';
+      > * {
+        flex: #{$cur-arg};
+      }
+    }
+  } @else {
+    @warn unquote('Invalid input. Please check the syntax of your list properties. ');
+  }
+}
 
 ///
 /// @author Theodoros Kondakos
 /// @link   https://github.com/TheoKondak
 ///
 
-$align-items: (
-  ai-str: stretch,
-  ai-fs: flex-start,
-  ai-fe: flex-end,
-  ai-c: center,
-  ai-bl: baseline,
-  ai-fbl: 'first baseline',
-  ai-lbl: 'last baseline',
-  ai-st: start,
-  ai-ed: end,
-  ai-sst: self-start,
-  ai-sed: self-end,
-  ai-sf: safe,
-  ai-usf: unsafe,
-);
-
-// Flex Parent Element Properties
-$align-content: (
-  ac-fs: flex-start,
-  ac-fe: flex-end,
-  ac-c: center,
-  ac-sb: space-between,
-  ac-sa: space-around,
-  ac-se: space-evenly,
-  ac-strai-: stretch,
-  ac-st: start,
-  ac-ed: end,
-  ac-bl: baseline,
-  ac-fbl: 'first baseline',
-  ac-lbl: 'last baseline',
-  ac-sf: safe,
-  ac-usf: unsafe,
-);
-
-$justify-content: (
-  jc-fs: flex-start,
-  jc-fe: flex-end,
-  jc-c: center,
-  jc-sb: space-between,
-  jc-sa: space-around,
-  jc-se: space-evenly,
-  jc-st: start,
-  jc-ed: end,
-  jc-l: left,
-  jc-r: right,
-  jc-sf: safe,
-  jc-usf: unsafe,
-);
-
-$flex-direction: (
-  fd-r: row,
-  fd-cl: column,
-  fd-rr: row-reverse,
-  fd-clr: column-reverse,
-);
-
-$wrap: (
-  w-nw: nowrap,
-  w-w: wrap,
-  w-wr: wrap-reverse,
-);
-
-$gap: (
-  g: gap,
-  rg: row-gap,
-  cg: column-gap,
-);
-
-// Flex Child Element Proeperties
-$child-properties: (
-  order: order,
-  // Unsupported
-  fg: flex-grow,
-  fs: flex-shrink,
-);
-
-$align-self: (
-  au: auto,
-  fs: flex-start,
-  fe: flex-end,
-  c: center,
-  bl: baseline,
-  str: stretch,
-);
-
-// Width
-$width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer', unset);
-
 /// flex-parent
 ///
 /// @param  {number}  $min-width - A minimum width value.
 /// @param  {number}  $max-width - A maximum width value.
 ///
-
 @mixin flex($args...) {
   // It takes a list of lists
   // Itterate / check first level map
@@ -116,123 +92,14 @@ $width: (max-content, min-content, auto, inherit, initial, revert, 'revert-layer
           @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
             display: flex;
             @each $cur-arg in $sin-arg {
-              // Flex Direction
-              @if contains($flex-direction, $cur-arg) {
-                flex-direction: #{map-get($flex-direction, $cur-arg)};
-              }
-
-              // Flex Wrap
-              @if contains($wrap, $cur-arg) {
-                flex-wrap: #{map-get($wrap, $cur-arg)};
-              }
-
-              // Justify Content
-              @if contains($justify-content, $cur-arg) {
-                justify-content: #{map-get($justify-content, $cur-arg)};
-              }
-
-              // Align Content
-              @if contains($align-content, $cur-arg) {
-                align-content: #{map-get($align-content, $cur-arg)};
-              }
-              // Align Items
-              @if contains($align-items, $cur-arg) {
-                align-items: #{map-get($align-items, $cur-arg)};
-              }
-
-              // Gap
-              @if type($cur-arg, (list)) and contains($spacingDirection, list.nth($cur-arg, 1)) {
-                @if length($cur-arg) == 2 {
-                  @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
-                } @else if length($cur-arg) == 3 {
-                  @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
-                }
-              }
-              // Flex | Flex Basis
-              @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
-                @if type(list.nth($cur-arg, 2), (number)) {
-                  @if math.is-unitless(list.nth($cur-arg, 2)) {
-                    @if type(list.nth($cur-arg, 3), (number)) or contains($width, list.nth($cur-arg, 3)) {
-                      > * {
-                        flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)});
-                      }
-                    }
-                  } @else {
-                    @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
-                  }
-                } @else {
-                  @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
-                }
-              } @else if length($cur-arg) == 1 {
-                @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains($width, $cur-arg) {
-                  > * {
-                    flex: #{$cur-arg};
-                  }
-                }
-              } @else {
-                @warn unquote('Invalid input. Please check the syntax of your list properties. ');
-              }
+              // Load All the properties from flex properties mixin
+              @include flex-properties($cur-arg);
             }
           }
         } @else {
+          display: flex;
           @each $cur-arg in $sin-arg {
-            display: flex;
-            // Flex Direction
-            @if contains($flex-direction, $cur-arg) {
-              flex-direction: #{map-get($flex-direction, $cur-arg)};
-            }
-
-            // Flex Wrap
-            @if contains($wrap, $cur-arg) {
-              flex-wrap: #{map-get($wrap, $cur-arg)};
-            }
-
-            // Justify Content
-            @if contains($justify-content, $cur-arg) {
-              justify-content: #{map-get($justify-content, $cur-arg)};
-            }
-
-            // Align Content
-            @if contains($align-content, $cur-arg) {
-              align-content: #{map-get($align-content, $cur-arg)};
-            }
-
-            // Align Items
-            @if contains($align-items, $cur-arg) {
-              align-items: #{map-get($align-items, $cur-arg)};
-            }
-
-            // Gap
-            @if type($cur-arg, (list)) and contains($spacingDirection, list.nth($cur-arg, 1)) {
-              @if length($cur-arg) == 2 {
-                @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
-              } @else if length($cur-arg) == 3 {
-                @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
-              }
-            }
-
-            // Flex | Flex Basis
-            @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
-              @if type(list.nth($cur-arg, 2), (number)) {
-                @if math.is-unitless(list.nth($cur-arg, 2)) {
-                  @if type(list.nth($cur-arg, 3), (number)) or contains($width, list.nth($cur-arg, 3)) {
-                    > * {
-                      flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} #{list.nth($cur-arg, 3)};
-                    }
-                  }
-                } @else {
-                  @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
-                }
-              } @else {
-                @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
-              }
-            } @else if length($cur-arg) == 1 {
-              @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains($width, $cur-arg) {
-                > * {
-                  flex: #{$cur-arg};
-                }
-              }
-            }
+            @include flex-properties($cur-arg);
           }
         }
       }
