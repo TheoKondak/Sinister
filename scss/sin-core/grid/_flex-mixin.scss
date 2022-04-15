@@ -11,7 +11,7 @@
 /// @link   https://github.com/TheoKondak
 ///
 
-/// Flex-properties
+/// @mixin flex-properties();
 ///
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
 ///
@@ -80,7 +80,7 @@
   }
 }
 
-/// flex-parent
+/// @mixin flex()
 ///
 /// @param  {arglist}  $args... - A list of lists. The second level list, takes a breakpoint from sin.config, and abreviations of flex properties. All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
 ///
