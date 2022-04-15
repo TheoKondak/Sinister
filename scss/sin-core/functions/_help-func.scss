@@ -3,6 +3,7 @@
 @use './getMap-func' as *;
 @use './type-func' as *;
 @use './contains-func' as *;
+
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
@@ -21,12 +22,26 @@
 /// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
 ///
 
-@function help($config-sub-key: null, $config-map: $configuration, $intro-msg: 'Printing sinister configuration:') {
+@function help($config-sub-key: null, $config-map: $configuration, $intro-msg: 'Printing sinister configuration:', $msg: 'Documentation not found!') {
   // Check if $config-map is a map and it's not empty
   @if type-of($config-map) == map and length($config-map) >= 1 {
     // Check if a key is passed, if not print the whole map.
     @if $config-sub-key == null {
       @debug $intro-msg;
+
+      @if type($msg, (string)) {
+        @if length($msg) > 0 {
+          @debug '---';
+          @debug $msg;
+        }
+      } @else if type($msg, (list)) {
+        @if length($msg) > 0 {
+          @debug '---';
+          @each $msg-val in $msg {
+          }
+        }
+      }
+
       @debug '=====';
 
       // For every value pair in the map
