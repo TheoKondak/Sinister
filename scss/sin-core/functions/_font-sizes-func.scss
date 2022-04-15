@@ -5,6 +5,7 @@
 
 @use './../grid/_responsive.scss' as responsive;
 @use './get-func' as *;
+@use './help-func' as *;
 
 ///
 /// @author Theodoros Kondakos
@@ -19,11 +20,8 @@
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
-    @debug 'Font size function received no input.';
-    @debug 'Available font sizes: ';
-    @each $fs-id, $fs in get(font-sizes) {
-      @debug ' #{$fs-id}: #{$fs}';
-    }
+    @debug help($config-map: get(font-sizes), $intro-msg: 'Printing available Font Sizes:');
+
     @return null;
   } @else {
     // Check if $key is part of the font sizes map
@@ -33,6 +31,8 @@
       @each $fs-id, $fs in get(font-sizes) {
         @debug ' #{$fs-id}: #{$fs}';
       }
+
+      @debug help($config-map: get(font-sizes), $intro-msg: 'Available font sizes: ');
 
       @return '---';
     } @else {
