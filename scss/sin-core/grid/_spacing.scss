@@ -212,7 +212,7 @@
   }
 }
 
-/// Setting up some data required by the classes and the mixins
+/// @mixin spacing()
 /// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
 /// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
 /// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
@@ -340,6 +340,6 @@
       }
     }
   } @else {
-    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:');
+    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md#function-help-1');
   }
 }
