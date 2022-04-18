@@ -2,17 +2,21 @@
 
 @use './../grid/_responsive.scss' as *;
 
-///
-/// @author Theodoros Kondakos
-/// @link   https://github.com/TheoKondak
-///
+////
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+////
 
-/// Replace `$search` with `$replace` in `$string`.
-/// @param  {String}  $min-width-query - Initial string
-/// @param  {list}    $grid-template-columns - Substring to replace
-/// @param  {list}    $grid-template-rows ('') - New value
-/// @return {String}  Updated string
 ///
+/// Replace `$search` with `$replace` in `$string`.
+/// @access public
+/// @arg {arglist} $args - Takes an `arglist` of `lists`.
+///  Each `list` contains:
+/// - a {String}  $min-width-query - Initial string
+/// - a  {list}    $grid-template-columns - Substring to replace
+/// - and another  {list}    $grid-template-rows ('') - New value
+/// @throw Error related message
+/// @example @include grid-template(('', (1fr), (1fr, 1fr)),(xs, (1fr, 1fr, 30px)));
 @mixin grid-template($args...) {
   @if (length($args) > 0) {
     @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {
