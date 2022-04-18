@@ -43,7 +43,7 @@
   }
 
   // Gap
-  @if type($cur-arg,( list)) and contains(contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
+  @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
     @if length($cur-arg) == 2 {
       @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
     } @else if length($cur-arg) == 3 {

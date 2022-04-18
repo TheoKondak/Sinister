@@ -1,5 +1,11 @@
 $css-properties: (
   flex: (
+    flex-direction: (
+      fd-r: row,
+      fd-cl: column,
+      fd-rr: row-reverse,
+      fd-clr: column-reverse,
+    ),
     align-items: (
       ai-str: stretch,
       ai-fs: flex-start,

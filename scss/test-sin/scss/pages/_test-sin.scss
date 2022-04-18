@@ -12,9 +12,9 @@
 
   // @include spacing();
 
-  // @include flex();
+  @include flex();
 
-  @debug fs();
+  // @debug fs();
 }
 // Check the rest arguements, if they exist, render the css else, continue
 // @debug contains(getMap($align-items), $flex-properties-list);
