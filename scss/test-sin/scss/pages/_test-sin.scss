@@ -5,14 +5,15 @@
 
   // $generic: (ai-c, jc-c, ac-c, fd-cl, (x, 6), (0 0 43%), (max-content));
 
-  // $xs: (xs, jc-c, ac-fs, ai-fe, fd-r, w-w, (x, 3, 2), (0 0 40%), (auto));
-  // $md: (md, jc-c, ac-fs, ai-fe, fd-r, w-w, (x, 3, 2), (0 0 auto), (max-content));
+  $xs: (xs, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto));
+  $md: (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content));
 
   @include spacing((m, g, 1), (xs, m, t, 1), (md, p, b, 2, 21), (xl, g, x, 1), (xxl, g, l, 2, 0.4));
 
   // @include spacing();
 
-  @include flex();
+  // @include flex();
+  @include spacing();
 
   // @debug fs();
 }

@@ -19,7 +19,9 @@
 
 @mixin flex-properties($cur-arg) {
   // Flex Direction
+  // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
   @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
+    @debug map-get(getMap($css-properties, flex, flex-direction), $cur-arg);
     flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
   }
 
