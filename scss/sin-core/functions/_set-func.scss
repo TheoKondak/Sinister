@@ -7,15 +7,14 @@
 /// @ignore @link   https://github.com/TheoKondak
 ///
 
-/// FUNCTION OBSOLETE
+/// Set Func
 ///
 /// @param  {map}  $map - A map that contains setting values to update or add new data to sinister configuration
 /// @param  {map}  $original-map - By default $original map is pointing to the default sinister configuration.
 /// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
+/// Similar to get set function sets a value to a map
 ///
-/// Don't have a practical use for now
 
-// Similar to get set function sets a value to a map
 @function set($new-value, $new-map-key, $original-map: $sinister-default-configuration) {
   $maps: ($original-map);
   $result: null;

@@ -1,13 +1,14 @@
 @use './get-func' as *;
 @use 'sass:string';
 ///
-/// @access private
+
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 ///
 
 /// Function/Mixin Name /  Short Description
 ///
+/// @access private
 /// @param  {list | map}  $data - Takes a list or a map.
 /// @param  {*}  $val - Takes a value of any type and checks if it exists in the current list or map.
 /// @return {bool} - Returns a true if the value is contained in the list or map.

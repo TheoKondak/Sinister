@@ -11,11 +11,10 @@
 /// Replace `$search` with `$replace` in `$string`.
 /// @access public
 /// @arg {arglist} $args - Takes an `arglist` of `lists`.
-///  Each `list` contains:
+/// > Each `list` contains:
 /// - a {String}  $min-width-query - Initial string
 /// - a  {list}    $grid-template-columns - Substring to replace
 /// - and another  {list}    $grid-template-rows ('') - New value
-/// @throw Error related message
 /// @example @include grid-template(('', (1fr), (1fr, 1fr)),(xs, (1fr, 1fr, 30px)));
 @mixin grid-template($args...) {
   @if (length($args) > 0) {
