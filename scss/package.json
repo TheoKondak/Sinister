@@ -9,7 +9,8 @@
     "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch"
   },
   "dependencies": {
-    "sass": "^1.49.7"
+    "sass": "^1.49.7",
+    "sassdoc": "^2.7.3"
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",
