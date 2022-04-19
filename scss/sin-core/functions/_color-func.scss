@@ -10,11 +10,12 @@
 /// @ignore @link   https://github.com/TheoKondak
 ///
 
-/// Function/Mixin Name /  Short Description
+/// @name Color
 ///
 /// @param  {string}  $key - A key from `colors` map that exists in `_sin.config.scss`.
-/// @return {color}  - Returns a CSS color
-///
+/// @return {color}  - Returns a CSS color from `_sin.config.scss`
+/// @example color: color(sin-config-color);
+
 @function color($key: null) {
   // Check if input is null.
 

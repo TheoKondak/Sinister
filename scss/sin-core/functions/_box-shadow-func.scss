@@ -182,9 +182,17 @@ $boxShadowList: (
   }
 }
 
-/// Function/Mixin Name /  Short Description
-/// @param  {type}  $boxshadowId - The ID of the box shadow from the $boxShadowList
+/// @name Boxshadow
 ///
+
+/// @param  {type}  $boxshadowId - The ID of the box shadow from the $boxShadowList
+/// @example @include boxshadow(5);
+/// @output ```
+/// .sin {
+///  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+/// }
+/// ```
+
 @mixin boxshadow($boxshadowId) {
   @if type-of($boxshadowId) == 'number' {
     box-shadow: box-shadow($boxshadowId);

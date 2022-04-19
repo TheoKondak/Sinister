@@ -10,15 +10,8 @@
 /// @ignore @link   https://github.com/TheoKondak
 ///
 
-/// Setting up some data required by the classes and the mixins
-/// @parameter {map} getMap($css-properties, spacing, spacing-properties) - Properties that have to do with spacing like margin, padding and gap.
-/// @parameter {map} getMap($css-properties, spacing, spacing-direction)- Directions that a spacing property can have.
-/// @parameter {map} $spacingDirections - A list of possible directions for each spacing property. That is required because of gap property.
-///
-
-/// Generate spacing related parameters
-/// @parameter {bool} compile-spacing-classes - Sinister configuration property, if true will generate spacing classes.
-///
+// Generate spacing related parameters
+// @arg {bool} compile-spacing-classes - Sinister configuration property, if true will generate spacing classes.
 
 @if getMap($configuration, generate-classes, 'spacing') {
   @each $spacingKey, $spacingVal in get(spacing) {
@@ -212,7 +205,7 @@
   }
 }
 
-/// @mixin spacing()
+/// Spacing
 /// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
 /// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
 /// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
@@ -220,7 +213,6 @@
 /// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
 ///
 
-//Beta Spacing
 @mixin spacing($args...) {
   $breakpoint: null;
   $property: null;

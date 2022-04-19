@@ -11,10 +11,9 @@
 /// @ignore @link   https://github.com/TheoKondak
 ///
 
-/// @mixin flex-properties();
-///
+///  Flex Properties
+/// @access private
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
-///
 /// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
 
 @mixin flex-properties($cur-arg) {
@@ -82,10 +81,46 @@
   }
 }
 
-/// @mixin flex()
-///
-/// @param  {arglist}  $args... - A list of lists. The second level list, takes a breakpoint from sin.config, and abreviations of flex properties. All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
-///
+/// Flex
+/// @access public
+/// @param  {arglist}  $args... - An arglist of lists.
+/// > Each `list` contains:
+/// - A breakpoint from `sin.config`. This is optional.
+/// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+/// > All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// @example @include flex((jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto)), (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content)));
+/// @output ```
+/// .sin {
+///   display: flex;
+///   justify-content: center;
+///   align-content: flex-start;
+///   align-items: flex-end;
+///   flex-direction: column;
+///   flex-wrap: wrap;
+///   column-gap: calc(2.5rem * 2);
+/// }
+/// .sin > * {
+///   flex: 0 0 calc(40%);
+/// }
+/// .sin > * {
+///   flex: auto;
+/// }
+/// ATmedia (min-width: 1200px) {
+///   .sin {
+///     display: flex;
+///     justify-content: center;
+///     align-content: flex-start;
+///     align-items: flex-end;
+///     flex-direction: column;
+///     flex-wrap: wrap;
+///     column-gap: calc(2.5rem * 2);
+///   }
+///   .sin > * {
+///     flex: max-content;
+///   }
+/// }
+/// ```
+
 @mixin flex($args...) {
   // It takes a list of Sins
   // Itterate / check first level map
