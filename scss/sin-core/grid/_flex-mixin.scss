@@ -87,8 +87,13 @@
 /// - A breakpoint from `sin.config`. This is optional.
 /// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
 /// > All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
-/// @example @include flex((jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto)), (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content)));
-/// @output ```
+///
+/// @example scss - input
+/// .sin{
+/// include flex((jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto)), (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content)));
+/// }
+///
+/// @example css - output
 /// .sin {
 ///   display: flex;
 ///   justify-content: center;
@@ -104,7 +109,7 @@
 /// .sin > * {
 ///   flex: auto;
 /// }
-/// ATmedia (min-width: 1200px) {
+/// media (min-width: 1200px) {
 ///   .sin {
 ///     display: flex;
 ///     justify-content: center;
@@ -118,8 +123,6 @@
 ///     flex: max-content;
 ///   }
 /// }
-/// ```
-
 @mixin flex($args...) {
   // It takes a list of Sins
   // Itterate / check first level map
