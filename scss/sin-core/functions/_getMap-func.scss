@@ -3,29 +3,14 @@
 @use 'sass:list';
 @use '../../../../../sin.config' as *;
 
-///
+/// @name getMap
+/// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
-/// Get Values from any map
-
-// Syntax:
-//   ...: getMap($map, key, key);
-
-// Where map can be any map,
-// Similar to get, only now you have to declare the map. Example:
-//  ...: getMap($configuration, spacing, xxl);
-// If a value is nested further deep, you can use the syntax bellow.
-//  background: getMap($map          , parent   , child, child);
-//  background: getMap($configuration, bootstrap, color, bs-success);
-// Will return the color set for the specific value pair.
-
-/// Get function
-///
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
-/// @example @debug getMap($configuration, global, production);
+/// Similar to get, only now you have to declare the map.
+/// @example `@debug getMap($configuration, global, production);`
 
 @function getMap($map, $keys...) {
   @if $map {
@@ -46,3 +31,9 @@
 
   @return $map;
 }
+// Similar to get, only now you have to declare the map. Example:
+//  ...: getMap($configuration, spacing, xxl);
+// If a value is nested further deep, you can use the syntax bellow.
+//  background: getMap($map          , parent   , child, child);
+//  background: getMap($configuration, bootstrap, color, bs-success);
+// Will return the color set for the specific value pair.

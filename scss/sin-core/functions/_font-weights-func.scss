@@ -6,16 +6,14 @@
 @use './../grid/_responsive.scss' as responsive;
 @use './get-func' as *;
 
-///
+/// @name fw
+/// @group typography
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
 /// Function to easily access font weights
-///
 /// @param  {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font weight value
-///
+
 @function fw($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
@@ -42,6 +40,13 @@
   }
 }
 
+/// @name font-weight
+/// @group typography
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// Function to easily access font weights
+/// @param  {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
+/// @return {number}  - Returns the font weight value
 @function font-weight($key: null) {
   @return fs($key);
 }

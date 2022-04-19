@@ -6,13 +6,11 @@
 @use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
-///
+/// @name flex-properties
+/// @access private
+/// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
-///  Flex Properties
-/// @access private
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
 /// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
 
@@ -81,8 +79,9 @@
   }
 }
 
-/// Flex
+/// @name flex
 /// @access public
+/// @group grid
 /// @param  {arglist}  $args... - An arglist of lists.
 /// > Each `list` contains:
 /// - A breakpoint from `sin.config`. This is optional.

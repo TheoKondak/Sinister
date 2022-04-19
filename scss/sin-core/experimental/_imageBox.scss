@@ -2,13 +2,10 @@
 
 @use '../functions' as *;
 
-///
+/// @name CLI Image wrapper
+/// @group utility
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-/// @name CLI Image wrapper
-///
-
 /// The goal is to reduce CLS issues with images. Requires a parent element to act as container. Will give the container height (via padding) equal to the height of the image. Would be ideal to use attr(), but it seems it's not supported at all yet. So instead, I have to figure a way to give padding equal to the height of the image. We can also use a background image or color to fill the space before the image loads.
 /// > Note: there might be a way to implement this without the need for parent via ::after
 /// Source | Inspiration:

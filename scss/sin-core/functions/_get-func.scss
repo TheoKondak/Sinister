@@ -3,16 +3,12 @@
 @use 'sass:list';
 @use '../../../../../sin.config' as *;
 
-///
+/// @name get
+/// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
-/// Get function
-///
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
-///
 
 @function get($keys...) {
   $map: $configuration;

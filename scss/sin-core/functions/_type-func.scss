@@ -2,16 +2,14 @@
 @use 'sass:map';
 @use 'sass:list';
 
-///
-/// @author Theodoros Kondakos
-/// @link   https://github.com/TheoKondak
-///
-
-/// Type Check Function
-///
+/// @name type
+/// @access private
+/// @group dev
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
 /// @param  {*}  $data - The variable you want it's type checked
 /// @param  {list}  $data-types - A list of data types.
-/// @return {type}  -  If the $data belong to any type from $data-types, it returns truth
+/// @return {type}  -  If the `$data` belong to any type from `$data-types`, it returns `true`
 
 @function type($data: null, $data-types: ()) {
   $isTrue: false;

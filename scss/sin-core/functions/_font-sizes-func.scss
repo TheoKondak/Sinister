@@ -7,16 +7,14 @@
 @use './get-func' as *;
 @use './help-func' as *;
 
-///
+/// @name fs
+/// @group typography
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
 /// Function to easily access font sizes
-///
 /// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font size value
-///
+
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
@@ -42,6 +40,13 @@
   }
 }
 
+/// @name font-size
+/// @group typography
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// Function to easily access font sizes
+/// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
+/// @return {number}  - Returns the font size value
 @function font-size($key: null) {
   @return fs($key);
 }

@@ -5,13 +5,10 @@
 
 @use './get-func' as *;
 
-///
+/// @name Color
+/// @group design
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
-/// @name Color
-///
 /// @param  {string}  $key - A key from `colors` map that exists in `_sin.config.scss`.
 /// @return {color}  - Returns a CSS color from `_sin.config.scss`
 /// @example color: color(sin-config-color);
@@ -26,17 +23,17 @@
     @each $colorId, $color in get(colors) {
       @debug ' #{$colorId}: #{$color}';
     }
-    @return '---';
+    @return null;
   } @else {
     // Check if $key is part of the colors map
     @if not map.has-key(get(colors), $key) {
-      @warn 'Color function needs a valid input. It requires a color key from sinConfig. The current value is: `#{$key}`. See bellow for available colors';
+      @error 'Color function needs a valid input. It requires a color key from sinConfig. The current value is: `#{$key}`. See bellow for available colors';
       @debug 'Available colors: ';
       @each $colorId, $color in get(colors) {
         @debug ' #{$colorId}: #{$color}';
       }
 
-      @return '---';
+      @return null;
     } @else {
       // Value exists so return value
       @return get(colors, $key);

@@ -16,6 +16,7 @@
   // @include spacing();
 
   color: color(test-color);
+  @include boxshadow();
 
   // @debug fs();
 }

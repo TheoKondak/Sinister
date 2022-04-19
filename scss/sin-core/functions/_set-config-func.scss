@@ -4,17 +4,12 @@
 @use 'sass:list';
 @use './type-func' as *;
 
-///
+/// @name set-config
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///
-
-/// Setup Configuration
-///
 /// @param  {map}  $new-map - A map that contains setting values to update or add new data to sinister configuration
 /// @param  {map}  $add-maps - By default $original map is pointing to the default sinister configuration.
 /// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
-///
 
 @function set-config($new-map, $add-maps: $sinister-default-configuration) {
   $processing-map: ();

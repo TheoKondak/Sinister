@@ -3,11 +3,6 @@
 @use '../functions' as *;
 @use '../../../../../sin.config' as *;
 
-///
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-///
-
 @mixin d-flex {
   display: flex !important;
 }

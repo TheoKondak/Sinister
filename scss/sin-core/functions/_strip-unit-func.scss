@@ -1,11 +1,10 @@
 // Source:  https://css-tricks.com/snippets/sass/strip-unit-function/
 
-///
+/// @name strip-unit
+/// @access private
+/// @group dev
 /// @author Theodoros Kondakos
 /// @link   https://github.com/TheoKondak
-///
-
-/// Remove the unit of a length
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 

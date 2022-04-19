@@ -5,12 +5,15 @@
 
 @use './getMap-func' as *;
 
-///
+/// @name $box-shadow-list
+/// @group utility
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-///  Box Shadow Source https://getcssscan.com/css-box-shadow-examples
+/// A list of premade box-shadow css properties. See the functions and mixin for more.
+/// Source and showcase in the link bellow.
+/// @link https://getcssscan.com/css-box-shadow-examples
 
-$boxShadowList: (
+$box-shadow-list: (
   1: (
     none,
   ),
@@ -169,23 +172,24 @@ $boxShadowList: (
   ),
 );
 
-/// Get the box shadow from the $boxShadowList in order to feed it into the mixin
-/// @param  {number}  $boxshadowId - The ID of the box shadow from the $boxShadowList
-/// @return {list} - Returns a list of box shadow css properties to the mixin
-///
-@function box-shadow($boxshadowId) {
-  @if type-of($boxshadowId) == 'number' and $boxshadowId >= 0 and $boxshadowId < list.length($boxShadowList) {
-    @return getMap($boxShadowList, $boxshadowId);
+/// @name box-shadow
+/// @group utility
+/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+/// @return {list} - Returns a list of box shadow css properties to the mixin.
+/// Get the box shadow from the $box-shadow-list in order to feed it into the mixin
+@function box-shadow($box-shadow-id) {
+  @if type-of($box-shadow-id) == 'number' and $box-shadow-id >= 0 and $box-shadow-id < list.length($box-shadow-list) {
+    @return getMap($box-shadow-list, $box-shadow-id);
   } @else {
-    @warn 'boxshadow function requires a boxshadow id number from 0 to #{list.length($boxShadowList)}';
+    @warn 'boxshadow function requires a boxshadow id number from 0 to #{list.length($box-shadow-list)}';
+    @debug help($config-map: getMap($box-shadow-list), $intro-msg: 'Printing available Flex Properties:');
     @return null;
   }
 }
 
-/// @name Boxshadow
-///
-
-/// @param  {type}  $boxshadowId - The ID of the box shadow from the $boxShadowList
+/// @name boxshadow
+/// @group utility
+/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 /// @example @include boxshadow(5);
 /// @output ```
 /// .sin {
@@ -193,10 +197,10 @@ $boxShadowList: (
 /// }
 /// ```
 
-@mixin boxshadow($boxshadowId) {
-  @if type-of($boxshadowId) == 'number' {
-    box-shadow: box-shadow($boxshadowId);
+@mixin boxshadow($box-shadow-id: 5) {
+  @if type-of($box-shadow-id) == 'number' {
+    box-shadow: box-shadow($box-shadow-id);
   } @else {
-    @warn 'boxshadow mixin requires a boxshadow id number from 0 to #{list.length($boxShadowList)}';
+    @warn 'boxshadow mixin requires a boxshadow id number from 0 to #{list.length($box-shadow-list)}';
   }
 }

@@ -1,17 +1,17 @@
-/// Compute the maximum depth of a map
+/// @name depth
+/// @access private
+/// @group dev
 /// @param {Map} $map
 /// @return {Number} max depth of `$map`
-/// Source: https://www.sitepoint.com/debugging-sass-maps/
+/// @link https://www.siepoint.com/debugging-sass-maps/
 
 @function depth($map) {
-    $level: 1;
-  
-    @each $key, $value in $map {
-      @if type-of($value) == "map" {
-        $level: max(depth($value) + 1, $level);
-        
-      }
+  $level: 1;
+  @each $key, $value in $map {
+    @if type-of($value) == 'map' {
+      $level: max(depth($value) + 1, $level);
     }
-  
-    @return $level;
-  };
+  }
+
+  @return $level;
+} ;

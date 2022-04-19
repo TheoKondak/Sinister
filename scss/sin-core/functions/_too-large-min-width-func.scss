@@ -1,12 +1,10 @@
 @use './strip-unit-func' as *;
 
-///
-/// @author Theodoros Kondakos
-/// @link   https://github.com/TheoKondak
-///
-
-/// Too Large Min Width
+/// @name too-large-min-width
 /// @access private
+/// @group dev
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
 /// Used in media query mixins. Checks if `min` width is larger than `max` width.
 /// @param  {number}  $min-width - A minimum width value.
 /// @param  {number}  $max-width - A maximum width value.
