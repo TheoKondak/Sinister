@@ -190,12 +190,10 @@ $box-shadow-list: (
 /// @name boxshadow
 /// @group utility
 /// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
-/// @example @include boxshadow(5);
-/// @output ```
-/// .sin {
-///  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-/// }
-/// ```
+/// @example scss
+/// .sin{
+/// @include boxshadow(5);
+// }
 
 @mixin boxshadow($box-shadow-id: 5) {
   @if type-of($box-shadow-id) == 'number' {

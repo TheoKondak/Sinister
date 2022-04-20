@@ -6,13 +6,18 @@
     "migrate": "node migration.js",
     "link": "\"cd test-sin && npm link @get-sinister/sass\"",
     "sass": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css",
-    "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch"
+    "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch",
+    "auto-doc": "sassdoc \"sin-core\"",
+    "auto-doc-herman": "sassdoc \"sin-core\" --theme herman"
   },
   "dependencies": {
-    "sass": "^1.49.7",
-    "sassdoc": "^2.7.3"
+    "sass": "^1.49.7"
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",
-  "homepage": "https://github.com/TheoKondak/Sinister#readme"
+  "homepage": "https://github.com/TheoKondak/Sinister#readme",
+  "devDependencies": {
+    "sassdoc": "^1.10.12",
+    "sassdoc-theme-herman": "^0.5.5"
+  }
 }

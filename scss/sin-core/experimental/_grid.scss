@@ -12,7 +12,11 @@
 /// - `$min-width-query`: `{string}`   - Min width, breakpoint from `_sin.config.scss`
 /// - `$grid-template-columns`: `{list}` - A list of grid template columns
 /// - `$grid-template-rows`: `{list}` - A list of grid template rows (optional)
-/// @example @include grid-template(('', (1fr), (1fr, 1fr)),(xs, (1fr, 1fr, 30px)));
+/// @example scss
+///.sin{
+/// @include grid-template(('', (1fr), (1fr, 1fr)),(xs, (1fr, 1fr, 30px)));
+/// }
+
 @mixin grid-template($args...) {
   @if (length($args) > 0) {
     @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {
