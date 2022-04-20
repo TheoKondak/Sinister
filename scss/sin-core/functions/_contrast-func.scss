@@ -8,17 +8,21 @@
 @use './color-func' as *;
 @use './contains-func' as *;
 
+/// Test if two colors have enough contrast for readability purposes.
 /// @name contrast
 /// @link https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
 /// @group utility
-/// Test if two colors have enough contrast for readability purposes.
 /// @param  {color | string}  $foreground-color - The foreground color
 /// @param  {color | string}   $background-color - The background color
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
 /// @example sass
+/// .sin{
 /// @debug contrast(#ffa, test-color);
+/// }
 /// @example sass
+/// .sin {
 /// @debug contrast(test-color, test-color-2);
+/// }
 @function contrast($foreground-color, $background-color) {
   $foreground: $foreground-color;
   $background: $background-color;

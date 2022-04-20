@@ -1,0 +1,7 @@
+theme: herman
+herman:
+	sass:
+		includePaths:
+			- 'sin-core'
+		includes:
+			- 'index'
