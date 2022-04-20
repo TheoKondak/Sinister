@@ -15,9 +15,5 @@
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",
-  "homepage": "https://github.com/TheoKondak/Sinister#readme",
-  "devDependencies": {
-    "sassdoc": "^1.10.12",
-    "sassdoc-theme-herman": "^0.5.5"
-  }
+  "homepage": "https://github.com/TheoKondak/Sinister#readme"
 }

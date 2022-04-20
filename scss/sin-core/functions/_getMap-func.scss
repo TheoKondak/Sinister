@@ -7,6 +7,7 @@
 /// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
+/// @param  {map}  $map [$configuration] - Source map
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
 /// Similar to get, only now you have to declare the map.

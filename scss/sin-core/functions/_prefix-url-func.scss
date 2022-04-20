@@ -36,7 +36,9 @@
 /// @param  {string}  $image-url - The URL that prefixes an image while in development
 /// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.
 /// @example scss
-// .sin{background-image: prefix('images/just-an-image.webp');}
+/// .sin{
+///    background-image: prefix('images/just-an-image.webp');
+/// }
 
 @function prefix($image-url: '') {
   @return prefix-url($image-url);
