@@ -21,6 +21,7 @@
         @if $original-key == $new-key {
           @if (type($new-value, (map))) {
             // Update the temporary map
+            // @debug map.set($processing-map, $original-key, list.append($original-value, $new-value));
             $processing-map: map.set($processing-map, $original-key, map.merge($original-value, $new-value));
             // Pass the data to the original map
             $return-map: map.merge($add-maps, map.set($processing-map, $original-key, map.merge($original-value, $new-value)));

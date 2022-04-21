@@ -1,7 +1,11 @@
-theme: herman
+# .sassdocrc (yaml)
+
 herman:
-	sass:
-		includePaths:
-			- 'sin-core'
-		includes:
-			- 'index'
+    extraDocs:
+      - './documentation/installation.md'
+    sass:
+      includePaths:
+        - 'test-sin/scss'
+      use:
+       - file: 'sin'
+         namespace: '*'

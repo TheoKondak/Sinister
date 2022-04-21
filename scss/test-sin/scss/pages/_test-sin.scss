@@ -18,10 +18,12 @@
   // color: color(test-color);
   // @include boxshadow();
 
-  // @debug fs();
+  // @debug fs();]
 
-  @debug contrast(test-color, test-color-2);
-  @debug contrast(#ffa, test-color-2);
+  @debug color();
+
+  // @debug contrast(test-color, test-color-2);
+  // @debug contrast(#ffa, test-color-2);
 }
 // Check the rest arguements, if they exist, render the css else, continue
 // @debug contains(getMap($align-items), $flex-properties-list);

@@ -11,7 +11,7 @@
     "auto-doc-herman": "sassdoc \"sin-core\" --theme herman"
   },
   "dependencies": {
-    "sass": "^1.49.7"
+    "sass": "^1.50.1"
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",
