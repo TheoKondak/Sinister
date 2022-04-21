@@ -14,13 +14,7 @@
 /// @param  {number}  $image-height - The height of the image
 /// @param  {number}  $image-width - The width of the image
 /// @param  {color | string}  $preload-background - Takes a css background property. Accepts colors and urls. [OPTIONAL]
-///
 /// Let's say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
-/// @example scss
-/// .image-wrapper {
-///   @include image-wrapper(300px, 350px, #666);
-/// }
-///
 
 @mixin image-wrapper($image-height: get(image-wrapper, img-box-default-height), $image-width: get(image-wrapper, img-box-default-width), $preload-background: get(image-wrapper, img-default-preload-background)) {
   $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);

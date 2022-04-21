@@ -15,14 +15,6 @@
 /// @param  {color | string}  $foreground-color - The foreground color
 /// @param  {color | string}   $background-color - The background color
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
-/// @example sass
-/// .sin{
-/// @debug contrast(#ffa, test-color);
-/// }
-/// @example sass
-/// .sin {
-/// @debug contrast(test-color, test-color-2);
-/// }
 @function contrast($foreground-color, $background-color) {
   $foreground: $foreground-color;
   $background: $background-color;

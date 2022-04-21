@@ -3,6 +3,7 @@
 @use 'sass:list';
 @use '../../../../../sin.config' as *;
 
+/// Similar to get, only now you have to declare the map.
 /// @name getMap
 /// @group dev
 /// @ignore @author Theodoros Kondakos
@@ -10,9 +11,6 @@
 /// @param  {map}  $map [$configuration] - Source map
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
-/// Similar to get, only now you have to declare the map.
-/// @example scss
-/// .sin{@debug getMap($configuration, global, production);}
 
 @function getMap($map, $keys...) {
   @if $map {

@@ -177,10 +177,6 @@ $box-shadow-list: (
 /// @group utility
 /// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 /// @return {list} - Returns a list of box shadow css properties to the mixin.
-/// @example scss
-///   .sin {
-///     @debug contrast(#ffa, test-color);
-///   }
 @function box-shadow($box-shadow-id) {
   @if type-of($box-shadow-id) == 'number' and $box-shadow-id >= 0 and $box-shadow-id < list.length($box-shadow-list) {
     @return getMap($box-shadow-list, $box-shadow-id);
@@ -194,10 +190,6 @@ $box-shadow-list: (
 /// @name boxshadow
 /// @group utility
 /// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
-/// @example scss
-/// .sin {
-///   @include boxshadow(5);
-/// }
 @mixin boxshadow($box-shadow-id: 5) {
   @if type-of($box-shadow-id) == 'number' {
     box-shadow: box-shadow($box-shadow-id);

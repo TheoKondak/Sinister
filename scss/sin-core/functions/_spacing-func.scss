@@ -12,10 +12,6 @@
 /// @param  {map}  $new-map - A map that contains setting values to update or add new data to sinister configuration
 /// @param  {map}  $original-map - By default $original map is pointing to the default sinister configuration.
 /// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
-/// @example scss
-/// .sin{
-///   @include spacing((m,g,1,1.2),(xs, m,g,2,.8));
-/// }
 
 @function spacing($value: 0, $scale: 1) {
   @if map.has-key(get(spacing), $value) and type-of($scale) == 'number' {

@@ -1,11 +1,9 @@
 # .sassdocrc (yaml)
 
 herman:
-    extraDocs:
-      - './documentation/installation.md'
     sass:
       includePaths:
-        - 'test-sin/scss'
+        - './test-sin'
       use:
-       - file: 'sin'
-         namespace: '*'
+       - file: './scss/_sin.scss'
+         namespace: 'example'
