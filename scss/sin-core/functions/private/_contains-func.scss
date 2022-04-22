@@ -1,8 +1,8 @@
 @use './get-func' as *;
 @use 'sass:string';
 
-/// @access private
 /// @group dev
+/// @access private
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 /// @param  {list | map}  $data - Takes a list or a map.
