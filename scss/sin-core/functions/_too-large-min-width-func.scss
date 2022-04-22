@@ -1,14 +1,13 @@
 @use './strip-unit-func' as *;
 
-/// @name too-large-min-width
+/// Used in media query mixins. Checks if `min` width is larger than `max` width
 /// @access private
 /// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// Used in media query mixins. Checks if `min` width is larger than `max` width.
-/// @param  {number}  $min-width - A minimum width value.
-/// @param  {number}  $max-width - A maximum width value.
-/// @return {bool}  - Returns true if the `min` width is larger than the `max` width.
+/// @param  {number}  $min-width - A minimum width value
+/// @param  {number}  $max-width - A maximum width value
+/// @return {bool}  - Returns true if the `min` width is larger than the `max` width
 
 @function too-large-min-width($min-width, $max-width) {
   @if $min-width > $max-width {

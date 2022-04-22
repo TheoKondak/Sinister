@@ -6,19 +6,17 @@
 @use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
-/// @name flex-properties
+/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
 /// @access private
 /// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
-/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
 
 @mixin flex-properties($cur-arg) {
   // Flex Direction
   // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
   @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
-    @debug map-get(getMap($css-properties, flex, flex-direction), $cur-arg);
     flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
   }
 
