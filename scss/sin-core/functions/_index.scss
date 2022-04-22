@@ -1,17 +1,3 @@
-@forward 'type-func';
-@forward 'set-config-func';
-@forward 'help-func';
-@forward 'spacing-func';
-@forward 'color-func';
-// @forward 'set-func';
-@forward 'get-func';
-@forward 'getMap-func';
-@forward 'font-sizes-func';
-@forward 'font-weights-func';
-@forward 'contains-func';
-@forward 'box-shadow-func';
-@forward 'strip-unit-func';
-@forward 'too-large-min-width-func';
-@forward 'prefix-url-func';
-@forward 'contrast-func';
-@forward 'depth';
+// PUBLIC
+@forward 'public';
+@forward 'private';

@@ -1,9 +1,9 @@
 @use '../../../../../sin.config' as *;
 
-@use './../functions/get-func' as *;
-@use './../functions/contains-func' as *;
-@use './../functions/strip-unit-func' as *;
-@use './../functions/too-large-min-width-func' as *;
+@use './../functions/private/get-func' as *;
+@use './../functions/private/contains-func' as *;
+@use './../functions/private/strip-unit-func' as *;
+@use './../functions/private/too-large-min-width-func' as *;
 
 /// @name mq
 /// @group grid

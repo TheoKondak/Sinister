@@ -1,11 +1,11 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
-@use '../../../../../sin.config' as *;
+@use '../../../../../../sin.config' as *;
 
-@use './../grid/_responsive.scss' as responsive;
-@use './get-func' as *;
-@use './help-func' as *;
+@use './../../grid/_responsive.scss' as responsive;
+@use './../private/get-func' as *;
+@use './../public/help-func' as *;
 
 /// @name fs
 /// @group typography

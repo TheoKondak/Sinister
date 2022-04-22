@@ -1,9 +1,9 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
-@use '../../../../../sin.config' as *;
+@use '../../../../../../sin.config' as *;
 
-@use './get-func' as *;
+@use './../private/get-func' as *;
 
 /// @name Color
 /// @group design

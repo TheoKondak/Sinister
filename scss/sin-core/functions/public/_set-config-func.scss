@@ -1,8 +1,8 @@
-@use './../sinister-default-configuration' as *;
+@use './../../sinister-default-configuration' as *;
 @use 'sass:map';
 @use 'sass:string';
 @use 'sass:list';
-@use './type-func' as *;
+@use './../private/type-func' as *;
 
 /// @name set-config
 /// @ignore @author Theodoros Kondakos

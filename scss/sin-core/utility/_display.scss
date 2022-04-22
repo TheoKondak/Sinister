@@ -1,8 +1,8 @@
 @use '../../../../../sin.config' as *;
 
 @use '../grid/responsive' as media-q;
-@use '../functions/get-func' as *;
-@use '../functions/getMap-func' as *;
+@use '../functions/private/get-func' as *;
+@use '../functions/private/getMap-func' as *;
 
 // @if get(compile-display-classes) {
   @if getMap($configuration, generate-classes, display){

@@ -1,9 +1,9 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
-@use '../../../../../sin.config' as *;
+@use '../../../../../../sin.config' as *;
 
-@use './getMap-func' as *;
+@use './../private/getMap-func' as *;
 
 /// @name $box-shadow-list
 /// @group utility

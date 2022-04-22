@@ -1,12 +1,12 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
-@use '../../../../../sin.config' as *;
+@use '../../../../../../sin.config' as *;
 
-@use './getMap-func' as *;
-@use './get-func' as *;
-@use './color-func' as *;
-@use './contains-func' as *;
+@use './../private/getMap-func' as *;
+@use './../private/get-func' as *;
+@use './../private/contains-func' as *;
+@use './../public/color-func' as *;
 
 /// Test if two colors have enough contrast for readability purposes.
 /// @name contrast
