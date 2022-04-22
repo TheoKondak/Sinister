@@ -47,8 +47,8 @@
       @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
     }
   }
-  // Flex | Flex Basis
 
+  // Flex | Flex Basis
   // If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
   @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
     @if type(list.nth($cur-arg, 2), (number)) {
@@ -77,14 +77,13 @@
   }
 }
 
-/// @name flex
-/// @access public
-/// @group grid
-/// @param  {arglist}  $args... - An arglist of lists.
 /// > Each `list` contains:
 /// - A breakpoint from `sin.config`. This is optional.
 /// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
 /// > All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// @access public
+/// @group grid
+/// @param  {arglist}  $args... - An arglist of lists.
 
 @mixin flex($args...) {
   // It takes a list of Sins

@@ -4,6 +4,12 @@
 @use '../../../../../../sin.config' as *;
 
 /// Similar to get, only now you have to declare the map.
+/// Similar to get, only now you have to declare the map. Example:
+///  ...: getMap($configuration, spacing, xxl);
+/// If a value is nested further deep, you can use the syntax bellow.
+///  background: getMap($map          , parent   , child, child);
+///  background: getMap($configuration, bootstrap, color, bs-success);
+/// Will return the color set for the specific value pair.
 /// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
@@ -30,9 +36,3 @@
 
   @return $map;
 }
-// Similar to get, only now you have to declare the map. Example:
-//  ...: getMap($configuration, spacing, xxl);
-// If a value is nested further deep, you can use the syntax bellow.
-//  background: getMap($map          , parent   , child, child);
-//  background: getMap($configuration, bootstrap, color, bs-success);
-// Will return the color set for the specific value pair.
