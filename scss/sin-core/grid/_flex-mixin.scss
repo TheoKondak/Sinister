@@ -7,12 +7,11 @@
 @use '../../../../../sin.config' as *;
 
 /// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
-/// @access private
-/// @group dev
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
+/// @access private
+/// @group dev
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
-
 @mixin flex-properties($cur-arg) {
   // Flex Direction
   // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
@@ -48,8 +47,8 @@
     }
   }
 
-  // Flex | Flex Basis
-  // If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
+  /// Flex | Flex Basis
+  /// If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
   @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
     @if type(list.nth($cur-arg, 2), (number)) {
       @if math.is-unitless(list.nth($cur-arg, 2)) {
@@ -77,14 +76,15 @@
   }
 }
 
-/// > Each `list` contains:
-/// - A breakpoint from `sin.config`. This is optional.
-/// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
-/// > All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// Each `list` contains:
+/// A breakpoint from `sin.config`. This is optional.
+/// Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+/// All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
 /// @access public
 /// @group grid
 /// @param  {arglist}  $args... - An arglist of lists.
-
 @mixin flex($args...) {
   // It takes a list of Sins
   // Itterate / check first level map

@@ -16,7 +16,6 @@
 /// @param  {map}  $map [$configuration] - Source map
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
-
 @function getMap($map, $keys...) {
   @if $map {
     @if $keys {

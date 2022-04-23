@@ -9,7 +9,6 @@
 /// @group dev
 /// @param  {string}  $key - Takes a key and if it exists in configuration
 /// @return {*}  - Returns the value/es that exist in the key.
-
 @function get($keys...) {
   $map: $configuration;
   @if $map {
