@@ -1,14 +1,19 @@
 @use './get-func' as *;
 @use 'sass:string';
 
+/// This function checks if a `list` or `map` contains an arguement. If the arguement is present either as `key` or `value`, the function returns true
 /// @group dev
 /// @access private
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-/// @param  {list | map}  $data - Takes a list or a map.
-/// @param  {*}  $val - Takes a value of any type and checks if it exists in the current list or map.
-/// @return {bool} - Returns a true if the value is contained in the list or map.
-
+/// @arg { list | map } $data - Takes a list or a map.
+/// @arg { map } $val - Takes a value of any type and checks if it exists in the current list or map.
+/// @return { bool} - Returns a true if the value is contained in the list or map.
+/// @example sass - Should return false, and thus `color` will not change to `#f31`
+/// $just-a-map: (1: one, 2: two);
+///   @if contain($just-a-map, three){
+///    .sin{
+///     color: #f31;
+///    }
+///   }
 @function contains($data, $val) {
   $isTrue: false;
   @each $key, $value in $data {
