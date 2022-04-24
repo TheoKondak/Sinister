@@ -1,948 +1,225 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>@get-sinister/sass - v0.6.62-beta-1</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="@get-sinister/sass - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.</p>
-"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://github.com/TheoKondak/Sinister#readme">@get-sinister/sass - v0.6.62-beta-1</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="design"><a href="#design">design</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="design-function"><a href="#design-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="design" data-name="Color" data-type="function"><a href="#design-function-Color">Color</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="dev"><a href="#dev">dev</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="dev-function"><a href="#dev-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="dev" data-name="contain" data-type="function"><a href="#dev-function-contain">contain</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="depth" data-type="function"><a href="#dev-function-depth">depth</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="get" data-type="function"><a href="#dev-function-get">get</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="getMap" data-type="function"><a href="#dev-function-getMap">getMap</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="set" data-type="function"><a href="#dev-function-set">set</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="strip-unit" data-type="function"><a href="#dev-function-strip-unit">strip-unit</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="too-large-min-width" data-type="function"><a href="#dev-function-too-large-min-width">too-large-min-width</a></li><li class="sidebar__item sassdoc__item" data-group="dev" data-name="type" data-type="function"><a href="#dev-function-type">type</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="dev-mixin"><a href="#dev-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="dev" data-name="flex-properties" data-type="mixin"><a href="#dev-mixin-flex-properties">flex-properties</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="grid"><a href="#grid">grid</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-mixin"><a href="#grid-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid" data-name="grid-template" data-type="mixin"><a href="#grid-mixin-grid-template">grid-template</a></li><li class="sidebar__item sassdoc__item" data-group="grid" data-name="flex" data-type="mixin"><a href="#grid-mixin-flex">flex</a></li><li class="sidebar__item sassdoc__item" data-group="grid" data-name="mq" data-type="mixin"><a href="#grid-mixin-mq">mq</a></li><li class="sidebar__item sassdoc__item" data-group="grid" data-name="mqMin" data-type="mixin"><a href="#grid-mixin-mqMin">mqMin</a></li><li class="sidebar__item sassdoc__item" data-group="grid" data-name="mqMax" data-type="mixin"><a href="#grid-mixin-mqMax">mqMax</a></li><li class="sidebar__item sassdoc__item" data-group="grid" data-name="spacing" data-type="mixin"><a href="#grid-mixin-spacing">spacing</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="typography"><a href="#typography">typography</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="typography-function"><a href="#typography-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="typography" data-name="fs" data-type="function"><a href="#typography-function-fs">fs</a></li><li class="sidebar__item sassdoc__item" data-group="typography" data-name="font-size" data-type="function"><a href="#typography-function-font-size">font-size</a></li><li class="sidebar__item sassdoc__item" data-group="typography" data-name="fw" data-type="function"><a href="#typography-function-fw">fw</a></li><li class="sidebar__item sassdoc__item" data-group="typography" data-name="font-weight" data-type="function"><a href="#typography-function-font-weight">font-weight</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="undefined"><a href="#undefined">General</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-function"><a href="#undefined-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="set-config" data-type="function"><a href="#undefined-function-set-config">set-config</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-css"><a href="#undefined-css">css</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="compile-spacing-classes" data-type="css"><a href="#undefined-css-compile-spacing-classes">compile-spacing-classes</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="utility"><a href="#utility">utility</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-mixin"><a href="#utility-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="CLI Image wrapper" data-type="mixin"><a href="#utility-mixin-CLI Image wrapper">CLI Image wrapper</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="boxshadow" data-type="mixin"><a href="#utility-mixin-boxshadow">boxshadow</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-variable"><a href="#utility-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="$box-shadow-list" data-type="variable"><a href="#utility-variable-$box-shadow-list">$box-shadow-list</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="utility-function"><a href="#utility-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="utility" data-name="box-shadow" data-type="function"><a href="#utility-function-box-shadow">box-shadow</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="contrast" data-type="function"><a href="#utility-function-contrast">contrast</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="help" data-type="function"><a href="#utility-function-help">help</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="prefix-url" data-type="function"><a href="#utility-function-prefix-url">prefix-url</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="prefix-url" data-type="function"><a href="#utility-function-prefix-url">prefix-url</a></li><li class="sidebar__item sassdoc__item" data-group="utility" data-name="spacing" data-type="function"><a href="#utility-function-spacing">spacing</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="design"><div class="container">design</div></h1><section class="main__sub-section" id="design-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="design-function-Color"><h3 class="item__heading"><a class="item__name" href="#function-Color">Color</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function Color($key) { 
-  // Check if input is null.
 
-  @if (type-of($key) == &#39;null&#39;) {
-    // Return a list of available colors
-    @debug &#39;Color function received no input.&#39;;
-    @debug &#39;Available colors: &#39;;
-    @each $colorId, $color in get(colors) {
-      @debug &#39; #{$colorId}: #{$color}&#39;;
-    }
-    @return null;
-  } @else {
-    // Check if $key is part of the colors map
-    @if not map.has-key(get(colors), $key) {
-      @error &#39;Color function needs a valid input. It requires a color key from sinConfig. The current value is: `#{$key}`. See bellow for available colors&#39;;
-      @debug &#39;Available colors: &#39;;
-      @each $colorId, $color in get(colors) {
-        @debug &#39; #{$colorId}: #{$color}&#39;;
-      }
 
-      @return null;
-    } @else {
-      // Value exists so return value
-      @return get(colors, $key);
-    }
-  }
- }" data-collapsed="@function Color($key) { ... }"><code>@function Color($key) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>A key from <code>colors</code> map that exists in <code>_sin.config.scss</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Color</code> &mdash;<p>Returns a CSS color from <code>_sin.config.scss</code></p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>Color function needs a valid input. It requires a color key from sinConfig. The current value is: <code>#{$key}</code>. See bellow for available colors</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="dev"><div class="container">dev</div></h1><section class="main__sub-section" id="dev-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="dev-function-contain"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-contain">contain</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function contain($data, $val) { 
-  $isTrue: false;
-  @each $key, $value in $data {
-    @if $key == $val or $value == $val {
-      $isTrue: true;
-    }
-  }
-  @return $isTrue;
- }" data-collapsed="@function contain($data, $val) { ... }"><code>@function contain($data, $val) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>This function checks if a <code>list</code> or <code>map</code> contains an arguement. If the arguement is present either as <code>key</code> or <code>value</code>, the function returns true</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$data</code></th><td data-label="desc"><p>Takes a list or a map.</p></td><td data-label="type"><code>List</code> or <code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$val</code></th><td data-label="desc"><p>Takes a value of any type and checks if it exists in the current list or map.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Bool</code> &mdash;<p>Returns a true if the value is contained in the list or map.</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>Should return false, and thus <code>color</code> will not change to <code>#f31</code></p></div><pre class="example__code language-sass"><code>$just-a-map: (1: one, 2: two);
-  @if contain($just-a-map, three){
-   .sin{
-    color: #f31;
-   }
-  }</code></pre></div></section><section class="main__item container item" id="dev-function-depth"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-depth">depth</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function depth($map) { 
-  $level: 1;
-  @each $key, $value in $map {
-    @if type-of($value) == &#39;map&#39; {
-      $level: max(depth($value) + 1, $level);
-    }
-  }
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  @return $level;
- }" data-collapsed="@function depth($map) { ... }"><code>@function depth($map) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Searches for the depth of a map.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>max depth of <code>$map</code></p></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://www.sitepoint.com/debugging-sass-maps/">https://www.sitepoint.com/debugging-sass-maps/</a></li></ul></section><section class="main__item container item" id="dev-function-get"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-get">get</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function get($key) { 
-  $map: $configuration;
-  @if $map {
-    @if $keys {
-      @each $key in $keys {
-        @if type-of($keys) == arglist {
-          $map: map-get($map, $key);
-        } @else {
-          @warn string.unquote(&#39;Invalid $key property type provided. Expected &quot;arglist&quot; but recieved:&#39;) #{type-of($key)};
-        }
-      }
-    } @else {
-      @warn string.unquote(&#39;Invalid &quot;$keys&quot; provided in contains function:&#39;) #{$keys};
-    }
-  } @else {
-    @warn string.unquote(&#39;Invalid &quot;$map&quot; provided in contains function:&#39;) #{$map};
-  }
+  
+  <title>@get-sinister/sass Documentation</title>
 
-  @return $map;
- }" data-collapsed="@function get($key) { ... }"><code>@function get($key) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>You can access the config data with the &quot;get&quot; function. &quot;get&quot; function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>Takes a key and if it exists in configuration</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline">Any type &mdash;<p>Returns the value/es that exist in the key.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#design-function-Color"><code>Color</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#design-function-Color"><code>Color</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#design-function-Color"><code>Color</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#design-function-Color"><code>Color</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mqMin"><code>mqMin</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mqMin"><code>mqMin</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mqMax"><code>mqMax</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mqMax"><code>mqMax</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fw"><code>fw</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fw"><code>fw</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fw"><code>fw</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fw"><code>fw</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-contrast"><code>contrast</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-contrast"><code>contrast</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-prefix-url"><code>prefix-url</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-prefix-url"><code>prefix-url</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-prefix-url"><code>prefix-url</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-spacing"><code>spacing</code></a></li></ul></section><section class="main__item container item" id="dev-function-getMap"><h3 class="item__heading"><a class="item__name" href="#function-getMap">getMap</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function getMap($map: $configuration, $key) { 
-  @if $map {
-    @if $keys {
-      @each $key in $keys {
-        @if type-of($keys) == arglist {
-          $map: map-get($map, $key);
-        } @else {
-          @warn string.unquote(&#39;Invalid $key property type provided. Expected &quot;arglist&quot; but recieved:&#39;) #{type-of($key)};
-        }
-      }
-    } @else {
-      @warn string.unquote(&#39;Invalid &quot;$keys&quot; provided in contains function:&#39;) #{$keys};
-    }
-  } @else {
-    @warn string.unquote(&#39;Invalid &quot;$map&quot; provided in contains function:&#39;) #{$map};
-  }
+  <link href="assets/img/favicon.ico" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
 
-  @return $map;
- }" data-collapsed="@function getMap($map: $configuration, $key) { ... }"><code>@function getMap($map: $configuration, $key) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Similar to get, only now you have to declare the map. Similar to get, only now you have to declare the map. Example: ...: getMap($configuration, spacing, xxl); If a value is nested further deep, you can use the syntax bellow. background: getMap($map , parent , child, child); background: getMap($configuration, bootstrap, color, bs-success); Will return the color set for the specific value pair.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc"><p>Source map</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$configuration</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>Takes a key and if it exists in configuration</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline">Any type &mdash;<p>Returns the value/es that exist in the key.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-box-shadow"><code>box-shadow</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-box-shadow"><code>box-shadow</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li></ul></section><section class="main__item container item" id="dev-function-set"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-set">set</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function set($map, $original-map) { 
-  $maps: ($original-map);
-  $result: null;
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
 
-  // If the last key is a map already
-  // Warn the user we will be overriding it with $new-value
-  @if type-of(nth($new-map-key, -1)) == &#39;map&#39; {
-    @warn &quot;The last key you specified is a map; it will be overrided with `#{$new-value}`.&quot;;
-  }
+  
 
-  // If $new-map-key is a single key
-  // Just merge and return
-  @if length($new-map-key) == 1 {
-    @return map-merge(
-      $original-map,
-      (
-        $new-map-key: $new-value,
-      )
-    );
-  }
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8 0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
 
-  // Loop from the first to the second to last key from $new-map-key
-  // Store the associated map to this key in the $maps list
-  // If the key doesn&#39;t exist, throw an error
-  @for $i from 1 through length($new-map-key) - 1 {
-    $current-key: nth($new-map-key, $i);
-    $current-map: nth($maps, -1);
-    $current-get: map-get($current-map, $current-key);
-    @if $current-get == null {
-      @error &quot;Key `#{$key}` doesn&#39;t exist at current level in map.&quot;;
-    }
-    $maps: append($maps, $current-get);
-  }
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
 
-  // Loop from the last map to the first one
-  // Merge it with the previous one
-  @for $i from length($maps) through 1 {
-    $current-map: nth($maps, $i);
-    $current-key: nth($new-map-key, $i);
-    $current-val: if($i == length($maps), $new-value, $result);
-    $result: map-merge(
-      $current-map,
-      (
-        $current-key: $current-val,
-      )
-    );
-  }
+  </button>
 
-  // Return result
-  @return $result;
- }" data-collapsed="@function set($map, $original-map) { ... }"><code>@function set($map, $original-map) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Similar to get set function sets a value to a map</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc"><p>A map that contains setting values to update or add new data to sinister configuration</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$original-map</code></th><td data-label="desc"><p>By default $original map is pointing to the default sinister configuration.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Map</code> &mdash;<p>Returns an updated map that is a merge of $new-map and $original-map.</p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>Key <code>#{$key}</code> doesn</p></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li></ul></section><section class="main__item container item" id="dev-function-strip-unit"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-strip-unit">strip-unit</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function strip-unit($number) { 
-  @if type-of($number) == &#39;number&#39; and not unitless($number) {
-    @return calc($number / ($number * 0 + 1));
-  }
 
-  @return $number;
- }" data-collapsed="@function strip-unit($number) { ... }"><code>@function strip-unit($number) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$number</code></th><td data-label="desc"><p>Number to remove unit from</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Unitless number</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/TheoKondak">https://github.com/TheoKondak</a></li></ul><h3 class="item__sub-heading">Author</h3><ul class="list-unstyled"><li><p>Theodoros Kondakos</p></li></ul></section><section class="main__item container item" id="dev-function-too-large-min-width"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-too-large-min-width">too-large-min-width</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function too-large-min-width($min-width, $max-width) { 
-  @if $min-width &gt; $max-width {
-    @debug &#39;true&#39;;
-    @return true;
-  } @else if strip-unit($min-width) == strip-unit($max-width) {
-    @debug &#39;equal&#39;;
-    @return false;
-  } @else {
-    @debug &#39;false&#39;;
-    @return false;
-  }
- }" data-collapsed="@function too-large-min-width($min-width, $max-width) { ... }"><code>@function too-large-min-width($min-width, $max-width) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used in media query mixins. Checks if <code>min</code> width is larger than <code>max</code> width</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$min-width</code></th><td data-label="desc"><p>A minimum width value</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$max-width</code></th><td data-label="desc"><p>A maximum width value</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Bool</code> &mdash;<p>Returns true if the <code>min</code> width is larger than the <code>max</code> width</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-strip-unit"><code>strip-unit</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-strip-unit"><code>strip-unit</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mq"><code>mq</code></a></li></ul></section><section class="main__item container item" id="dev-function-type"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-type">type</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function type($data, $data-types) { 
-  $isTrue: false;
-  $data-types-list: (&#39;null&#39;, bool, string, color, number, list, arglist, map);
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">@get-sinister/sass</a>
+        
+          <span class="project-version">0.6.62-beta-1</span>
+        
+      </div>
+    </header>
 
-  // If the input is datatypes, it will print all data types available in SASS (from the map above)
-  @if $data == &#39;datatypes&#39; {
-    @debug &#39;List of SASS data types:&#39;;
-    @each $data-type in $data-types-list {
-      @debug &#39;- #{$data-type}&#39;;
-    }
-    @return &#39;End of data types&#39;;
-  } @else {
-    @if length($data-types) &gt;= 1 {
-      @each $data-type in $data-types {
-        @if type-of($data) == $data-type {
-          $isTrue: true;
-        }
-      }
-    } @else {
-      @warn &#39;type() called without arguements.&#39;;
-    }
-    @return $isTrue;
-  }
- }" data-collapsed="@function type($data, $data-types) { ... }"><code>@function type($data, $data-types) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$data</code></th><td data-label="desc"><p>The variable you want it&#39;s type checked</p></td><td data-label="type"><code>Any</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$data-types</code></th><td data-label="desc"><p>A list of data types.</p></td><td data-label="type"><code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Type</code> &mdash;<p>If the <code>$data</code> belong to any type from <code>$data-types</code>, it returns <code>true</code></p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-set-config"><code>set-config</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li></ul></section></section><section class="main__sub-section" id="dev-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="dev-mixin-flex-properties"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#mixin-flex-properties">flex-properties</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin flex-properties($cur-arg) { 
-  // Flex Direction
-  // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
-  @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
-    flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
-  }
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
 
-  // Flex Wrap
-  @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
-    flex-wrap: #{map-get(getMap($css-properties, flex, wrap), $cur-arg)};
-  }
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-active">@get-sinister/sass</a>
+      </h3>
 
-  // Justify Content
-  @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
-    justify-content: #{map-get(getMap($css-properties, flex, justify-content), $cur-arg)};
-  }
+      
+      
+    </div>
 
-  // Align Content
-  @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
-    align-content: #{map-get(getMap($css-properties, flex, align-content), $cur-arg)};
-  }
-  // Align Items
-  @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
-    align-items: #{map-get(getMap($css-properties, flex, align-items), $cur-arg)};
-  }
+    
+    <div class="nav-subsection">
+      <ul>
+  
+    <li class="nav-item">
+      <a href="undefined.html" data-nav="is-not-active">General</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="design.html" data-nav="is-not-active">design</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="dev.html" data-nav="is-not-active">dev</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="grid.html" data-nav="is-not-active">grid</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="typography.html" data-nav="is-not-active">typography</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="utility.html" data-nav="is-not-active">utility</a>
+    </li>
+  </ul>
+    </div>
 
-  // Gap
-  @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
-    @if length($cur-arg) == 2 {
-      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
-    } @else if length($cur-arg) == 3 {
-      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
-    }
-  }
+    
+    
 
-  /// Flex | Flex Basis
-  /// If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
-  @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
-    @if type(list.nth($cur-arg, 2), (number)) {
-      @if math.is-unitless(list.nth($cur-arg, 2)) {
-        @if type(list.nth($cur-arg, 3), (number)) or contains(getMap($css-properties, flex, width), list.nth($cur-arg, 3)) {
-          &gt; * {
-            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)});
-          }
-        }
-      } @else {
-        @warn &#39;Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: &#39; $cur-arg;
-      }
-    } @else {
-      @warn unquote(&#39;Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: &#39;) $cur-arg;
-    }
-  }
-  // If the list has a single arguement, it is flex-basis
-  @else if length($cur-arg) == 1 {
-    @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
-      &gt; * {
-        flex: #{$cur-arg};
-      }
-    }
-  } @else {
-    @warn unquote(&#39;Invalid input. Please check the syntax of your list properties. &#39;);
-  }
- }" data-collapsed="@mixin flex-properties($cur-arg) { ... }"><code>@mixin flex-properties($cur-arg) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>This mixin acts like a function so I don&#39;t have to write the same code twice. So it works for both with and without breakpoints.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$cur-arg</code></th><td data-label="desc"><p>The currect arguement passed from flex mixin</p></td><td data-label="type"><code>String</code> or <code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="grid"><div class="container">grid</div></h1><section class="main__sub-section" id="grid-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="grid-mixin-grid-template"><h3 class="item__heading"><a class="item__name" href="#mixin-grid-template">grid-template</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin grid-template($args...) { 
-  @if (length($args) &gt; 0) {
-    @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {
-      @if ($min-width-query == &#39;&#39;) {
-        display: grid;
-        grid-template-columns: $grid-template-columns;
-        grid-template-rows: $grid-template-rows;
-      } @else {
-        @include mqMin($min-width-query) {
-          display: grid;
-          grid-template-columns: $grid-template-columns;
-          grid-template-rows: $grid-template-rows;
-        }
-      }
-    }
-  } @else {
-    @warn &quot;gridTest requires a list of arguements: ($min-width-query, $grid-template-columns, $grid-template-rows)&quot;;
-  }
- }" data-collapsed="@mixin grid-template($args...) { ... }"><code>@mixin grid-template($args...) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$args</code></th><td data-label="desc"><p>Takes an <code>arglist</code> of <code>lists</code>.</p><blockquote><p>Each <code>list</code> contains:</p><ul><li><code>$min-width-query</code>: <code>{string}</code> - Min width, breakpoint from <code>_sin.config.scss</code></li><li><code>$grid-template-columns</code>: <code>{list}</code> - A list of grid template columns</li><li><code>$grid-template-rows</code>: <code>{list}</code> - A list of grid template rows (optional)</li></ul></blockquote></td><td data-label="type"><code>Arglist</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-mqMin"><code>mqMin</code></a></li></ul></section><section class="main__item container item" id="grid-mixin-flex"><h3 class="item__heading"><a class="item__name" href="#mixin-flex">flex</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin flex($args......) { 
-  // It takes a list of Sins
-  // Itterate / check first level map
-  @if (length($args) &gt; 0) and type($args, &#39;arglist&#39;) {
-    @each $sin-arg in $args {
-      @if (length($sin-arg) &gt; 0) and type($args, &#39;arglist&#39;) {
-        // If the Sin contains an existing breakpoint
-        @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
-          @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
-            display: flex;
-            // For each list, check the input properties
-            @each $cur-arg in $sin-arg {
-              // Load All the properties from flex properties mixin
-              @include flex-properties($cur-arg);
-            }
-          }
-        } @else {
-          display: flex;
-          // For each list, check the input properties
-          @each $cur-arg in $sin-arg {
-            @include flex-properties($cur-arg);
-          }
-        }
-      }
-    }
-  } @else {
-    @debug help($config-map: getMap($css-properties, flex), $intro-msg: &#39;Printing available Flex Properties:&#39;);
-  }
- }" data-collapsed="@mixin flex($args......) { ... }"><code>@mixin flex($args......) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Each <code>list</code> contains: A breakpoint from <code>sin.config</code>. This is optional. Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters. All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$args...</code></th><td data-label="desc"><p>An arglist of lists.</p></td><td data-label="type"><code>Arglist</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li></ul></section><section class="main__item container item" id="grid-mixin-mq"><h3 class="item__heading"><a class="item__name" href="#mixin-mq">mq</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin mq($min, $max) { 
-  @if $min and $max {
-    @if type-of($min) == &#39;number&#39; and type-of($max) == &#39;number&#39; {
-      @if unitless($min) and unitless($max) {
-        @if not too-large-min-width($min, $max) {
-          @media (min-width: #{$min}px) and (max-width: #{$max}px) {
-            @content;
-          }
-        }
-      } @else if unitless($min) and not unitless($max) {
-        @if not too-large-min-width($min, $max) {
-          @media (min-width: #{$min}px) and (max-width: #{$max}) {
-            @content;
-          }
-        }
-      } @else if not unitless($min) and unitless($max) {
-        @if not too-large-min-width($min, $max) {
-          @media (min-width: #{$min}) and (max-width: #{$max}px) {
-            @content;
-          }
-        }
-      } @else {
-        @if not too-large-min-width($min, $max) {
-          @media (min-width: $min) and (max-width: $max) {
-            @content;
-          }
-        }
-      }
-    } @else if type-of($min) == &#39;string&#39; and type-of($max) == &#39;string&#39; {
-      @if contains(get(breakpoints), $min) and contains(get(breakpoints), $max) {
-        @if not too-large-min-width(get(breakpoints, $min), get(breakpoints, $max)) {
-          @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
-            @content;
-          }
-        }
-      } @else {
-        @warn &#39;Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}&#39;;
-      }
-    } @else if type-of($min) == &#39;string&#39; and type-of($max) == &#39;number&#39; {
-      @if contains(get(breakpoints), $min) {
-        @if not too-large-min-width(get(breakpoints, $min), $max) {
-          @if unitless($max) {
-            @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
-              @content;
-            }
-          } @else {
-            @media (min-width: get(breakpoints, $min)) and (max-width: $max) {
-              @content;
-            }
-          }
-        }
-      } @else {
-        @warn &#39;Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}&#39;;
-      }
-    } @else if type-of($min) == &#39;number&#39; and type-of($max) == &#39;string&#39; {
-      @if contains(get(breakpoints), $max) {
-        @if not too-large-min-width($min, get(breakpoints, $max)) {
-          @if unitless($min) {
-            @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
-              @content;
-            }
-          } @else {
-            @media (min-width: $min) and (max-width: get(breakpoints, $max)) {
-              @content;
-            }
-          }
-        }
-      } @else {
-        @warn &#39;Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}&#39;;
-      }
-    }
-  } @else {
-    @warn &quot;Invalid Input. Expected an minimun and a maximum value. It can either be a number with units, or a breakpoint.&quot;;
-  }
- }" data-collapsed="@mixin mq($min, $max) { ... }"><code>@mixin mq($min, $max) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$min</code></th><td data-label="desc"><p>Breakpoint from which the query will kick in</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$max</code></th><td data-label="desc"><p>Breakpoint will work up to $max</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-too-large-min-width"><code>too-large-min-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section><section class="main__item container item" id="grid-mixin-mqMin"><h3 class="item__heading"><a class="item__name" href="#mixin-mqMin">mqMin</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin mqMin($min) { 
-  @if type-of($min) == &#39;number&#39; {
-    @if unitless($min) {
-      @media (min-width: #{$min}px) {
-        @content;
-      }
-    } @else {
-      @media (min-width: $min) {
-        @content;
-      }
-    }
-  } @else if type-of($min) == &#39;string&#39; {
-    @if contains(get(breakpoints), $min) {
-      @media (min-width: #{get(breakpoints, $min)}) {
-        @content;
-      }
-    } @else {
-      @warn &#39;Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}&#39;;
-    }
-  }
- }" data-collapsed="@mixin mqMin($min) { ... }"><code>@mixin mqMin($min) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$min</code></th><td data-label="desc"><p>Breakpoint from which the query will kick in</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-grid-template"><code>grid-template</code></a></li></ul></section><section class="main__item container item" id="grid-mixin-mqMax"><h3 class="item__heading"><a class="item__name" href="#mixin-mqMax">mqMax</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin mqMax($max) { 
-  @if type-of($max) == &#39;number&#39; {
-    @if unitless($max) {
-      @media (max-width: #{$max}px) {
-        @content;
-      }
-    } @else {
-      @media (max-width: $max) {
-        @content;
-      }
-    }
-  } @else if type-of($max) == &#39;string&#39; {
-    @if contains(get(breakpoints), $max) {
-      @media (max-width: get(breakpoints, $max)) {
-        @content;
-      }
-    } @else {
-      @warn &#39;Invalid input at mqMax. It requires a numeric value with units, or a breakpoint. You provided: #{$max}&#39;;
-    }
-  }
- }" data-collapsed="@mixin mqMax($max) { ... }"><code>@mixin mqMax($max) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$max</code></th><td data-label="desc"><p>Breakpoint will work up to $max</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section><section class="main__item container item" id="grid-mixin-spacing"><h3 class="item__heading"><a class="item__name" href="#mixin-spacing">spacing</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin spacing($breakpoint, $property, $direction, $value, $scale) { 
-  $breakpoint: null;
-  $property: null;
-  $direction: g;
-  $value: 0;
-  $scale: 1;
+    
+      <aside class="footer-credit">
+        <a href="https://www.oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
 
-  // Check that there are arguements
-  @if (length($args) &gt; 0) {
-    // For each arguement
-    @each $arg in $args {
-      // Check if the list contains a breakpoint.
-      @if contains(get(breakpoints), list.nth($arg, 1)) {
-        // If true, update variables
-        $breakpoint: list.nth($arg, 1);
-        $property: list.nth($arg, 2);
-        $direction: list.nth($arg, 3);
-        $value: list.nth($arg, 4);
+        </a>
+        <span>
+          Documented with
+          <a href="https://www.oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="https://www.oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
 
-        // If there is a scale arguement it should be in final position.
-        @if length($arg) == 4 {
-          $scale: 1;
-        } @else {
-          @if (type-of(list.nth($arg, length($arg))) == &#39;number&#39;) {
-            $scale: list.nth($arg, length($arg));
-          } @else {
-            @warn unquote(&#39;Scale must be a type of number. Instead provided:&#39;) type-of(list.nth($arg, length($arg)));
-          }
-        }
 
-        @media (min-width: get(breakpoints, $breakpoint)) {
-          // Check if property exists in spacingProeprties Map
-          @if (contains(getMap($css-properties, spacing, spacing-properties), $property) and contains(get(spacing), $value)) {
-            @if (contains(getMap($css-properties, spacing, spacing-direction), $direction)) {
-              // Check if property is gap, if yes, then we only have x, y axis.
-              @if $property == g {
-                @if $direction == &#39;t&#39; or $direction == &#39;b&#39; or $direction == &#39;y&#39; {
-                  row-gap: calc(#{get(spacing, $value)} * #{$scale});
-                } @else if $direction == &#39;l&#39; or $direction == &#39;r&#39; or $direction == &#39;x&#39; {
-                  column-gap: calc(#{get(spacing, $value)} * #{$scale});
-                } @else if $direction == &#39;g&#39; {
-                  gap: calc(#{get(spacing, $value)} * #{$scale});
-                } @else {
-                  @warn &#39;Invalid spacing arguements&#39;;
-                }
-              } @else {
-                @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
-                  @if $value == &#39;auto&#39; or $value == &#39;inherit&#39; {
-                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
-                  } @else {
-                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
-                  }
-                }
-              }
-            }
-          } @else {
-            @warn &#39;Wrong spacing mixin property.&#39;;
-            @debug &#39;Available spacings $values&#39;;
-            @each $spacingKey, $spacingProperty in getMap($css-properties, spacing, spacing-properties) {
-              @debug &#39; #{$spacingKey}: #{$spacingProperty}&#39;;
-            }
-          }
-        }
+      <main data-region="main">
+        
 
-        // Else check if it&#39;s contained in spacin properties
-      } @else if (contains(getMap($css-properties, spacing, spacing-properties), list.nth($arg, 1))) {
-        // check if it is a spacing property
-        // If true update variables
-        $property: list.nth($arg, 1);
-        $direction: list.nth($arg, 2);
-        $value: list.nth($arg, 3);
+        <div data-page="index">
+          
+  
+  
+    <ul class="project-links">
+      
+        <li class="project-link-item">
+          <a href="https://github.com/TheoKondak/Sinister#readme" class="project-link">View Project</a>
+        </li>
+      
+      
+    </ul>
+  
 
-        // If there is a scale arguement it should be in final position.
-        @if length($arg) == 3 {
-          $scale: 1;
-        } @else {
-          @if (type-of(list.nth($arg, length($arg))) == &#39;number&#39;) {
-            $scale: list.nth($arg, length($arg));
-          } @else {
-            @warn unquote(&#39;Scale must be a type of number. Instead provided:&#39;) type-of(list.nth($arg, length($arg)));
-          }
-        }
+  
+    <div class="text-block">
+      <h1 id="sinister">SINISTER</h1>
+<h2 id="warning-">WARNING:</h2>
+<h2 id="-this-project-is-not-tested-enough-for-production-unless-you-know-what-you-are-doing-and-you-do-your-own-debugging-">!! This project is not tested enough for production unless you know what you are doing and you do your own debugging<span class="widont">&nbsp;</span>!!</h2>
+<br>
+<p>Sinister is an SCSS and JS utility<span class="widont">&nbsp;</span>library.</p>
+<p>This project intends to act as a last-layer CSS override for CMS systems or for an SCSS organization platform for any other project. It also intends to host some JS components, that will add functionality to a website, and perform various tasks for more see <code>@get-sinister/js</code> (under construction).</p>
+<p>This is a one-man project. I only work on the project only when I have some free time, and I do some basic testing, but be aware that some things might not work as<span class="widont">&nbsp;</span>intended.</p>
+<p>Currently the documentation is very limited, but I will start writing a bit more while testing current Sinister<span class="widont">&nbsp;</span>features.</p>
+<p>Also I keep releasing hotfixes almost daily.
+<br><br></p>
+<h1 id="setup-the-data">Setup the data</h1>
+<p><code>_sinConfig</code> hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families, and many more. Browse the file to see which options are<span class="widont">&nbsp;</span>available.</p>
+<h2 id="importing-sinister-to-a-new-file">Importing sinister to a new<span class="widont">&nbsp;</span>file</h2>
+<p>The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file, you have to use the <code>@use</code>. <a href="https://sass-lang.com/documentation/at-rules/use">Read More</a></p>
+<p>ex.</p>
+<pre><code>@use '../sin' as *;
 
-        // Check if property exists in $spacingProeprties Map
-        @if (contains(getMap($css-properties, spacing, spacing-properties), $property) and contains(get(spacing), $value)) {
-          @if (contains(getMap($css-properties, spacing, spacing-direction), $direction)) {
-            // Check if property is gap, if yes, then we only have x, y axis.
-            @if $property == g {
-              @if $direction == &#39;t&#39; or $direction == &#39;b&#39; or $direction == &#39;y&#39; {
-                row-gap: calc(#{get(spacing, $value)} * #{$scale});
-              } @else if $direction == &#39;l&#39; or $direction == &#39;r&#39; or $direction == &#39;x&#39; {
-                column-gap: calc(#{get(spacing, $value)} * #{$scale});
-              } @else if $direction == &#39;g&#39; {
-                gap: calc(#{get(spacing, $value)} * #{$scale});
-              } @else {
-                @warn &#39;Invalid spacing arguements&#39;;
-              }
-            } @else {
-              @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
-                @if $value == &#39;auto&#39; or $value == &#39;inherit&#39; {
-                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
-                } @else {
-                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
-                }
-              }
-            }
-          }
-        } @else {
-          @warn &#39;Wrong spacing mixin property.&#39;;
-          @debug &#39;Available spacings $values&#39;;
-          @each $spacingKey, $spacingProperty in getMap($css-properties, spacing, spacing-properties) {
-            @debug &#39; #{$spacingKey}: #{$spacingProperty}&#39;;
-          }
-        }
-      } @else {
-        @error &#39;Invalid input in spacing mixin. See documentation for more.&#39;;
-      }
-    }
-  } @else {
-    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: &#39;Printing available Spacing Properties:&#39;, $msg: &#39;Documentation: https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md#function-help-1&#39;);
-  }
- }" data-collapsed="@mixin spacing($breakpoint, $property, $direction, $value, $scale) { ... }"><code>@mixin spacing($breakpoint, $property, $direction, $value, $scale) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoint</code></th><td data-label="desc"><p>A breakpoint from breakpoints in Sinister configuration.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$property</code></th><td data-label="desc"><p>The first letter of a spacing property, m for margin, p for padding, g for gap.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$direction</code></th><td data-label="desc"><p>The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$value</code></th><td data-label="desc"><p>A spacing value from spacing in Sinister configuration</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$scale</code></th><td data-label="desc"><p>A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>Invalid input in spacing mixin. See documentation for more.</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#dev-mixin-flex-properties"><code>flex-properties</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="typography"><div class="container">typography</div></h1><section class="main__sub-section" id="typography-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="typography-function-fs"><h3 class="item__heading"><a class="item__name" href="#function-fs">fs</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function fs($key) { 
-  // Check if input is null.
-  @if (type-of($key) == &#39;null&#39;) {
-    @debug help($config-map: get(font-sizes), $intro-msg: &#39;Printing available Font Sizes:&#39;);
+</code></pre>
+<p>Keep in mind that the path is<span class="widont">&nbsp;</span>relative.</p>
+<p>For advanced users, by commenting out files in various <code>_index.scss</code> files, you can prune the output code. That might be useful for<span class="widont">&nbsp;</span>production.</p>
+<h1 id="documentation">Documentation</h1>
+<ul>
+<li><a href="https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1">Installation</a></li>
+<li><a href="https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1">Configuring A Project</a></li>
+<li><a href="https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1">Mixins</a></li>
+<li><a href="https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md?plain=1">Functions</a></li>
+<li><a href="https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1">Classes</a></li>
+</ul>
+<h1 id="roadmap">Roadmap</h1>
+<ul>
+<li>Place untested mixins and functions in<span class="widont">&nbsp;</span>experimental</li>
+<li>Do more testing to basic functions like <code>set-config()</code>, <code>type()</code> etc</li>
+<li>Update flex approach. Remove obsolete classes, and find a better way to utilize grid via<span class="widont">&nbsp;</span>mixins</li>
+<li>Add flex mixin, to create responsive grid.
+<ul>
+<li>Logic similar to grid. ex <code>@include flex(('', properties/values)('xs', properties/values))</code></li>
+</ul>
+</li>
+<li>Add function that creates classes from maps of data <code>breakpoint-property-value</code>, ex <code>xs-display-none</code>.
+<ul>
+<li>Add a map of properties and a bull value to enable/disable some<span class="widont">&nbsp;</span>class</li>
+<li>Add documentation about class generation<span class="widont">&nbsp;</span>options</li>
+</ul>
+</li>
+<li>Create private and public function folder and move functions<span class="widont">&nbsp;</span>accordingly</li>
+</ul>
+<h1 id="documentation-to-do">Documentation To do</h1>
+<ul>
+<li>development/production</li>
+<li>Image-wrapper</li>
+<li>Typography
+<ul>
+<li>Responsive font sizes</li>
+<li>Default font sizes</li>
+<li>disable-list-style mixin and global config<span class="widont">&nbsp;</span>variable</li>
+</ul>
+</li>
+<li>prefix url func</li>
+<li></li>
+</ul>
+<h2 id="sassdoc-herman-gist">SASSDOC HERMAN GIST</h2>
+<p><a href="https://gist.github.com/TheoKondak/0c258ff5fdb22a79482f14000cc09ff9">gist</a></p>
 
-    @return null;
-  } @else {
-    // Check if $key is part of the font sizes map
-    @if not map.has-key(get(font-sizes), $key) {
-      @warn &#39;fs function needs a valid input. It requires a font size key from sinConfig. The current value is: `#{$key}`. See bellow for available font sizes&#39;;
-      @debug &#39;Available font sizes: &#39;;
-      @each $fs-id, $fs in get(font-sizes) {
-        @debug &#39; #{$fs-id}: #{$fs}&#39;;
-      }
+    </div>
+  
 
-      @debug help($config-map: get(font-sizes), $intro-msg: &#39;Available font sizes: &#39;);
+        </div>
+      </main>
+    </div>
+  </div>
 
-      @return &#39;---&#39;;
-    } @else {
-      // Value exists so return value
-      @return get(font-sizes, $key);
-    }
-  }
- }" data-collapsed="@function fs($key) { ... }"><code>@function fs($key) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>A key from <code>font-sizes</code> map that exists in <code>_sin.config.scss</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Returns the font size value</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#typography-function-font-size"><code>font-size</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-font-weight"><code>font-weight</code></a></li></ul></section><section class="main__item container item" id="typography-function-font-size"><h3 class="item__heading"><a class="item__name" href="#function-font-size">font-size</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function font-size($key) { 
-  @return fs($key);
- }" data-collapsed="@function font-size($key) { ... }"><code>@function font-size($key) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>A key from <code>font-sizes</code> map that exists in <code>_sin.config.scss</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Returns the font size value</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li></ul></section><section class="main__item container item" id="typography-function-fw"><h3 class="item__heading"><a class="item__name" href="#function-fw">fw</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function fw($key) { 
-  // Check if input is null.
-  @if (type-of($key) == &#39;null&#39;) {
-    @debug &#39;Font weight function received no input.&#39;;
-    @debug &#39;Available font weights: &#39;;
-    @each $fs-id, $fs in get(font-weights) {
-      @debug &#39; #{$fs-id}: #{$fs}&#39;;
-    }
-    @return null;
-  } @else {
-    // Check if $key is part of the font weights map
-    @if not map.has-key(get(font-weights), $key) {
-      @warn &#39;Font weight function needs a valid input. It requires a font weight key from sinConfig. The current value is: `#{$key}`. See bellow for available font weights&#39;;
-      @debug &#39;Available font weights: &#39;;
-      @each $fw-id, $fw in get(font-weights) {
-        @debug &#39; #{$fw-id}: #{$fw}&#39;;
-      }
-
-      @return &#39;---&#39;;
-    } @else {
-      // Value exists so return value
-      @return get(font-weights, $key);
-    }
-  }
- }" data-collapsed="@function fw($key) { ... }"><code>@function fw($key) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>A key from <code>font-weights</code> map that exists in <code>_sin.config.scss</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Returns the font weight value</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section><section class="main__item container item" id="typography-function-font-weight"><h3 class="item__heading"><a class="item__name" href="#function-font-weight">font-weight</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function font-weight($key) { 
-  @return fs($key);
- }" data-collapsed="@function font-weight($key) { ... }"><code>@function font-weight($key) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$key</code></th><td data-label="desc"><p>A key from <code>font-weights</code> map that exists in <code>_sin.config.scss</code>.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Returns the font weight value</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="undefined"><div class="container">General</div></h1><section class="main__sub-section" id="undefined-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="undefined-function-set-config"><h3 class="item__heading"><a class="item__name" href="#function-set-config">set-config</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function set-config($new-map, $add-maps) { 
-  $processing-map: ();
-  $return-map: $add-maps;
-
-  @if (type($new-map, (map))) {
-    @each $original-key, $original-value in $add-maps {
-      @each $new-key, $new-value in $new-map {
-        @if $original-key == $new-key {
-          @if (type($new-value, (map))) {
-            // Update the temporary map
-            // @debug map.set($processing-map, $original-key, list.append($original-value, $new-value));
-            $processing-map: map.set($processing-map, $original-key, map.merge($original-value, $new-value));
-            // Pass the data to the original map
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, map.merge($original-value, $new-value)));
-          } @else if (type($new-value, (list))) {
-            $processing-map: map.set($processing-map, $original-key, list.append($original-value, $new-value));
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, list.append($original-value, $new-value)));
-            // } @else if (type-of($new-value) == &#39;string&#39;) or (type-of($new-value) == &#39;bool&#39;) or (type-of($new-value) == &#39;number&#39;) or (type-of($new-value) == &#39;color&#39;) or (type-of($new-value) == &#39;null&#39;) {
-          } @else if (type($new-value, (&#39;string&#39;, &#39;bool&#39;, &#39;number&#39;, &#39;color&#39;, null))) {
-            $processing-map: map.set($processing-map, $original-key, $new-value);
-            $return-map: map.merge($add-maps, map.set($processing-map, $original-key, $new-value));
-          }
-        }
-      }
-    }
-
-    @return $return-map;
-  } @else if type($new-map, (list)) {
-    @return $return-map;
-  } @else {
-    @error &#39;setConfig function was called with invalid input. Was expecting a map but instead received: #{type-of($new-map)}&#39;;
-    @return null;
-  }
- }" data-collapsed="@function set-config($new-map, $add-maps) { ... }"><code>@function set-config($new-map, $add-maps) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$new-map</code></th><td data-label="desc"><p>A map that contains setting values to update or add new data to sinister configuration</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$add-maps</code></th><td data-label="desc"><p>By default $original map is pointing to the default sinister configuration.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Map</code> &mdash;<p>Returns an updated map that is a merge of $new-map and $original-map.</p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>setConfig function was called with invalid input. Was expecting a map but instead received: #{type-of($new-map)}</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-set"><code>set</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li></ul></section></section><section class="main__sub-section" id="undefined-css"><h2 class="main__heading--secondary"><div class="container">css</div></h2><section class="main__item container item" id="undefined-css-compile-spacing-classes"><h3 class="item__heading"><a class="item__name" href="#css-compile-spacing-classes">compile-spacing-classes</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="<code>compile-spacing-classes {
-  bool
-}</code>" data-collapsed="compile-spacing-classes { ... }"><code>compile-spacing-classes { ... }</code></pre></div></section></section></section><section class="main__section"><h1 class="main__heading" id="utility"><div class="container">utility</div></h1><section class="main__sub-section" id="utility-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="utility-mixin-CLI Image wrapper"><h3 class="item__heading"><a class="item__name" href="#mixin-CLI Image wrapper">CLI Image wrapper</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin CLI Image wrapper($image-height, $image-width, $preload-background) { 
-  $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);
-
-  width: 100%;
-  height: 0;
-  padding-bottom: $aspectRatio;
-  // 👆 image height / width * 100%
-  position: relative;
-
-  @if type-of($preload-background) == &#39;string&#39; {
-    background: url(&#39;#{$preload-background}&#39;);
-  } @else if type-of($preload-background) == &#39;color&#39; {
-    background: $preload-background;
-  }
-
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-
-  img {
-    width: 100%;
-    height: auto;
-
-    position: absolute;
-  }
- }" data-collapsed="@mixin CLI Image wrapper($image-height, $image-width, $preload-background) { ... }"><code>@mixin CLI Image wrapper($image-height, $image-width, $preload-background) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$image-height</code></th><td data-label="desc"><p>The height of the image</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$image-width</code></th><td data-label="desc"><p>The width of the image</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$preload-background</code></th><td data-label="desc"><p>Takes a css background property. Accepts colors and urls. [OPTIONAL] Let&#39;s say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).</p></td><td data-label="type"><code>Color</code> or <code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://web.dev/optimize-cls/">https://web.dev/optimize-cls/</a></li><li><a href="https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a">https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a</a></li></ul></section><section class="main__item container item" id="utility-mixin-boxshadow"><h3 class="item__heading"><a class="item__name" href="#mixin-boxshadow">boxshadow</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin boxshadow($box-shadow-id) { 
-  @if type-of($box-shadow-id) == &#39;number&#39; {
-    box-shadow: box-shadow($box-shadow-id);
-  } @else {
-    @warn &#39;boxshadow mixin requires a boxshadow id number from 0 to #{list.length($box-shadow-list)}&#39;;
-  }
- }" data-collapsed="@mixin boxshadow($box-shadow-id) { ... }"><code>@mixin boxshadow($box-shadow-id) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$box-shadow-id</code></th><td data-label="desc"><p>The ID of the box shadow from the $box-shadow-list</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-box-shadow"><code>box-shadow</code></a></li></ul></section></section><section class="main__sub-section" id="utility-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="utility-variable-$box-shadow-list"><h3 class="item__heading"><a class="item__name" href="#variable-$box-shadow-list">$box-shadow-list</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$$box-shadow-list: (
-  1: (
-    none,
-  ),
-  2: (
-    rgba(149, 157, 165, 0.2) 0px 8px 24px,
-  ),
-  3: (
-    rgba(100, 100, 111, 0.2) 0px 7px 29px 0px,
-  ),
-  4: (
-    rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px,
-  ),
-  5: (
-    rgba(0, 0, 0, 0.35) 0px 5px 15px,
-  ),
-  6: (
-    rgba(0, 0, 0, 0.16) 0px 1px 4px,
-  ),
-  7: (
-    rgba(0, 0, 0, 0.24) 0px 3px 8px,
-  ),
-  8: (
-    rgba(99, 99, 99, 0.2) 0px 2px 8px 0px,
-  ),
-  9: (
-    rgba(0, 0, 0, 0.16) 0px 1px 4px,
-    rgb(51, 51, 51) 0px 0px 0px 3px,
-  ),
-  10: (
-    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px,
-  ),
-  11: (
-    rgba(0, 0, 0, 0.1) 0px 4px 12px,
-  ),
-  12: (
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px,
-  ),
-  13: (
-    rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px,
-  ),
-  14: (
-    rgba(17, 12, 46, 0.15) 0px 48px 100px 0px,
-  ),
-  15: (
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset,
-  ),
-  16: (
-    rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-  ),
-  17: (
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-  ),
-  18: (
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-  ),
-  19: (
-    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
-  ),
-  20: (
-    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px,
-  ),
-  21: (
-    rgb(38, 57, 77) 0px 20px 30px -10px,
-  ),
-  22: (
-    rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset,
-  ),
-  23: (
-    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px,
-  ),
-  24: (
-    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
-  ),
-  25: (
-    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px,
-  ),
-  26: (
-    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
-  ),
-  27: (
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-  ),
-  28: (
-    rgba(0, 0, 0, 0.12) 0px 1px 3px,
-    rgba(0, 0, 0, 0.24) 0px 1px 2px,
-  ),
-  29: (
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px,
-  ),
-  30: (
-    rgba(0, 0, 0, 0.19) 0px 10px 20px,
-    rgba(0, 0, 0, 0.23) 0px 6px 6px,
-  ),
-  31: (
-    rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px,
-  ),
-  32: (
-    rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px,
-  ),
-  33: (
-    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px,
-  ),
-  34: (
-    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px,
-  ),
-  35: (
-    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-  ),
-  36: (
-    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px,
-  ),
-  37: (
-    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px,
-  ),
-  38: (
-    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px,
-  ),
-  39: (
-    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px,
-  ),
-  40: (
-    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px,
-  ),
-  41: (
-    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px,
-  ),
-  42: (
-    rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset,
-  ),
-);</code></pre></div><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://getcssscan.com/css-box-shadow-examples">https://getcssscan.com/css-box-shadow-examples</a></li></ul></section></section><section class="main__sub-section" id="utility-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="utility-function-box-shadow"><h3 class="item__heading"><a class="item__name" href="#function-box-shadow">box-shadow</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function box-shadow($box-shadow-id) { 
-  @if type-of($box-shadow-id) == &#39;number&#39; and $box-shadow-id &gt;= 0 and $box-shadow-id &lt; list.length($box-shadow-list) {
-    @return getMap($box-shadow-list, $box-shadow-id);
-  } @else {
-    @warn &#39;boxshadow function requires a boxshadow id number from 0 to #{list.length($box-shadow-list)}&#39;;
-    @debug help($config-map: getMap($box-shadow-list), $intro-msg: &#39;Printing available Flex Properties:&#39;);
-    @return null;
-  }
- }" data-collapsed="@function box-shadow($box-shadow-id) { ... }"><code>@function box-shadow($box-shadow-id) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Get the box shadow from the $box-shadow-list in order to feed it into the mixin</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$box-shadow-id</code></th><td data-label="desc"><p>The ID of the box shadow from the $box-shadow-list</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code> &mdash;<p>Returns a list of box shadow css properties to the mixin.</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#utility-function-help"><code>help</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#utility-mixin-boxshadow"><code>boxshadow</code></a></li></ul></section><section class="main__item container item" id="utility-function-contrast"><h3 class="item__heading"><a class="item__name" href="#function-contrast">contrast</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function contrast($foreground-color, $background-color) { 
-  $foreground: $foreground-color;
-  $background: $background-color;
-  // Foreground Color
-  @if contains(get(colors), $foreground-color) {
-    $foreground: color(#{$foreground-color});
-  }
-  // Background Color
-  @if contains(get(colors), $background-color) {
-    $background: color(#{$background-color});
-  }
-
-  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
-  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
-  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
-  $sum-rgb: $r + $g + $b;
-
-  @if $sum-rgb &lt; 500 {
-    @return &#39;false&#39;;
-  } @else {
-    @return &#39;true&#39;;
-  }
- }" data-collapsed="@function contrast($foreground-color, $background-color) { ... }"><code>@function contrast($foreground-color, $background-color) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Test if two colors have enough contrast for readability purposes.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$foreground-color</code></th><td data-label="desc"><p>The foreground color</p></td><td data-label="type"><code>Color</code> or <code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$background-color</code></th><td data-label="desc"><p>The background color</p></td><td data-label="type"><code>Color</code> or <code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Bool</code> &mdash;<p>Returns true if enough contrast is detected between the colors.</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797">https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797</a></li></ul></section><section class="main__item container item" id="utility-function-help"><h3 class="item__heading"><a class="item__name" href="#function-help">help</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function help($config-sub-key, $config-map, $intro-msg) { 
-  // Check if $config-map is a map and it&#39;s not empty
-  @if type-of($config-map) == map and length($config-map) &gt;= 1 {
-    // Check if a key is passed, if not print the whole map.
-    @if $config-sub-key == null {
-      @debug $intro-msg;
-
-      @if type($msg, (string)) {
-        @if length($msg) &gt; 0 {
-          @debug &#39;---&#39;;
-          @debug $msg;
-        }
-      } @else if type($msg, (list)) {
-        @if length($msg) &gt; 0 {
-          @debug &#39;---&#39;;
-          @each $msg-val in $msg {
-          }
-        }
-      }
-
-      @debug &#39;=====&#39;;
-
-      // For every value pair in the map
-      @each $config-key, $config-val in $config-map {
-        // Some exceptions
-
-        @if $config-key == &#39;font-family&#39; or $config-key == &#39;bootstrap&#39; {
-          @each $font-family-property in get($config-key) {
-            @each $property in $font-family-property {
-              @debug $property;
-            }
-            @debug &#39;&#39;;
-          }
-        } @else {
-          // For Print CSS properties
-          @if type($config-val, (map)) and contains($css-properties, $config-val) {
-            @if type($config-val, (map)) {
-              @each $cur-key, $cur-val in $config-val {
-                @debug &#39;&#39;;
-                @debug &#39;-=#{$cur-key}=-&#39;;
-
-                @each $current-key, $current-value in $cur-val {
-                  @debug &#39;-#{$current-value}: #{$current-key}&#39;;
-                }
-              }
-            } @else if type($config-val, (list)) {
-              @each $cur-val in $config-val {
-                @debug &#39;- #{$cur-key}&#39;;
-              }
-            }
-          } @else if type($config-val, (map)) {
-            @debug &#39;-=#{$config-key}=-&#39;;
-            @each $key, $value in $config-val {
-              @debug &#39;- #{$key}: &quot;#{$value}&quot;&#39;;
-            }
-            @debug &#39;&#39;;
-          } @else if (type($config-val, (list))) {
-            @debug &#39;-=#{$config-key}=-&#39;;
-            @each $key, $value in $config-val {
-              @debug &#39;- #{$key}&#39;;
-            }
-            @debug &#39;&#39;;
-          } @else if type($config-val, (string, number, bool, color)) {
-            @debug &#39;#{$config-key}: &quot;#{$config-val}&quot;&#39;;
-            @debug &#39;&#39;;
-          } @else if (type-of($config-val) == null) {
-            @debug &#39;#{$config-key}: &quot;null&quot;&#39;;
-            @debug &#39;&#39;;
-          } @else {
-            @warn &#39;Unknown data type in help &quot;#{$config-key}&quot;. Recieved: #{type-of($config-val)}&#39;;
-          }
-        }
-      }
-
-      @debug &#39;=====&#39;;
-    } @else if type-of($config-sub-key) == string and length($config-sub-key) &gt; 0 {
-      @if map.has-key($config-map, $config-sub-key) {
-        $type-of-config-sub-map: type-of(getMap($config-map, $config-sub-key));
-
-        @debug &#39;Printing sinister configuration for #{$config-sub-key}&#39;;
-        @debug &#39;=====&#39;;
-        @if $type-of-config-sub-map == map {
-          @debug &#39;-=#{$config-sub-key}=-&#39;;
-          @each $key, $value in getMap($config-map, $config-sub-key) {
-            @debug &#39;- #{$key}: #{$value}&#39;;
-          }
-        } @else if $type-of-config-sub-map == string or $type-of-config-sub-map == number or $type-of-config-sub-map == null or $type-of-config-sub-map == bool {
-          @debug &#39;-#{$config-sub-key}: #{getMap($config-map, $config-sub-key)}&#39;;
-        }
-      } @else {
-        @warn &#39;help() was called with invalid arguement. ${$config-sub-key} is not part of the configuration&#39;;
-      }
-    }
-  } @else {
-    @error &#39;help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of #{length($config-map)}.&#39;;
-  }
-
-  @return &#39;End of help()&#39;;
- }" data-collapsed="@function help($config-sub-key, $config-map, $intro-msg) { ... }"><code>@function help($config-sub-key, $config-map, $intro-msg) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$config-sub-key</code></th><td data-label="desc"><p>A key that you want it&#39;s values returned</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$config-map</code></th><td data-label="desc"><p>An optional parameter to set a different map instead of configuration</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$intro-msg</code></th><td data-label="desc"><p>A string that will work as a title, or intro text for the help context</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code> &mdash;<p>If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only</p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of #{length($config-map)}.</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-type"><code>type</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-getMap"><code>getMap</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-flex"><code>flex</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-spacing"><code>spacing</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#typography-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#utility-function-box-shadow"><code>box-shadow</code></a></li></ul></section><section class="main__item container item item--deprecated" id="utility-function-prefix-url"><h3 class="item__heading"><a class="item__name" href="#function-prefix-url">prefix-url</a></h3><div class="item__deprecated"><strong>Deprecated!</strong></div><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function prefix-url($image-url) { 
-  $production: get(global, production);
-  $production-url: get(global, production-url);
-  $development-url: get(global, development-url);
-
-  @if $production {
-    @return string.unquote(&#39;url(&quot;#{$production-url}/#{$image-url}&quot;)&#39;);
-  } @else {
-    @return string.unquote(&#39;url(&quot;#{$development-url}/#{$image-url}&quot;)&#39;);
-  }
- }" data-collapsed="@function prefix-url($image-url) { ... }"><code>@function prefix-url($image-url) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$image-url</code></th><td data-label="desc"><p>The URL that prefixes an image while in development</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code> &mdash;<p>Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.</p></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section><section class="main__item container item item--deprecated" id="utility-function-prefix-url"><h3 class="item__heading"><a class="item__name" href="#function-prefix-url">prefix-url</a></h3><div class="item__deprecated"><strong>Deprecated!</strong></div><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function prefix-url($image-url) { 
-  @return prefix-url($image-url);
- }" data-collapsed="@function prefix-url($image-url) { ... }"><code>@function prefix-url($image-url) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$image-url</code></th><td data-label="desc"><p>The URL that prefixes an image while in development</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code> &mdash;<p>Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.</p></div></section><section class="main__item container item" id="utility-function-spacing"><h3 class="item__heading"><a class="item__name" href="#function-spacing">spacing</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function spacing($new-map, $original-map) { 
-  @if map.has-key(get(spacing), $value) and type-of($scale) == &#39;number&#39; {
-    // If the $value is 0, instead of error return the default, but send a warning during compilation.
-
-    @return calc(#{get(spacing, $value)} * #{$scale});
-  } @else {
-    @warn &#39;Either $value does not exist in sinConfig, or scale is not a number. See bellow for more.&#39;;
-    @debug &#39;Your input: $value: #{$value}, $scale: #{$scale}&#39;;
-    @debug &#39;Available spacings $values&#39;;
-    @each $spacingId, $spacing in get(spacing) {
-      @debug &#39; #{$spacingId}: #{$spacing}&#39;;
-    }
-    @error &#39;Spacing function error.&#39;;
-  }
- }" data-collapsed="@function spacing($new-map, $original-map) { ... }"><code>@function spacing($new-map, $original-map) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$new-map</code></th><td data-label="desc"><p>A map that contains setting values to update or add new data to sinister configuration</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$original-map</code></th><td data-label="desc"><p>By default $original map is pointing to the default sinister configuration.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Map</code> &mdash;<p>Returns an updated map that is a merge of $new-map and $original-map.</p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>Spacing function error.</p></li></ul><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#dev-function-get"><code>get</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://github.com/TheoKondak/Sinister#readme">@get-sinister/sass</a><!-- Version --> <span class="project-info__version">- v0.6.62-beta-1</span><!-- License --> <span class="project-info__license">, under ISC</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>

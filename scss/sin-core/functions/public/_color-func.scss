@@ -4,38 +4,45 @@
 @use '../../../../../../sin.config' as *;
 
 @use './../private/get-func' as *;
+@use './help-func' as *;
 
 /// @name Color
 /// @group design
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// @param  {string}  $key - A key from `colors` map that exists in `_sin.config.scss`.
-/// @return {color}  - Returns a CSS color from `_sin.config.scss`
-
-@function color($key: null) {
+/// @param  {color}  $key - A key from `colors` map that exists in `_sin.config.scss`
+/// @param {color} $brightness [0] - If it is a negative value, it will apply `sass lighten()`, if it is a positive value, it will apply `sass darken()`. If it is zero, it will render the normal color
+/// @param {color} $step [4] - How prominent the effect will be
+/// @return {color} - Returns a CSS color from `_sin.config.scss`, and can brighten or darken a color.
+/// @example scss - color()
+///  .sin{
+///    color: color(test-color, 3);
+///   }
+///
+@function color($key: null, $brightness: 0, $step: 4) {
   // Check if input is null.
 
   @if (type-of($key) == 'null') {
-    // Return a list of available colors
-    @debug 'Color function received no input.';
-    @debug 'Available colors: ';
-    @each $colorId, $color in get(colors) {
-      @debug ' #{$colorId}: #{$color}';
-    }
-    @return null;
+    @return help(colors, $intro-msg: 'Color function received no valid input', $msg: 'Available colors:');
   } @else {
     // Check if $key is part of the colors map
     @if not map.has-key(get(colors), $key) {
-      @error 'Color function needs a valid input. It requires a color key from sinConfig. The current value is: `#{$key}`. See bellow for available colors';
+      @error 'Color function needs a valid input. It requires a color key from `_sin.config.scss`. The current value is: `#{$key}`. See bellow for available colors';
       @debug 'Available colors: ';
       @each $colorId, $color in get(colors) {
         @debug ' #{$colorId}: #{$color}';
       }
 
-      @return null;
+      @return help(colors, $intro-msg: 'Color function received no valid input', $msg: 'Available colors:');
     } @else {
-      // Value exists so return value
-      @return get(colors, $key);
+      @if $brightness > 0 {
+        @return darken(get(colors, $key), $brightness * $step);
+      } @else if $brightness < 0 {
+        @return lighten(get(colors, $key), calc((($brightness * -1) * $step) / 2));
+      } @else {
+        // Value exists so return value
+        @return get(colors, $key);
+      }
     }
   }
 }
