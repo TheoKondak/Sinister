@@ -12,6 +12,7 @@
 /// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
 
 @function set-config($new-map, $add-maps: $sinister-default-configuration) {
+  // A new map to use for updating the return map
   $processing-map: ();
   $return-map: $add-maps;
 
@@ -36,10 +37,8 @@
     }
 
     @return $return-map;
-  } @else if type($new-map, (list)) {
-    @return $return-map;
   } @else {
-    @error 'setConfig function was called with invalid input. Was expecting a map but instead received: #{type-of($new-map)}';
+    @error 'set-config function was called with invalid input. Was expecting a map but instead received: #{type-of($new-map)}';
     @return null;
   }
 }
