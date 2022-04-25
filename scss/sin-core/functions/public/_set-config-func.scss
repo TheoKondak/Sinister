@@ -7,23 +7,23 @@
 /// Process a single configuration map
 /// @arg {map} - Current map
 /// @return {map} - Updated map cofiguration
-
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// @param  {map}  $new-map - A map that contains setting values to update or add new data to sinister configuration
-/// @param  {map}  $add-maps - By default $original map is pointing to the default sinister configuration.
-/// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
+/// @param  {map}  $new-config - A map that contains setting values to update or add new data to sinister configuration
+/// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
+/// @example scss - See configuration options
+///  @debug help();
 
-@function set-config($new-map) {
-  // Check if the `$new-map` is a type of `map`
-  @if (type($new-map, (map))) {
+@function set-config($new-config) {
+  // Check if the `$new-config` is a type of `map`
+  @if (type($new-config, (map))) {
     $default-configuration: $sinister-default-configuration;
     /// A new map to use for updating the return map
     $processing-map: ();
     /// The map to be returned as the final `$configuration`
     $return-map: $default-configuration;
     @each $original-key, $original-value in $default-configuration {
-      @each $new-key, $new-value in $new-map {
+      @each $new-key, $new-value in $new-config {
         @if $original-key == $new-key {
           @if (type($new-value, (map))) {
             // Update the temporary map
