@@ -2,7 +2,8 @@
 
 @use './../grid/_responsive.scss' as *;
 
-/// @name grid-template
+/// `grid` mixin is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
+/// It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns and optionally a list of grid rows.
 /// @access public
 /// @group grid
 /// @ignore @author Theodoros Kondakos
@@ -12,6 +13,10 @@
 /// - `$min-width-query`: `{string}`   - Min width, breakpoint from `_sin.config.scss`
 /// - `$grid-template-columns`: `{list}` - A list of grid template columns
 /// - `$grid-template-rows`: `{list}` - A list of grid template rows (optional)
+/// @example scss Systax example
+/// .sin{
+///  @include grid-template(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
+/// }
 
 @mixin grid-template($args...) {
   @if (length($args) > 0) {

@@ -1,3 +1,7 @@
+/// This is the default configuration map that contains all the default values.
+/// You can add or update the configuration by using the `sin-config()` function.
+/// @group setup
+/// @see {function} set-config
 $sinister-default-configuration: (
   colors: (
     
@@ -18,9 +22,7 @@ $sinister-default-configuration: (
   ),
   // Functionality is missing.
   font-families: (),
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
   // Experimental - > Bootstrap overide
-  //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
   bootstrap:
     (
       // if bootstrap is used, use the palette bellow to overide the default bootstrap colors

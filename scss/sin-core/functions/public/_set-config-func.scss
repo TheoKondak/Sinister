@@ -4,15 +4,25 @@
 @use 'sass:list';
 @use './../private/type-func' as *;
 
-/// Process a single configuration map
-/// @arg {map} - Current map
-/// @return {map} - Updated map cofiguration
+/// `set.config` creates the configuration for the project. Through this function you can setup breakpoints, colors, font-sizes among other options.
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// @param  {map}  $new-config - A map that contains setting values to update or add new data to sinister configuration
+/// @group setup
+/// @param  {map}  $new-config - A map that contains setting values to update or add new data to the configuration
 /// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
-/// @example scss - See configuration options
-///  @debug help();
+/// @see {function} help
+/// @example scss - Set configuration
+/// $configuration: sin.set-config(
+///   (
+///    colors: (
+///      test-color: #faa,
+///      test-color-2: #010101,
+///    ),
+///    breakpoints: (
+///      xs: 570px,
+///    ),
+///  )
+/// );
 
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`

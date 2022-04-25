@@ -2,7 +2,6 @@
 
 @use '../functions' as *;
 
-/// @name CLI Image wrapper
 /// @group utility
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
@@ -14,7 +13,13 @@
 /// @param  {number}  $image-height - The height of the image
 /// @param  {number}  $image-width - The width of the image
 /// @param  {color | string}  $preload-background - Takes a css background property. Accepts colors and urls. [OPTIONAL]
-/// Let's say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
+/// @example markup Let's say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
+/// <img class='wrap-image' src='./images/some-image.jpg' alt='Some image' > </img>
+///
+/// @example scss This will create a box element that will help browser know the size of the image, so it can render the DOM properly without CLS issues.
+/// .wrap-image{
+///  @include image-wrapper(300px, 400px, #010101);
+///
 
 @mixin image-wrapper($image-height: get(image-wrapper, img-box-default-height), $image-width: get(image-wrapper, img-box-default-width), $preload-background: get(image-wrapper, img-default-preload-background)) {
   $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);
