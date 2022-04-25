@@ -14,7 +14,7 @@
 /// @param  {number}  $image-width - The width of the image
 /// @param  {color | string}  $preload-background - Takes a css background property. Accepts colors and urls. [OPTIONAL]
 /// @example markup Let's say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
-/// <img class='wrap-image' src='./images/some-image.jpg' alt='Some image' > </img>
+/// <img class='wrap-image' src='./images/some-image.jpg' alt='Some image' width='400' heigh='300' > </img>
 ///
 /// @example scss This will create a box element that will help browser know the size of the image, so it can render the DOM properly without CLS issues.
 /// .wrap-image{

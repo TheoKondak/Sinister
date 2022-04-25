@@ -3,7 +3,15 @@
 @use 'sass:string';
 @use '../grid/responsive';
 
-// Inspiration: https://css-tricks.com/stacked-cards-with-sticky-positioning-and-a-dash-of-sass/
+/// Creates stacked cards on scroll.
+/// @group experimental
+/// @todo Needs more testing and documentation
+/// @arg {number} $numberOfItems [3] - How many cards there are
+/// @arg {number} $startingHeight [60px] - Height from the top
+/// @arg {bool} $responsiveStackedContent [true] - Is the stacked content responsive?
+/// @arg {number} $responsiveMargin [80vh] - Margin if `$responsiveStackedContent` is `enabled`
+/// @arg {number} $responsiveMargin [570px] - A single breakpoint for when `$responsiveStackedContent` is `enabled`
+/// @link https://css-tricks.com/stacked-cards-with-sticky-positioning-and-a-dash-of-sass/
 
 @mixin stackedContent($numberOfItems: 3, $startingHeight: 60px, $responsiveStackedContent: true, $responsiveMargin: 80vh, $breakpoint: 570px) {
   z-index: 1;

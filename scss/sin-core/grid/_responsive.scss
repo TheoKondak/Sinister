@@ -9,9 +9,14 @@
 /// @group grid
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// @param  {number}  $min - Breakpoint from which the query will kick in
-/// @param  {number}  $max - Breakpoint will work up to $max
-
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @param  {number}  $max [4096px] - Breakpoint will work up to $max
+/// @example scss Accepting a breakpoint from `sin.config`
+/// @include mq(xs, xxl){
+///   .sin{
+///     display: block;
+///   }
+/// }
 @mixin mq($min: 120px, $max: 4096px) {
   @if $min and $max {
     @if type-of($min) == 'number' and type-of($max) == 'number' {
@@ -88,9 +93,14 @@
   }
 }
 
-/// @name mqMin
 /// @group grid
-/// @param  {number}  $min - Breakpoint from which the query will kick in
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @example scss Accepting a breakpoint from `sin.config`
+/// @include mqMin(xs){
+///   .sin{
+///     display: block;
+///   }
+/// }
 @mixin mqMin($min: 120px) {
   @if type-of($min) == 'number' {
     @if unitless($min) {
@@ -115,7 +125,13 @@
 
 /// @name mqMax
 /// @group grid
-/// @param  {number}  $max - Breakpoint will work up to $max
+/// @param  {number | string}  $max [4096px] - Breakpoint will work up to $max. Accepts breakpoints from `sin.config`
+/// @example scss Accepting a breakpoint from `sin.config`
+/// @include mqMax(xxl){
+///   .sin{
+///     display: block;
+///   }
+/// }
 
 @mixin mqMax($max: 4096px) {
   @if type-of($max) == 'number' {
