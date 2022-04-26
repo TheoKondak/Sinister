@@ -38,12 +38,8 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 
 # Documentation
 
-- [Installation](https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1)
-- [Configuring A Project](https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1)
-- [Mixins](https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1)
-- [Functions](https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md?plain=1)
-- [Classes](https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/classes.md?plain=1)
-
+- Latest
+- 0.6.65-beta.1
 # Roadmap
 
 - Place untested mixins and functions in experimental
