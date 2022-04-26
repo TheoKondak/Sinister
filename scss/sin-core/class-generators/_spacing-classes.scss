@@ -1,0 +1,207 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+@use './../functions' as *;
+@use '../misc/css-properties' as *;
+
+/// Generate spacing related parameters
+/// @group Classes
+/// @name Spacing Classes
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @todo Rewrite and generate classes by using a function instead of spaghetti code.
+/// @prop {bool} compile-spacing-classes [false] - Sinister configuration property, if true will generate spacing classes.
+$compile-spacing-classes: getMap($configuration, generate-classes, 'spacing');
+@if $compile-spacing-classes {
+  @each $spacingKey, $spacingVal in get(spacing) {
+    @if type-of($spacingKey) == 'number' or type-of($spacingKey) == 'string' {
+      @if type-of($spacingVal) == 'number' {
+        @each $propertyKey, $propertyValue in getMap($css-properties, spacing, spacing-properties) {
+          @each $directionKey, $directionValue in getMap($css-properties, spacing, spacing-direction) {
+            // X-AXIS
+            @if $directionKey == 'x-axis' {
+              $className: #{$propertyKey}-#{$directionValue};
+
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyKey == 'm' {
+                  margin-top: $spacingVal !important;
+                  margin-bottom: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyKey == 'p' {
+                  padding-top: $spacingVal !important;
+                  padding-bottom: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  // Fallback for older browsers
+                  @supports not (gap: 2rem) {
+                    margin-left: $spacingVal !important;
+                    margin-right: $spacingVal !important;
+                  }
+                  row-gap: $spacingVal !important;
+                }
+                // @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
+                // }
+              }
+            }
+            // Y-AXIS
+            @else if $directionKey == 'y-axis' {
+              $className: #{$propertyKey}-#{$directionValue};
+
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-top: $spacingVal !important;
+                  margin-bottom: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-top: $spacingVal !important;
+                  padding-bottom: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  // Fallback for older browsers
+                  @supports not (gap: 2rem) {
+                    margin-top: $spacingVal !important;
+                    margin-bottom: $spacingVal !important;
+                  }
+                  column-gap: $spacingVal !important;
+                }
+                // @else {
+                //   @warn string.unquote('Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
+                // }
+              }
+            }
+            // ALL DIRECTIONS
+            @else if $directionKey == 'generic' {
+              $className: #{$propertyKey}-#{$directionValue};
+
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-top: $spacingVal !important;
+                  margin-right: $spacingVal !important;
+                  margin-bottom: $spacingVal !important;
+                  margin-left: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-top: $spacingVal !important;
+                  padding-right: $spacingVal !important;
+                  padding-bottom: $spacingVal !important;
+                  padding-left: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  // Fallback for older browsers
+                  @supports not (gap: 2rem) {
+                    margin: $spacingVal !important;
+                  }
+                  gap: $spacingVal !important;
+                }
+                // @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new "getMap($css-properties, spacing, spacing-properties)" item without defining the logic') #{getMap($css-properties, spacing, spacing-properties)};
+                // }
+              }
+            }
+
+            // DIRECTION TOP
+            @else if $directionKey == 'top' {
+              $className: #{$propertyKey}-#{$directionValue};
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-top: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-top: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  //gap does not support single direction
+                }
+                //  @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
+                // }
+              }
+            }
+            // DIRECTION RIGHT
+            @else if $directionKey == 'right' {
+              $className: #{$propertyKey}-#{$directionValue};
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-right: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-right: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  //gap does not support single direction
+                }
+                //  @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
+                // }
+              }
+            }
+            // DIRECTION BOTTOM
+            @else if $directionKey == 'bottom' {
+              $className: #{$propertyValue}#{$directionValue};
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-bottom: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-bottom: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                  //gap does not support single direction
+                }
+                // @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
+                // }
+              }
+            }
+
+            // DIRECTION LEFT
+            @else if $directionKey == 'left' {
+              $className: #{$propertyValue}#{$directionValue};
+              .#{$className}-#{$spacingKey} {
+                // MARGIN
+                @if $propertyValue == 'm' {
+                  margin-left: $spacingVal !important;
+                }
+                // PADDING
+                @else if $propertyValue == 'p' {
+                  padding-left: $spacingVal !important;
+                }
+                // GAP
+                @else if $propertyValue == 'g' {
+                }
+                // @else {
+                //   @warn string.unquote( 'Unknown Property Value. It seems that you have added a new getMap($css-properties, spacing, spacing-properties) item without defining the logic');
+                // }
+              }
+            }
+          }
+        }
+      }
+      // @else {
+      //   @warn string.unquote( '$spacing values must be type of number but there are some of type:') #{type-of($spacingVal)};
+      // }
+    } @else {
+      @warn string.unquote( '$spacing keys must be type of number or string but there are some of type:') #{type-of($spacingKey)};
+    }
+  }
+}

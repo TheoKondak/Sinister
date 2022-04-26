@@ -1,6 +1,5 @@
 @use '../../../../../sin.config' as *;
 
-
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 //  Background Image
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
@@ -8,7 +7,7 @@
 // Added this for compatibility reasons and maybe will be easy to use int he future. Has a very strange syntax though
 // ex syntax :   @include bgImg('images/home/home-masthead-489489790.jpg', 'rgba(#{$mmGreyDrk}, .6),rgba(#{$mmGreyDrk}, .6)');
 
-@mixin bgImg($imgUrl: null, $overlay: transparent, $position: center center, $size: cover, $fbColor: #666) {
+@mixin bg-img($imgUrl: null, $overlay: transparent, $position: center center, $size: cover, $fbColor: #666) {
   background-color: $fbColor; // fallback
   background: url('#{$imgUrl}') #{$position}; // fallback
 

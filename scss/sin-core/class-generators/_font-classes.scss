@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+
+@use '../functions' as *;
+@use '../grid/responsive' as *;
+
+@if getMap($configuration, generate-classes, fonts) {
+  // For each font size in font sizes in sinconfig
+  @each $fs-key, $fs-value in get(font-sizes) {
+    // For each breakpoint
+    @each $breakpoint-key, $breakpoint-value in get(breakpoints) {
+      @include mqMin($breakpoint-value) {
+        .#{$breakpoint-key}-min-#{$fs-key} {
+          font-size: $fs-value;
+        }
+      }
+
+      @include mqMax($breakpoint-value) {
+        .#{$breakpoint-key}-max-#{$fs-key} {
+          font-size: $fs-value;
+        }
+      }
+    }
+  }
+}

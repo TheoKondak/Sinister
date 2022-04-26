@@ -24,6 +24,8 @@
 
   // @debug contrast(test-color, test-color-2);
   // @debug contrast(#ffa, test-color-2);
+
+  box-shadow: box-shadow(4);
 }
 // Check the rest arguements, if they exist, render the css else, continue
 // @debug contains(getMap($align-items), $flex-properties-list);
@@ -33,4 +35,4 @@
 //   @debug 'does not contain';
 // }
 
-@debug help();
+// @debug help();

@@ -114,3 +114,138 @@
     @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:');
   }
 }
+
+// Flex Mixins
+
+@mixin d-flex {
+  display: flex !important;
+}
+
+@mixin justify-center {
+  @include d-flex;
+  justify-content: center;
+}
+
+@mixin justify-start {
+  @include d-flex;
+  justify-content: flex-start;
+}
+
+@mixin justify-end {
+  @include d-flex;
+  justify-content: flex-end;
+}
+
+@mixin justify-space-between {
+  @include d-flex;
+  justify-content: space-between;
+}
+
+@mixin justify-space-evenly {
+  @include d-flex;
+  justify-content: space-evenly;
+}
+
+@mixin justify-space-around {
+  @include d-flex;
+  justify-content: space-around;
+}
+@mixin wrap {
+  @include d-flex;
+  flex-wrap: wrap;
+}
+
+@mixin nowrap {
+  @include d-flex;
+  flex-wrap: nowrap;
+}
+
+@mixin align-start {
+  @include d-flex;
+  align-items: flex-start;
+}
+
+@mixin align-end {
+  @include d-flex;
+  align-items: flex-end;
+}
+
+@mixin align-baseline {
+  @include d-flex;
+  align-items: baseline;
+}
+
+@mixin align-center {
+  @include d-flex;
+  align-items: center;
+}
+
+@mixin align-stretch {
+  @include d-flex;
+  align-items: stretch;
+}
+
+@mixin content-start {
+  @include d-flex;
+  align-content: flex-start;
+}
+
+@mixin content-end {
+  @include d-flex;
+  align-content: flex-end;
+}
+
+@mixin content-center {
+  @include d-flex;
+  align-content: center;
+}
+
+@mixin content-between {
+  @include d-flex;
+  align-content: space-between;
+}
+
+@mixin content-around {
+  @include d-flex;
+  align-content: space-around;
+}
+
+@mixin content-stretch {
+  @include d-flex;
+  align-content: stretch;
+}
+
+@mixin flex-column {
+  @include d-flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  @include d-flex;
+  flex-direction: row;
+}
+
+@mixin flex-grow {
+  @include d-flex;
+  flex-grow: 1;
+}
+
+@mixin no-grow {
+  @include d-flex;
+  flex-grow: 0;
+}
+
+@mixin flex-shrink {
+  @include d-flex;
+  flex-shrink: 1;
+}
+
+@mixin no-shrink {
+  @include d-flex;
+  flex-shrink: 0;
+}
+
+@mixin center-content {
+  @include justify-center;
+  @include align-center;
+}

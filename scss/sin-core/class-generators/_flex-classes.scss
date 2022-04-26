@@ -1,0 +1,145 @@
+@use 'sass:list';
+@use 'sass:map';
+@use '../functions' as *;
+@use '../../../../../sin.config' as *;
+@use '../grid/flex-mixin' as *;
+
+// Mixins
+
+// Generate Classes
+$flex-classes: getMap($configuration, generate-classes, flex);
+
+@if $flex-classes {
+  .flex {
+    @include d-flex;
+  }
+
+  .justify-center {
+    @include d-flex;
+    justify-content: center;
+  }
+
+  .justify-start {
+    @include d-flex;
+    justify-content: flex-start;
+  }
+
+  .justify-end {
+    @include d-flex;
+    justify-content: flex-end;
+  }
+
+  .justify-space-between {
+    @include d-flex;
+    justify-content: space-between;
+  }
+
+  .justify-space-evenly {
+    @include d-flex;
+    justify-content: space-evenly;
+  }
+
+  .justify-space-around {
+    @include d-flex;
+    justify-content: space-around;
+  }
+
+  .wrap {
+    @include d-flex;
+    flex-wrap: wrap;
+  }
+
+  .nowrap {
+    @include d-flex;
+    flex-wrap: nowrap;
+  }
+
+  .align-start {
+    @include d-flex;
+    align-items: flex-start;
+  }
+
+  .align-end {
+    @include d-flex;
+    align-items: flex-end;
+  }
+
+  .align-baseline {
+    @include d-flex;
+    align-items: baseline;
+  }
+
+  .align-center {
+    @include d-flex;
+    align-items: center;
+  }
+
+  .align-stretch {
+    @include d-flex;
+    align-items: stretch;
+  }
+
+  .content-start {
+    @include d-flex;
+    align-content: flex-start;
+  }
+
+  .content-end {
+    @include d-flex;
+    align-content: flex-end;
+  }
+
+  .content-center {
+    @include d-flex;
+    align-content: center;
+  }
+
+  .content-between {
+    @include d-flex;
+    align-content: space-between;
+  }
+
+  .content-around {
+    @include d-flex;
+    align-content: space-around;
+  }
+
+  .content-stretch {
+    @include d-flex;
+    align-content: stretch;
+  }
+
+  .flex-column {
+    @include d-flex;
+    flex-direction: column;
+  }
+
+  .flex-row {
+    @include d-flex;
+    flex-direction: row;
+  }
+
+  .flex-grow {
+    @include d-flex;
+    flex-grow: 1;
+  }
+
+  .no-grow {
+    @include d-flex;
+    flex-grow: 0;
+  }
+
+  .flex-shrink {
+    @include d-flex;
+    flex-shrink: 1;
+  }
+
+  .no-shrink {
+    @include d-flex;
+    flex-shrink: 0;
+  }
+
+  .center-content {
+    @include center-content;
+  }
+}

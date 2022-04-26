@@ -5,7 +5,7 @@
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
 /// Not sure why i have this function lol
-/// @private
+/// @access private
 @function nthList($list, $pos) {
   @return nth($list, $pos);
 }
@@ -34,7 +34,7 @@
     // Right
     1rem,
     // Bottom
-    null // Left,,,,,,,,,,,
+    null // Left,,,,,,,,,,,,
   )
 ) {
   @if $isImage {
