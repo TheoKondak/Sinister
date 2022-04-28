@@ -19,8 +19,42 @@ Also I keep releasing hotfixes almost daily.
 
 # Setup the data
 
-`_sinConfig` hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families, and many more. Browse the file to see which options are available.
+In order for sinister to work, 2 files are needed. 
 
+- In your root directory, where `npm_package` is located, create a file called `_sin.config.scss`.
+  
+``` Folder Structure
+.
+├── package.json
+├── node_modules/
+├── _sin.config.scss
+
+```
+
+  ``` _sin.config.scss content
+    @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+    $configuration: sin.set-config(
+      (
+    
+      )
+    );
+  ```
+
+- Inside your scss files directory create a file called `_sin.scss`
+
+ ``` Folder Structure
+  ├── package.json
+  ├── node_modules/
+  ├── _sin.config.scss
+  ├── scss/
+    ├── custom.scss     # Just another folder
+    ├── pages/          # Documentation files compilled by Sassdoc will be in this folder
+    ├── _sin.scss       # A folder with our SCSS
+```
+
+``` _sin.scss content
+      @forward '../node_modules/@get-sinister/sass/sin-core';
+```
 ## Importing sinister to a new file
 
 The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file, you have to use the `@use`. [Read More](https://sass-lang.com/documentation/at-rules/use)

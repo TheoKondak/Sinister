@@ -1,5 +1,6 @@
 # .sassdocrc (yaml)
 
+theme: herman
 dest: 'documentation/0.6.65-beta.1'
 herman:
   sass:

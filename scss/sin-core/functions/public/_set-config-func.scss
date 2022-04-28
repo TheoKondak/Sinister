@@ -1,5 +1,5 @@
 @use './../../sinister-default-configuration' as *;
-@use 'sass:map';
+@use 'sass:map' as map;
 @use 'sass:string';
 @use 'sass:list';
 @use './../private/type-func' as *;
@@ -12,17 +12,19 @@
 /// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
 /// @see {function} help
 /// @example scss - Set configuration
-/// $configuration: sin.set-config(
-///   (
-///    colors: (
-///      test-color: #faa,
-///      test-color-2: #010101,
-///    ),
-///    breakpoints: (
-///      xs: 570px,
-///    ),
-///  )
-/// );
+/// .sin {
+///   @debug set-config(
+///     (
+///     colors: (
+///       test-color: #faa,
+///        test-color-2: #010101,
+///      ),
+///      breakpoints: (
+///       xs: 570px,
+///      ),
+///    )
+///  );
+/// }
 
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`
