@@ -8,12 +8,16 @@
     "sass": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css",
     "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch",
     "auto-doc": "sassdoc \"sin-core\"",
-    "auto-doc-herman": "sassdoc \"sin-core\" --theme herman"
+    "auto-doc-herman": "sassdoc \"sin-core\" --theme herman",
+    "changelog": "auto-changelog -p -t keepachangelog && git add CHANGELOG.md && auto-changelog --template json --output changelog-data.json"
   },
   "dependencies": {
     "sass": "^1.50.1"
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",
-  "homepage": "https://github.com/TheoKondak/Sinister#readme"
+  "homepage": "https://github.com/TheoKondak/Sinister#readme",
+  "devDependencies": {
+    "auto-changelog": "^2.4.0"
+  }
 }
