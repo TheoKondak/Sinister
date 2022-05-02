@@ -1,0 +1,93 @@
+@use '../../../../../sin.config' as *;
+
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+//  Change color to SVG elements with css.
+//⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
+
+/// Not sure why i have this function lol
+/// @access private
+@function nthList($list, $pos) {
+  @return nth($list, $pos);
+}
+
+/// Now it works in both <img> and other elements.
+/// For <img> elements, place the mixin at parent.
+/// For background img, use the element you want and it will add an after that does the work.
+/// ## Notes:
+/// > svgUrl must be in single or double quotes because it's a string.
+/// > Need to test for side effects
+/// @arg {color} $svgColor [black] - The color you want to assign to the svg
+/// @arg {string} $svgUrl [https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bitmap_VS_SVG.svg/1920px-Bitmap_VS_SVG.svg.png] - The link of the svg file
+/// @arg {bool} $isImage [false] -
+/// @todo More documentation and testing needed
+/// @link https://stackoverflow.com/questions/21509982/change-svg-fill-color-in-before-or-after-css
+@mixin svgColor(
+  $svgColor: black,
+  $svgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bitmap_VS_SVG.svg/1920px-Bitmap_VS_SVG.svg.png',
+  $isImage: false,
+  $svgHeight: 122.8px,
+  $svgWidth: 192px,
+  $svgPosition: (
+    null,
+    // Top
+    1rem,
+    // Right
+    1rem,
+    // Bottom
+    null // Left,,,,,,,,,,,,
+  )
+) {
+  @if $isImage {
+    position: relative;
+
+    overflow: hidden;
+    padding: $svgHeight $svgWidth 0 0;
+    box-sizing: border-box;
+
+    &:before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+
+      -webkit-mask: url(#{$svgUrl}) no-repeat 50% 50%;
+      mask: url(#{$svgUrl}) no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+
+      background-color: $svgColor;
+    }
+
+    > img {
+      display: none;
+    }
+  } @else {
+    position: relative;
+    z-index: 1;
+
+    &:after {
+      content: '';
+      position: absolute;
+
+      top: nthList($svgPosition, 1);
+      right: nthList($svgPosition, 2);
+      bottom: nthList($svgPosition, 3);
+      left: nthList($svgPosition, 4);
+
+      z-index: 3;
+
+      -webkit-mask: url(#{$svgUrl}) no-repeat 50% 50%;
+      mask: url(#{$svgUrl}) no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+
+      background-color: $svgColor;
+
+      width: $svgWidth;
+      height: $svgHeight;
+    }
+  }
+} ;

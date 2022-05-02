@@ -1,0 +1,7 @@
+@use '../../../../../sin.config' as *;
+
+/// Used with background css property
+/// @group experimental
+@mixin paralax {
+  background-attachment: fixed;
+}

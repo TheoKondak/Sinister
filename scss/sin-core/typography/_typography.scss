@@ -1,0 +1,198 @@
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+
+@use '../functions' as *;
+@use '../grid/responsive' as *;
+
+//+----------------------+
+// Importing Fonts
+//+----------------------+
+
+// You can load/import fonts to use easily with font face.
+
+// Example:
+@font-face {
+  // font-family: Roboto Condensed Regular;
+  // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
+  // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
+}
+
+// $font-families: get(font-family);
+
+// @if type($font-families, (map)) and length($font-families) >= 1 {
+//   // Itterate through font families map
+//   @each $font-family in $font-families {
+//     // @debug get(font-family, font-name);
+
+//     @font-face {
+//       // Use deep default sass map-get
+//       font-family: map-get($font-family, font-name);
+
+//       // Itterate throught the array of URLs, for fallback urls.
+
+//       @for $i from 1 through length(get($font-family)) {
+//         // For every font-family decladed in _configuration.scss
+
+//         $length: length(map-get($font-family, url)); // lenth of url array
+
+//         @if $length == 0 {
+//           @warn '@font-face url contains no data, or invalid data. Edit in _configuration.scss';
+//         } @else if $length == 1 {
+//           src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)); // Format is optional
+//         } @else if $length == 2 {
+//           src: url(nth(map-get($font-family, url), 1)) format(map-get($font-family, format)),
+//             // Format is optional
+//             url(nth(map-get($font-family, url), 2))
+//               format(map-get($font-family, format)); // Format is optional
+//         } @else {
+//           @warn '@font-face url setting in _configuration.scss requires a url, and optionally a fallback url';
+//         }
+//       }
+//     }
+//   }
+// }
+
+@mixin capitalize {
+  text-transform: capitalize;
+}
+.capitalize {
+  @include capitalize;
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+}
+.uppercase {
+  @include uppercase;
+}
+
+//+----------------------+
+// Responsive Font Sizes
+//+----------------------+
+@if get(global, responsive-fonts) {
+  :root {
+    font-size: get(responsive-font-sizes, generic);
+
+    @each $responsive-font-size-key, $responsive-font-size-value in get(responsive-font-sizes) {
+      @each $breakpoint-key, $breakpoint-value in get(breakpoints) {
+        @if $breakpoint-key == $responsive-font-size-key {
+          @include mqMin($breakpoint-key) {
+            font-size: $responsive-font-size-value;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  // line-height: 1.61803398875; //Golden Ratio
+
+  h1 {
+    font-size: get(default-font-sizes, h1);
+  }
+
+  h2 {
+    font-size: get(default-font-sizes, h2);
+  }
+
+  h3 {
+    font-size: get(default-font-sizes, h3);
+  }
+
+  h4 {
+    font-size: get(default-font-sizes, h4);
+  }
+
+  h5 {
+    font-size: get(default-font-sizes, h5);
+  }
+
+  h6 {
+    font-size: get(default-font-sizes, h6);
+  }
+
+  span {
+    font-size: get(default-font-sizes, span);
+  }
+
+  p {
+    font-size: get(default-font-sizes, p);
+  }
+
+  a {
+    text-decoration: none;
+
+    font-size: get(default-font-sizes, a);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  button {
+    font-size: get(default-font-sizes, button);
+  }
+
+  em {
+    font-size: get(default-font-sizes, em);
+  }
+
+  small {
+    font-size: get(default-font-sizes, small);
+  }
+
+  strong {
+    font-size: get(default-font-sizes, strong);
+  }
+
+  ul {
+    font-size: get(default-font-sizes, ul);
+  }
+
+  ol {
+    font-size: get(default-font-sizes, ol);
+  }
+
+  @mixin disable-list-style {
+    list-style: none;
+  }
+
+  li {
+    @if get(global, disable-list-style) {
+      @include disable-list-style;
+    }
+
+    font-size: get(default-font-sizes, li);
+  }
+
+  hr {
+    font-size: get(default-font-sizes, hr);
+  }
+
+  br {
+    font-size: get(default-font-sizes, br);
+  }
+
+  wbr {
+    font-size: get(default-font-sizes, wbr);
+  }
+
+  div {
+    font-size: get(default-font-sizes, div);
+  }
+
+  section {
+    font-size: get(default-font-sizes, section);
+  }
+}
+
+// Font Size Mixin
+@mixin font-size($fs: 1rem, $scale: 1) {
+  font-size: font-size($fs);
+}
+
+// Generate Font classes
+
+// If enabled

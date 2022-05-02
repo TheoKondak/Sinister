@@ -19,8 +19,42 @@ Also I keep releasing hotfixes almost daily.
 
 # Setup the data
 
-`_sinConfig` hosts all the scss variables. In this file, you can set up data like color palette, responsive breakpoints, set new font families, and many more. Browse the file to see which options are available.
+In order for sinister to work, 2 files are needed. 
 
+- In your root directory, where `npm_package` is located, create a file called `_sin.config.scss`.
+  
+``` Folder Structure
+.
+├── package.json
+├── node_modules/
+├── _sin.config.scss
+
+```
+
+  ``` _sin.config.scss content
+    @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+    $configuration: sin.set-config(
+      (
+    
+      )
+    );
+  ```
+
+- Inside your scss files directory create a file called `_sin.scss`
+
+ ``` Folder Structure
+  ├── package.json
+  ├── node_modules/
+  ├── _sin.config.scss
+  ├── scss/
+    ├── custom.scss     # Just another folder
+    ├── pages/          # Documentation files compilled by Sassdoc will be in this folder
+    ├── _sin.scss       # A folder with our SCSS
+```
+
+``` _sin.scss content
+      @forward '../node_modules/@get-sinister/sass/sin-core';
+```
 ## Importing sinister to a new file
 
 The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file, you have to use the `@use`. [Read More](https://sass-lang.com/documentation/at-rules/use)
@@ -36,119 +70,32 @@ Keep in mind that the path is relative.
 
 For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
 
-## Accessing the config data
+# Documentation
 
-## The `get` function
+- Latest
+- 0.6.65-beta.1
+# Roadmap
 
-You can access the config data with the "get" function. "get" function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.
+- Place untested mixins and functions in experimental
+- Do more testing to basic functions like `set-config()`, `type()` etc
+- Update flex approach. Remove obsolete classes, and find a better way to utilize grid via mixins
+- Add flex mixin, to create responsive grid.
+  - Logic similar to grid. ex `@include flex(('', properties/values)('xs', properties/values))`
+- Add function that creates classes from maps of data `breakpoint-property-value`, ex `xs-display-none`.
+  - Add a map of properties and a bull value to enable/disable some class
+  - Add documentation about class generation options
+- Create private and public function folder and move functions accordingly
 
-#### Syntax
+# Documentation To do
 
-```
- get(property, value)
-```
+- development/production
+- Image-wrapper
+- Typography
+  - Responsive font sizes
+  - Default font sizes
+  - disable-list-style mixin and global config variable
+- prefix url func
+- 
+## SASSDOC HERMAN GIST
 
-For example, if you want to access the colors from the palette:
-
-### Example
-
-Data:
-
-```
-$configuration: (
-  colors: (
-    'primary': hsl(0, 100%, 50%),
-    'secondary': hsl(120, 100%, 25%),
-    'blue': hsl(240, 100%, 50%),
-  ),
-  .
-  .
-  .
-```
-
-### You can use:
-
-```
-color: get(colors, primary);
-```
-
-Or you can assign it to a new local variable so you can call it easier.
-
-```
-$primary-color: get(colors, primary);
-```
-
-## The `getMap` function
-
-The "getMap" function works similar to "get" function, but in addition, it requires the name of the map as an input.
-
-If we would like to access the primary color, as with the "get" example:
-
-```
-getMap($configuration, colors, primary);
-```
-
-With the "mapGet" function you can access data in more complex maps.
-
-In the example above, we want to access the bootstrap colors from the configuration of sinister.
-
-The data looks like that:
-
-```
-$configuration: (
-    bootstrap:
-        (
-        color:
-            (
-            bs-blue: #0d6efd,
-            bs-indigo: #6610f2,
-            bs-purple: #6f42c1,
-            .
-            .
-            .
-            ),
-        ),
-)
-
-```
-
-To retrieve the code use:
-
-```
-getMap($configuration, bootstrap, color, bs-blue);
-```
-
-<br>
-
-# Mixins
-
-### [`EXPERIMENTAL`] `@include grid-template`
-
-Grid-template is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
-
-It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns and optionally a list of grid rows.
-
-### Syntax:
-
-```
-@include grid-template($min-width-query, $grid-template-columns, $grid-template-rows);
-```
-
-`$min-width-query` [`string`]. This is a minimum width breakpoint, from which the current list item, will become active. If you left blank, it will be used as a generic grid template.
-`$grid-template-columns` [css: `grid-template-column`]. Set the number of collumns for the current list item.  
-`$grid-template-rows` [css: `grid-template-row`]. Set the number of rows for the current list item. This is an optional field.
-[Read More about grid template rows & columns](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-columnsgrid-template-rows)
-
-Note: 1fr is a fraction unit and it's a preferred unit for grids.
-
-### Example:
-
-```
-.example--container{
-  @include grid-template(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
-}
-```
-
-This will set a grid, with 1 column as default and xs screens, 2 columns and 2 rows for md screens and 3 columns for lg screens.
-
-##
+[gist](https://gist.github.com/TheoKondak/0c258ff5fdb22a79482f14000cc09ff9)

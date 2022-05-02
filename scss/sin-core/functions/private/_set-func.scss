@@ -1,0 +1,63 @@
+@use './../sinister-default-configuration' as *;
+@use 'sass:map';
+@use 'sass:string';
+
+/// Similar to get set function sets a value to a map
+/// @access private
+/// @group dev
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {map}  $map - A map that contains setting values to update or add new data to sinister configuration
+/// @param  {map}  $original-map - By default $original map is pointing to the default sinister configuration.
+/// @return {map}  - Returns an updated map that is a merge of $new-map and $original-map.
+@function set($new-value, $new-map-key, $original-map: $sinister-default-configuration) {
+  $maps: ($original-map);
+  $result: null;
+
+  // If the last key is a map already
+  // Warn the user we will be overriding it with $new-value
+  @if type-of(nth($new-map-key, -1)) == 'map' {
+    @warn "The last key you specified is a map; it will be overrided with `#{$new-value}`.";
+  }
+
+  // If $new-map-key is a single key
+  // Just merge and return
+  @if length($new-map-key) == 1 {
+    @return map-merge(
+      $original-map,
+      (
+        $new-map-key: $new-value,
+      )
+    );
+  }
+
+  // Loop from the first to the second to last key from $new-map-key
+  // Store the associated map to this key in the $maps list
+  // If the key doesn't exist, throw an error
+  @for $i from 1 through length($new-map-key) - 1 {
+    $current-key: nth($new-map-key, $i);
+    $current-map: nth($maps, -1);
+    $current-get: map-get($current-map, $current-key);
+    @if $current-get == null {
+      @error "Key `#{$key}` doesn't exist at current level in map.";
+    }
+    $maps: append($maps, $current-get);
+  }
+
+  // Loop from the last map to the first one
+  // Merge it with the previous one
+  @for $i from length($maps) through 1 {
+    $current-map: nth($maps, $i);
+    $current-key: nth($new-map-key, $i);
+    $current-val: if($i == length($maps), $new-value, $result);
+    $result: map-merge(
+      $current-map,
+      (
+        $current-key: $current-val,
+      )
+    );
+  }
+
+  // Return result
+  @return $result;
+}

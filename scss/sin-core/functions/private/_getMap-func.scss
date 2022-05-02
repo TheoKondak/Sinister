@@ -1,0 +1,37 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../../sin.config' as *;
+
+/// Similar to get, only now you have to declare the map.
+/// Similar to get, only now you have to declare the map. Example:
+///  ...: getMap($configuration, spacing, xxl);
+/// If a value is nested further deep, you can use the syntax bellow.
+///  background: getMap($map          , parent   , child, child);
+///  background: getMap($configuration, bootstrap, color, bs-success);
+/// Will return the color set for the specific value pair.
+/// @group dev
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {map}  $map [$configuration] - Source map
+/// @param  {string}  $key - Takes a key and if it exists in configuration
+/// @return {*}  - Returns the value/es that exist in the key.
+@function getMap($map, $keys...) {
+  @if $map {
+    @if $keys {
+      @each $key in $keys {
+        @if type-of($keys) == arglist {
+          $map: map-get($map, $key);
+        } @else {
+          @warn string.unquote('Invalid $key property type provided. Expected "arglist" but recieved:') #{type-of($key)};
+        }
+      }
+    } @else {
+      @warn string.unquote('Invalid "$keys" provided in contains function:') #{$keys};
+    }
+  } @else {
+    @warn string.unquote('Invalid "$map" provided in contains function:') #{$map};
+  }
+
+  @return $map;
+}

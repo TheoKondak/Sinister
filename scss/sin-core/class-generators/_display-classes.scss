@@ -1,0 +1,39 @@
+@use '../../../../../sin.config' as *;
+
+@use '../grid/responsive' as media-q;
+@use '../functions/private/get-func' as *;
+@use '../functions/private/getMap-func' as *;
+
+// @if get(compile-display-classes) {
+  @if getMap($configuration, generate-classes, display){
+  $display: (none, inline, inline-block, block, table, table-cell, table-row, flex, inline-flex);
+
+  @each $displayValue in $display {
+    .d-#{$displayValue} {
+      display: $displayValue;
+    }
+  }
+
+  @if length(map-get($configuration, breakpoints)) > 0 {
+    @each $displayValue in $display {
+      // Hide/Show etc display properties for various screen sizes
+
+      @each $breakpoint in map-get($configuration, breakpoints) {
+        // $breakpoint-value: map-values($breakpoint);
+        .#{nth($breakpoint, 1)}-min-#{$displayValue} {
+          @include media-q.mqMin(nth($breakpoint, 2)) {
+            display: $displayValue;
+          }
+        }
+
+        .#{nth($breakpoint, 1)}-max-#{$displayValue} {
+          @include media-q.mqMax(nth($breakpoint, 2)) {
+            display: $displayValue;
+          }
+        }
+      }
+    }
+  } @else {
+    @warn "Breakpoints map in sinister configuration is empty. _display.scss will not render display related classes.";
+  }
+}

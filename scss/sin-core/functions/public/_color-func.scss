@@ -1,0 +1,48 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../../sin.config' as *;
+
+@use './../private/get-func' as *;
+@use './help-func' as *;
+
+/// @name Color
+/// @group design
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {color}  $key - A key from `colors` map that exists in `_sin.config.scss`
+/// @param {color} $brightness [0] - If it is a negative value, it will apply `sass darken()`, if it is a positive value, it will apply `sass lighten()`. If it is zero, it will render the normal color
+/// @param {color} $step [4] - How prominent the effect will be
+/// @return {color} - Returns a CSS color from `_sin.config.scss`, and can brighten or darken a color.
+/// @example scss - color()
+///  .sin{
+///    color: color(test-color, 3);
+///   }
+///
+@function color($key: null, $brightness: 0, $step: 4) {
+  // Check if input is null.
+
+  @if (type-of($key) == 'null') {
+    @return help(colors, $intro-msg: 'Color function received no valid input', $msg: 'Available colors:');
+  } @else {
+    // Check if $key is part of the colors map
+    @if not map.has-key(get(colors), $key) {
+      @error 'Color function needs a valid input. It requires a color key from `_sin.config.scss`. The current value is: `#{$key}`. See bellow for available colors';
+      @debug 'Available colors: ';
+      @each $colorId, $color in get(colors) {
+        @debug ' #{$colorId}: #{$color}';
+      }
+
+      @return help(colors, $intro-msg: 'Color function received no valid input', $msg: 'Available colors:');
+    } @else {
+      @if $brightness > 0 {
+        @return lighten(get(colors, $key), calc((($brightness * -1) * $step) / 2));
+      } @else if $brightness < 0 {
+        @return darken(get(colors, $key), $brightness * $step);
+      } @else {
+        // Value exists so return value
+        @return get(colors, $key);
+      }
+    }
+  }
+}

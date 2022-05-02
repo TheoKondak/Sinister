@@ -1,2 +1,6 @@
 //Workspace
 *.code-workspace
+gitignored/
+documentation/
+test-sin/
+.gitignore

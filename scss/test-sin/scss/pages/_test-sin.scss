@@ -1,0 +1,38 @@
+@use '../sin' as *;
+
+.sin {
+  // @include spacing((m, x, unset), (xs, m, x, 2), (m, y, 4, 0.5), (md, m, y, 2, 0.2));
+
+  // $generic: (ai-c, jc-c, ac-c, fd-cl, (x, 6), (0 0 43%), (max-content));
+
+  $xs: (jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto));
+  $md: (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content));
+
+  @include spacing((m, g, 1), (xs, m, t, 1), (md, p, b, 2, 21), (xl, g, x, 1), (xxl, g, l, 2, 0.4));
+
+  // @include spacing();
+
+  // @include flex($xs, $md);
+  // @include spacing();
+
+  // color: color(test-color);
+  // @include boxshadow();
+
+  // @debug fs();]
+
+  // @debug color();
+
+  // @debug contrast(test-color, test-color-2);
+  // @debug contrast(#ffa, test-color-2);
+
+  box-shadow: box-shadow(4);
+}
+// Check the rest arguements, if they exist, render the css else, continue
+// @debug contains(getMap($align-items), $flex-properties-list);
+// @if contains(getMap($align-items), $flex-properties-list) {
+//   @debug 'contains';
+// } @else {
+//   @debug 'does not contain';
+// }
+
+// @debug help();

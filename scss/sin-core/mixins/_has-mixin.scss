@@ -1,0 +1,16 @@
+/// With this mixin you can target any class that contains the selected string.
+/// @group utility
+/// @arg {string} $has [''] - Select any `$attribute` that contains that string
+/// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
+/// @content
+/// @todo More testing
+/// @example scss Any class that contains the string `test`
+///   @include has(test) {
+///     color: red;
+///   }
+
+@mixin has($has: '', $attribute: 'class') {
+  [#{$attribute}*='#{$has}'] {
+    @content;
+  }
+}

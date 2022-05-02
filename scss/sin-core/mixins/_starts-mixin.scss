@@ -1,0 +1,16 @@
+/// With this mixin you can target any class that starts with the selected string.
+/// @group utility
+/// @arg {string} $starts [''] - Select any `$attribute` that starts with that string
+/// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
+/// @content
+/// @todo More testing
+/// @example scss Any class that starts with the string `test`
+///   @include starts(test) {
+///     color: red;
+///   }
+
+@mixin starts($starts: '', $attribute: 'class') {
+  [#{$attribute}^='#{$starts}'] {
+    @content;
+  }
+}
