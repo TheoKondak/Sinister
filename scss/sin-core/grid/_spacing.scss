@@ -133,5 +133,6 @@
     }
   } @else {
     @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md#function-help-1');
+    @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://github.com/TheoKondak/Sinister/blob/sin060/scss/documentation/functions.md#function-help-1');
   }
 }
