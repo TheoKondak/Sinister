@@ -1,0 +1,39 @@
+@use '../../../../../../sin.config' as *;
+
+@use './../private/get-func' as *;
+@use './../private/getMap-func' as *;
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+
+/// @name prefix-url
+/// @deprecated
+/// @group utility
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {string}  $image-url - The URL that prefixes an image while in development
+/// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.
+
+@function prefix-url($image-url: '') {
+  $production: get(global, production);
+  $production-url: get(global, production-url);
+  $development-url: get(global, development-url);
+
+  @if $production {
+    @return string.unquote('url("#{$production-url}/#{$image-url}")');
+  } @else {
+    @return string.unquote('url("#{$development-url}/#{$image-url}")');
+  }
+}
+
+/// @name prefix-url
+/// @deprecated
+/// @group utility
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {string}  $image-url - The URL that prefixes an image while in development
+/// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.
+
+@function prefix($image-url: '') {
+  @return prefix-url($image-url);
+}

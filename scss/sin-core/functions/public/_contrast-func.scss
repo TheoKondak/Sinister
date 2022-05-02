@@ -1,0 +1,40 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../../sin.config' as *;
+
+@use './../private/getMap-func' as *;
+@use './../private/get-func' as *;
+@use './../private/contains-func' as *;
+@use './../public/color-func' as *;
+
+/// Test if two colors have enough contrast for readability purposes.
+/// @name contrast
+/// @link https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
+/// @group utility
+/// @param  {color | string}  $foreground-color - The foreground color
+/// @param  {color | string}   $background-color - The background color
+/// @return {bool} - Returns true if enough contrast is detected between the colors.
+@function contrast($foreground-color, $background-color) {
+  $foreground: $foreground-color;
+  $background: $background-color;
+  // Foreground Color
+  @if contains(get(colors), $foreground-color) {
+    $foreground: color(#{$foreground-color});
+  }
+  // Background Color
+  @if contains(get(colors), $background-color) {
+    $background: color(#{$background-color});
+  }
+
+  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
+  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
+  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+  $sum-rgb: $r + $g + $b;
+
+  @if $sum-rgb < 500 {
+    @return 'false';
+  } @else {
+    @return 'true';
+  }
+}

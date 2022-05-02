@@ -1,0 +1,54 @@
+// @use '../../../../../sin.config' as *;
+
+@use 'sass:string';
+@use '../grid/responsive';
+
+/// Creates stacked cards on scroll.
+/// @group experimental
+/// @todo Needs more testing and documentation
+/// @arg {number} $numberOfItems [3] - How many cards there are
+/// @arg {number} $startingHeight [60px] - Height from the top
+/// @arg {bool} $responsiveStackedContent [true] - Is the stacked content responsive?
+/// @arg {number} $responsiveMargin [80vh] - Margin if `$responsiveStackedContent` is `enabled`
+/// @arg {number} $responsiveMargin [570px] - A single breakpoint for when `$responsiveStackedContent` is `enabled`
+/// @link https://css-tricks.com/stacked-cards-with-sticky-positioning-and-a-dash-of-sass/
+
+@mixin stackedContent($numberOfItems: 3, $startingHeight: 60px, $responsiveStackedContent: true, $responsiveMargin: 80vh, $breakpoint: 570px) {
+  z-index: 1;
+
+  @if type-of($numberOfItems) == number {
+    @if $numberOfItems > 0 {
+      @for $i from 1 through $numberOfItems {
+        > div {
+          &:nth-child(#{$i}n) {
+            position: sticky;
+            top: $startingHeight;
+            z-index: $i + 1;
+          }
+
+          @if $responsiveStackedContent {
+            @if type-of($responsiveStackedContent) == bool {
+              @media (max-width: $breakpoint) {
+                margin-top: $responsiveMargin;
+
+                &:first-child {
+                  margin-top: 0;
+                }
+
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            } @else {
+              @warn string.unquote('$responsiveStackedContent must be type of bool but it is:') #{type-of($responsiveStackedContent)};
+            }
+          }
+        }
+      }
+    } @else {
+      @warn string.unquote('Invalid $numberOfItems value. Minimum 1, Recieved:') #{$numberOfItems};
+    }
+  } @else {
+    @warn string.unquote('$numberOfItems must be type of number but it is:') #{type-of($numberOfItems)};
+  }
+}

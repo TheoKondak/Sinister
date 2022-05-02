@@ -1,0 +1,123 @@
+@use '../../../../../../sin.config' as *;
+@use './../private/get-func' as *;
+@use './../private/getMap-func' as *;
+@use './../private/type-func' as *;
+@use './../private/contains-func' as *;
+
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../misc/css-properties' as *;
+
+/// @name help
+/// @group utility
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {string}  $config-sub-key - A key that you want it's values returned
+/// @param  {map} $config-map - An optional parameter to set a different map instead of configuration
+/// @param {string} $intro-msg - A string that will work as a title, or intro text for the help context
+/// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
+
+@function help($config-sub-key: null, $config-map: $configuration, $intro-msg: 'Printing sinister configuration:', $msg: 'Documentation not found!') {
+  // Check if $config-map is a map and it's not empty
+  @if type-of($config-map) == map and length($config-map) >= 1 {
+    // Check if a key is passed, if not print the whole map.
+    @if $config-sub-key == null {
+      @debug $intro-msg;
+
+      @if type($msg, (string)) {
+        @if length($msg) > 0 {
+          @debug '---';
+          @debug $msg;
+        }
+      } @else if type($msg, (list)) {
+        @if length($msg) > 0 {
+          @debug '---';
+          @each $msg-val in $msg {
+          }
+        }
+      }
+
+      @debug '=====';
+
+      // For every value pair in the map
+      @each $config-key, $config-val in $config-map {
+        // Some exceptions
+
+        @if $config-key == 'font-family' or $config-key == 'bootstrap' {
+          @each $font-family-property in get($config-key) {
+            @each $property in $font-family-property {
+              @debug $property;
+            }
+            @debug '';
+          }
+        } @else {
+          // For Print CSS properties
+          @if type($config-val, (map)) and contains($css-properties, $config-val) {
+            @if type($config-val, (map)) {
+              @each $cur-key, $cur-val in $config-val {
+                @debug '';
+                @debug '-=#{$cur-key}=-';
+
+                @each $current-key, $current-value in $cur-val {
+                  @debug '-#{$current-value}: #{$current-key}';
+                }
+              }
+            } @else if type($config-val, (list)) {
+              @each $cur-val in $config-val {
+                @debug '- #{$cur-key}';
+              }
+            }
+          } @else if type($config-val, (map)) {
+            @debug '-=#{$config-key}=-';
+            @each $key, $value in $config-val {
+              @debug '- #{$key}: "#{$value}"';
+            }
+            @debug '';
+          } @else if (type($config-val, (list))) {
+            @debug '-=#{$config-key}=-';
+            @each $key, $value in $config-val {
+              @debug '- #{$key}';
+            }
+            @debug '';
+          } @else if type($config-val, (string, number, bool, color)) {
+            @debug '#{$config-key}: "#{$config-val}"';
+            @debug '';
+          } @else if (type-of($config-val) == null) {
+            @debug '#{$config-key}: "null"';
+            @debug '';
+          } @else {
+            @warn 'Unknown data type in help "#{$config-key}". Recieved: #{type-of($config-val)}';
+          }
+        }
+      }
+
+      @debug '=====';
+    } @else if type-of($config-sub-key) == string and length($config-sub-key) > 0 {
+      @if map.has-key($config-map, $config-sub-key) {
+        $type-of-config-sub-map: type-of(getMap($config-map, $config-sub-key));
+
+        @debug 'Printing sinister configuration for #{$config-sub-key}';
+        @debug '=====';
+        @if $type-of-config-sub-map == map {
+          @debug '-=#{$config-sub-key}=-';
+          @each $key, $value in getMap($config-map, $config-sub-key) {
+            @debug '- #{$key}: #{$value}';
+          }
+        } @else if $type-of-config-sub-map == string or $type-of-config-sub-map == number or $type-of-config-sub-map == null or $type-of-config-sub-map == bool {
+          @debug '-#{$config-sub-key}: #{getMap($config-map, $config-sub-key)}';
+        }
+      } @else {
+        @warn 'help() was called with invalid arguement. ${$config-sub-key} is not part of the configuration';
+      }
+    }
+  } @else {
+    @error 'help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of #{length($config-map)}.';
+  }
+
+  @return 'End of help()';
+}
+
+@function hlp($config-sub-key: null, $config-map: $configuration) {
+  @return help($config-sub-key, $config-map);
+}

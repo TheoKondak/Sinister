@@ -1,0 +1,9 @@
+# .sassdocrc (yaml)
+
+dest: 'documentation/0.6.66-beta.1'
+herman:
+  sass:
+    includePaths:
+      - './test-sin/scss'
+    includes:
+      - 'sin'

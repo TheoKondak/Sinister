@@ -1,0 +1,16 @@
+/// Searches for the depth of a map.
+/// @access private
+/// @group dev
+/// @arg {map} $map
+/// @return {number} max depth of `$map`
+/// @link https://www.sitepoint.com/debugging-sass-maps/
+@function depth($map) {
+  $level: 1;
+  @each $key, $value in $map {
+    @if type-of($value) == 'map' {
+      $level: max(depth($value) + 1, $level);
+    }
+  }
+
+  @return $level;
+} ;

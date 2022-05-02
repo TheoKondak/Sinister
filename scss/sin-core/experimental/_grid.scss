@@ -1,0 +1,39 @@
+@use '../../../../../sin.config' as *;
+
+@use './../grid/_responsive.scss' as *;
+
+/// `grid` mixin is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
+/// It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns and optionally a list of grid rows.
+/// @access public
+/// @group grid
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @arg {arglist} $args - Takes an `arglist` of `lists`.
+/// > Each `list` contains:
+/// - `$min-width-query`: `{string}`   - Min width, breakpoint from `_sin.config.scss`
+/// - `$grid-template-columns`: `{list}` - A list of grid template columns
+/// - `$grid-template-rows`: `{list}` - A list of grid template rows (optional)
+/// @example scss Systax example
+/// .sin{
+///  @include grid-template(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
+/// }
+
+@mixin grid-template($args...) {
+  @if (length($args) > 0) {
+    @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {
+      @if ($min-width-query == '') {
+        display: grid;
+        grid-template-columns: $grid-template-columns;
+        grid-template-rows: $grid-template-rows;
+      } @else {
+        @include mqMin($min-width-query) {
+          display: grid;
+          grid-template-columns: $grid-template-columns;
+          grid-template-rows: $grid-template-rows;
+        }
+      }
+    }
+  } @else {
+    @warn "gridTest requires a list of arguements: ($min-width-query, $grid-template-columns, $grid-template-rows)";
+  }
+}

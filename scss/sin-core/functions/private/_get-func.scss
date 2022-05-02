@@ -1,0 +1,31 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use '../../../../../../sin.config' as *;
+
+/// You can access the config data with the "get" function.
+/// "get" function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.
+/// @access private
+/// @group dev
+/// @param  {string}  $key - Takes a key and if it exists in configuration
+/// @return {*}  - Returns the value/es that exist in the key.
+@function get($keys...) {
+  $map: $configuration;
+  @if $map {
+    @if $keys {
+      @each $key in $keys {
+        @if type-of($keys) == arglist {
+          $map: map-get($map, $key);
+        } @else {
+          @warn string.unquote('Invalid $key property type provided. Expected "arglist" but recieved:') #{type-of($key)};
+        }
+      }
+    } @else {
+      @warn string.unquote('Invalid "$keys" provided in contains function:') #{$keys};
+    }
+  } @else {
+    @warn string.unquote('Invalid "$map" provided in contains function:') #{$map};
+  }
+
+  @return $map;
+}

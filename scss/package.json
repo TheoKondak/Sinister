@@ -1,12 +1,17 @@
 {
   "name": "@get-sinister/sass",
-  "version": "0.5.283",
+  "version": "0.6.66-beta.1",
   "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
   "scripts": {
-    "postinstall": "node installation.js"
+    "migrate": "node migration.js",
+    "link": "\"cd test-sin && npm link @get-sinister/sass\"",
+    "sass": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css",
+    "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch",
+    "auto-doc": "sassdoc \"sin-core\"",
+    "auto-doc-herman": "sassdoc \"sin-core\" --theme herman"
   },
   "dependencies": {
-    "sass": "^1.49.7"
+    "sass": "^1.50.1"
   },
   "author": "Theodoros Kondakos",
   "license": "ISC",

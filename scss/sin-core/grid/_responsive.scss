@@ -1,0 +1,162 @@
+@use '../../../../../sin.config' as *;
+
+@use './../functions/private/get-func' as *;
+@use './../functions/private/contains-func' as *;
+@use './../functions/private/strip-unit-func' as *;
+@use './../functions/private/too-large-min-width-func' as *;
+
+/// @name mq
+/// @group grid
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @param  {number}  $max [4096px] - Breakpoint will work up to `$max`
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include mq(xs, xxl){
+///     display: block;
+///   }
+/// }
+/// @example scss Accepting a breakpoint from `sin.config` as well as some custom number
+///   .sin{
+///       @include mq(xs, 1920px){
+///         display: block;
+///       }
+///   }
+@mixin mq($min: 120px, $max: 4096px) {
+  @if $min and $max {
+    @if type-of($min) == 'number' and type-of($max) == 'number' {
+      @if unitless($min) and unitless($max) {
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+            @content;
+          }
+        }
+      } @else if unitless($min) and not unitless($max) {
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}px) and (max-width: #{$max}) {
+            @content;
+          }
+        }
+      } @else if not unitless($min) and unitless($max) {
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: #{$min}) and (max-width: #{$max}px) {
+            @content;
+          }
+        }
+      } @else {
+        @if not too-large-min-width($min, $max) {
+          @media (min-width: $min) and (max-width: $max) {
+            @content;
+          }
+        }
+      }
+    } @else if type-of($min) == 'string' and type-of($max) == 'string' {
+      @if contains(get(breakpoints), $min) and contains(get(breakpoints), $max) {
+        @if not too-large-min-width(get(breakpoints, $min), get(breakpoints, $max)) {
+          @media (min-width: get(breakpoints, $min)) and (max-width: get(breakpoints, $max)) {
+            @content;
+          }
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
+    } @else if type-of($min) == 'string' and type-of($max) == 'number' {
+      @if contains(get(breakpoints), $min) {
+        @if not too-large-min-width(get(breakpoints, $min), $max) {
+          @if unitless($max) {
+            @media (min-width: get(breakpoints, $min)) and (max-width: #{$max}px) {
+              @content;
+            }
+          } @else {
+            @media (min-width: get(breakpoints, $min)) and (max-width: $max) {
+              @content;
+            }
+          }
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
+    } @else if type-of($min) == 'number' and type-of($max) == 'string' {
+      @if contains(get(breakpoints), $max) {
+        @if not too-large-min-width($min, get(breakpoints, $max)) {
+          @if unitless($min) {
+            @media (min-width: #{$min}px) and (max-width: get(breakpoints, $max)) {
+              @content;
+            }
+          } @else {
+            @media (min-width: $min) and (max-width: get(breakpoints, $max)) {
+              @content;
+            }
+          }
+        }
+      } @else {
+        @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+      }
+    }
+  } @else {
+    @warn "Invalid Input. Expected an minimun and a maximum value. It can either be a number with units, or a breakpoint.";
+  }
+}
+
+/// @group grid
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include mqMin(xs){
+///     display: block;
+///   }
+/// }
+@mixin mqMin($min: 120px) {
+  @if type-of($min) == 'number' {
+    @if unitless($min) {
+      @media (min-width: #{$min}px) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $min) {
+        @content;
+      }
+    }
+  } @else if type-of($min) == 'string' {
+    @if contains(get(breakpoints), $min) {
+      @media (min-width: #{get(breakpoints, $min)}) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid input at mqMin. It requires a numeric value with units, or a breakpoint. You provided: #{$min}';
+    }
+  }
+}
+
+/// @name mqMax
+/// @group grid
+/// @param  {number | string}  $max [4096px] - Breakpoint will work up to $max. Accepts breakpoints from `sin.config`
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include mqMax(xxl){
+///     display: block;
+///   }
+/// }
+
+@mixin mqMax($max: 4096px) {
+  @if type-of($max) == 'number' {
+    @if unitless($max) {
+      @media (max-width: #{$max}px) {
+        @content;
+      }
+    } @else {
+      @media (max-width: $max) {
+        @content;
+      }
+    }
+  } @else if type-of($max) == 'string' {
+    @if contains(get(breakpoints), $max) {
+      @media (max-width: get(breakpoints, $max)) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid input at mqMax. It requires a numeric value with units, or a breakpoint. You provided: #{$max}';
+    }
+  }
+}

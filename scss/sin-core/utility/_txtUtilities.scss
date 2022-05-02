@@ -1,0 +1,23 @@
+@use '../../../../../sin.config' as *;
+
+
+@mixin txtOverline {
+  text-decoration: overline;
+}
+.txtOverline {
+  @include txtOverline;
+}
+
+@mixin txtLineThrough {
+  text-decoration: line-through;
+}
+.txtLineThrough {
+  @include txtLineThrough;
+}
+
+@mixin txtUnderline {
+  text-decoration: underline;
+}
+.txtUnderline {
+  @include txtUnderline;
+}
