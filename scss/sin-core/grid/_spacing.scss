@@ -12,6 +12,7 @@
 /// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
 /// @parameter {string} $value - A spacing value from spacing in Sinister configuration
 /// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+/// @link https://utopia.fyi/space/calculator
 /// @example scss See available properties and values
 /// .sin{
 ///   @debug spacing();

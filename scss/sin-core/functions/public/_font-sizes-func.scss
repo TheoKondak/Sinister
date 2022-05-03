@@ -7,13 +7,21 @@
 @use './../private/get-func' as *;
 @use './../public/help-func' as *;
 
-/// @name fs
+/// Function to easily access font sizes
 /// @group typography
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// Function to easily access font sizes
+/// @link https://utopia.fyi/
 /// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font size value
+/// @example sass See available properties and values
+///  .sin{
+///    font-size: fs();
+///  }
+/// @example sass Usecase, will return the xs font size from the configuration
+///  .sin{
+///    font-size: fs(xs);
+///  }
 
 @function fs($key: null) {
   // Check if input is null.
@@ -40,13 +48,11 @@
   }
 }
 
-/// @name font-size
+/// Function to easily access font sizes. Works the same as `fs()`;
 /// @group typography
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
-/// Function to easily access font sizes
-/// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
-/// @return {number}  - Returns the font size value
+/// @see fs
 @function font-size($key: null) {
   @return fs($key);
 }
