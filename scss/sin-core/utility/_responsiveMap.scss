@@ -1,6 +1,8 @@
 @use '../../../../../sin.config' as *;
 
-
+/// Makes google maps responsive
+/// @group utility
+/// @deprecated Since version 0.6.67-beta.2. Use `responsive-iframe` mixin instead.
 @mixin responsiveMap {
   overflow: hidden;
   padding-bottom: 56.25%;

@@ -3,7 +3,7 @@
 /// @group experimental
 /// @arg {string} $bgUrl [null] - URL of an image that will be placed as background
 /// @arg {string} $linearGradiances [rgba(0,0,0,0), rgba(0,0,0,0)] - CSS properties for the linear gradiance
-/// @deprecated Since v0.6.67-beta.2
+/// @deprecated Since v0.6.67-beta.2 . Use [overlay](#mixin-overlay) instead.
 /// Sets a background overlay to an image.
 @mixin bgOverlay($bgUrl: null, $linearGradiences: 'rgba(0,0,0,0), rgba(0,0,0,0)') {
   background-image: linear-gradient(#{$linearGradiences}), url(#{$url}#{$bgUrl});

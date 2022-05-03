@@ -99,8 +99,8 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
 
 ## Changelog
 
-- [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/2d17de50c832069b5e371b2ecff1aefc2a3d7a42/scss/CHANGELOG.md)
-- [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/89457c26556ca4de5571b1715536a709ea1f2df6/scss/changelog-data.json)
+- [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/scss/CHANGELOG.md)
+- [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/scss/changelog-data.json)
 
 ## SASSDOC HERMAN GIST
 

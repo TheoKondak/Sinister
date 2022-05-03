@@ -1,0 +1,23 @@
+@use '../../../../../sin.config' as *;
+
+/// Makes an iframe like google maps, or youtube video responsive. Must be placed on the parent element of the iframe.
+/// @group utility
+/// @arg {number} $height [55%] - Sets the height of the iframe. Should be`%`
+/// @example sass Youtube iframe or embed google maps.
+/// .sin{
+///  @include responsive-iframe(65%);
+/// }
+@mixin iframe($height: 55%) {
+  overflow: hidden;
+  padding-bottom: $height;
+  position: relative;
+  height: 0;
+
+  iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
