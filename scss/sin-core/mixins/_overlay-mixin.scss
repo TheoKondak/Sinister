@@ -1,0 +1,23 @@
+/// Sets a background overlay to an image.
+/// @group utility
+/// @arg {color} $color [linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))] - Can be a color, or a gradient or even an image.
+/// @since 0.6.67-beta.2
+/// @example sass Simple Usecase
+/// .sin{
+///     @include overlay(rgba(black, .2));
+/// }
+@mixin overlay($color: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))) {
+  position: relative;
+  // Overlay
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  }
+}
