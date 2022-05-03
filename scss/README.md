@@ -15,9 +15,10 @@ This is a one-man project. I only work on the project only when I have some free
 Currently the documentation is very limited, but I will start writing a bit more while testing current Sinister features.
 
 Also I keep releasing hotfixes almost daily.
-<br><br>
+<br>
+<br>
 
-# Setup the data
+## Setup the data
 
 In order for sinister to work, 2 files are needed. 
 
@@ -70,11 +71,11 @@ Keep in mind that the path is relative.
 
 For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
 
-# Documentation
+## Documentation
 
 - Latest
 - 0.6.65-beta.1
-# Roadmap
+## Roadmap
 
 - Place untested mixins and functions in experimental
 - Do more testing to basic functions like `set-config()`, `type()` etc
@@ -86,7 +87,7 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
   - Add documentation about class generation options
 - Create private and public function folder and move functions accordingly
 
-# Documentation To do
+## Documentation To do
 
 - development/production
 - Image-wrapper
@@ -94,8 +95,13 @@ For advanced users, by commenting out files in various `_index.scss` files, you 
   - Responsive font sizes
   - Default font sizes
   - disable-list-style mixin and global config variable
-- prefix url func
-- 
+- prefix
+
+## Changelog
+
+- [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/2d17de50c832069b5e371b2ecff1aefc2a3d7a42/scss/CHANGELOG.md)
+- [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/89457c26556ca4de5571b1715536a709ea1f2df6/scss/changelog-data.json)
+
 ## SASSDOC HERMAN GIST
 
 [gist](https://gist.github.com/TheoKondak/0c258ff5fdb22a79482f14000cc09ff9)
