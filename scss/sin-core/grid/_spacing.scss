@@ -12,6 +12,7 @@
 /// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
 /// @parameter {string} $value - A spacing value from spacing in Sinister configuration
 /// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+/// @parameter {string} $important - If `!i` is present, the style will get `!important`.
 /// @link https://utopia.fyi/space/calculator
 /// @example scss See available properties and values
 /// .sin{
@@ -24,6 +25,7 @@
 ///   (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
 ///   (md, m, y, 2 1.4) // From breakpoint md, y axis, distance 2, and scale 1.4
 ///   (lg, m, x, auto) // From breakpoint lg, x axis, margin auto
+///   (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
 ///  );
 /// }
 
@@ -33,11 +35,19 @@
   $direction: g;
   $value: 0;
   $scale: 1;
+  $important: false;
 
   // Check that there are arguements
   @if (length($args) > 0) {
     // For each arguement
     @each $arg in $args {
+      // Check if important is present
+      @each $prop in $arg {
+        @if $prop == '!i' {
+          $important: true;
+        }
+      }
+
       // Check if the list contains a breakpoint.
       @if contains(get(breakpoints), list.nth($arg, 1)) {
         // If true, update variables
@@ -64,20 +74,40 @@
               // Check if property is gap, if yes, then we only have x, y axis.
               @if $property == g {
                 @if $direction == 't' or $direction == 'b' or $direction == 'y' {
-                  row-gap: calc(#{get(spacing, $value)} * #{$scale});
+                  @if $important {
+                    row-gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                  } @else {
+                    row-gap: calc(#{get(spacing, $value)} * #{$scale});
+                  }
                 } @else if $direction == 'l' or $direction == 'r' or $direction == 'x' {
-                  column-gap: calc(#{get(spacing, $value)} * #{$scale});
+                  @if $important {
+                    column-gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                  } @else {
+                    column-gap: calc(#{get(spacing, $value)} * #{$scale});
+                  }
                 } @else if $direction == 'g' {
-                  gap: calc(#{get(spacing, $value)} * #{$scale});
+                  @if $important {
+                    gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                  } @else {
+                    gap: calc(#{get(spacing, $value)} * #{$scale});
+                  }
                 } @else {
                   @warn 'Invalid spacing arguements';
                 }
               } @else {
                 @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
                   @if $value == 'auto' or $value == 'inherit' {
-                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                    @if $important {
+                      #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)} !important;
+                    } @else {
+                      #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                    }
                   } @else {
-                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                    @if $important {
+                      #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                    } @else {
+                      #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                    }
                   }
                 }
               }
@@ -116,20 +146,40 @@
             // Check if property is gap, if yes, then we only have x, y axis.
             @if $property == g {
               @if $direction == 't' or $direction == 'b' or $direction == 'y' {
-                row-gap: calc(#{get(spacing, $value)} * #{$scale});
+                @if $important {
+                  row-gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                } @else {
+                  row-gap: calc(#{get(spacing, $value)} * #{$scale});
+                }
               } @else if $direction == 'l' or $direction == 'r' or $direction == 'x' {
-                column-gap: calc(#{get(spacing, $value)} * #{$scale});
+                @if $important {
+                  column-gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                } @else {
+                  column-gap: calc(#{get(spacing, $value)} * #{$scale});
+                }
               } @else if $direction == 'g' {
-                gap: calc(#{get(spacing, $value)} * #{$scale});
+                @if $important {
+                  gap: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                } @else {
+                  gap: calc(#{get(spacing, $value)} * #{$scale});
+                }
               } @else {
                 @warn 'Invalid spacing arguements';
               }
             } @else {
               @each $currentDirection in map-get(getMap($css-properties, spacing, spacing-directions), $direction) {
                 @if $value == 'auto' or $value == 'inherit' {
-                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                  @if $important {
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)} !important;
+                  } @else {
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: #{get(spacing, $value)};
+                  }
                 } @else {
-                  #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  @if $important {
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale}) !important;
+                  } @else {
+                    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$currentDirection}: calc(#{get(spacing, $value)} * #{$scale});
+                  }
                 }
               }
             }
