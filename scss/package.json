@@ -1,14 +1,14 @@
 {
   "name": "@get-sinister/sass",
-  "version": "0.6.69-beta.2",
+  "version": "0.6.69-beta.4",
   "description": "This project intends to act as a last layer css overide for CMS systems or for an SCSS organization platform for any other project.",
   "scripts": {
     "migrate": "node migration.js",
     "link": "\"cd test-sin && npm link @get-sinister/sass\"",
     "sass": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css",
     "sass-watch": "sass test-sin/scss/custom.scss:test-sin/sin-test-compiled.css --watch",
-    "document": "sassdoc \"sin-core\"",
-    "document-herman": "sassdoc \"sin-core\" --theme=herman",
+    "doc": "sassdoc \"sin-core\"",
+    "doc-herman": "sassdoc \"sin-core\" --theme=herman",
     "changelog": "auto-changelog -p -t keepachangelog && git add CHANGELOG.md && auto-changelog --template json --output changelog-data.json"
   },
   "dependencies": {

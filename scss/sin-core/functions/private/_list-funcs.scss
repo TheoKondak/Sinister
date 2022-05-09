@@ -1,0 +1,64 @@
+@use 'sass:list';
+@use './contains-func' as *;
+
+/// Removes duplicate occurances in a list
+/// @group private
+@function remove-duplicates($list) {
+  $process-list: ();
+
+  @each $item in $list {
+    // $process-list: append($process-list, $item);
+    // @debug $process-list;
+    @if not contains($process-list, $item) {
+      $process-list: append($process-list, $item);
+    }
+  }
+
+  @return $process-list;
+}
+
+/// Detects if a list has duplicate values
+/// @group private
+/// @arg {list} $list - Input list
+/// @return {bool} - If the list contains duplicates, returns true, otherwise returns false
+@function has-duplicates($list) {
+  $process-list: ();
+  $duplicate-detected: false;
+
+  @each $item in $list {
+    @if contains($process-list, $item) {
+      $duplicate-detected: true;
+    } @else {
+      $process-list: append($process-list, $item);
+    }
+  }
+
+  @return $duplicate-detected;
+}
+
+/// Detects how many duplicate values a map has, and returns a sum of the total duplicate values
+/// @group private
+/// @arg {list} $list - Input list
+/// @return {bool} - The total amount of duplicate values.
+@function count-duplicate-occurances($list) {
+  $process-list: ();
+  $duplicate-occurances: 0;
+
+  @each $item in $list {
+    @if not contains($process-list, $item) {
+      $process-list: append($process-list, $item);
+    } @else {
+      @if $duplicate-occurances == 0 {
+        $duplicate-occurances: 1;
+      }
+      $duplicate-occurances: $duplicate-occurances + 1;
+    }
+  }
+
+  @return $duplicate-occurances;
+}
+
+// $list: (1, 2, 2, 3, 6, 3, 3, 3, 3 4);
+// $list-2: (1, 2, 3, 3, 4);
+
+// @debug count-duplicate-occurances($list);

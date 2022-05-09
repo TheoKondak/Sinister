@@ -1,6 +1,6 @@
 # .sassdocrc (yaml)
 
-dest: 'documentation/0.6.69'
+dest: 'documentation/0.6.69-beta.4'
 herman:
   sass:
     includePaths:

@@ -1,0 +1,103 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+@use './../functions' as *;
+@use '../misc/css-properties' as *;
+
+/// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
+/// @group grid
+/// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
+/// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
+/// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
+/// @parameter {string} $value - A spacing value from spacing in Sinister configuration
+/// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+/// @parameter {string} $important - If `!i` is present, the style will get `!important`.
+/// @link https://utopia.fyi/space/calculator
+/// @example scss See available properties and values
+/// .sin{
+///   @debug spacing();
+/// }
+/// @example scss Common use case
+/// .sin{
+///  @include spacing(
+///   (m,g,1), // Margin, general (all directions), 1 (from default-config)
+///   (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
+///   (md, m, y, 2 1.4) // From breakpoint md, y axis, distance 2, and scale 1.4
+///   (lg, m, x, auto) // From breakpoint lg, x axis, margin auto
+///   (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
+///  );
+/// }
+
+@mixin spacing-beta($args...) {
+  $breakpoint: null;
+  $property: null;
+  $direction: g;
+  $value: 0;
+  $scale: 1;
+
+  $is-important: false;
+  $valid-breakpoint: false;
+  $valid-direction: false;
+  $valid-property: false;
+  $valid-distance: false;
+  $has-scale: false;
+
+  // How many type-of number arguements
+  $numbers-quantity: 0;
+  // How many type-of string arguements
+  $strings-quantity: 0;
+
+  // Check that there are arguements
+  @if (length($args) > 0) {
+    // For each arguement
+    @each $arg in $args {
+      // Check if important is present
+      @each $prop in $arg {
+        // Check if there is a spacing distance which is a number, and a scale. if there are two similar numbers, and one of the numbers belongs to sinister configuration, then consider this number as scale as well
+        @if type-of($prop) == 'number' {
+          @if count-duplicate-occurances($arg) == 2 {
+            $has-scale: true;
+          }
+        } @else if type-of($prop) == 'string' {
+          // If it is a string and there are more than 1 duplicate strings because
+          @if count-duplicate-occurances($arg) == 2 and contains(get(breakpoints), $prop) {
+            $has-scale: true;
+          }
+        } @else {
+          @warn 'Invalid arguement in spacing mixin. Expected type of text or number instead received #{type-of($prop)} with a value of #{prop}';
+        }
+
+        @if $prop == '!i' {
+          $is-important: true;
+        }
+
+        @if contains(get(breakpoints), $prop) {
+          $valid-breakpoint: true;
+        }
+
+        @if contains(getMap($css-properties, spacing, spacing-properties), $prop) {
+          $valid-property: true;
+        }
+
+        @if (contains(getMap($css-properties, spacing, spacing-direction), $prop)) {
+          $valid-direction: true;
+        }
+
+        @if contains(get(spacing), $prop) {
+          $valid-distance: true;
+        }
+      }
+    }
+
+    @debug $valid-breakpoint;
+    @debug $valid-property;
+    @debug $valid-direction;
+    @debug $valid-distance;
+    @debug $has-scale;
+    @debug $is-important;
+  } @else {
+    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
+    @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
+  }
+}
