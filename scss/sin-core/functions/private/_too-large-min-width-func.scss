@@ -10,13 +10,13 @@
 /// @return {bool}  - Returns true if the `min` width is larger than the `max` width
 @function too-large-min-width($min-width, $max-width) {
   @if $min-width > $max-width {
-    @debug 'true';
+    // @debug 'true';
     @return true;
   } @else if strip-unit($min-width) == strip-unit($max-width) {
-    @debug 'equal';
+    // @debug 'equal';
     @return false;
   } @else {
-    @debug 'false';
+    // @debug 'false';
     @return false;
   }
 }
