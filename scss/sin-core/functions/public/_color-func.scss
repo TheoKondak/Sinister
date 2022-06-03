@@ -36,8 +36,7 @@
       @return help(colors, $intro-msg: 'Color function received no valid input', $msg: 'Available colors:');
     } @else {
       @if $brightness > 0 {
-        @debug lighten(get(colors, $key), calc(($brightness * $step) / 2));
-        @return '';
+        @return lighten(get(colors, $key), calc(($brightness * $step) / 2));
       } @else if $brightness < 0 {
         @return darken(get(colors, $key), ($brightness * -1) * $step);
       } @else {
