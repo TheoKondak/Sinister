@@ -1,0 +1,7 @@
+@use 'sass:list';
+@use './is-number-func' as *;
+
+// Source: https://css-tricks.com/snippets/sass/advanced-type-checking/
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}

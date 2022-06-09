@@ -1,0 +1,6 @@
+@use './type-func' as *;
+
+@function is-number($value) {
+  @return type($value, ('number'));
+  //   @return type-of($value) == 'number' ;
+}
