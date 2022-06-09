@@ -4,6 +4,40 @@
 @use '../../../../../sin.config' as *;
 @use './../functions' as *;
 @use '../misc/css-properties' as *;
+@use '../grid/responsive' as *;
+
+@function css-property($check: false, $css-value: null) {
+  @if $check {
+    @return $css-value;
+  } @else {
+    @return null;
+  }
+}
+
+@mixin css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important) {
+  // Handle Gap exception
+  @if $property == 'g' {
+    #{$current-direction}: #{get(spacing, $value)} #{css-property($is-important, '!important')};
+  } @else {
+    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$current-direction}: #{get(spacing, $value)} #{css-property($is-important, '!important')};
+  }
+}
+
+@mixin css-property-line-with-scale($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $scale: $scale) {
+  @debug '@mixin css-property-line-with-scale';
+  @debug unquote('Property: #{$property}');
+  @debug unquote('Current Direction: #{$current-direction}');
+  @debug unquote('Value: #{$value}');
+  @debug unquote('Is Important: #{$is-important}');
+  @debug unquote('Scale: #{$scale}');
+
+  // Handle Gap exception
+  @if $property == 'g' {
+    #{$current-direction}: calc(#{get(spacing, $value)} * #{$scale}) #{css-property($is-important, '!important')};
+  } @else {
+    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$current-direction}: calc(#{get(spacing, $value)} * #{$scale}) #{css-property($is-important, '!important')};
+  }
+}
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
 /// @group grid
@@ -30,72 +64,138 @@
 /// }
 
 @mixin spacing-beta($args...) {
-  $breakpoint: null;
-  $property: null;
-  $direction: g;
-  $value: 0;
-  $scale: 1;
-
-  $is-important: false;
-  $valid-breakpoint: false;
-  $valid-direction: false;
-  $valid-property: false;
-  $valid-distance: false;
-  $has-scale: false;
-
-  // How many type-of number arguements
-  $numbers-quantity: 0;
-  // How many type-of string arguements
-  $strings-quantity: 0;
-
   // Check that there are arguements
   @if (length($args) > 0) {
     // For each arguement
     @each $arg in $args {
+      $debug: false;
+      $breakpoint: null;
+      $property: null;
+      $direction: null;
+      $value: 0;
+      $scale: 1;
+
+      $is-important: false;
+      $valid-breakpoint: false;
+      $valid-direction: false;
+      $valid-property: false;
+      $valid-distance: false;
+      $has-scale: false;
+
       // Check if important is present
       @each $prop in $arg {
-        // Check if there is a spacing distance which is a number, and a scale. if there are two similar numbers, and one of the numbers belongs to sinister configuration, then consider this number as scale as well
-        @if type-of($prop) == 'number' {
-          @if count-duplicate-occurances($arg) == 2 {
-            $has-scale: true;
-          }
-        } @else if type-of($prop) == 'string' {
-          // If it is a string and there are more than 1 duplicate strings because
-          @if count-duplicate-occurances($arg) == 2 and contains(get(breakpoints), $prop) {
-            $has-scale: true;
-          }
-        } @else {
-          @warn 'Invalid arguement in spacing mixin. Expected type of text or number instead received #{type-of($prop)} with a value of #{prop}';
+        // Check if Debug Is enabled
+        @if $prop == 'debug' {
+          $debug: true;
         }
 
+        // Check if there is a spacing distance which is a number, and a scale. if there are two similar numbers, and one of the numbers belongs to sinister configuration, then consider this number as scale as well
+        @if is-number($prop) {
+          // Check if it is unitless (otherwise it could be a config value or css value)
+
+          @if not contains(get(spacing), $prop) {
+            $has-scale: true;
+            $scale: $prop;
+          }
+        }
+
+        // If has Important
         @if $prop == '!i' {
           $is-important: true;
         }
 
+        // Valid Breakpoint
         @if contains(get(breakpoints), $prop) {
           $valid-breakpoint: true;
+          $breakpoint: $prop;
         }
 
+        // Valid Property
         @if contains(getMap($css-properties, spacing, spacing-properties), $prop) {
           $valid-property: true;
+
+          $property: $prop;
         }
 
+        // Direction
         @if (contains(getMap($css-properties, spacing, spacing-direction), $prop)) {
           $valid-direction: true;
+
+          @if $property == 'g' {
+            @if $prop == 't' or $prop == 'b' or $prop == 'y' {
+              $direction: row-gap;
+            } @else if $prop == 'l' or $prop == 'r' or $prop == 'x' {
+              $direction: column-gap;
+            } @else if $prop == 'g' {
+              $direction: gap;
+            } @else {
+            }
+          } @else {
+            // Prep the direction CSS property
+            @each $prop in map-get(getMap($css-properties, spacing, spacing-directions), $prop) {
+              $direction: append($direction, $prop);
+            }
+          }
         }
+
+        // If spacing value contained in _sin.config.scss
 
         @if contains(get(spacing), $prop) {
           $valid-distance: true;
+
+          $value: $prop;
+        }
+      }
+
+      // Create CSS Rules
+      @if $valid-property and $valid-direction and $valid-distance {
+        // If it has breakpoint
+        @if $valid-breakpoint {
+          @include mqMin($breakpoint) {
+            // If has scale and the value is a number
+            @if $has-scale and type($value, ('number')) {
+              @each $current-direction in $direction {
+                // The default value is null, if its not the default value then..
+                @if $current-direction != null {
+                  @include css-property-line-with-scale($property: $property, $current-direction: $current-direction, $value: $value, $scale: $scale, $is-important: $is-important);
+                }
+              }
+            } @else {
+              // If it does not have scale
+
+              @each $current-direction in $direction {
+                // The default value is null, if its not the default value then..
+                @if $current-direction != null {
+                  @include css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important);
+                }
+              }
+            }
+          }
+        } @else {
+          // If it does not have a valid breakpoint
+
+          // If has scale and the value is a number
+          @if $has-scale and type($value, ('number')) {
+            // For each direction
+            @each $current-direction in $direction {
+              // The default value is null, if its not the default value then..
+              @if $current-direction != null {
+                @include css-property-line-with-scale($property: $property, $current-direction: $current-direction, $value: $value, $scale: $scale, $is-important: $is-important);
+              }
+            }
+          } @else {
+            // For each direction
+            @each $current-direction in $direction {
+              // The default value is null, if its not the default value then..
+              @if $current-direction != null {
+                @include css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important);
+              }
+            }
+            // If it does not have scale
+          }
         }
       }
     }
-
-    @debug $valid-breakpoint;
-    @debug $valid-property;
-    @debug $valid-direction;
-    @debug $valid-distance;
-    @debug $has-scale;
-    @debug $is-important;
   } @else {
     @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
     @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
