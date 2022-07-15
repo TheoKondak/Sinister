@@ -25,9 +25,15 @@
 /// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 @mixin boxshadow($box-shadow-id: 5) {
   @if type-of($box-shadow-id) == 'number' {
-    @debug $box-shadow-id;
     box-shadow: box-shadow($box-shadow-id);
   } @else {
     @warn 'boxshadow mixin requires a boxshadow id number from 0 to #{list.length($box-shadow-list)}';
   }
+}
+
+/// `boxshadow()` mixin to become obsolete. The new mixin is this.
+/// @group utility
+/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+@mixin box-shadow() {
+  @include boxshadow();
 }
