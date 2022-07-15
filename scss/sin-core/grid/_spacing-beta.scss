@@ -21,7 +21,6 @@
     @debug unquote('Current Direction: #{$current-direction}');
     @debug unquote('Value: #{$value}');
     @debug unquote('Is Important: #{$is-important}');
-    @debug unquote('Scale: #{$scale}');
   }
 
   // Handle Gap exception
