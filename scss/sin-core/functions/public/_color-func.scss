@@ -46,3 +46,7 @@
     }
   }
 }
+
+@function cl($key: null, $brightness: 0, $step: 4) {
+  @return color($key, $brightness, $step);
+}
