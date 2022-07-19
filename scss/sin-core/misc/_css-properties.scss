@@ -118,5 +118,13 @@ $css-properties: (
         left,
       ),
     ),
+    global-spacing-values: (
+      auto: auto,
+      inherit: inherit,
+      initial: initital,
+      revert: revert,
+      revert-layer: revert-layer,
+      unset: unset,
+    ),
   ),
 );
