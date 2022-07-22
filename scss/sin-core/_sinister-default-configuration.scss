@@ -19,6 +19,11 @@ $sinister-default-configuration: (
     sm: 768px,
     // $smartphone
     xs: 576px,
+// UIKit Breakpoints
+uk-breakpoint-s: 640px,
+    uk-breakpoint-m: 960px,
+    uk-breakpoint-l: 1200px,
+    uk-breakpoint-xl: 1600px
   ),
   // Functionality is missing.
   font-families: (),
