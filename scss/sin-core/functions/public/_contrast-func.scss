@@ -12,27 +12,40 @@
 /// @name contrast
 /// @link https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
 /// @group utility
+/// @param  {string}  $debug - Enable debugging information | Set `$debug: true` as a parameter
 /// @param  {color | string}  $foreground-color - The foreground color
 /// @param  {color | string}   $background-color - The background color
+/// @param  {number} [450] $threshold - Set the threshold for the contrast. The higher the value, the more contrast is required in order for the function to return true
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
-@function contrast($foreground-color, $background-color) {
-  $foreground: $foreground-color;
-  $background: $background-color;
-  // Foreground Color
-  @if contains(get(colors), $foreground-color) {
-    $foreground: color(#{$foreground-color});
-  }
-  // Background Color
-  @if contains(get(colors), $background-color) {
-    $background: color(#{$background-color});
-  }
-
-  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
-  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
-  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+@function contrast($foreground-color, $background-color, $threshold: 450, $debug: false) {
+  $r: (max(red($foreground-color), red($background-color))) - (min(red($foreground-color), red($background-color)));
+  $g: (max(green($foreground-color), green($background-color))) - (min(green($foreground-color), green($background-color)));
+  $b: (max(blue($foreground-color), blue($background-color))) - (min(blue($foreground-color), blue($background-color)));
   $sum-rgb: $r + $g + $b;
 
-  @if $sum-rgb < 500 {
+  @if $debug == true {
+    @debug unquote('======');
+    @debug unquote('Debugging Contrast Function');
+    @debug unquote('Foreground color: #{$foreground-color}');
+    @debug unquote('Background color: #{$background-color}');
+    @debug unquote('---');
+    @debug unquote('Calculation Results:');
+    @debug unquote('Red: #{$r}');
+    @debug unquote('Green: #{$g}');
+    @debug unquote('Blue: #{$b}');
+    @debug unquote('---');
+    @debug unquote('Threshold: #{$threshold}');
+    @debug unquote('Return value: #{$sum-rgb}');
+    @debug unquote('NOTE: Return value must be higher than the threshold value in order to have sufficient contrast.');
+    @if $sum-rgb < $threshold {
+      @debug unquote('Result: false');
+    } @else {
+      @debug unquote('Result: true');
+    }
+    @debug unquote('======');
+  }
+
+  @if $sum-rgb < $threshold {
     @return 'false';
   } @else {
     @return 'true';
