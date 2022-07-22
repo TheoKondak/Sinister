@@ -13,10 +13,18 @@
 /// @link https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
 /// @group utility
 /// @param  {string}  $debug - Enable debugging information | Set `$debug: true` as a parameter
-/// @param  {color | string}  $foreground-color - The foreground color
-/// @param  {color | string}   $background-color - The background color
-/// @param  {number} [450] $threshold - Set the threshold for the contrast. The higher the value, the more contrast is required in order for the function to return true
+/// @param  {color}  $foreground-color - The foreground color
+/// @param  {color}   $background-color - The background color
+/// @param  {number} $threshold [450] - Set the threshold for the contrast. The higher the value, the more contrast is required in order for the function to return true
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
+/// @example scss will check if there is sufficient contrast, if yes, color will become white, otherwise will become random color from `_sin.config.scss`
+/// .sin{
+///     @if contrast(#fff, color(random-color)){
+///        color: #fff;
+///     }@else{
+///        color: color(random-color);
+///     }
+///  }
 @function contrast($foreground-color, $background-color, $threshold: 450, $debug: false) {
   $r: (max(red($foreground-color), red($background-color))) - (min(red($foreground-color), red($background-color)));
   $g: (max(green($foreground-color), green($background-color))) - (min(green($foreground-color), green($background-color)));
