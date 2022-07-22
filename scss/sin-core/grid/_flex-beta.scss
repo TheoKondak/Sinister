@@ -1,0 +1,126 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../functions' as *;
+@use '../misc/css-properties' as *;
+@use './spacing' as *;
+@use '../../../../../sin.config' as *;
+
+/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @access private
+/// @group dev
+/// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
+@mixin flex-properties-beta($cur-arg) {
+  $has-gap: false;
+  $gap: 0;
+  // Flex Direction
+  // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
+  @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
+    flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
+  }
+
+  // Flex Wrap
+  @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
+    flex-wrap: #{map-get(getMap($css-properties, flex, wrap), $cur-arg)};
+  }
+
+  // Justify Content
+  @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
+    justify-content: #{map-get(getMap($css-properties, flex, justify-content), $cur-arg)};
+  }
+
+  // Align Content
+  @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
+    align-content: #{map-get(getMap($css-properties, flex, align-content), $cur-arg)};
+  }
+  // Align Items
+  @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
+    align-items: #{map-get(getMap($css-properties, flex, align-items), $cur-arg)};
+  }
+
+  // Gap
+  @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
+    $has-gap: true;
+    @if length($cur-arg) == 2 {
+      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
+      $gap: get(spacing, list.nth($cur-arg, 2));
+    }
+    // If it has scale
+    @else if length($cur-arg) == 3 {
+      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
+      $gap: calc(get(spacing, list.nth($cur-arg, 2)) * list.nth($cur-arg, 3));
+    }
+  }
+
+  /// Flex | Flex Basis
+  /// If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
+  @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+    @debug $gap;
+    @if type(list.nth($cur-arg, 2), (number)) {
+      @if math.is-unitless(list.nth($cur-arg, 2)) {
+        @if type(list.nth($cur-arg, 3), (number)) {
+          > * {
+            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)} - (#{$gap} * 2));
+          }
+        } @else if contains(getMap($css-properties, width), list.nth($cur-arg, 3)) {
+          > * {
+            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} #{list.nth($cur-arg, 3)};
+          }
+        }
+      } @else {
+        @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
+      }
+    } @else {
+      @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
+    }
+  }
+  // If the list has a single arguement, it is flex-basis
+  @else if length($cur-arg) == 1 {
+    @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
+      > * {
+        flex-basis: #{$cur-arg};
+      }
+    }
+  }
+}
+
+/// Each `list` contains:
+/// A breakpoint from `sin.config`. This is optional.
+/// Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+/// All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @access public
+/// @group grid
+/// @param  {arglist}  $args... - An arglist of lists.
+@mixin flex-beta($args...) {
+  // It takes a list of Sins
+  // Itterate / check first level map
+  @if (length($args) > 0) and type($args, 'arglist') {
+    @each $sin-arg in $args {
+      @if (length($sin-arg) > 0) and type($args, 'arglist') {
+        // If the Sin contains an existing breakpoint
+        @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
+          @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
+            display: flex;
+            // For each list, check the input properties
+            @each $cur-arg in $sin-arg {
+              // Load All the properties from flex properties mixin
+              @include flex-properties-beta($cur-arg);
+            }
+          }
+        } @else {
+          display: flex;
+          // For each list, check the input properties
+          @each $cur-arg in $sin-arg {
+            @include flex-properties-beta($cur-arg);
+          }
+        }
+      }
+    }
+  } @else {
+    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:');
+  }
+}
