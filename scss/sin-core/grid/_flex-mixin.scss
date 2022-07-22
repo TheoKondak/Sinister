@@ -54,7 +54,7 @@
       @if math.is-unitless(list.nth($cur-arg, 2)) {
         @if type(list.nth($cur-arg, 3), (number)) or contains(getMap($css-properties, flex, width), list.nth($cur-arg, 3)) {
           > * {
-            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} calc(#{list.nth($cur-arg, 3)});
+            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} #{list.nth($cur-arg, 3)};
           }
         }
       } @else {
