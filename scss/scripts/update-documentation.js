@@ -30,3 +30,9 @@ fs.copyFile('documentation/0.6.70-beta.3/index.html', '../index.html', (err) => 
   if (err) throw err;
   console.log('source.txt was copied to destination.txt');
 });
+
+// css.html file
+fs.copyFile('documentation/main.css', '../assets/css/main.css', (err) => {
+  if (err) throw err;
+  console.log('source.txt was copied to destination.txt');
+});
