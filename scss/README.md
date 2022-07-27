@@ -18,6 +18,17 @@ Also I keep releasing hotfixes almost daily.
 <br>
 <br>
 
+
+## Documentation
+
+Read the latest [Documentation](https://theokondak.github.io/Sinister/)
+
+## Changelog
+
+- [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/main/scss/CHANGELOG.md)
+- [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/main/scss/changelog-data.json)
+
+
 ## Setup the data
 
 In order for sinister to work, 2 files are needed. 
@@ -70,38 +81,3 @@ ex.
 Keep in mind that the path is relative.
 
 For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
-
-## Documentation
-
-- Latest
-- 0.6.65-beta.1
-## Roadmap
-
-- Place untested mixins and functions in experimental
-- Do more testing to basic functions like `set-config()`, `type()` etc
-- Update flex approach. Remove obsolete classes, and find a better way to utilize grid via mixins
-- Add flex mixin, to create responsive grid.
-  - Logic similar to grid. ex `@include flex(('', properties/values)('xs', properties/values))`
-- Add function that creates classes from maps of data `breakpoint-property-value`, ex `xs-display-none`.
-  - Add a map of properties and a bull value to enable/disable some class
-  - Add documentation about class generation options
-- Create private and public function folder and move functions accordingly
-
-## Documentation To do
-
-- development/production
-- Image-wrapper
-- Typography
-  - Responsive font sizes
-  - Default font sizes
-  - disable-list-style mixin and global config variable
-- prefix
-
-## Changelog
-
-- [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/main/scss/CHANGELOG.md)
-- [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/main/scss/changelog-data.json)
-
-## SASSDOC HERMAN GIST
-
-[gist](https://gist.github.com/TheoKondak/0c258ff5fdb22a79482f14000cc09ff9)
