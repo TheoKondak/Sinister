@@ -9,7 +9,7 @@ const { readFile, writeFile, promises: fsPromises } = require('fs');
 // Options
 const oldVersion = process.env.npm_package_version; // Get npm package version from package.json
 const newVersion = process.argv.slice(2); // Get new package version from command arguement
-const files = ['.sassdocrc', 'sin-core/misc/_warning-message-start.scss', 'scripts/update-documentation.js']; // Files that will be updated
+const files = ['.sassdocrc', 'sin-core/misc/_warning-message-start.scss', 'sin-core/misc/_warning-message-eof.scss', 'scripts/update-documentation.js']; // Files that will be updated
 
 const updateVersion = (oldVersion = oldVersion, newVersion = newVersion, files = files) => {
   files.forEach((file) => {
