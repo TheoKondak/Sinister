@@ -757,6 +757,7 @@ body {
 .sidebar {
   flex: 0 0 max-content;
   background-color: white;
+  padding-top: 70px;
 }
 
 .main {
@@ -766,11 +767,59 @@ body {
 }
 
 .header {
-  position: static;
-  left: 0;
+  position: sticky;
+  top: 0;
   width: 100%;
 }
 
 .header .container {
   width: 100%;
+  position: relative;
+  top: 0;
+}
+
+@media (min-width: 801px) {
+  .layout-toggle {
+    top: 1rem;
+    left: 0px;
+
+    color: white;
+
+    background-color: var(--main-color);
+    border-radius: 50%;
+    border: 2px solid white;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.22;
+    z-index: 9997;
+  }
+}
+
+/* Sinister VersionS idebar */
+.sidebar__header {
+  z-index: 9998;
+}
+
+.sidebar__title {
+  /* padding-left: 3rem; */
+}
+
+/* Used By List */
+.main .list-unstyled {
+  column-count: 3;
+}
+
+@media (min-width: 580px) {
+  .main .list-unstyled {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 748px) {
+  .main .list-unstyled {
+    column-count: 6;
+  }
 }
