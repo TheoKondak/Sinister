@@ -34,6 +34,6 @@
 /// `boxshadow()` mixin to become obsolete. The new mixin is this.
 /// @group utility
 /// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
-@mixin box-shadow() {
-  @include boxshadow();
+@mixin box-shadow($box-shadow-id) {
+  @include boxshadow($box-shadow-id);
 }
