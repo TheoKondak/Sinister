@@ -4,7 +4,6 @@ const { readFile, writeFile, promises: fsPromises } = require('fs');
 
 // How to Update Sinister version
 // 1 Run: npm run version-update 0.6.70-beta.3
-// 2 Run: npm version 0.6.70-beta.3
 
 // Options
 const oldVersion = process.env.npm_package_version; // Get npm package version from package.json
@@ -15,13 +14,13 @@ const updateVersion = (oldVersion = oldVersion, newVersion = newVersion, files =
   files.forEach((file) => {
     readFile(file, 'utf-8', function (err, contents) {
       if (err) {
-        // console.log(err);
+        console.log(err);
         return;
       }
       const replaced = contents.replace(oldVersion, newVersion);
 
       writeFile(file, replaced, 'utf-8', function (err) {
-        // console.log(err);
+        console.log(err);
       });
     });
   });
