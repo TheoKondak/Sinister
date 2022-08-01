@@ -170,6 +170,7 @@
         } @else if map-get(getMap($css-properties, spacing, global-spacing-values), $prop) != null {
           $valid-distance: true;
           $value: $prop;
+
           @if $debug {
             @debug unquote('Arguement is a global spacing value | Value: #{$value}');
             @debug '---';
@@ -200,6 +201,7 @@
         @if (contains(getMap($css-properties, spacing, spacing-direction), $prop)) and $valid-direction == false and $valid-property == true {
           $valid-direction: true;
           // If the spacing property is gap
+
           @if $property == 'g' {
             @if $prop == 't' or $prop == 'b' or $prop == 'y' {
               $direction: row-gap;
@@ -252,6 +254,7 @@
               }
             } @else {
               // If it does not have scale
+
               @each $current-direction in $direction {
                 // The default value is null, if its not the default value then..
                 @if $current-direction != null {
@@ -274,7 +277,7 @@
               }
             }
           } @else if map-get(getMap($css-properties, spacing, global-spacing-values), $value) != null {
-          } @else {
+            // If it is a non numeric value (auto, inherit etc)
             // For each direction
             @each $current-direction in $direction {
               // The default value is null, if its not the default value then..
@@ -282,7 +285,6 @@
                 @include css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $debug: $debug);
               }
             }
-            // If it does not have scale
           }
         }
       }
