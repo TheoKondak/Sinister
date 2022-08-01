@@ -86,7 +86,7 @@
 /// .sin{
 ///  @include spacing(
 ///   (debug, m, g, 1),  // Will print debug log for this item
-///   (xs, m, g, 2),
+///   (xs, m, g, 2rem), // From xs breakpoint, margin general 2rem
 ///  );
 /// }
 
@@ -295,6 +295,7 @@
     }
   } @else {
     @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing-beta');
-    @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing-beta');
+    @debug help(spacing, $intro-msg: 'Printing available Spacing values:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
+    @debug help(breakpoints, $intro-msg: 'Printing available breakpoints:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
   }
 }

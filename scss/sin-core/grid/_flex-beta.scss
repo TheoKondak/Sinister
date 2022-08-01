@@ -86,6 +86,7 @@
   }
 }
 
+/// Use flex in one line! With this mixin, you can achieve most flex functionality just in one line. Each set of rules sits within a sass list. Each list can take a breakpoint, and abreviations of flex properties. Each list, should be 1 breakpoint.
 /// Each `list` contains:
 /// A breakpoint from `sin.config`. This is optional.
 /// Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
@@ -95,6 +96,20 @@
 /// @access public
 /// @group grid
 /// @param  {arglist}  $args... - An arglist of lists.
+/// @example scss See available properties and values
+/// .sin{
+///   @debug flex();
+/// }
+/// @example scss Examples
+/// .sin{
+///  @include flex(
+///   (fd-cl, ai-c), // Flex direction column, align items center
+///   (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
+///   (md, (g,1,.5)) // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+///   (lg, (1 0 auto)) // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+///  );
+/// }
 @mixin flex-beta($args...) {
   // It takes a list of Sins
   // Itterate / check first level map
@@ -121,6 +136,8 @@
       }
     }
   } @else {
-    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:');
+    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-flex-beta');
+    @debug help(spacing, $intro-msg: 'Printing available Spacing values:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
+    @debug help(breakpoints, $intro-msg: 'Printing available breakpoints:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
   }
 }
