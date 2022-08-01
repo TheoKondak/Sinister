@@ -294,7 +294,7 @@
       }
     }
   } @else {
-    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
-    @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing');
+    @debug help($config-map: getMap($css-properties, spacing), $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing-beta');
+    @debug help(spacing, $intro-msg: 'Printing available Spacing Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-spacing-beta');
   }
 }
