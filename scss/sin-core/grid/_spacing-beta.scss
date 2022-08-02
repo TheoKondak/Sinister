@@ -15,13 +15,13 @@
 }
 
 @mixin css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $debug: false) {
-  // @if $debug {
-  //   @debug '@mixin css-property-line-with-scale calculating rule';
-  //   @debug unquote('Property: #{$property}');
-  //   @debug unquote('Current Direction: #{$current-direction}');
-  //   @debug unquote('Value: #{$value}');
-  //   @debug unquote('Is Important: #{$is-important}');
-  // }
+  @if $debug {
+    @debug '@mixin css-property-line-with-scale calculating rule';
+    @debug unquote('Property: #{$property}');
+    @debug unquote('Current Direction: #{$current-direction}');
+    @debug unquote('Value: #{$value}');
+    @debug unquote('Is Important: #{$is-important}');
+  }
 
   // Handle Gap exception
   @if $property == 'g' {
@@ -32,14 +32,14 @@
 }
 
 @mixin css-property-line-with-scale($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $scale: $scale, $debug: false) {
-  // @if $debug {
-  //   @debug '@mixin css-property-line-with-scale calculating rule';
-  //   @debug unquote('Property: #{$property}');
-  //   @debug unquote('Current Direction: #{$current-direction}');
-  //   @debug unquote('Value: #{$value}');
-  //   @debug unquote('Is Important: #{$is-important}');
-  //   @debug unquote('Scale: #{$scale}');
-  // }
+  @if $debug {
+    @debug '@mixin css-property-line-with-scale calculating rule';
+    @debug unquote('Property: #{$property}');
+    @debug unquote('Current Direction: #{$current-direction}');
+    @debug unquote('Value: #{$value}');
+    @debug unquote('Is Important: #{$is-important}');
+    @debug unquote('Scale: #{$scale}');
+  }
 
   // Handle Gap exception
   @if $property == 'g' {
@@ -51,7 +51,7 @@
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
 /// @group grid
-/// @parameter {string} $debug - If the first parameter of an arguement list is 'debug' then a debug log will be printed for the specific arguement list. If its the first arguement of flex mixin, then it will print debug log of all lists
+/// @parameter {string} $debug - If the first parameter of an arguement list is 'debug' then a debug log will be printed for the specific arguement list. If its the first arguement of spacing mixin, then it will print debug log of all lists
 /// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
 /// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
 /// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
@@ -113,7 +113,7 @@
       @if $arg == 'debug' {
         $debug: true;
         @debug '======';
-        @debug 'STARTING @mixin flex() DEBUGGING for all lists';
+        @debug 'STARTING @mixin spacing DEBUGGING for all lists';
         @debug '---';
       }
 
@@ -124,7 +124,7 @@
         @if $prop == 'debug' {
           $debug: true;
           @debug '======';
-          @debug 'STARTING @mixin flex() DEBUGGING';
+          @debug 'STARTING @mixin spacing() DEBUGGING';
           @debug '---';
         }
 
@@ -276,6 +276,15 @@
                 @include css-property-line-with-scale($property: $property, $current-direction: $current-direction, $value: $value, $scale: $scale, $is-important: $is-important, $debug: $debug);
               }
             }
+          } @else if type($value, ('number')) {
+            // If its a number but doesn't have scale
+
+            @each $current-direction in $direction {
+              // The default value is null, if its not the default value then..
+              @if $current-direction != null {
+                @include css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $debug: $debug);
+              }
+            }
           } @else if map-get(getMap($css-properties, spacing, global-spacing-values), $value) != null {
             // If it is a non numeric value (auto, inherit etc)
             // For each direction
@@ -285,6 +294,8 @@
                 @include css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $debug: $debug);
               }
             }
+          } @else {
+            @debug getMap($css-properties, spacing, global-spacing-values);
           }
         }
       }
