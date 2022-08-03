@@ -21,6 +21,8 @@
   "license": "ISC",
   "homepage": "https://github.com/TheoKondak/Sinister#readme",
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "auto-changelog": "^2.4.0"
   }
 }
