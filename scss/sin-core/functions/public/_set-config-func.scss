@@ -4,7 +4,7 @@
 @use 'sass:list';
 @use './../private/type-func' as *;
 
-/// `set.config` creates the configuration for the project. Through this function you can setup breakpoints, colors, font-sizes among other options.
+/// `set.config` creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new ones.
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 /// @group setup
@@ -12,19 +12,20 @@
 /// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
 /// @see {function} help
 /// @example scss - Set configuration
-/// .sin {
-///   @debug set-config(
-///     (
-///     colors: (
-///       test-color: #faa,
-///        test-color-2: #010101,
-///      ),
-///      breakpoints: (
-///       xs: 570px,
-///      ),
-///    )
-///  );
-/// }
+/// $configuration: sin.set-config((
+///    colors: (
+///      test-color: #ffa,
+///    ),
+///    breakpoints: (
+///     tablet: 781px,
+///     desktop: 1200px
+///   ),
+///   global: (
+///     production: false,
+///     production-url: "www.google.com"
+///     development-url: "preview.google.com"
+///   )
+///  ));
 
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`

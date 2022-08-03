@@ -87,14 +87,16 @@
 }
 
 /// Use flex in one line! With this mixin, you can achieve most flex functionality just in one line. Each set of rules sits within a sass list. Each list can take a breakpoint, and abreviations of flex properties. Each list, should be 1 breakpoint.
-/// Each `list` contains:
-/// A breakpoint from `sin.config`. This is optional.
-/// Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
-/// All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
+/// <hr/>
+/// <h3>Each `list` contains:</h3> <br/>
+///
+/// - A breakpoint from `sin.config`. This is optional.
+/// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+/// <br/> All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 /// @access public
-/// @group grid
+/// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
 /// @example scss See available properties and values
 /// .sin{

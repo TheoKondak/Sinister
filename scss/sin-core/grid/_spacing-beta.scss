@@ -50,7 +50,7 @@
 }
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
-/// @group grid
+/// @group experimental
 /// @parameter {string} $debug - If the first parameter of an arguement list is 'debug' then a debug log will be printed for the specific arguement list. If its the first arguement of spacing mixin, then it will print debug log of all lists
 /// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
 /// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.

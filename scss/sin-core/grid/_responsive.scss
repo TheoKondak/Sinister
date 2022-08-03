@@ -100,6 +100,7 @@
 }
 
 /// @group grid
+/// @deprecated mixin to be deprecated in sinister 0.6.73 and replaced my mixin mq-min and min
 /// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
 /// @example scss Accepting a breakpoint from `sin.config`
 /// .sin{
@@ -129,8 +130,39 @@
   }
 }
 
+/// @group grid
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @link https://theokondak.github.io/Sinister/#grid-mixin-mqMix Works the same as mqMix
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include min(xs){
+///     display: block;
+///   }
+/// }
+@mixin mq-min($min: 120px) {
+  @include mqMin($min) {
+    @content;
+  }
+}
+
+/// @group grid
+/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
+/// @link https://theokondak.github.io/Sinister/#grid-mixin-mqMix Works the same as mqMix
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include min(xs){
+///     display: block;
+///   }
+/// }
+@mixin min($min: 120px) {
+  @include mqMin($min) {
+    @content;
+  }
+}
+
 /// @name mqMax
 /// @group grid
+/// @deprecated mixin to be deprecated in sinister 0.6.73 and replaced my mixin mq-max and max
 /// @param  {number | string}  $max [4096px] - Breakpoint will work up to $max. Accepts breakpoints from `sin.config`
 /// @example scss Accepting a breakpoint from `sin.config`
 /// .sin{
@@ -138,7 +170,6 @@
 ///     display: block;
 ///   }
 /// }
-
 @mixin mqMax($max: 4096px) {
   @if type-of($max) == 'number' {
     @if unitless($max) {
@@ -158,5 +189,36 @@
     } @else {
       @warn 'Invalid input at mqMax. It requires a numeric value with units, or a breakpoint. You provided: #{$max}';
     }
+  }
+}
+
+/// @name mq-max
+/// @group grid
+/// @param  {number | string}  $max [4096px] - Breakpoint will work up to $max. Accepts breakpoints from `sin.config`
+/// /// @link https://theokondak.github.io/Sinister/#grid-mixin-mqMax Works the same as mqMax
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include mq-max(xxl){
+///     display: block;
+///   }
+/// }
+@mixin mq-max($max: 120px) {
+  @include mqMax($max) {
+    @content;
+  }
+}
+/// @name max
+/// @group grid
+/// @param  {number | string}  $max [4096px] - Breakpoint will work up to $max. Accepts breakpoints from `sin.config`
+/// @link https://theokondak.github.io/Sinister/#grid-mixin-mqMax Works the same as mqMax
+/// @example scss Accepting a breakpoint from `sin.config`
+/// .sin{
+///   @include max(xxl){
+///     display: block;
+///   }
+/// }
+@mixin max($max: 120px) {
+  @include mqMax($max) {
+    @content;
   }
 }

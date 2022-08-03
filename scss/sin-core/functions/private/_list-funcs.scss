@@ -2,7 +2,8 @@
 @use './contains-func' as *;
 
 /// Removes duplicate occurances in a list
-/// @group private
+/// @group dev
+/// @access private
 @function remove-duplicates($list) {
   $process-list: ();
 
@@ -18,7 +19,8 @@
 }
 
 /// Detects if a list has duplicate values
-/// @group private
+/// @group dev
+/// @access private
 /// @arg {list} $list - Input list
 /// @return {bool} - If the list contains duplicates, returns true, otherwise returns false
 @function has-duplicates($list) {
@@ -37,7 +39,8 @@
 }
 
 /// Detects how many duplicate values a map has, and returns a sum of the total duplicate values
-/// @group private
+/// @group dev
+/// @access private
 /// @arg {list} $list - Input list
 /// @return {bool} - The total amount of duplicate values.
 @function count-duplicate-occurances($list) {

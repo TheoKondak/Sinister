@@ -6,7 +6,7 @@
 @use './../private/get-func' as *;
 @use './help-func' as *;
 
-/// @name Color
+/// @name color
 /// @group design
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
@@ -17,6 +17,11 @@
 /// @example scss - color()
 ///  .sin{
 ///    color: color(test-color, 3);
+///   }
+///
+/// @example scss - You use color function in places like rgba
+///  .sin{
+///    color: rgba(color(test-color), .4);
 ///   }
 ///
 @function color($key: null, $brightness: 0, $step: 4) {
