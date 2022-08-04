@@ -48,6 +48,8 @@
   }
 }
 
-.image-wrapper {
-  @include image-wrapper(300px, 350px, #666);
+@if getMap($configuration, generate-classes, utility) {
+  .image-wrapper {
+    @include image-wrapper(300px, 350px, #666);
+  }
 }

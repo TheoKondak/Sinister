@@ -1,5 +1,5 @@
 @use '../../../../../sin.config' as *;
-
+@use '../functions/' as *;
 
 @mixin blur(
   $blurRadius: 4px,
@@ -26,6 +26,8 @@
   }
 }
 
-.blur {
-  @include blur;
+@if getMap($configuration, generate-classes, utility) {
+  .blur {
+    @include blur;
+  }
 }

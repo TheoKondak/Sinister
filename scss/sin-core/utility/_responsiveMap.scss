@@ -1,4 +1,5 @@
 @use '../../../../../sin.config' as *;
+@use '../functions/' as *;
 
 /// Makes google maps responsive
 /// @group utility
@@ -18,6 +19,8 @@
   }
 }
 
-.responsiveMap {
-  @include responsiveMap;
+@if getMap($configuration, generate-classes, utility) {
+  .responsive-map {
+    @include responsiveMap;
+  }
 }

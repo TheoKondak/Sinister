@@ -1,4 +1,5 @@
 @use '../../../../../sin.config' as *;
+@use '../functions/' as *;
 
 /// Makes youtube video iframe responsive
 /// Requires a parent Element Place the mixin in the parent Element
@@ -20,6 +21,8 @@
   }
 }
 
-.responsive-video {
-  @include responsive-video;
+@if getMap($configuration, generate-classes, utility) {
+  .responsive-video {
+    @include responsive-video;
+  }
 }

@@ -12,11 +12,11 @@
 // You can load/import fonts to use easily with font face.
 
 // Example:
-@font-face {
-  // font-family: Roboto Condensed Regular;
-  // src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
-  // url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
-}
+// @font-face {
+// font-family: Roboto Condensed Regular;
+// src: url(../../../../images/fonts/RobotoCondensedRegular.ttf) format("ttf"), // Format is optional
+// url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap); // Load multiple sources, local or frin url (slower)
+// }
 
 // $font-families: get(font-family);
 
@@ -56,15 +56,21 @@
 @mixin capitalize {
   text-transform: capitalize;
 }
-.capitalize {
-  @include capitalize;
+
+@if getMap($configuration, generate-classes, utility) {
+  .capitalize {
+    @include capitalize;
+  }
 }
 
 @mixin uppercase {
   text-transform: uppercase;
 }
-.uppercase {
-  @include uppercase;
+
+@if getMap($configuration, generate-classes, utility) {
+  .uppercase {
+    @include uppercase;
+  }
 }
 
 //+----------------------+
@@ -122,12 +128,14 @@ body {
   }
 
   a {
-    text-decoration: none;
-
-    font-size: get(default-font-sizes, a);
-
-    &:hover {
+    @if getMap($configuration, generate-classes, utility) {
       text-decoration: none;
+
+      font-size: get(default-font-sizes, a);
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 
