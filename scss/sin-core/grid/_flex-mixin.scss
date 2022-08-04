@@ -267,3 +267,23 @@
   @include justify-center;
   @include align-center;
 }
+
+$debug: false;
+$has-breakpoint: false;
+$breakpoint-value: null;
+$has-flex-direction: false;
+$flex-direction-value: null;
+$has-wrap: false;
+$wrap-value: null;
+$has-justify-content: false;
+$justify-content-value: null;
+$has-align-content: false;
+$align-content-value: null;
+$has-align-items: false;
+$align-items-value: null;
+$has-gap: false;
+$gap-value: null;
+$has-flex: false; // flex property ex flex: 0 0 100%;
+$flex-value: null;
+$has-flex-basis: false;
+$flex-basis-value: null;

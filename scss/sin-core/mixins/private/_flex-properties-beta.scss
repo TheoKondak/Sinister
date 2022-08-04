@@ -1,0 +1,111 @@
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../functions/' as *;
+@use '../../misc/css-properties' as *;
+@use '../../grid/spacing' as *;
+@use '../../../../../../sin.config' as *;
+
+/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https://github.com/TheoKondak
+/// @access private
+/// @group dev
+/// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
+@mixin flex-properties-beta($has-breakpoint, $breakpoint-value, $has-flex-direction, $flex-direction-value, $has-wrap, $wrap-value, $has-justify-content, $justify-content-value, $has-align-content, $align-content-value, $has-align-items, $align-items-value, $has-gap, $gap-value, $has-flex, $flex-value, $has-flex-basis, $flex-basis-value, $has-align-self, $align-self-value, $is-important, $has-auto-gap) {
+  $calculated-gap-value: null;
+
+  // Flex Direction
+  @if $has-flex-direction {
+    flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $flex-direction-value)} #{css-property($is-important, '!important')};
+  }
+
+  // Flex Wrap
+  @if $has-wrap {
+    flex-wrap: #{map-get(getMap($css-properties, flex, wrap), $wrap-value)} #{css-property($is-important, '!important')};
+  }
+
+  // Justify Content
+  @if $has-justify-content {
+    justify-content: #{map-get(getMap($css-properties, flex, justify-content), $justify-content-value)} #{css-property($is-important, '!important')};
+  }
+
+  // Align Content
+  @if $has-align-content {
+    align-content: #{map-get(getMap($css-properties, flex, align-content), $align-content-value)} #{css-property($is-important, '!important')};
+  }
+  // Align Items
+  @if $has-align-items {
+    align-items: #{map-get(getMap($css-properties, flex, align-items), $align-items-value)} #{css-property($is-important, '!important')};
+  }
+
+  // Gap
+  @if $has-gap {
+    @if length($gap-value) == 2 {
+      @include spacing((g, list.nth($gap-value, 1), list.nth($gap-value, 2)));
+
+      //   @debug list.nth($gap-value, 1);
+
+      @if list.nth($gap-value, 1) == 'g' or list.nth($gap-value, 1) == 'l' or list.nth($gap-value, 1) == 'r' {
+        $calculated-gap-value: get(spacing, list.nth($gap-value, 2));
+      }
+    }
+    // If it has scale
+    @else if length($gap-value) == 3 {
+      @include spacing((g, list.nth($gap-value, 1), list.nth($gap-value, 2), list.nth($gap-value, 3)));
+
+      //   @debug list.nth($gap-value, 1);
+
+      @if list.nth($gap-value, 1) == 'g' or list.nth($gap-value, 1) == 'l' or list.nth($gap-value, 1) == 'r' or type(list.nth($gap-value, 1), ('number')) and not unitless(list.nth($gap-value, 1)) {
+        $calculated-gap-value: get(spacing, list.nth($gap-value, 2)) * list.nth($gap-value, 3);
+      }
+    }
+  }
+
+  // Flex | Flex Basis
+  // If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
+  @if $has-flex {
+    @if type(list.nth($flex-value, 2), (number)) {
+      @if math.is-unitless(list.nth($flex-value, 2)) {
+        @if type(list.nth($flex-value, 3), (number)) {
+          > * {
+            @if $has-gap and $has-auto-gap {
+              flex: #{list.nth($flex-value, 1)} #{list.nth($flex-value, 2)} calc(#{list.nth($flex-value, 3)} - #{$calculated-gap-value}) #{css-property($is-important, '!important')};
+            } @else {
+              flex: #{list.nth($flex-value, 1)} #{list.nth($flex-value, 2)} #{list.nth($flex-value, 3)} #{css-property($is-important, '!important')};
+            }
+          }
+        } @else if contains(getMap($css-properties, width), list.nth($flex-value, 3)) {
+          // For auto etc
+          > * {
+            flex: #{list.nth($flex-value, 1)} #{list.nth($flex-value, 2)} #{list.nth($flex-value, 3)} #{css-property($is-important, '!important')};
+          }
+        }
+      } @else {
+        @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
+      }
+    } @else {
+      @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
+    }
+  }
+  // If the list has a single arguement, it is flex-basis
+  @else if $has-flex-basis {
+    @if (type($flex-basis-value, (number)) and not unitless($flex-basis-value)) or contains(getMap($css-properties, width), $flex-basis-value) {
+      > * {
+        @if $has-gap and $has-auto-gap {
+          flex: calc(#{$flex-basis-value} - #{$calculated-gap-value}) #{css-property($is-important, '!important')};
+        } @else {
+          flex-basis: #{$flex-basis-value} #{css-property($is-important, '!important')};
+        }
+      }
+    }
+  }
+
+  // If has align-self: stretch for child element, to equalize column height
+  @if $has-align-self {
+    > * {
+      align-self: #{map-get(getMap($css-properties, flex, align-self), $align-self-value)} #{css-property($is-important, '!important')};
+    }
+  }
+}

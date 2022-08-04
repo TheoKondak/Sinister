@@ -1,0 +1,19 @@
+@use './../../functions/' as *;
+@use '../../misc/css-properties' as *;
+
+@mixin css-property-line($property: $property, $current-direction: $current-direction, $value: $value, $is-important: $is-important, $debug: false) {
+  @if $debug {
+    @debug '@mixin css-property-line-with-scale calculating rule';
+    @debug unquote('Property: #{$property}');
+    @debug unquote('Current Direction: #{$current-direction}');
+    @debug unquote('Value: #{$value}');
+    @debug unquote('Is Important: #{$is-important}');
+  }
+
+  // Handle Gap exception
+  @if $property == 'g' {
+    #{$current-direction}: #{$value} #{css-property($is-important, '!important')};
+  } @else {
+    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$current-direction}: #{$value} #{css-property($is-important, '!important')};
+  }
+}

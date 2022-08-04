@@ -1,0 +1,7 @@
+@function css-property($check: false, $css-value: null) {
+  @if $check {
+    @return $css-value;
+  } @else {
+    @return null;
+  }
+}
