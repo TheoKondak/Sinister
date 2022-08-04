@@ -169,7 +169,7 @@
 
 // SAFARI 6.1 TO 10
 @mixin safari61-10 {
-  @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+  @media screen and (min-color-index: 0) and (-webkit-min-device-pixel-ratio: 0) {
     @content;
   }
 }
