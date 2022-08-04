@@ -10,8 +10,8 @@
 /// Source | Inspiration:
 /// @link https://web.dev/optimize-cls/
 /// @link https://medium.com/ynap-tech/optimizing-cls-and-lcp-on-chloe-com-8280a036122a
-/// @param  {number}  $image-height - The height of the image
-/// @param  {number}  $image-width - The width of the image
+/// @param  {number}  $image-height - The height of the image WITHOUT UNITS
+/// @param  {number}  $image-width - The width of the image WITHOUT UNITS
 /// @param  {color | string}  $preload-background - Takes a css background property. Accepts colors and urls. [OPTIONAL]
 /// @example markup Let's say there is an element that has no width/height html attributes and is causing CLS issues. You can use this mixin to the parent element of the img element, to create a padding equal to the height of the image in the current screen size (we are using aspect ratio instead of hard pixels).
 /// <img class='wrap-image' src='./images/some-image.jpg' alt='Some image' width='400' heigh='300' > </img>
@@ -50,6 +50,6 @@
 
 @if getMap($configuration, generate-classes, utility) {
   .image-wrapper {
-    @include image-wrapper(300px, 350px, #666);
+    @include image-wrapper(300, 350, #666);
   }
 }
