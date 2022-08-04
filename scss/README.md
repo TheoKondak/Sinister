@@ -19,12 +19,16 @@ Also I keep releasing hotfixes almost daily.
 <br>
 
 
+## Installation
+
+`npm i @get-sinister/sass`
+
 ## Documentation
 
-Read the latest [Documentation](https://theokondak.github.io/Sinister/)
+[Documentation](https://theokondak.github.io/Sinister/)
 
 ## Changelog
-
+> Not working at the moment
 - [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/main/scss/CHANGELOG.md)
 - [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/main/scss/changelog-data.json)
 
@@ -35,48 +39,50 @@ In order for sinister to work, 2 files are needed.
 
 - In your root directory, where `npm_package` is located, create a file called `_sin.config.scss`.
   
-``` Folder Structure
-.
-├── package.json
-├── node_modules/
-├── _sin.config.scss
+    ``` Folder Structure
+    .
+    ├── package.json
+    ├── node_modules/
+    ├── _sin.config.scss
 
-```
+    ```
 
-  ``` _sin.config.scss content
-    @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
-    $configuration: sin.set-config(
-      (
-    
-      )
-    );
-  ```
+    Then open `_sin.config.scss` file and add the boilerplate to start working.
+
+    ``` _sin.config.scss content
+      @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+      $configuration: sin.set-config(
+        (
+      
+        )
+      );
+    ```
 
 - Inside your scss files directory create a file called `_sin.scss`
 
- ``` Folder Structure
-  ├── package.json
-  ├── node_modules/
-  ├── _sin.config.scss
-  ├── scss/
-    ├── custom.scss     # Just another folder
-    ├── pages/          # Documentation files compilled by Sassdoc will be in this folder
-    ├── _sin.scss       # A folder with our SCSS
-```
+    ``` Folder Structure
+      ├── package.json
+      ├── node_modules/
+      ├── _sin.config.scss
+      ├── scss/
+        ├── custom.scss     # Main scss file
+        ├── pages/          # Folder with more scss files
+        ├── _sin.scss       # file to import `Sinister` to your project.
+    ```
 
-``` _sin.scss content
-      @forward '../node_modules/@get-sinister/sass/sin-core';
-```
-## Importing sinister to a new file
+- The functionality of Sinister lies within `sin-core` folder. All you have to do is load this folder into a file in order to start working with it. Open `_sin.scss` file and add the `@forward` link to the package.
 
-The functionality of Sinister lies within sin folder. All you have to do is load this folder into a file in order to start working with it. In order to load the file, you have to use the `@use`. [Read More](https://sass-lang.com/documentation/at-rules/use)
+    ``` _sin.scss content
+          @forward '../node_modules/@get-sinister/sass/sin-core';
+    ```
+- Importing sinister to a new file is easy. Use the `@use` to import it to the file you are working on. [Read More](https://sass-lang.com/documentation/at-rules/use)
 
 ex.
 
-```
-@use '../sin' as *;
+    ```
+    @use '../sin' as *;
 
-```
+    ```
 
 Keep in mind that the path is relative.
 
