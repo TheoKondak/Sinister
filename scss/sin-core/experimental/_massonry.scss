@@ -1,0 +1,34 @@
+@use 'sass:list';
+@use '../../../../../sin.config' as *;
+@use '../grid/spacing-beta' as *;
+
+@mixin massonry($column-count: 12, $item-column-map: (normal: 4, small: 2, large: 8, extra-large:12), $gap: (g, 1)){
+  // Source https://www.youtube.com/watch?v=xMsckmmd5Dw&ab_channel=WesBos
+  display: grid;
+  @include spacing-beta((g,list.nth($gap, 1), list.nth($gap, 2)));
+
+
+  grid-template-columns: repeat(#{$column-count}, 1fr);
+  grid-auto-flow: dense;
+
+  $first-map-value: false;
+  @each $item-column-map-val-label, $item-column-map-val in $item-column-map{
+
+      
+      @if not $first-map-value{
+        
+        > *{
+            grid-column: span #{$item-column-map-val};
+        }
+
+          $first-map-value: true;
+  }@else{
+      > .#{$item-column-map-val-label}{
+          grid-column: span #{$item-column-map-val};
+          
+      }
+  }
+  
+  }
+
+}
