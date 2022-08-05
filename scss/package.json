@@ -10,10 +10,14 @@
     "doc": "sassdoc \"sin-core\" && node ./scripts/update-documentation.js",
     "doc-herman": "sassdoc \"sin-core\" --theme=herman",
     "changelog": "auto-changelog -p -t keepachangelog && git add CHANGELOG.md && auto-changelog --template json --output changelog-data.json",
-    "version-update": "node ./scripts/update-version.js"
+    "version-update": "node ./scripts/update-version.js",
+    "test": "jest"
   },
   "dependencies": {
+    "glob": "^8.0.3",
+    "jest": "^28.1.3",
     "sass": "^1.51.0",
+    "sass-true": "^6.1.0",
     "sassdoc": "^2.7.4",
     "sassdoc-theme-herman": "^4.0.2"
   },
