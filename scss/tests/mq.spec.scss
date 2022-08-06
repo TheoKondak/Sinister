@@ -1,0 +1,45 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return 576px min-width and max-width: 1200px') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq(xs, md) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 576px) and (max-width: 1200px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return 420px min-width and max-width: 4096px') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq(420px) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 420px) and (max-width: 4096px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

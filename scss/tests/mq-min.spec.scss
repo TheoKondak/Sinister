@@ -1,0 +1,66 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('mq-min [mixin]') {
+  @include true.it('should return min-width: 1200px') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq-min(md) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 1200px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq-min [mixin]') {
+  @include true.it('should return min-width: 420px') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq-min(420px) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 420px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq-min [mixin]') {
+  @include true.it('should return min-width: 49rem') {
+    @include true.assert {
+      @include true.output {
+        @media (min-width: 49rem) {
+          .test {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 49rem) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

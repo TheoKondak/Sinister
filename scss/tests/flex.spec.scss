@@ -1,0 +1,85 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('flex-beta [mixin]') {
+  @include true.it('should return justify-content: center;') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include flex-beta((jc-c));
+        }
+      }
+      @include true.expect {
+        .test {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('flex-beta [mixin]') {
+  @include true.it('should return justify-content: center for screens larger than xs') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include flex-beta((xs, jc-c));
+        }
+      }
+      @include true.expect {
+        @media (min-width: 576px) {
+          .test {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+@include true.describe('flex-beta [mixin]') {
+  @include true.it('should return flex-direction: column, justify-content: center, align-items: center, align-content: center, child align-self: stretch, gap all directions spacing 1 scale 1,3, child flex-basis: 94% | from breakpoint xs and above, flex-direction: row, wrap: wrap, gap general distance 2, flex: 0 0 50%, must calculate auto-gap | from breakpoint md and above, justify-content: space-between !important') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include flex-beta((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
+        }
+      }
+      @include true.expect {
+        .test {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+          gap: 1.95rem;
+        }
+        .test > * {
+          flex-basis: 94%;
+        }
+        .test > * {
+          align-self: stretch;
+        }
+        @media (min-width: 576px) {
+          .test {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 2rem;
+          }
+          .test > * {
+            flex: 0 0 calc(50% - 2rem);
+          }
+        }
+        @media (min-width: 1200px) {
+          .test {
+            display: flex !important;
+            justify-content: space-between !important;
+          }
+        }
+      }
+    }
+  }
+}
