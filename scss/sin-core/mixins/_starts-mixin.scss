@@ -5,9 +5,11 @@
 /// @content
 /// @todo More testing
 /// @example scss Any class that starts with the string `test`
+/// .sin{
 ///   @include starts(test) {
 ///     color: red;
 ///   }
+/// }
 
 @mixin starts($starts: '', $attribute: 'class') {
   [#{$attribute}^='#{$starts}'] {

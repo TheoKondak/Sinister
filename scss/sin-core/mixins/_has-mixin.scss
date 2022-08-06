@@ -5,9 +5,11 @@
 /// @content
 /// @todo More testing
 /// @example scss Any class that contains the string `test`
+/// .sin{
 ///   @include has(test) {
 ///     color: red;
 ///   }
+/// }
 
 @mixin has($has: '', $attribute: 'class') {
   [#{$attribute}*='#{$has}'] {

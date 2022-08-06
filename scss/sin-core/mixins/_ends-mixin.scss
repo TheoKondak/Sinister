@@ -5,9 +5,11 @@
 /// @content
 /// @todo More testing
 /// @example scss Any class that ends with the string `test`
+/// .sin{
 ///   @include ends('test') {
 ///     color: red;
 ///   }
+/// }
 
 @mixin ends($ends: '', $attribute: 'class') {
   [#{$attribute}$='#{$ends}'] {

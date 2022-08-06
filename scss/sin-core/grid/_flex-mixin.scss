@@ -96,9 +96,9 @@
 ///  @include flex(
 ///   (fd-cl, ai-c), // Flex direction column, align items center
 ///   (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-///   (md, (g,1,.5)) // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-///   (lg, (1 0 auto)) // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+///   (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+///   (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
 ///  );
 /// }
 @mixin flex($args...) {

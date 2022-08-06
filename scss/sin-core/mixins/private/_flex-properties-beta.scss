@@ -4,7 +4,7 @@
 @use 'sass:math';
 @use '../../functions/' as *;
 @use '../../misc/css-properties' as *;
-@use '../../grid/spacing' as *;
+@use '../../grid/spacing-beta' as *;
 @use '../../../../../../sin.config' as *;
 
 /// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
@@ -43,7 +43,7 @@
   // Gap
   @if $has-gap {
     @if length($gap-value) == 2 {
-      @include spacing((g, list.nth($gap-value, 1), list.nth($gap-value, 2)));
+      @include spacing-beta((g, list.nth($gap-value, 1), list.nth($gap-value, 2)));
 
       //   @debug list.nth($gap-value, 1);
 
@@ -53,7 +53,7 @@
     }
     // If it has scale
     @else if length($gap-value) == 3 {
-      @include spacing((g, list.nth($gap-value, 1), list.nth($gap-value, 2), list.nth($gap-value, 3)));
+      @include spacing-beta((g, list.nth($gap-value, 1), list.nth($gap-value, 2), list.nth($gap-value, 3)));
 
       //   @debug list.nth($gap-value, 1);
 

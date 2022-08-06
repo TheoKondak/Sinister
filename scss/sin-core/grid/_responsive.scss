@@ -202,7 +202,7 @@
 ///     display: block;
 ///   }
 /// }
-@mixin mq-max($max: 120px) {
+@mixin mq-max($max: 4096px) {
   @include mqMax($max) {
     @content;
   }
@@ -217,7 +217,7 @@
 ///     display: block;
 ///   }
 /// }
-@mixin max($max: 120px) {
+@mixin max($max: 4096px) {
   @include mqMax($max) {
     @content;
   }

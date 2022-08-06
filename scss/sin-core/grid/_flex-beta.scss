@@ -5,7 +5,7 @@
 @use '../functions' as *;
 @use '../mixins/private/flex-properties-beta' as *;
 @use '../misc/css-properties' as *;
-@use './spacing' as *;
+// @use './spacing' as *;
 @use '../../../../../sin.config' as *;
 
 /// Use flex in one line! With this mixin, you can achieve most flex functionality just in one line. Each set of rules sits within a sass list. Each list can take a breakpoint, and abreviations of flex properties. Each list, should be 1 breakpoint.
@@ -17,33 +17,29 @@
 /// <br/> All parent properties are supported.
 /// - Gap uses spacing mixin to calculatee the values, so use the same syntax. The difference though is that this times it only takes two parameters, since spacing property is always gap.
 /// - For child elements flex-basis, flex, and align-self properties are supported. <br>
-///   - flex-basis: is an scss list containing one element, for example `(45%)'
-///   - flex: takes 3 properties, flex-grow, flex-shring and flex-basis
-///   - align-self: takes abreviations of align-self property.
-/// - debug: pass 'debug' as a parameter to a list to see a debug log about the current list of properties.
-/// - auto-gap: with Sinister, you can automatically negate gap values from flex and flex-basis properties for the x axis, so gap becomes even easier to use. use with caution though, because there might be some side effects.
-/// - !i: pass '!i' string as a parameter to add important to every parameter of the current list. Note that you must add the single quotes in the parameter, otherwise it will not work.
+///   - **flex-basis**: is an scss list containing one element, for example `(45%)`
+///   - **flex**: takes 3 properties, flex-grow, flex-shring and flex-basis
+///   - **align-self**: takes abreviations of align-self property.
+/// - **debug**: pass 'debug' as a parameter to a list to see a debug log about the current list of properties.
+/// - **auto-gap**: with Sinister, you can automatically negate gap values from flex and flex-basis properties for the x axis, so gap becomes even easier to use. Note that only gap that is nested in the current list can be calculated for now. Use with caution though, because there might be some side effects.
+/// - **!i**: pass '!i' string as a parameter to add important to every parameter of the current list. Note that you must add the single quotes in the parameter, otherwise it will not work.
 /// @ignore @author Theodoros Kondakos
 /// @ignore @link   https://github.com/TheoKondak
 /// @access public
 /// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
-/// @example scss See available properties and values
-/// .sin{
-///   @debug flex();
-/// }
 /// @example scss Examples
 /// .sin{
-///  @include flex(
+///  @include flex-beta(
 ///   (fd-cl, ai-c, '!i'), // Flex direction column, align items center, and every css property will become !important
 ///   (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-///   (md, (g,1,.5)) // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-///   (lg, (1 0 auto)) // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
-///   (debug, (g, 1, 1.2), (0 0 43%),  auto-gap), // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
-///
+///   (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+///   (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+///   (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
 ///  );
 /// }
+
 @mixin flex-beta($args...) {
   // It takes a list of Sins
   // Itterate / check first level map
