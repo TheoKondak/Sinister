@@ -7,6 +7,10 @@ pre {
   background-color: rgba(102, 102, 102, 0.1);
 }
 
+p code {
+  font-size: 1em;
+}
+
 .container:after,
 .header:after,
 .searchbar:after {
