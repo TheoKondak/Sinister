@@ -1,6 +1,0 @@
-/*!**************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./test-sin/scss/custom.scss ***!
-  \**************************************************************************************************************************************************************/
-.test-spacing{-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;gap:3rem;justify-content:center}.test-spacing>*{-webkit-box-flex:0;-ms-flex:0 0 300px;flex:0 0 300px}.grid{display:grid;gap:1.5rem;grid-auto-flow:dense;grid-template-columns:repeat(12,1fr)}.grid>*{grid-column:span 4}.grid>.small{grid-column:span 2}.grid>.large{grid-column:span 8}.grid>.extra-large{grid-column:span 12}.grid>*{background-color:orange;padding:2rem}.test{background-color:#ff4500;color:blue}
-
-/*# sourceMappingURL=sinister-compilled-webpack.css.map*/

@@ -5,8 +5,8 @@ const { webpack } = require('webpack');
 // Variables
 let mode = 'development';
 const entryPoint = 'test-sin/scss/sinister.webpack.js'; // Webpack is primarily a js bundler. Entry point cant be blank, You just need to have a value here, doesn't' matter if the files exist or not.
-const outputLocation = ''; // Where the compilled files will be placed.
-const cssOutputFilename = 'sinister-compilled-webpack'; // CSS Output Filename
+const outputLocation = 'test-sin/compilled'; // Where the compilled files will be placed.
+const cssOutputFilename = 'sinister-compiled-webpack'; // CSS Output Filename
 
 process.env.NOVE_ENV === 'production' && mode == 'production';
 

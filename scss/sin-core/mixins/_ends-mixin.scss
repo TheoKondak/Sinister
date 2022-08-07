@@ -3,7 +3,6 @@
 /// @arg {string} $ends [''] - Select any `$attribute` that ends with that string
 /// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
 /// @content
-/// @todo More testing
 /// @example scss Any class that ends with the string `test`
 /// .sin{
 ///   @include ends('test') {
