@@ -1,0 +1,87 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return justify-content: center;') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq(md) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 1200px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return justify-content: center;') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq(420px) {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 420px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return justify-content: center;') {
+    @include true.assert {
+      @include true.output {
+        @media (min-width: 49rem) {
+          .test {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 49rem) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('mq [mixin]') {
+  @include true.it('should return justify-content: center;') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include mq() {
+            color: white;
+          }
+        }
+      }
+      @include true.expect {
+        @media (min-width: 4096px) {
+          .test {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -26,3 +26,15 @@ sassTrue.runSass({ file: flexFile }, { describe, it });
 
 const spacingFile = path.join(__dirname, 'spacing.spec.scss');
 sassTrue.runSass({ file: spacingFile }, { describe, it });
+
+const mq = path.join(__dirname, 'mq.spec.scss');
+sassTrue.runSass({ file: mq }, { describe, it });
+
+const mqMin = path.join(__dirname, 'mq-min.spec.scss');
+sassTrue.runSass({ file: mqMin }, { describe, it });
+
+const mqMax = path.join(__dirname, 'mq-max.spec.scss');
+sassTrue.runSass({ file: mqMax }, { describe, it });
+
+const fontSize = path.join(__dirname, 'font-size.spec.scss');
+sassTrue.runSass({ file: fontSize }, { describe, it });
