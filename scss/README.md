@@ -18,20 +18,20 @@ Also I keep releasing hotfixes almost daily.
 <br>
 <br>
 
-
 ## Installation
 
 `npm i @get-sinister/sass`
 
 ## Documentation
 
-[Documentation](https://theokondak.github.io/Sinister/)
+Read the full [documentation](https://theokondak.github.io/Sinister/).
 
 ## Changelog
+
 > Not working at the moment
+
 - [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/main/scss/CHANGELOG.md)
 - [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/main/scss/changelog-data.json)
-
 
 ## Setup the data
 
@@ -49,11 +49,14 @@ In order for sinister to work, 2 files are needed.
 
     Then open `_sin.config.scss` file and add the boilerplate to start working.
 
-    ``` _sin.config.scss content
-      @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
-      $configuration: sin.set-config(
+    ``` scss
+      _sin.config.scss content
+        @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+        $configuration: sin.set-config(
         (
-      
+          breakpoints: (
+            new-breakpoint: 420px;
+          )
         )
       );
     ```
@@ -70,6 +73,8 @@ In order for sinister to work, 2 files are needed.
         ├── _sin.scss       # file to import `Sinister` to your project.
     ```
 
+    To see the scema and default values check the [documentation](https://theokondak.github.io/Sinister/#setup-variable-sinister-default-configuration).
+
 - The functionality of Sinister lies within `sin-core` folder. All you have to do is load this folder into a file in order to start working with it. Open `_sin.scss` file and add the `@forward` link to the package.
 
     ``` _sin.scss content
@@ -79,10 +84,9 @@ In order for sinister to work, 2 files are needed.
 
 ex.
 
-    ```
+``` scss
     @use '../sin' as *;
-
-    ```
+```
 
 Keep in mind that the path is relative.
 
