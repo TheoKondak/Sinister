@@ -19,9 +19,12 @@
 
   // Handle Gap exception
   @if $property == 'g' {
-    #{$current-direction}: calc(#{$value} * #{$scale}) #{css-property($is-important, '!important')};
+    $calculate-value: $value * $scale;
+
+    #{$current-direction}: #{$calculate-value} #{css-property($is-important, '!important')};
   } @else {
-    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$current-direction}: calc(#{$value} * #{$scale}) #{css-property($is-important, '!important')};
+    $calculate-value: $value * $scale;
+    #{getMap(getMap($css-properties, spacing, spacing-properties), $property)}-#{$current-direction}: #{$calculate-value} #{css-property($is-important, '!important')};
   }
 }
 
@@ -45,18 +48,18 @@
 ///  @include spacing(
 ///   (m, g, 1), // Margin, general (all directions), distance 1 (from sinister configuration)
 ///   (xs, m, g, 2), // From breakpoint xs from sinister configuration, direction general, distance 2
-///   (md, p, y, 2, 1.4) // From breakpoint md, padding, y axis, distance 2, and scale 1.4
-///   (lg, m, x, auto) // From breakpoint lg, x axis, margin auto
+///   (md, p, y, 2, 1.4), // From breakpoint md, padding, y axis, distance 2, and scale 1.4
+///   (lg, m, x, auto), // From breakpoint lg, x axis, margin auto
 ///   (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
 ///  );
 /// }
 /// @example scss Common use case
 /// .sin{
 ///  @include spacing(
-///   debug, // Will print debug log for both list items
-///   (m, g, 1),
-///   (xs, m, g, 2),
-///  );
+///     debug, // Will print debug log for both list items
+///     (m, g, 1),
+///     (xs, m, g, 2),
+///   );
 /// }
 /// @example scss Common use case
 /// .sin{
