@@ -11,7 +11,7 @@
     "doc-herman": "sassdoc \"sin-core\" --theme=herman",
     "changelog": "auto-changelog -p -t keepachangelog && git add CHANGELOG.md && auto-changelog --template json --output changelog-data.json",
     "version-update": "node ./scripts/update-version.js",
-    "test": "jest"
+    "test": "jest --coverage --"
   },
   "dependencies": {
     "glob": "^8.0.3",
