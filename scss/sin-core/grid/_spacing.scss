@@ -23,7 +23,6 @@
 ///   (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
 ///  );
 /// }
-
 @mixin spacing($args...) {
   $breakpoint: null;
   $property: null;

@@ -12,7 +12,6 @@
 /// @access private
 /// @group dev
 /// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
-
 @mixin flex-properties($cur-arg) {
   // Flex Direction
   // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);

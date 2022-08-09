@@ -9,7 +9,6 @@
 ///     color: red;
 ///   }
 /// }
-
 @mixin has($has: '', $attribute: 'class') {
   [#{$attribute}*='#{$has}'] {
     @content;

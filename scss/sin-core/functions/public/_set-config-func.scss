@@ -5,11 +5,10 @@
 @use './../private/type-func' as *;
 
 /// `set.config` creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new ones.
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+/// @author Theodoros Kondakos
 /// @group setup
-/// @param  {map}  $new-config - A map that contains setting values to update or add new data to the configuration
-/// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
+/// @param {map} $new-config - A map that contains setting values to update or add new data to the configuration
+/// @return {map} - Returns an updated map that is a merge of $new-config and $original-map.
 /// @see {function} help
 /// @example scss See available properties and values
 ///
@@ -20,7 +19,6 @@
 ///    ),
 ///  )
 /// );
-
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`
   @if (type($new-config, (map))) {

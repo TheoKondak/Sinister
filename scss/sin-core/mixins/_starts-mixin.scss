@@ -9,7 +9,6 @@
 ///     color: red;
 ///   }
 /// }
-
 @mixin starts($starts: '', $attribute: 'class') {
   [#{$attribute}^='#{$starts}'] {
     @content;

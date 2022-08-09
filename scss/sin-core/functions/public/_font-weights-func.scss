@@ -9,9 +9,9 @@
 /// @name fw
 /// @group typography
 /// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+/// @ignore @link https://github.com/TheoKondak
 /// Function to easily access font weights
-/// @param  {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
+/// @param {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font weight value
 
 @function fw($key: null) {
@@ -43,7 +43,7 @@
 /// @name font-weight
 /// @group typography
 /// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+/// @ignore @link https://github.com/TheoKondak
 /// Function to easily access font weights
 /// @param  {string}  $key - A key from `font-weights` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font weight value
