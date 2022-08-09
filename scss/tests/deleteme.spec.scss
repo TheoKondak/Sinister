@@ -1,0 +1,9 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as *;
+@use '../deleteme.scss';
+
+@include describe('string-split [function]') {
+  @include it('should return input string split using delimiter ","') {
+    @include assert-equal(string-split('apples,bananas,oranges', ','), ('apples' 'oranges' 'bananas'));
+  }
+}
