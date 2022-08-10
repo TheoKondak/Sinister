@@ -12,7 +12,6 @@
 /// @ignore @link   https://github.com/TheoKondak
 /// @param  {string}  $image-url - The URL that prefixes an image while in development
 /// @return {string}  - Returns the full css property required to add a background image, with the prefix url prefixed. Might be useful in some projects.
-
 @function prefix-url($image-url: '') {
   $production: get(global, production);
   $production-url: get(global, production-url);

@@ -6,12 +6,10 @@
 @use '../misc/css-properties' as *;
 
 /// Generate spacing related parameters
-/// @group Classes
+/// @group classes
 /// @name spacing-classes
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
 /// @todo Rewrite and generate classes by using a function instead of spaghetti code.
-/// @prop {bool} compile-spacing-classes [false] - Sinister configuration property, if true will generate spacing classes.
+/// {bool} compile-spacing-classes [false] - Sinister configuration property, if true will generate spacing classes.
 $compile-spacing-classes: getMap($configuration, generate-classes, 'spacing');
 @if $compile-spacing-classes {
   @each $spacingKey, $spacingVal in get(spacing) {

@@ -7,12 +7,12 @@
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
 /// @group grid
-/// @parameter {string} $breakpoint - A breakpoint from breakpoints in Sinister configuration.
-/// @parameter {string} $property - The first letter of a spacing property, m for margin, p for padding, g for gap.
-/// @parameter {string} $direction - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
-/// @parameter {string} $value - A spacing value from spacing in Sinister configuration
-/// @parameter {number} $scale - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
-/// @parameter {string} $important - If `!i` is present, the style will get `!important`.
+/// `{string}` `$breakpoint` - A breakpoint from breakpoints in Sinister configuration.
+/// `{string}` `$property` - The first letter of a spacing property, m for margin, p for padding, g for gap.
+/// `{string}` `$direction` - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
+/// `{string}` `$value` - A spacing value from spacing in Sinister configuration
+/// `{number}` `$scale` - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+/// `{string}` `$important` - If `!i` is present, the style will get `!important`.
 /// @link https://utopia.fyi/space/calculator
 /// @example scss Common use case
 /// .sin{
