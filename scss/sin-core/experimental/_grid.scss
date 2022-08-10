@@ -2,7 +2,7 @@
 
 @use './../grid/_responsive.scss' as *;
 
-/// `grid` mixin is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
+/// Grid mixin is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
 /// It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from `_sinConfig` , then the mixin expects a list of grid columns and optionally a list of grid rows.
 /// @access public
 /// @group grid

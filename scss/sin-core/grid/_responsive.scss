@@ -99,15 +99,6 @@
   }
 }
 
-/// @group grid
-/// @deprecated mixin to be deprecated in sinister 0.6.73 and replaced my mixin mq-min and min
-/// @param  {number}  $min [120px] - Breakpoint from which the query will kick in
-/// @example scss Accepting a breakpoint from `sin.config`
-/// .sin{
-///   @include mqMin(xs){
-///     display: block;
-///   }
-/// }
 @mixin mqMin($min: 120px) {
   @if type-of($min) == 'number' {
     @if unitless($min) {

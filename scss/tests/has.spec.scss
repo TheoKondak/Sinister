@@ -1,0 +1,53 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('has [mixin]') {
+  @include true.it('should return any "class" that has with "est"') {
+    @include true.assert {
+      @include true.output {
+        @include has('est') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [class*='est'] {
+          color: black;
+        }
+      }
+    }
+  }
+}
+@include true.describe('has [mixin]') {
+  @include true.it('should return any "class" that has with "est"') {
+    @include true.assert {
+      @include true.output {
+        @include has('est') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [class*='est'] {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('has [mixin]') {
+  @include true.it('should return any "role" attribute that has with "cont"') {
+    @include true.assert {
+      @include true.output {
+        @include has('cont', 'role') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [role*='cont'] {
+          color: black;
+        }
+      }
+    }
+  }
+}

@@ -38,3 +38,12 @@ sassTrue.runSass({ file: mqMax }, { describe, it });
 
 const fontSize = path.join(__dirname, 'font-size.spec.scss');
 sassTrue.runSass({ file: fontSize }, { describe, it });
+
+const starts = path.join(__dirname, 'starts.spec.scss');
+sassTrue.runSass({ file: starts }, { describe, it });
+
+const ends = path.join(__dirname, 'ends.spec.scss');
+sassTrue.runSass({ file: ends }, { describe, it });
+
+const has = path.join(__dirname, 'has.spec.scss');
+sassTrue.runSass({ file: has }, { describe, it });

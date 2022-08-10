@@ -6,7 +6,6 @@
 /// @group utility
 /// @deprecated Since version 0.6.67-beta.2. Use `responsive-iframe` mixin instead.
 /// @arg {number} $padding [56.2%]  - Set a percentage to achieve the desired padding
-
 @mixin responsive-video($padding: 56.25%) {
   position: relative;
   width: 100%;

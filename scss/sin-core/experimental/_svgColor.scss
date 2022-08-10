@@ -4,8 +4,6 @@
 //  Change color to SVG elements with css.
 //⚔️⚰️⚰️⚰️⚰️⚰️⚰️⚰️⚔️
 
-/// Not sure why i have this function lol
-/// @access private
 @function nthList($list, $pos) {
   @return nth($list, $pos);
 }
@@ -14,13 +12,17 @@
 /// For <img> elements, place the mixin at parent.
 /// For background img, use the element you want and it will add an after that does the work.
 /// ## Notes:
+///
 /// > svgUrl must be in single or double quotes because it's a string.
+///
 /// > Need to test for side effects
+///
 /// @arg {color} $svgColor [black] - The color you want to assign to the svg
 /// @arg {string} $svgUrl [https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bitmap_VS_SVG.svg/1920px-Bitmap_VS_SVG.svg.png] - The link of the svg file
-/// @arg {bool} $isImage [false] -
+/// @arg {bool} $isImage [false] - If the url leads to an image
 /// @todo More documentation and testing needed
 /// @link https://stackoverflow.com/questions/21509982/change-svg-fill-color-in-before-or-after-css
+
 @mixin svgColor(
   $svgColor: black,
   $svgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bitmap_VS_SVG.svg/1920px-Bitmap_VS_SVG.svg.png',
@@ -34,7 +36,7 @@
     // Right
     1rem,
     // Bottom
-    null // Left,,,,,,,,,,,,
+    null // Left,,,,,,,,,,,,,,,,,,,,,
   )
 ) {
   @if $isImage {

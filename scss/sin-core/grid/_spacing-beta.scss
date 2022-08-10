@@ -45,7 +45,7 @@
 /// }
 /// @example scss Common use case
 /// .sin{
-///  @include spacing(
+///  @include spacing-beta(
 ///   (m, g, 1), // Margin, general (all directions), distance 1 (from sinister configuration)
 ///   (xs, m, g, 2), // From breakpoint xs from sinister configuration, direction general, distance 2
 ///   (md, p, y, 2, 1.4), // From breakpoint md, padding, y axis, distance 2, and scale 1.4
@@ -55,7 +55,7 @@
 /// }
 /// @example scss Common use case
 /// .sin{
-///  @include spacing(
+///  @include spacing-beta(
 ///     debug, // Will print debug log for both list items
 ///     (m, g, 1),
 ///     (xs, m, g, 2),
@@ -63,7 +63,7 @@
 /// }
 /// @example scss Common use case
 /// .sin{
-///  @include spacing(
+///  @include spacing-beta(
 ///   (debug, m, g, 1),  // Will print debug log for this item
 ///   (xs, m, g, 2rem), // From xs breakpoint, margin general 2rem
 ///   (g, t, 2) // property gap, direction is top, but gap works on x and y axis so in that case top is translated to top and bottom, or y axis

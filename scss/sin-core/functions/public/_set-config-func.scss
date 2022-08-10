@@ -5,35 +5,27 @@
 @use './../private/type-func' as *;
 
 /// `set.config` creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new ones.
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+/// @author Theodoros Kondakos
 /// @group setup
-/// @param  {map}  $new-config - A map that contains setting values to update or add new data to the configuration
-/// @return {map}  - Returns an updated map that is a merge of $new-config and $original-map.
+/// @param {map} $new-config - A map that contains setting values to update or add new data to the configuration
+/// @return {map} - Returns an updated map that is a merge of $new-config and $original-map.
 /// @see {function} help
-/// @example scss - Set configuration
-/// $configuration: sin.set-config((
-///    colors: (
+/// @example scss See available properties and values
+///
+/// $configuration: set-config(
+///  (
+///   colors: (
 ///      test-color: #ffa,
 ///    ),
-///    breakpoints: (
-///     tablet: 781px,
-///     desktop: 1200px
-///   ),
-///   global: (
-///     production: false,
-///     production-url: "www.google.com"
-///     development-url: "preview.google.com"
-///   )
-///  ));
-
+///  )
+/// );
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`
   @if (type($new-config, (map))) {
     $default-configuration: $sinister-default-configuration;
-    /// A new map to use for updating the return map
+    // A new map to use for updating the return map
     $processing-map: ();
-    /// The map to be returned as the final `$configuration`
+    // The map to be returned as the final `$configuration`
     $return-map: $default-configuration;
     @each $original-key, $original-value in $default-configuration {
       @each $new-key, $new-value in $new-config {

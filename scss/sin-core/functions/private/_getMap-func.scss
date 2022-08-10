@@ -12,10 +12,10 @@
 /// Will return the color set for the specific value pair.
 /// @group dev
 /// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-/// @param  {map}  $map [$configuration] - Source map
-/// @param  {string}  $key - Takes a key and if it exists in configuration
-/// @return {*}  - Returns the value/es that exist in the key.
+/// @ignore @link https://github.com/TheoKondak
+/// @param  { map } $map - [$configuration] - Source map
+/// @param  { string } $key - Takes a key and if it exists in configuration
+/// @return { * } - Returns the value/es that exist in the key.
 @function getMap($map, $keys...) {
   @if $map {
     @if $keys {

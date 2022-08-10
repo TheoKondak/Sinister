@@ -28,22 +28,18 @@
 /// @access public
 /// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
-/// @example scss See available properties and values
-/// .sin{
-///   @debug flex();
-/// }
 /// @example scss Examples
 /// .sin{
-///  @include flex(
+///  @include flex-beta(
 ///   (fd-cl, ai-c, '!i'), // Flex direction column, align items center, and every css property will become !important
 ///   (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-///   (md, (g,1,.5)) // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-///   (lg, (1 0 auto)) // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
-///   (debug, (g, 1, 1.2), (0 0 43%),  auto-gap), // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
-///
+///   (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+///   (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+///   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+///   (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
 ///  );
 /// }
+
 @mixin flex-beta($args...) {
   // It takes a list of Sins
   // Itterate / check first level map

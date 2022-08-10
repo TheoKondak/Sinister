@@ -19,10 +19,10 @@
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
 /// @example scss will check if there is sufficient contrast, if yes, color will become white, otherwise will become random color from `_sin.config.scss`
 /// .sin{
-///     @if contrast(#fff, color(random-color)){
+///     @if contrast(#fff, #faa){
 ///        color: #fff;
 ///     }@else{
-///        color: color(random-color);
+///        color: blue;
 ///     }
 ///  }
 @function contrast($foreground-color, $background-color, $threshold: 450, $debug: false) {

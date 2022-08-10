@@ -1,11 +1,12 @@
 # .sassdocrc (yaml)
 
-dest: 'documentation/0.6.72-beta.6'
+dest: './documentation/0.6.72-beta.6'
 descriptionPath: './README.md'
 shortcutIcon: '../sinister-logo.svg'
 herman:
   sass:
     includePaths:
-      - './test-sin/scss'
-    includes:
-      - 'sin'
+      - 'test-sin/scss'
+    use:
+      - file: 'sin'
+      - namespace: '*'

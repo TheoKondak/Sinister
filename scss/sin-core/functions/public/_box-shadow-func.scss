@@ -8,7 +8,7 @@
 
 /// Get the box shadow from the $box-shadow-list in order to feed it into the mixin
 /// @group utility
-/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+/// @param {number} $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 /// @return {list} - Returns a list of box shadow css properties to the mixin.
 @function box-shadow($box-shadow-id) {
   @if type-of($box-shadow-id) == 'number' and $box-shadow-id >= 0 and $box-shadow-id < list.length($box-shadow-list) {
@@ -22,7 +22,7 @@
 
 /// Get the box shadow from the `$box-shadow-list` in order to feed it into the function
 /// @group utility
-/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+/// @param {number} $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 @mixin boxshadow($box-shadow-id: 5) {
   @if type-of($box-shadow-id) == 'number' {
     box-shadow: box-shadow($box-shadow-id);
@@ -31,9 +31,9 @@
   }
 }
 
-/// `boxshadow()` mixin to become obsolete. The new mixin is this.
+/// `boxshadow()` mixin to become obsolete. The new mixin is [this](https://theokondak.github.io/Sinister/#utility-mixin-box-shadow).
 /// @group utility
-/// @param  {number}  $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+/// @param {number} $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 @mixin box-shadow($box-shadow-id) {
   @include boxshadow($box-shadow-id);
 }

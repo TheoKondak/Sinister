@@ -1,0 +1,45 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../deleteme.scss' as *;
+
+@include true.describe('screen-above [mixin]') {
+  @include true.it('should return screen-above 640px given xs') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include screen-above(xs) {
+            color: #fff;
+          }
+        }
+      }
+      @include true.expect {
+        @media screen and (min-width: 640px) {
+          .test {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('screen-above [mixin]') {
+  @include true.it('should return screen-above 768px given sm') {
+    @include true.assert {
+      @include true.output {
+        .test {
+          @include screen-above(sm) {
+            color: #fff;
+          }
+        }
+      }
+      @include true.expect {
+        @media screen and (min-width: 768px) {
+          .test {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

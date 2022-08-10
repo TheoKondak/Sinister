@@ -1,0 +1,53 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('ends [mixin]') {
+  @include true.it('should return any "class" that ends with "est"') {
+    @include true.assert {
+      @include true.output {
+        @include ends('est') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [class$='est'] {
+          color: black;
+        }
+      }
+    }
+  }
+}
+@include true.describe('ends [mixin]') {
+  @include true.it('should return any "class" that ends with "est"') {
+    @include true.assert {
+      @include true.output {
+        @include ends('est') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [class$='est'] {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('ends [mixin]') {
+  @include true.it('should return any "role" attribute that ends with "cont"') {
+    @include true.assert {
+      @include true.output {
+        @include ends('cont', 'role') {
+          color: black;
+        }
+      }
+      @include true.expect {
+        [role$='cont'] {
+          color: black;
+        }
+      }
+    }
+  }
+}
