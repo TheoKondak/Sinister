@@ -1,41 +1,40 @@
 # SINISTER
 
-## WARNING:
+## WARNING
 
-## !! This project is not tested enough for production unless you know what you are doing and you do your own debugging !!
+## !! This project is not tested enough for production unless you know what you are doing and you do your own debugging
 
 <br>
 
 Sinister is an SCSS and JS utility library.
 
-This project intends to act as a last-layer CSS override for CMS systems or for an SCSS organization platform for any other project. It also intends to host some JS components, that will add functionality to a website, and perform various tasks for more see `@get-sinister/js` (under construction).
+The SCSS library tries to simplify daily common cases like creating a grid, managing spacings like paddings, gaps etc, managing project color palette in SCSS level as well as give usefull utility mixin and functions. For more read the documentation.
 
-This is a one-man project. I only work on the project only when I have some free time, and I do some basic testing, but be aware that some things might not work as intended.
+You can implement Sinister in your SCSS routine just by importing it to your SCSS file.
 
-Currently the documentation is very limited, but I will start writing a bit more while testing current Sinister features.
+The JS part is currently in hietus, with not much to offer.
 
-Also I keep releasing hotfixes almost daily.
+Most of the `mixins` and `functions` are unit tested and work as expected.
+
+That being said, this is a one-man project. I only work on the it only when I have some free time, so be aware that some things might not work as intended since coverage is not 100% yet.
+
 <br>
 <br>
-
 
 ## Installation
 
 `npm i @get-sinister/sass`
 
-## Documentation
-
-[Documentation](https://theokondak.github.io/Sinister/)
-
 ## Changelog
+
 > Not working at the moment
+
 - [CHANGELOG.md](https://github.com/TheoKondak/Sinister/blob/main/scss/CHANGELOG.md)
 - [CHANGELOG.JSON](https://github.com/TheoKondak/Sinister/blob/main/scss/changelog-data.json)
 
+## Configuration
 
-## Setup the data
-
-In order for sinister to work, 2 files are needed. 
+In order for sinister to work, 2 files are needed.
 
 - In your root directory, where `npm_package` is located, create a file called `_sin.config.scss`.
   
@@ -58,7 +57,13 @@ In order for sinister to work, 2 files are needed.
       );
     ```
 
-- Inside your scss files directory create a file called `_sin.scss`
+    >  **tip:** at any point in your scss file you can type `@debug help();` to print sinister configuration values.
+
+    >  **tip:** keep in mind that if you update `_sin.config.scss` values, and you are using `sass --watch` you will have to restart.
+
+<br>
+
+- Inside your scss files directory create a file called `_sin.scss`. You will have to `@use` this file to load sinister in your project.
 
     ``` Folder Structure
       ├── package.json
@@ -75,15 +80,20 @@ In order for sinister to work, 2 files are needed.
     ``` _sin.scss content
           @forward '../node_modules/@get-sinister/sass/sin-core';
     ```
+
 - Importing sinister to a new file is easy. Use the `@use` to import it to the file you are working on. [Read More](https://sass-lang.com/documentation/at-rules/use)
 
 ex.
-
+<br>
     ```
     @use '../sin' as *;
-
     ```
-
+<br>
 Keep in mind that the path is relative.
 
-For advanced users, by commenting out files in various `_index.scss` files, you can prune the output code. That might be useful for production.
+## Documentation
+
+For more, refer to the online documentation.
+
+- [Documentation](https://theokondak.github.io/Sinister/)
+- For older versions check the [archive](https://github.com/TheoKondak/Sinister/tree/main/scss/documentation)
