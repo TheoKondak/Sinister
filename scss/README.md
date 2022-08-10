@@ -2,7 +2,7 @@
 
 ## WARNING
 
-## !! This project is not tested enough for production unless you know what you are doing and you do your own debugging
+## !! This project even though unit tested, is still in beta !!
 
 <br>
 
