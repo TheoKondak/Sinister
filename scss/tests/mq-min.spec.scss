@@ -76,7 +76,7 @@
         }
       }
       @include true.expect {
-        @media (min-width: 4096px) {
+        @media (min-width: 120px) {
           .test {
             color: white;
           }

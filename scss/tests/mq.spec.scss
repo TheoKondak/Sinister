@@ -3,7 +3,7 @@
 @use '../test-sin/scss/sin' as *;
 
 @include true.describe('mq [mixin]') {
-  @include true.it('should return justify-content: center;') {
+  @include true.it('should return media query, min width 1200px and max 4096px') {
     @include true.assert {
       @include true.output {
         .test {
@@ -13,7 +13,7 @@
         }
       }
       @include true.expect {
-        @media (min-width: 1200px) {
+        @media (min-width: 1200px) and (max-width: 4096px) {
           .test {
             color: white;
           }
@@ -24,7 +24,7 @@
 }
 
 @include true.describe('mq [mixin]') {
-  @include true.it('should return justify-content: center;') {
+  @include true.it('should return media query, min width 420px and max 4096px') {
     @include true.assert {
       @include true.output {
         .test {
@@ -34,7 +34,7 @@
         }
       }
       @include true.expect {
-        @media (min-width: 420px) {
+        @media (min-width: 420px) and (max-width: 4096px) {
           .test {
             color: white;
           }
@@ -76,7 +76,7 @@
         }
       }
       @include true.expect {
-        @media (min-width: 4096px) {
+        @media (min-width: 120px) and (max-width: 4096px) {
           .test {
             color: white;
           }

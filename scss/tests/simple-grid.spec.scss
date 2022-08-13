@@ -61,7 +61,7 @@
           grid-auto-flow: dense;
         }
         .grid-example > .grid-example-item {
-          grid-column: span calc(12 / 3);
+          grid-column: span 4;
         }
       }
     }
