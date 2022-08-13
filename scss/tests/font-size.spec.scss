@@ -2,8 +2,10 @@
 @use '../node_modules/sass-true/sass/true' as true;
 @use '../test-sin/scss/sin' as *;
 
-// @include describe('font-size [function]') {
-//   @include it('should return a font-size value of 0.7rem') {
-//     @include assert-equal(xs, 0.7rem);
-//   }
-// }
+@include describe('font-size [function]') {
+  @include describe('font-size()') {
+    @include it('should return a font-size value of 0.7rem') {
+      @include assert-equal(font-size(xs), (0.7rem));
+    }
+  }
+}

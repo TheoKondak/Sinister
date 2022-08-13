@@ -3,7 +3,7 @@
 @use '../test-sin/scss/sin' as *;
 
 @include true.describe('spacing-beta [mixin]') {
-  @include true.it('should return margin, all directions, distance 1, from breakpoint xs, margin, all directions, distance 2') {
+  @include true.it('should return justify-content: center;') {
     @include true.assert {
       @include true.output {
         .test {

@@ -2,7 +2,7 @@
 
 ## WARNING
 
-## !! This project is not tested enough for production unless you know what you are doing and you do your own debugging
+## !! This project even though unit tested, is still in beta !!
 
 <br>
 
@@ -48,11 +48,14 @@ In order for sinister to work, 2 files are needed.
 
     Then open `_sin.config.scss` file and add the boilerplate to start working.
 
-    ``` _sin.config.scss content
-      @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
-      $configuration: sin.set-config(
+    ``` scss
+      _sin.config.scss content
+        @use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+        $configuration: sin.set-config(
         (
-      
+          breakpoints: (
+            new-breakpoint: 420px;
+          )
         )
       );
     ```
@@ -74,6 +77,8 @@ In order for sinister to work, 2 files are needed.
         ├── pages/          # Folder with more scss files
         ├── _sin.scss       # file to import `Sinister` to your project.
     ```
+
+    To see the scema and default values check the [documentation](https://theokondak.github.io/Sinister/#setup-variable-sinister-default-configuration).
 
 - The functionality of Sinister lies within `sin-core` folder. All you have to do is load this folder into a file in order to start working with it. Open `_sin.scss` file and add the `@forward` link to the package.
 
