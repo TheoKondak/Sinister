@@ -1,0 +1,69 @@
+/* functions.spec.scss */
+@use '../node_modules/sass-true/sass/true' as true;
+@use '../test-sin/scss/sin' as *;
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return a custom simple-grid with') {
+    @include true.assert {
+      @include true.output {
+        .grid-example {
+          @include simple-grid(6);
+        }
+      }
+      @include true.expect {
+        .grid-example {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-flow: dense;
+        }
+        .grid-example > * {
+          grid-column: span 2;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with a specific number of columns') {
+    @include true.assert {
+      @include true.output {
+        .grid-example {
+          @include simple-grid(3, '.grid-example-item');
+        }
+      }
+      @include true.expect {
+        .grid-example {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-flow: dense;
+        }
+        .grid-example > .grid-example-item {
+          grid-column: span calc(12 / 3);
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with a specific number of columns') {
+    @include true.assert {
+      @include true.output {
+        .grid-example {
+          @include simple-grid(3, '.grid-example-item');
+        }
+      }
+      @include true.expect {
+        .grid-example {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-flow: dense;
+        }
+        .grid-example > .grid-example-item {
+          grid-column: span calc(12 / 3);
+        }
+      }
+    }
+  }
+}

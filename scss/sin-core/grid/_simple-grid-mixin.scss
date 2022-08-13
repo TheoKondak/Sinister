@@ -1,0 +1,46 @@
+@use '../../../../../sin.config' as *;
+@use 'sass:string';
+@use 'sass:math';
+
+/// @group grid
+/// @ignore @author Theodoros Kondakos
+/// @param  {number}  $item-per-column [4] - The number of columns of the grid
+/// @param  {string}  $element-type [*] - The number of columns of the grid
+/// @param  {number}  $template-columns [12] - Breakpoint will work up to `$max`
+/// @content
+/// @example scss A layout with three columns
+/// .grid-example{
+///   @include simple-grid(3){
+///     background-color: purple;
+///     padding: 1rem;
+///   }
+/// }
+/// @example scss A layout with three columns
+/// .grid-example{
+///   @include simple-grid(3, ".grid-example-item"){
+///     background-color: purple;
+///     padding: 1rem;
+///   }
+/// }
+///
+@mixin simple-grid($item-per-column: 4, $element-type: '*', $template-columns: 12) {
+  @if type-of($template-columns) == 'number' and type-of($item-per-column) == 'number' and $item-per-column != 0 {
+    @if ($template-columns >= $item-per-column) {
+      $items-per-column-calculated: math.round(math.div($template-columns, $item-per-column));
+      display: grid;
+
+      grid-template-columns: repeat($template-columns, 1fr);
+      grid-auto-flow: dense;
+
+      @content;
+
+      > #{$element-type} {
+        grid-column: span $items-per-column-calculated;
+      }
+    } @else {
+      @error unquote('Grid $template-columns (#{$template-columns}) cannot be smaller than $items-per-column (#{$item-per-column})');
+    }
+  } @else {
+    @error unquote('Grid $template-columns and $items-per-column must be type of number');
+  }
+}

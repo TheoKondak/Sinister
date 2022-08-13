@@ -47,3 +47,6 @@ sassTrue.runSass({ file: ends }, { describe, it });
 
 const has = path.join(__dirname, 'has.spec.scss');
 sassTrue.runSass({ file: has }, { describe, it });
+
+const simpleGrid = path.join(__dirname, 'simple-grid.spec.scss');
+sassTrue.runSass({ file: simpleGrid }, { describe, it });
