@@ -1,3 +1,6 @@
+@use 'sass:string';
+@use '../functions/public/has-func' as *;
+
 /// With this mixin you can target any class that contains the selected string.
 /// @group utility
 /// @arg {string} $has [''] - Select any `$attribute` that contains that string
@@ -10,7 +13,8 @@
 ///   }
 /// }
 @mixin has($has: '', $attribute: 'class') {
-  [#{$attribute}*='#{$has}'] {
+  // [#{$attribute}*='#{$has}'] {
+  #{has($has, $attribute)} {
     @content;
   }
 }

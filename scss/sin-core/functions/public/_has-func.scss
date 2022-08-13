@@ -1,0 +1,5 @@
+@use 'sass:string';
+
+@function has($has: '', $attribute: 'class') {
+  @return unquote("[#{$attribute}*='#{$has}']");
+}
