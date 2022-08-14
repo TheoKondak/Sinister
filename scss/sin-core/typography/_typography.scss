@@ -76,7 +76,7 @@
 //+----------------------+
 // Responsive Font Sizes
 //+----------------------+
-@if get(global, responsive-fonts) {
+@if get(typography, responsive-fonts) {
   :root {
     font-size: get(responsive-font-sizes, generic);
 
@@ -96,42 +96,42 @@ body {
   // line-height: 1.61803398875; //Golden Ratio
 
   h1 {
-    font-size: get(default-font-sizes, h1);
+    font-size: getMap($configuration, typography, default-font-sizes, h1);
   }
 
   h2 {
-    font-size: get(default-font-sizes, h2);
+    font-size: getMap($configuration, typography, default-font-sizes, h2);
   }
 
   h3 {
-    font-size: get(default-font-sizes, h3);
+    font-size: getMap($configuration, typography, default-font-sizes, h3);
   }
 
   h4 {
-    font-size: get(default-font-sizes, h4);
+    font-size: getMap($configuration, typography, default-font-sizes, h4);
   }
 
   h5 {
-    font-size: get(default-font-sizes, h5);
+    font-size: getMap($configuration, typography, default-font-sizes, h5);
   }
 
   h6 {
-    font-size: get(default-font-sizes, h6);
+    font-size: getMap($configuration, typography, default-font-sizes, h6);
   }
 
   span {
-    font-size: get(default-font-sizes, span);
+    font-size: getMap($configuration, typography, default-font-sizes, span);
   }
 
   p {
-    font-size: get(default-font-sizes, p);
+    font-size: getMap($configuration, typography, default-font-sizes, p);
   }
 
   a {
     @if getMap($configuration, generate-classes, utility) {
       text-decoration: none;
 
-      font-size: get(default-font-sizes, a);
+      font-size: getMap($configuration, typography, default-font-sizes, a);
 
       &:hover {
         text-decoration: none;
@@ -140,27 +140,27 @@ body {
   }
 
   button {
-    font-size: get(default-font-sizes, button);
+    font-size: getMap($configuration, typography, default-font-sizes, button);
   }
 
   em {
-    font-size: get(default-font-sizes, em);
+    font-size: getMap($configuration, typography, default-font-sizes, em);
   }
 
   small {
-    font-size: get(default-font-sizes, small);
+    font-size: getMap($configuration, typography, default-font-sizes, small);
   }
 
   strong {
-    font-size: get(default-font-sizes, strong);
+    font-size: getMap($configuration, typography, default-font-sizes, strong);
   }
 
   ul {
-    font-size: get(default-font-sizes, ul);
+    font-size: getMap($configuration, typography, default-font-sizes, ul);
   }
 
   ol {
-    font-size: get(default-font-sizes, ol);
+    font-size: getMap($configuration, typography, default-font-sizes, ol);
   }
 
   @mixin disable-list-style {
@@ -168,31 +168,27 @@ body {
   }
 
   li {
-    @if get(global, disable-list-style) {
+    @if get(typography, disable-list-style) {
       @include disable-list-style;
     }
 
-    font-size: get(default-font-sizes, li);
+    font-size: getMap($configuration, typography, default-font-sizes, li);
   }
 
   hr {
-    font-size: get(default-font-sizes, hr);
-  }
-
-  br {
-    font-size: get(default-font-sizes, br);
+    font-size: getMap($configuration, typography, default-font-sizes, hr);
   }
 
   wbr {
-    font-size: get(default-font-sizes, wbr);
+    font-size: getMap($configuration, typography, default-font-sizes, wbr);
   }
 
   div {
-    font-size: get(default-font-sizes, div);
+    font-size: getMap($configuration, typography, default-font-sizes, div);
   }
 
   section {
-    font-size: get(default-font-sizes, section);
+    font-size: getMap($configuration, typography, default-font-sizes, section);
   }
 }
 
