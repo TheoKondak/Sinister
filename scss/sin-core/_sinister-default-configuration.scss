@@ -1,6 +1,33 @@
-/// This is the default configuration map that contains all the default values.
-/// You can add or update the configuration by using the `sin-config()` function.
 /// @group setup
+/// This is the default configuration map that contains all the default values.
+/// You can add or update the configuration by using the `_sin-config().scss` file.
+/// 
+/// - `colors` [] color palette of the project
+/// - `breakpoints` [] available breakpoints
+/// - `typography`
+///   - `bool` | `disable-list-style`: [false] disables the bullet before `li` html elements for the whole project
+///   - `map` | `font-families` [] list of the font families of the project. Experimental don't use
+///   - `bool` | `responsive-fonts` [false] currently experimental stage, don't use
+///   - `number` | `base-font-size` [16px] the root font size of the project. Used for `em` units
+///   - `number` | `root-font-size` [16px] the root font size of the project. Used for `rem` units
+///   - `map` | `font-sizes` [] list of font-sizes used in the project
+///   - `map` | `font-weights` [] list of font-weights used in the project
+///   - `map` | `default-font-sizes` [] set default font-sizes for html elements
+///   - `map` | `responsive-font-sizes` [] set font-sizes for various breakpoints for responsive font-sizes
+///   - `map` | `spacing` [] spacing values available for the project
+/// - `map` | `global` [] global variables
+///   - `bool` | `production` [false] sets the mode of exported code
+///   - `string` | `development-url` [] development url of the project
+///   - `string` | `production-url` [] production url of the project
+/// - `map` | `generate-classes` [] enable to generate classes
+///     - `bool` | `spacing` [false] generate spacing classes
+///     - `bool` | `display` [false] generate display classes
+///     - `bool` | `fonts` [false] generate fonts classes
+///     - `bool` | `flex` [false] generate flex classes
+///     - `bool` | `utility` [false] generate utility classes
+/// - `map` | `bootstrap` [] override bootstrap variables
+///     - `map` | `bootstrap-color` [] override default bootstrap colors
+/// 
 /// @see {function} set-config
 $sinister-default-configuration: (
   colors: (
@@ -19,105 +46,82 @@ $sinister-default-configuration: (
     sm: 768px,
     // $smartphone
     xs: 576px,
-// UIKit Breakpoints
-uk-breakpoint-s: 640px,
+    // UIKit Breakpoints
+    uk-breakpoint-s: 640px,
     uk-breakpoint-m: 960px,
     uk-breakpoint-l: 1200px,
     uk-breakpoint-xl: 1600px
   ),
-  // Functionality is missing.
-  font-families: (),
-  // Experimental - > Bootstrap overide
-  bootstrap:
-    (
-      // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
-      bootstrap-color:
-        (
-          bs-blue: #0d6efd,
-          bs-indigo: #6610f2,
-          bs-purple: #6f42c1,
-          bs-pink: #d63384,
-          bs-red: #dc3545,
-          bs-orange: #fd7e14,
-          bs-yellow: #ffc107,
-          bs-green: #198754,
-          bs-teal: #20c997,
-          bs-cyan: #0dcaf0,
-          bs-white: #fff,
-          bs-gray: #6c757d,
-          bs-gray-dark: #343a40,
-          bs-primary: #0d6efd,
-          bs-secondary: #6c757d,
-          bs-success: #198754,
-          bs-info: #0dcaf0,
-          bs-warning: #ffc107,
-          bs-danger: #dc3545,
-          bs-light: #f8f9fa,
-          bs-dark: #212529,
-        ),
+  typography: (
+    disable-list-style: false,
+    font-families: (),
+    responsive-fonts: false,
+    base-font-size: 16px,
+    root-font-size: 16px,
+    // Functionality is missing.
+    font-sizes: (
+      xxl: 1.6rem,
+      xl: 1.4rem,
+      md: 1rem,
+      sm: 0.9rem,
+      xs: 0.7rem,
     ),
-  // You can add new breakpoints, or edit the ones bellow, but do not delete any of the default breakpoints
-  
-  responsive-font-sizes: (
-    generic: 0.8vw,
-    xxl: 1vw,
-    xl: 1vw,
-    md: 2vw,
-    sm: 4.3vw,
-    xs: 4.6vw,
-  ),
-  font-weights: (
-    // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
-    // Note Not all fonts support all font weights
-    thin-hairline: 100,
-    extra-light: 200,
-    ultra-light: 200,
-    light: 300,
-    normal: 400,
-    regular: 400,
-    medium: 500,
-    semi-bold: 600,
-    demi-bold: 600,
-    bold: 700,
-    extra-bold: 800,
-    ultra-bold: 800,
-    black: 900,
-    heavy: 900,
-    extra-black: 950,
-    ultra-black: 950,
-  ),
-  font-sizes: (
-    xxl: 1.6rem,
-    xl: 1.4rem,
-    md: 1rem,
-    sm: 0.9rem,
-    xs: 0.7rem,
-  ),
-  default-font-sizes: (
-    h1: null,
-    h2: null,
-    h3: null,
-    h4: null,
-    h5: null,
-    h6: null,
-    span: null,
-    p: null,
-    a: null,
-    button: null,
-    em: null,
-    small: null,
-    strong: null,
-    q: null,
-    ul: null,
-    ol: null,
-    li: null,
-    hr: null,
-    br: null,
-    wbr: null,
-    div: null,
-    section: null,
-  ),
-  
+    font-weights: (
+      // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+      // Note Not all fonts support all font weights
+      thin-hairline: 100,
+      extra-light: 200,
+      ultra-light: 200,
+      light: 300,
+      normal: 400,
+      regular: 400,
+      medium: 500,
+      semi-bold: 600,
+      demi-bold: 600,
+      bold: 700,
+      extra-bold: 800,
+      ultra-bold: 800,
+      black: 900,
+      heavy: 900,
+      extra-black: 950,
+      ultra-black: 950,
+    ),
+
+    default-font-sizes: (
+      h1: null,
+      h2: null,
+      h3: null,
+      h4: null,
+      h5: null,
+      h6: null,
+      span: null,
+      p: null,
+      a: null,
+      button: null,
+      em: null,
+      small: null,
+      strong: null,
+      q: null,
+      ul: null,
+      ol: null,
+      li: null,
+      hr: null,
+      wbr: null,
+      div: null,
+      section: null,
+    ),
+
+    responsive-font-sizes: (
+      generic: 0.8vw,
+      xxl: 1vw,
+      xl: 1vw,
+      md: 2vw,
+      sm: 4.3vw,
+      xs: 4.6vw,
+    ),
+
+),
+
   spacing: (
     0: 0rem,
     1: 1.5rem,
@@ -132,24 +136,53 @@ uk-breakpoint-s: 640px,
   ),
 global: (
   production: false,
-  disable-list-style: false,
-  responsive-fonts: false,
+
   warning-messages-toggle: false,
   development-url: '../../../..',
   production-url: '#',
 ),
 
-image-wrapper: (
-  img-box-default-height: 80,
-  img-box-default-width: 100,
-  img-default-preload-background: none,
-),
+
 generate-classes: (
     spacing: false,
     display: false,
     fonts: false,
     flex: false,
     utility: false
-  )
+  ),
+   // Experimental - > Bootstrap overide
+   bootstrap:
+   (
+     // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
+     bootstrap-color:
+       (
+         bs-blue: #0d6efd,
+         bs-indigo: #6610f2,
+         bs-purple: #6f42c1,
+         bs-pink: #d63384,
+         bs-red: #dc3545,
+         bs-orange: #fd7e14,
+         bs-yellow: #ffc107,
+         bs-green: #198754,
+         bs-teal: #20c997,
+         bs-cyan: #0dcaf0,
+         bs-white: #fff,
+         bs-gray: #6c757d,
+         bs-gray-dark: #343a40,
+         bs-primary: #0d6efd,
+         bs-secondary: #6c757d,
+         bs-success: #198754,
+         bs-info: #0dcaf0,
+         bs-warning: #ffc107,
+         bs-danger: #dc3545,
+         bs-light: #f8f9fa,
+         bs-dark: #212529,
+       ),
+   ),
+   image-wrapper: (
+  img-box-default-height: 80,
+  img-box-default-width: 100,
+  img-default-preload-background: none,
+),
 
 );
