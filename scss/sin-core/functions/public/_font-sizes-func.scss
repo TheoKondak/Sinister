@@ -5,6 +5,7 @@
 
 @use './../../grid/_responsive.scss' as responsive;
 @use './../private/get-func' as *;
+@use './../private/getMap-func' as *;
 @use './../public/help-func' as *;
 
 /// Function to easily access font sizes
@@ -26,24 +27,24 @@
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {
-    @debug help($config-map: get(font-sizes), $intro-msg: 'Printing available Font Sizes:');
+    @debug help($config-map: getMap($configuration, typography, font-sizes), $intro-msg: 'Printing available Font Sizes:');
 
     @return null;
   } @else {
     // Check if $key is part of the font sizes map
-    @if not map.has-key(get(font-sizes), $key) {
+    @if not map.has-key(getMap($configuration, typography, font-sizes), $key) {
       @warn 'fs function needs a valid input. It requires a font size key from sinConfig. The current value is: `#{$key}`. See bellow for available font sizes';
       @debug 'Available font sizes: ';
-      @each $fs-id, $fs in get(font-sizes) {
+      @each $fs-id, $fs in getMap($configuration, typography, font-sizes) {
         @debug ' #{$fs-id}: #{$fs}';
       }
 
-      @debug help($config-map: get(font-sizes), $intro-msg: 'Available font sizes: ');
+      @debug help($config-map: getMap($configuration, typography, font-sizes), $intro-msg: 'Available font sizes: ');
 
       @return '---';
     } @else {
       // Value exists so return value
-      @return get(font-sizes, $key);
+      @return getMap($configuration, typography, font-sizes, $key);
     }
   }
 }

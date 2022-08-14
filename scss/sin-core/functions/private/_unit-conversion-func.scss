@@ -5,21 +5,79 @@
 // Base font size in pixel for converting em and rem to absolute lengths.
 
 // Absolute lengths
+/// Convert to `px`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `px`
+/// .sin{
+///   font-size: px(4rem);
+/// }
+///
 @function px($input) {
   @return to-unit(px, $input);
 }
+
+// Absolute lengths
+/// Convert to `pt`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `pt`
+/// .sin{
+///   font-size: pt(4rem);
+/// }
+///
 @function pt($input) {
   @return to-unit(pt, $input);
 }
+
+// Absolute lengths
+/// Convert to `pc`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `pc`
+/// .sin{
+///   font-size: pc(4rem);
+/// }
+///
 @function pc($input) {
   @return to-unit(pc, $input);
 }
+
+// Absolute lengths
+/// Convert to `in`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `in`
+/// .sin{
+///   font-size: in(4rem);
+/// }
+///
 @function in($input) {
   @return to-unit(in, $input);
 }
+
+// Absolute lengths
+/// Convert to `mm`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `mm`
+/// .sin{
+///   font-size: mm(4rem);
+/// }
+///
 @function mm($input) {
   @return to-unit(mm, $input);
 }
+
+// Absolute lengths
+/// Convert to `cm`
+/// @group unit-conversion
+/// @arg {number} $input - the input value with units to be converted
+/// @example scss Convert `rem` to `cm`
+/// .sin{
+///   font-size: cm(4rem);
+/// }
+///
 @function cm($input) {
   @return to-unit(cm, $input);
 }
@@ -173,9 +231,11 @@
 /// |uint(input);| as number |
 /// |ratio|number to fraction|
 ///
-/// @group dev
+/// @arg {string} $unit [px] - convert to unit
+/// @arg {number} $input - the input value ex 1rem
+/// @group unit-conversion
 /// @link https://github.com/bgschiller/unitconversion
-@function to-unit($unit, $input) {
+@function to-unit($unit: 'px', $input) {
   // Test against valid CSS units
   $to-unit: map-get(
     (
@@ -214,7 +274,7 @@
       pct: 0%,
       percent: 0%,
       num: 0,
-      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     ),
     $unit
   );
