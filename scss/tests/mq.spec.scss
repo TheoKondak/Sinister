@@ -45,17 +45,17 @@
 }
 
 @include true.describe('mq [mixin]') {
-  @include true.it('should return justify-content: center;') {
+  @include true.it('should return media query, min width 1200px and max 4096px') {
     @include true.assert {
       @include true.output {
-        @media (min-width: 49rem) {
-          .test {
+        .test {
+          @include mq(49rem) {
             color: white;
           }
         }
       }
       @include true.expect {
-        @media (min-width: 49rem) {
+        @media (min-width: 49rem) and (max-width: 4096px) {
           .test {
             color: white;
           }
