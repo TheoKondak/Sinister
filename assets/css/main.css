@@ -7,9 +7,21 @@ pre {
   background-color: rgba(102, 102, 102, 0.1);
 }
 
-p code {
-  font-size: 1em;
+.item__description
+{
+    code{
+        font-size: 1.34em;
+    }
 }
+
+
+.item__parameter code{
+        font-size: 1.34em;
+    }
+
+.main__description li code{
+        font-size: 1.34em;
+    }
 
 .container:after,
 .header:after,
