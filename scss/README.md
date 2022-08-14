@@ -2,8 +2,6 @@
 
 ## WARNING
 
-## !! This project even though unit tested, is still in beta !!
-
 <br>
 
 Sinister is an SCSS and JS utility library.
@@ -89,11 +87,16 @@ In order for sinister to work, 2 files are needed.
 - Importing sinister to a new file is easy. Use the `@use` to import it to the file you are working on. [Read More](https://sass-lang.com/documentation/at-rules/use)
 
 ex.
+
 <br>
-    ```
-    @use '../sin' as *;
-    ```
+
+```scss
+
+      @use '../sin' as *;
+```
+
 <br>
+
 Keep in mind that the path is relative.
 
 ## Documentation
@@ -102,3 +105,7 @@ For more, refer to the online documentation.
 
 - [Documentation](https://theokondak.github.io/Sinister/)
 - For older versions check the [archive](https://github.com/TheoKondak/Sinister/tree/main/scss/documentation)
+
+<br>
+<br>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
