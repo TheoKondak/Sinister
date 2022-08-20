@@ -4,11 +4,12 @@
 /// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
 /// @content
 /// @example scss Any class that starts with the string `test`
-/// .sin{
-///   @include starts(test) {
-///     color: red;
-///   }
-/// }
+///   @use 'sin' as *;
+///     .sin{
+///       @include starts(test) {
+///         color: red;
+///       }
+///     }
 @mixin starts($starts: '', $attribute: 'class') {
   [#{$attribute}^='#{$starts}'] {
     @content;

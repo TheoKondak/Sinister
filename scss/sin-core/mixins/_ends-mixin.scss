@@ -4,11 +4,12 @@
 /// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
 /// @content
 /// @example scss Any class that ends with the string `test`
-/// .sin{
-///   @include ends('test') {
-///     color: red;
-///   }
-/// }
+///   @use 'sin' as *;
+///     .sin{
+///       @include ends('test') {
+///         color: red;
+///       }
+///     }
 @mixin ends($ends: '', $attribute: 'class') {
   [#{$attribute}$='#{$ends}'] {
     @content;

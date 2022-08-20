@@ -7,11 +7,12 @@
 /// @arg {string} $attribute ['class'] - Select the attribute style, like `class`, `id` etc.
 /// @content
 /// @example scss Any class that contains the string `test`
-/// .sin{
-///   @include has(test) {
-///     color: red;
-///   }
-/// }
+///   @use 'sin' as *;
+///     .sin{
+///       @include has(test) {
+///         color: red;
+///       }
+///     }
 @mixin has($has: '', $attribute: 'class') {
   // [#{$attribute}*='#{$has}'] {
   #{has($has, $attribute)} {

@@ -74,9 +74,10 @@
 /// @group unit-conversion
 /// @arg {number} $input - the input value with units to be converted
 /// @example scss Convert `rem` to `cm`
-/// .sin{
-///   font-size: cm(4rem);
-/// }
+///   @use 'sin' as *;
+///     .sin{
+///       font-size: cm(4rem);
+///     }
 ///
 @function cm($input) {
   @return to-unit(cm, $input);
@@ -274,7 +275,7 @@
       pct: 0%,
       percent: 0%,
       num: 0,
-      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     ),
     $unit
   );

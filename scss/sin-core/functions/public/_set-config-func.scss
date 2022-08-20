@@ -12,14 +12,14 @@
 /// @return {map} - Returns an updated map that is a merge of $new-config and $original-map.
 /// @see {function} help
 /// @example scss See available properties and values
-///
-/// $configuration: set-config(
-///  (
-///   colors: (
-///      test-color: #ffa,
-///    ),
-///  )
-/// );
+///   @use 'sin' as *;
+///     $configuration: set-config(
+///      (
+///       colors: (
+///          test-color: #ffa,
+///        ),
+///      )
+///     );
 @function set-config($new-config) {
   // Check if the `$new-config` is a type of `map`
   @if (type($new-config, (map))) {

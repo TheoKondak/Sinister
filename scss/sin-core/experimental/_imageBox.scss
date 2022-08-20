@@ -14,9 +14,10 @@
 /// @arg {number} $image-width - The width of the image WITHOUT UNITS
 /// @arg {color | string} $preload-background - Takes a css background property. Accepts colors and urls. [OPTIONAL]
 /// @example scss This will create a box element that will help browser know the size of the image, so it can render the DOM properly without CLS issues.
-/// .wrap-image{
-///  @include image-wrapper(300px, 400px, #010101);
-/// }
+///   @use 'sin' as *;
+///     .wrap-image{
+///       @include image-wrapper(300px, 400px, #010101);
+///     }
 
 @mixin image-wrapper($image-height: get(image-wrapper, img-box-default-height), $image-width: get(image-wrapper, img-box-default-width), $preload-background: get(image-wrapper, img-default-preload-background)) {
   $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);

@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:string';
 @use 'sass:list';
-@use '../../../../../sin.config' as *;
+// @use '../../../../../sin.config' as *;
 @use './../functions' as *;
 @use '../misc/css-properties' as *;
 
@@ -15,14 +15,15 @@
 /// `{string}` `$important` - If `!i` is present, the style will get `!important`.
 /// @link https://utopia.fyi/space/calculator
 /// @example scss Common use case
-/// .sin{
-///  @include spacing(
-///   (m, g, 1), // Margin, general (all directions), 1 (from default-config)
-///   (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
-///   (md, m, y, 2, 1.4), // From breakpoint md, y axis, distance 2, and scale 1.4
-///   (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
-///  );
-/// }
+///   @use 'sin' as *;
+///       .sin{
+///        @include spacing(
+///         (m, g, 1), // Margin, general (all directions), 1 (from default-config)
+///         (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
+///         (md, m, y, 2, 1.4), // From breakpoint md, y axis, distance 2, and scale 1.4
+///         (xl, m, t, 2, '!i') // From breakpoint xl, direction top, distance 2, !important is true, scale is default
+///        );
+///       }
 @mixin spacing($args...) {
   $breakpoint: null;
   $property: null;
