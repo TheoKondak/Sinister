@@ -4,7 +4,7 @@
 @use 'sass:list';
 @use './../private/type-func' as *;
 
-/// `set.config` creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new ones.
+/// The `set.config()` creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new ones.
 /// > Each time you update `_sin.config.scss` you have to restart your sass server in order for the changes to take effect.
 /// @author Theodoros Kondakos
 /// @group setup

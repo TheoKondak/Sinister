@@ -20,11 +20,13 @@
 ///    .sin{
 ///      font-size: fs();
 ///    }
+///
 /// @example sass Usecase, will return the xs font size from the configuration
 ///   @use 'sin' as *;
 ///     .sin{
 ///       font-size: fs(xs);
 ///     }
+///
 
 @function fs($key: null) {
   // Check if input is null.

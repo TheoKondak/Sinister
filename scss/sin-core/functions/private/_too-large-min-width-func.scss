@@ -5,10 +5,10 @@
 /// @access private
 /// @group dev
 /// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-/// @param  {number}  $min-width - A minimum width value
-/// @param  {number}  $max-width - A maximum width value
-/// @return {bool}  - Returns true if the `min` width is larger than the `max` width
+/// @ignore @link https://github.com/TheoKondak
+/// @param {number} $min-width - A minimum width value
+/// @param {number} $max-width - A maximum width value
+/// @return {bool} - Returns true if the `min` width is larger than the `max` width
 @function too-large-min-width($min-width, $max-width) {
   // $accepted-units: (px, pt, pc, mm, cm, em, rem, number);
 
@@ -21,8 +21,6 @@
     @return compare($min-width, $max-width);
   }
 }
-
-// @debug too-large-min-width(10, 11);
 
 @function compare($min-width, $max-width) {
   @if $min-width > $max-width {

@@ -31,7 +31,7 @@
   }
 }
 
-/// `boxshadow()` mixin to become obsolete. The new mixin is [this](https://theokondak.github.io/Sinister/#utility-mixin-box-shadow).
+/// The `boxshadow()` mixin to become obsolete. The new mixin is [this](https://theokondak.github.io/Sinister/#utility-mixin-box-shadow).
 /// @group utility
 /// @param {number} $box-shadow-id - The ID of the box shadow from the $box-shadow-list
 @mixin box-shadow($box-shadow-id) {

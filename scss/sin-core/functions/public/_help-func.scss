@@ -12,11 +12,11 @@
 /// @name help
 /// @group utility
 /// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-/// @param  {string}  $config-sub-key - A key that you want it's values returned
-/// @param  {map} $config-map - An optional parameter to set a different map instead of configuration
+/// @ignore @link https://github.com/TheoKondak
+/// @param {string} $config-sub-key - A key that you want it's values returned
+/// @param {map} $config-map - An optional parameter to set a different map instead of configuration
 /// @param {string} $intro-msg - A string that will work as a title, or intro text for the help context
-/// @return {string}  - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
+/// @return {string} - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
 
 @function help($config-sub-key: null, $config-map: $configuration, $intro-msg: 'Printing sinister configuration:', $msg: 'Documentation not found!') {
   // Check if $config-map is a map and it's not empty
