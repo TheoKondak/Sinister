@@ -18,7 +18,6 @@
     // If there are different units, convert them to em
     $min-width: px($min-width);
     $max-width: px($max-width);
-    @debug $min-width;
     @return compare($min-width, $max-width);
   }
 }
