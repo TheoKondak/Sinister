@@ -8,7 +8,7 @@
 
 /// Get the box shadow from the $box-shadow-list in order to feed it into the mixin
 /// @group utility
-/// @param {number} $box-shadow-id - The ID of the box shadow from the $box-shadow-list
+/// @param {number} $box-shadow-id [5] - The ID of the box shadow from the $box-shadow-list
 /// @return {list} - Returns a list of box shadow css properties to the mixin.
 @function box-shadow($box-shadow-id) {
   @if type-of($box-shadow-id) == 'number' and $box-shadow-id >= 0 and $box-shadow-id < list.length($box-shadow-list) {

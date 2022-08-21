@@ -18,7 +18,6 @@
 ///     .sin{
 ///       @include grid-template(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
 ///     }
-
 @mixin grid-template($args...) {
   @if (length($args) > 0) {
     @each $min-width-query, $grid-template-columns, $grid-template-rows in $args {

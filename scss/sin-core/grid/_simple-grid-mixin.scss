@@ -25,7 +25,6 @@
 ///         padding: 1rem;
 ///       }
 ///     }
-///
 @mixin simple-grid($item-per-column: 4, $element-type: '*', $template-columns: 12) {
   @if type-of($template-columns) == 'number' and type-of($item-per-column) == 'number' and $item-per-column != 0 {
     @if ($template-columns >= $item-per-column) {

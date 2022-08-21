@@ -27,7 +27,6 @@
 ///       font-size: fs(xs);
 ///     }
 ///
-
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {

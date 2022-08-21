@@ -8,7 +8,6 @@
 ///     .sin{
 ///      @include responsive-iframe(65%);
 ///     }
-///
 @mixin iframe($height: 55%) {
   overflow: hidden;
   padding-bottom: $height;

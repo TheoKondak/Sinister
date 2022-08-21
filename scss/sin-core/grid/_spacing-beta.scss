@@ -30,7 +30,7 @@
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
 /// It accepts an `arglist` of lists. Each list can contain one of the following.
-/// > At this stage, there is no error handling, so you need to
+/// > At this stage, there is no error handling, so be aware of that.
 ///
 /// - `{string}` `$debug` - If the first arg of an arguement list is 'debug' then a debug log will be printed for the specific arguement list. If its the first arguement of spacing mixin, then it will print debug log of all lists
 /// - `{string}` `$breakpoint` - A breakpoint from breakpoints in Sinister configuration.
@@ -76,7 +76,6 @@
 ///       (g, t, 2) // property gap, direction is top, but gap works on x and y axis so in that case top is translated to top and bottom, or y axis
 ///      );
 ///     }
-
 @mixin spacing-beta($args...) {
   // Check that there are arguements
   @if type($args, (arglist)) and (length($args) > 0) {
