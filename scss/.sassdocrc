@@ -4,10 +4,9 @@ dest: './documentation/herman-0.6.75'
 descriptionPath: './README.md'
 shortcutIcon: '../sinister-logo.svg'
 herman:
+  # extraDocs:
+  # - 'documentation/extradoc.md'
+  # customCss: 'documentation/sin-herman.css'
   sass:
     includePaths:
       - 'test-sin/scss'
-      # - 'sin-core/grid'
-    # use:
-    #   - file: 'sin'
-    #   - namespace: '*'
