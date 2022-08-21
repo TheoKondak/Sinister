@@ -58,7 +58,7 @@
           @if (type-of(list.nth($arg, length($arg))) == 'number') {
             $scale: list.nth($arg, length($arg));
           } @else {
-            @warn unquote('Scale must be a type of number. Instead provided:') type-of(list.nth($arg, length($arg)));
+            @warn unquote('Scale must be a type of number. Instead provided: #{list.nth($arg, length($arg))} which is type of #{type-of(list.nth($arg, length($arg)))}');
           }
         }
 
@@ -131,7 +131,7 @@
           @if (type-of(list.nth($arg, length($arg))) == 'number') {
             $scale: list.nth($arg, length($arg));
           } @else {
-            @warn unquote('Scale must be a type of number. Instead provided:') type-of(list.nth($arg, length($arg)));
+            @warn unquote('Scale must be a type of number.  Instead provided: #{list.nth($arg, length($arg))} which is type of #{type-of(list.nth($arg, length($arg)))}');
           }
         }
 

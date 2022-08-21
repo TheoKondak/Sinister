@@ -10,7 +10,6 @@
 /// @group setup
 /// @param {map} $new-config - A map that contains setting values to update or add new data to the configuration
 /// @return {map} - Returns an updated map that is a merge of $new-config and $original-map.
-/// @see {function} help
 /// @example scss See available properties and values
 ///   @use 'sin' as *;
 ///     $configuration: set-config(

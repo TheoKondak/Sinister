@@ -4,7 +4,7 @@
 /// Makes google maps responsive
 /// @group utility
 /// @deprecated Since version 0.6.67-beta.2. Use `iframe()` mixin instead.
-/// @alias responsive-iframe
+/// @alias iframe
 @mixin responsiveMap {
   overflow: hidden;
   padding-bottom: 56.25%;
@@ -20,6 +20,7 @@
   }
 }
 
+// Responsive map class
 @if getMap($configuration, generate-classes, utility) {
   .responsive-map {
     @include responsiveMap;
