@@ -4,7 +4,7 @@
 /// Makes youtube video iframe responsive
 /// Requires a parent Element Place the mixin in the parent Element
 /// @group utility
-/// @deprecated Since version 0.6.67-beta.2. Use `responsive-iframe` mixin instead.
+/// @deprecated Since version 0.6.67-beta.2. Use `iframe()` mixin instead.
 /// @arg {number} $padding [56.2%] - Set a percentage to achieve the desired padding
 @mixin responsive-video($padding: 56.25%) {
   position: relative;

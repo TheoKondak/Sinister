@@ -10,21 +10,21 @@
 /// @content
 /// @example scss A layout with three columns
 ///   @use 'sin' as *;
-///   .grid-example {
-///     @include simple-grid(3){
-///       background-color: purple;
-///       padding: 1rem;
+///     .grid-example {
+///       @include simple-grid(3){
+///         background-color: purple;
+///         padding: 1rem;
+///       }
 ///     }
-///   }
 ///
 /// @example scss A layout with three columns
 ///   @use 'sin' as *;
-///   .grid-example {
-///     @include simple-grid(3, ".grid-example-item"){
-///       background-color: purple;
-///       padding: 1rem;
+///     .grid-example {
+///       @include simple-grid(3, ".grid-example-item"){
+///         background-color: purple;
+///         padding: 1rem;
+///       }
 ///     }
-///   }
 ///
 @mixin simple-grid($item-per-column: 4, $element-type: '*', $template-columns: 12) {
   @if type-of($template-columns) == 'number' and type-of($item-per-column) == 'number' and $item-per-column != 0 {

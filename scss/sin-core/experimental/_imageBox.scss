@@ -18,7 +18,6 @@
 ///     .wrap-image{
 ///       @include image-wrapper(300px, 400px, #010101);
 ///     }
-
 @mixin image-wrapper($image-height: get(image-wrapper, img-box-default-height), $image-width: get(image-wrapper, img-box-default-width), $preload-background: get(image-wrapper, img-default-preload-background)) {
   $aspectRatio: calc((#{$image-height} / #{$image-width}) * 100%);
 
