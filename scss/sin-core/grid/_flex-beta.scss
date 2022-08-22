@@ -176,8 +176,6 @@
             $valid-arguement: true;
           }
 
-          @debug $cur-arg;
-          @debug $valid-arguement;
           @if not $valid-arguement {
             @error unquote('Invalid arguement detected. Arguement (#{type-of($cur-arg)}) "#{$cur-arg}" is not a valid arguement');
           }
