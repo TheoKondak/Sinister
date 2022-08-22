@@ -16,7 +16,6 @@
 /// @param {string} $intro-msg - A string that will work as a title, or intro text for the help context
 /// @return {string} - If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list only
 /// @example sass See available colors
-///   @use 'sin' as *;
 ///     .sin{
 ///       @debug help(colors);
 ///     }

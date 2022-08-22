@@ -12,13 +12,11 @@
 /// @param {color} $step [4] - How prominent the effect will be
 /// @return {color} - Returns a CSS color from `_sin.config.scss`, and can brighten or darken a color.
 /// @example scss - color()
-///   @use 'sin' as *;
 ///     .sin{
 ///       color: color(test-color, 3);
 ///     }
 ///
 /// @example scss - You use color function in places like rgba
-///   @use 'sin' as *;
 ///     .sin{
 ///       color: rgba(color(test-color), .4);
 ///      }

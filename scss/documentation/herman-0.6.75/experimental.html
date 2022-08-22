@@ -987,17 +987,16 @@ Sets a background overlay to an<span class="widont">&nbsp;</span>image.</p>
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @include flex-beta(
-      (fd-cl, ai-c, &#39;!i&#39;), // Flex direction column, align items center, and every css property will become !important
-      (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-      (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-      (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-      (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
-      (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
-    );
-    }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include flex-beta(
+    (fd-cl, ai-c, &#39;!i&#39;), // Flex direction column, align items center, and every css property will become !important
+    (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
+    (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+    (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+    (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+    (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
+  );
+  }</code></pre>
     </div>
   
 
@@ -1634,10 +1633,9 @@ It accepts an <code>arglist</code> of lists. Each list can contain one of the<sp
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @debug spacing-beta();
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @debug spacing-beta();
+}</code></pre>
     </div>
   
 
@@ -1683,16 +1681,15 @@ It accepts an <code>arglist</code> of lists. Each list can contain one of the<sp
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-   @include spacing-beta(
-    (m, g, 1), // Margin, general (all directions), distance 1 (from sinister configuration)
-    (xs, m, g, 2), // From breakpoint xs from sinister configuration, direction general, distance 2
-    (md, p, y, 2, 1.4), // From breakpoint md, padding, y axis, distance 2, and scale 1.4
-    (lg, m, x, auto), // From breakpoint lg, x axis, margin auto
-    (xl, m, t, 2, &#39;!i&#39;) // From breakpoint xl, direction top, distance 2, !important is true, scale is default
-   );
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include spacing-beta(
+  (m, g, 1), // Margin, general (all directions), distance 1 (from sinister configuration)
+  (xs, m, g, 2), // From breakpoint xs from sinister configuration, direction general, distance 2
+  (md, p, y, 2, 1.4), // From breakpoint md, padding, y axis, distance 2, and scale 1.4
+  (lg, m, x, auto), // From breakpoint lg, x axis, margin auto
+  (xl, m, t, 2, &#39;!i&#39;) // From breakpoint xl, direction top, distance 2, !important is true, scale is default
+ );
+}</code></pre>
     </div>
   
 
@@ -1790,14 +1787,13 @@ It accepts an <code>arglist</code> of lists. Each list can contain one of the<sp
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-    .sin{
-     @include spacing-beta(
-        debug, // Will print debug log for both list items
-        (m, g, 1),
-        (xs, m, g, 2),
-      );
-    }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include spacing-beta(
+    debug, // Will print debug log for both list items
+    (m, g, 1),
+    (xs, m, g, 2),
+  );
+}</code></pre>
     </div>
   
 
@@ -1878,14 +1874,13 @@ It accepts an <code>arglist</code> of lists. Each list can contain one of the<sp
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-   @include spacing-beta(
-    (debug, m, g, 1),  // Will print debug log for this item
-    (xs, m, g, 2rem), // From xs breakpoint, margin general 2rem
-    (g, t, 2) // property gap, direction is top, but gap works on x and y axis so in that case top is translated to top and bottom, or y axis
-   );
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include spacing-beta(
+  (debug, m, g, 1),  // Will print debug log for this item
+  (xs, m, g, 2rem), // From xs breakpoint, margin general 2rem
+  (g, t, 2) // property gap, direction is top, but gap works on x and y axis so in that case top is translated to top and bottom, or y axis
+ );
+}</code></pre>
     </div>
   
 

@@ -378,10 +378,9 @@ It is a mixin that receives as an input list of arguments. The first argument is
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @include grid-template((&#39;&#39;, 1fr), (&#39;xs&#39;, 1fr), (&#39;md&#39;, (1fr 1fr), (1fr 1fr)), (&#39;lg&#39;, 1fr 1fr 1fr));
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include grid-template((&#39;&#39;, 1fr), (&#39;xs&#39;, 1fr), (&#39;md&#39;, (1fr 1fr), (1fr 1fr)), (&#39;lg&#39;, 1fr 1fr 1fr));
+}</code></pre>
     </div>
   
 
@@ -646,10 +645,9 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @debug flex();
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @debug flex();
+}</code></pre>
     </div>
   
 
@@ -695,16 +693,15 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
- .sin{
-  @include flex(
-   (fd-cl, ai-c), // Flex direction column, align items center
-   (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-   (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-   (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-   (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
-  );
- }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include flex(
+  (fd-cl, ai-c), // Flex direction column, align items center
+  (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
+  (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+  (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+  (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+ );
+}</code></pre>
     </div>
   
 
@@ -1249,8 +1246,7 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-.sin{
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
  @include mq(xs, xxl){
    display: block;
   }
@@ -1326,8 +1322,7 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-.sin{
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
     @include mq(xs, 1920px){
       display: block;
     }
@@ -1813,8 +1808,7 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-.sin{
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
   @include min(xs){
     display: block;
   }
@@ -2085,8 +2079,7 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-.sin{
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
   @include min(xs){
     display: block;
   }
@@ -2378,8 +2371,7 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
+      <pre class="hljs-pre"><code class="lang-scss">  .sin{
 @include mqMax(xxl){
   display: block;
     }
@@ -2758,12 +2750,11 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @include mq-max(xxl){
-      display: block;
-    }
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include mq-max(xxl){
+    display: block;
+  }
+}</code></pre>
     </div>
   
 
@@ -3043,12 +3034,11 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .sin{
-    @include max(xxl){
-      display: block;
-    }
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include max(xxl){
+    display: block;
+  }
+}</code></pre>
     </div>
   
 
@@ -3420,13 +3410,12 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .grid-example {
-    @include simple-grid(3){
-      background-color: purple;
-      padding: 1rem;
-    }
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.grid-example {
+  @include simple-grid(3){
+    background-color: purple;
+    padding: 1rem;
+  }
+}</code></pre>
     </div>
   
 
@@ -3503,13 +3492,12 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  .grid-example {
-    @include simple-grid(3, &quot;.grid-example-item&quot;){
-      background-color: purple;
-      padding: 1rem;
-    }
-  }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.grid-example {
+  @include simple-grid(3, &quot;.grid-example-item&quot;){
+    background-color: purple;
+    padding: 1rem;
+  }
+}</code></pre>
     </div>
   
 
@@ -3760,15 +3748,14 @@ All parent properties are supported. For child elements flex-basis, which should
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-    .sin{
-     @include spacing(
-      (m, g, 1), // Margin, general (all directions), 1 (from default-config)
-      (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
-      (md, m, y, 2, 1.4), // From breakpoint md, y axis, distance 2, and scale 1.4
-      (xl, m, t, 2, &#39;!i&#39;) // From breakpoint xl, direction top, distance 2, !important is true, scale is default
-     );
-    }</code></pre>
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include spacing(
+  (m, g, 1), // Margin, general (all directions), 1 (from default-config)
+  (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
+  (md, m, y, 2, 1.4), // From breakpoint md, y axis, distance 2, and scale 1.4
+  (xl, m, t, 2, &#39;!i&#39;) // From breakpoint xl, direction top, distance 2, !important is true, scale is default
+ );
+}</code></pre>
     </div>
   
 
