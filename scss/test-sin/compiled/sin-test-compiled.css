@@ -1,0 +1,16 @@
+@media (min-width: 40rem) and (max-width: 4096px) {
+  .test {
+    color: purple;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+}
+.grid > * {
+  grid-column: span 1;
+}
+
+/*# sourceMappingURL=sin-test-compiled.css.map */

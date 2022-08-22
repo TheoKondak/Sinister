@@ -1,0 +1,252 @@
+@use '../sin' as sin;
+@use 'sass:list';
+@use 'sass:map';
+
+.sin {
+  // @include spacing((m, x, unset), (xs, m, x, 2), (m, y, 4, 0.5), (md, m, y, 2, 0.2));
+
+  // $generic: (ai-c, jc-c, ac-c, fd-cl, (x, 6), (0 0 43%), (max-content));
+
+  // $xs: (jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 40%), (auto));
+  // $md: (md, jc-c, ac-fs, ai-fe, fd-cl, w-w, (x, 3, 2), (0 0 auto), (max-content));
+
+  // @include spacing((m, g, 1), (xs, m, t, 1), (md, p, b, 2, 21), (xl, g, x, 1), (xxl, g, l, 2, 0.4));
+
+  // @include spacing();
+
+  // @include flex($xs, $md);
+  // @include spacing();
+
+  // color: color(test-color);
+  // @include boxshadow();
+
+  // @debug fs();]
+
+  // @debug color();
+
+  // @debug contrast(test-color, test-color-2);
+  // @debug contrast(#ffa, test-color-2);
+
+  // box-shadow: box-shadow(4);
+
+  // @include iframe();
+
+  // @include spacing((xs, m, g, 2));
+}
+// Check the rest arguements, if they exist, render the css else, continue
+// @debug contains(getMap($align-items), $flex-properties-list);
+// @if contains(getMap($align-items), $flex-properties-list) {
+//   @debug 'contains';
+// } @else {
+//   @debug 'does not contain';
+// }
+
+// @debug help();
+
+// .utopia {
+//   background-color: rgba(purple, 0.8);
+//   color: white;
+//   max-width: max-content;
+//   @include spacing((p, g, 2), (m, x, auto));
+
+//   h1 {
+//     font-size: fs(xxxl);
+//   }
+//   h2 {
+//     font-size: fs(xxl);
+//   }
+//   h3 {
+//     font-size: fs(xl);
+//   }
+//   h4 {
+//     font-size: fs(lg);
+//   }
+//   h5 {
+//     font-size: fs(md);
+//   }
+//   h6 {
+//     font-size: fs(sm);
+//   }
+
+//   span {
+//     font-size: fs(sm);
+//   }
+//   p {
+//     font-size: fs(sm);
+//   }
+
+//   li {
+//     font-size: fs(sm);
+//   }
+
+//   a {
+//     font-size: fs(sm);
+//   }
+
+//   strong {
+//     font-size: fs(sm);
+//   }
+
+//   em {
+//     font-size: fs(sm);
+//   }
+
+//   small {
+//     font-size: fs(xxs);
+//   }
+
+//   blockquote {
+//     font-size: fs(sm);
+//   }
+
+//   q {
+//     font-size: fs(sm);
+//   }
+// }
+
+// .spacing {
+//   background-color: #535353;
+//   @include flex((w-w, jc-c, ai-c));
+
+//   @include spacing((g, g, xl2-xl3));
+// }
+
+// .spacing-item {
+//   flex: 0 0 20%;
+//   height: 100px;
+//   // background-color: purple;
+// }
+
+// .overlay {
+//   &-image {
+//     background-image: url('https://cdn.webshopapp.com/shops/278947/files/270704851/dagger-templers.jpg');
+//     background-size: cover;
+//     height: 40vh;
+//     @include flex((fd-r, jc-c, ac-c, ai-c));
+//     @include overlay();
+//   }
+
+//   &-content {
+//     backdrop-filter: blur(2px);
+//     background-color: rgba(white, 1);
+//     padding: 4rem;
+//   }
+// }
+
+.test-spacing {
+  // @include spacing-beta(debug, (g, g, 3.23rem, 1.2, '!i'), (xs, g, b, 3, 1.2, '!i'), (md, m, x, auto), (m, l, 2rem), (xs, m, g, 2, 2.1));
+
+  // @include spacing-beta((xs, p, b, 4.5rem, 1.242), (md, p, x, 124px));
+  // @include sin.flex-beta((jc-c, ai-c, (g, 3, 1.2), (0 0 300px)));
+  // @include flex-beta(debug, (fd-cl, jc-c, ai-c, ac-c, (g, 1, 2), (50%)), ('!i', xs, fd-r, w-w, jc-c, ai-c, ac-c, (g, 2, 1.2), (0 0 42%), as-str));
+
+  // @include flex-beta(((g, 1, 1.2), (0 0 43%), '!i', auto-gap, as-str));
+  // @include flex-beta((debug, ai-c));
+}
+
+.test {
+  // @include flex-beta((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
+}
+
+.grid {
+  // // Source https://www.youtube.com/watch?v=xMsckmmd5Dw&ab_channel=WesBos
+  // display: grid;
+  // gap: 1rem;
+  // grid-template-columns: repeat(12, 1fr);
+  // grid-auto-flow: dense;
+  // margin: 0 auto;
+  // max-width: 1200px;
+  // &-item {
+  //   border: 1px solid grey;
+  //   background: rgba(orange, 0.76);
+  //   padding: 1rem;
+
+  //   grid-column: span 4;
+  //   // grid-column: span 2;
+  //   // &:nth-child(5n) {
+  //   //   background-color: cornflowerblue;
+  //   //   grid-column: span 6;
+  //   // }
+  //   // &:nth-child(8n) {
+  //   //   background-color: tomato;
+  //   //   grid-column: span 2;
+  //   // }
+  //   // &:nth-child(9n) {
+  //   //   background-color: greenyellow;
+  //   //   grid-column: span 3;
+  //   // }
+  //   &.large {
+  //     background-color: cornflowerblue;
+  //   }
+
+  //   &.larger {
+  //     background: tomato;
+  //     grid-column: span 8;
+  //     grid-column-end: -1;
+  //   }
+  // }
+
+  // @include sin.massonry();
+
+  // > * {
+  //   background-color: orange;
+  //   padding: 2rem;
+  // }
+}
+
+// .grid {
+//   padding: 1em;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//   grid-gap: 1em;
+
+//   &-item {
+//     border: 1px solid grey;
+//     background: rgba(orange, 0.76);
+//     padding: 1rem;
+
+//     &:nth-child(2) {
+//     }
+//   }
+// }
+
+.test {
+  // @include sin.spacing-beta((m, g, 1), (xs, m, g, 2), (md, p, y, 2, 1.4), (lg, m, x, auto), (xl, m, t, 2, '!i'));
+
+  @include sin.mq(40rem) {
+    color: purple;
+  }
+}
+
+.test {
+  // $xl: (xl, g, x, 1);
+  // $md: (md, g, g, 3, '!i');
+  // $all: (xs, g, t, 2, 1.2), (xl, g, x, 1), (md, g, g, 3, '!i');
+
+  // @include sin.spacing-beta(hello);
+  // @include sin.spacing-beta(#{$all});
+  // @include sin.flex-beta((xs, fd-r, w-w, (g, 1)));
+}
+
+$base: (fd-cl, jc-c, ai-c, ac-c, (g, 1, 0.5), (1 0 100%), auto-gap);
+$xs: (fd-r, w-w, (g, 1), (0 0 33%), auto-gap);
+
+// .grid {
+//   // @debug sin.help();
+
+//   > * {
+//     background-color: orange;
+//     // padding: 2rem;
+//     min-height: 4rem;
+//   }
+// }
+
+.grid {
+  @include sin.simple-grid(12) {
+    // gap: 1rem;
+    // div {
+    //   background-color: purple;
+    //   padding-top: 4rem;
+    // }
+  }
+}

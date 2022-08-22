@@ -12,10 +12,9 @@
     "sass-watch": "sass test-sin/scss/custom.scss:test-sin/compiled/sin-test-compiled.css --watch",
     "doc": "sassdoc \"sin-core\" && node ./scripts/update-documentation.js",
     "doc-herman": "sassdoc \"sin-core\" --theme=herman",
-    "doc-herman-css": "sass documentation/custom-herman/scss/_index.scss:documentation/custom-herman/compiled/app_styles.min.css",
     "changelog": "auto-changelog -p -t keepachangelog && git add CHANGELOG.md && auto-changelog --template json --output changelog-data.json",
     "version-update": "node ./scripts/update-version.js",
-    "test": "jest --coverage --",
+    "test": "jest --coverage",
     "webpack": "npx webpack",
     "webpack-watch": "npx webpack --watch"
   },
