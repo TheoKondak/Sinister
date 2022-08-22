@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>setup | @get-sinister/sass Documentation</title>
+
+  <link href="assets/img/sinister-logo.svg" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8 0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">@get-sinister/sass</a>
+        
+          <span class="project-version">0.6.75</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">@get-sinister/sass</a>
+      </h3>
+
+      
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+  
+    <li class="nav-item">
+      <a href="undefined.html" data-nav="is-not-active">General</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="classes.html" data-nav="is-not-active">classes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="design.html" data-nav="is-not-active">design</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="dev.html" data-nav="is-not-active">dev</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="experimental.html" data-nav="is-not-active">experimental</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="grid.html" data-nav="is-not-active">grid</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="setup.html" data-nav="is-active">setup</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="typography.html" data-nav="is-not-active">typography</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="unit-conversion.html" data-nav="is-not-active">unit-conversion</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="utility.html" data-nav="is-not-active">utility</a>
+    </li>
+  </ul>
+    </div>
+
+    
+    
+
+    
+      <aside class="footer-credit">
+        <a href="https://www.oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="https://www.oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="https://www.oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >@get-sinister/sass</a> »
+    <strong>setup</strong>
+  </nav>
+
+
+        <div data-page="setup">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="variable--sinister-default-configuration">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type"></span>
+      
+
+      
+        <a href="#variable--sinister-default-configuration" class="item-name">$sinister-default-configuration</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+    
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">$sinister-default-configuration: (
+  colors: (
+    sinister-purple: #602d82
+  ),
+  breakpoints: (
+    // $desktopLarge
+    xxl: 2560px,
+    // $desktopMedium
+    xl: 1980px,
+    // $desktop-small
+    lg: 1460px,
+    // $tabletLarge
+    md: 1200px,
+    // $tabletSmall
+    sm: 768px,
+    // $smartphone
+    xs: 576px,
+    // UIKit Breakpoints
+    uk-breakpoint-s: 640px,
+    uk-breakpoint-m: 960px,
+    uk-breakpoint-l: 1200px,
+    uk-breakpoint-xl: 1600px
+  ),
+  typography: (
+    disable-list-style: false,
+    font-families: (),
+    responsive-fonts: false,
+    base-font-size: 16px,
+    root-font-size: 16px,
+    // Functionality is missing.
+    font-sizes: (
+      xxl: 1.6rem,
+      xl: 1.4rem,
+      md: 1rem,
+      sm: 0.9rem,
+      xs: 0.7rem,
+    ),
+    font-weights: (
+      // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+      // Note Not all fonts support all font weights
+      thin-hairline: 100,
+      extra-light: 200,
+      ultra-light: 200,
+      light: 300,
+      normal: 400,
+      regular: 400,
+      medium: 500,
+      semi-bold: 600,
+      demi-bold: 600,
+      bold: 700,
+      extra-bold: 800,
+      ultra-bold: 800,
+      black: 900,
+      heavy: 900,
+      extra-black: 950,
+      ultra-black: 950,
+    ),
+
+    default-font-sizes: (
+      h1: null,
+      h2: null,
+      h3: null,
+      h4: null,
+      h5: null,
+      h6: null,
+      span: null,
+      p: null,
+      a: null,
+      button: null,
+      em: null,
+      small: null,
+      strong: null,
+      q: null,
+      ul: null,
+      ol: null,
+      li: null,
+      hr: null,
+      wbr: null,
+      div: null,
+      section: null,
+    ),
+
+    responsive-font-sizes: (
+      generic: 0.8vw,
+      xxl: 1vw,
+      xl: 1vw,
+      md: 2vw,
+      sm: 4.3vw,
+      xs: 4.6vw,
+    ),
+
+),
+
+  spacing: (
+    0: 0rem,
+    1: 1.5rem,
+    2: 2rem,
+    3: 2.5rem,
+    4: 3rem,
+    5: 4rem,
+    6: 5rem,
+    auto: auto,
+    inherit: inherit,
+    unset: unset
+  ),
+global: (
+  production: false,
+
+  warning-messages-toggle: false,
+  development-url: &#39;../../../..&#39;,
+  production-url: &#39;#&#39;,
+),
+
+
+generate-classes: (
+    spacing: false,
+    display: false,
+    fonts: false,
+    flex: false,
+    utility: false
+  ),
+   // Experimental - &gt; Bootstrap overide
+   bootstrap:
+   (
+     // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
+     bootstrap-color:
+       (
+         bs-blue: #0d6efd,
+         bs-indigo: #6610f2,
+         bs-purple: #6f42c1,
+         bs-pink: #d63384,
+         bs-red: #dc3545,
+         bs-orange: #fd7e14,
+         bs-yellow: #ffc107,
+         bs-green: #198754,
+         bs-teal: #20c997,
+         bs-cyan: #0dcaf0,
+         bs-white: #fff,
+         bs-gray: #6c757d,
+         bs-gray-dark: #343a40,
+         bs-primary: #0d6efd,
+         bs-secondary: #6c757d,
+         bs-success: #198754,
+         bs-info: #0dcaf0,
+         bs-warning: #ffc107,
+         bs-danger: #dc3545,
+         bs-light: #f8f9fa,
+         bs-dark: #212529,
+       ),
+   ),
+   image-wrapper: (
+  img-box-default-height: 80,
+  img-box-default-width: 100,
+  img-default-preload-background: none,
+),
+
+);</code></pre>
+    </div>
+  
+
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+  
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+        
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  setup.html#function--set-config" class="item-name">set-config()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  setup.html#function--set-config" class="item-name">set-config()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="function--set-config">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@function</span>
+      
+
+      
+        <a href="#function--set-config" class="item-name">set-config()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The <code>set.config()</code> creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new<span class="widont">&nbsp;</span>ones.</p>
+<blockquote>
+<p>Each time you update <code>_sin.config.scss</code> you have to restart your sass server in order for the changes to take<span class="widont">&nbsp;</span>effect.</p>
+</blockquote>
+
+      
+  
+
+      
+  
+    
+    <section class="summary-subsection">
+      <h3 class="summary-subtitle">Author:</h3>
+      <ul class="subsection-details">
+        
+          <li><p>Theodoros Kondakos</p>
+</li>
+        
+      </ul>
+    </section>
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$new-config:</span>
+      
+      
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>A map that contains setting values to update or add new data to the<span class="widont">&nbsp;</span>configuration</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+    
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@return</span>
+      
+      
+      <span class="value-type">(map)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Returns an updated map that is a merge of $new-config and<span class="widont">&nbsp;</span>$original-map.</p>
+
+      </div>
+    
+  </div>
+
+  
+
+      
+  
+
+      
+  
+    
+      
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@error</span>
+      
+      
+      
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>set-config function was called with invalid input. Was expecting a map but instead received:<span class="widont">&nbsp;</span>#{type-of($new-map)}</p>
+
+      </div>
+    
+  </div>
+
+    
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              See available properties and values
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
+  $configuration: set-config(
+   (
+    colors: (
+       test-color: #ffa,
+     ),
+   )
+  );</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  dev.html#function--set" class="item-name">set()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="
+  setup.html#variable--sinister-default-configuration" class="item-name">$sinister-default-configuration</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>
