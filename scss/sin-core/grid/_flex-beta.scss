@@ -48,7 +48,7 @@
   @if (length($args) > 0) and type($args, 'arglist') {
     @each $sin-arg in $args {
       $debug: false;
-      $value-used: false;
+      $valid-arguement: false;
       $has-auto-gap: false;
       $is-important: false;
       $has-breakpoint: false;
@@ -75,32 +75,32 @@
       @if (length($sin-arg) > 0) and type($args, 'arglist') {
         // For each arguement of the list
         @each $cur-arg in $sin-arg {
-          $value-used: false;
+          $valid-arguement: false;
           // @debug $cur-arg;
 
           @if $cur-arg == 'debug' {
             $debug: true;
-            $value-used: true;
+            $valid-arguement: true;
             @debug '=====';
             @debug 'Starting Flex Debug';
           }
 
           @if $debug {
             @debug '----';
-            $value-used: true;
+            $valid-arguement: true;
             @debug unquote('Current Arguement: #{$cur-arg}');
           }
 
           @if $cur-arg == '!i' {
             $is-important: true;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // If contains Breakpoint
           @if contains(get(breakpoints), list.nth($cur-arg, 1)) {
             $has-breakpoint: true;
             $breakpoint-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // @debug getMap($css-properties, flex, flex-direction);
@@ -111,42 +111,42 @@
           @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
             $has-flex-direction: true;
             $flex-direction-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // Flex Wrap
           @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
             $has-wrap: true;
             $wrap-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // Justify Content
           @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
             $has-justify-content: true;
             $justify-content-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // Align Content
           @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
             $has-align-content: true;
             $align-content-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // Align Items
           @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
             $has-align-items: true;
             $align-items-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // Gap
           @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
             $has-gap: true;
             $gap-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           /// Flex | Flex Basis
@@ -154,31 +154,31 @@
           @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
             $has-flex: true;
             $flex-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           // If the list has a single arguement, it is flex-basis
           @if length($cur-arg) == 1 and (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
             $has-flex-basis: true;
             $flex-basis-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           /// Child Stretch for equal height columns
           @if contains(getMap($css-properties, flex, align-self), $cur-arg) {
             $has-align-self: true;
             $align-self-value: $cur-arg;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           @if $cur-arg == auto-gap {
             $has-auto-gap: true;
-            $value-used: true;
+            $valid-arguement: true;
           }
 
           @debug $cur-arg;
-          @debug $value-used;
-          @if not $value-used {
+          @debug $valid-arguement;
+          @if not $valid-arguement {
             @error unquote('Invalid arguement detected. Arguement (#{type-of($cur-arg)}) "#{$cur-arg}" is not a valid arguement');
           }
         }
