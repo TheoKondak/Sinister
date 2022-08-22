@@ -106,7 +106,7 @@
 
       // Check if important is present
       @each $prop in $arg {
-        $valid-arguement: false;
+        $valid-arguement: true;
 
         // Check if Debug Is enabled
         @if $prop == 'debug' {
@@ -120,7 +120,6 @@
         @if is-number($prop) {
           @if $debug {
             @debug unquote('Current Arguement is a number');
-            $valid-arguement: true;
           }
 
           // Check if it is unitless (otherwise it could be a config value or css value)
