@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>setup | @get-sinister/sass Documentation</title>
+  <title>utilitytest06 | @get-sinister/sass Documentation</title>
 
   <link href="assets/img/sinister-logo.svg" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -124,7 +124,7 @@
   
   
     <li class="nav-item">
-      <a href="setup.html" data-nav="is-active">setup</a>
+      <a href="setup.html" data-nav="is-not-active">setup</a>
     </li>
   
   
@@ -144,7 +144,7 @@
   
   
     <li class="nav-item">
-      <a href="utilitytest06.html" data-nav="is-not-active">utilitytest06</a>
+      <a href="utilitytest06.html" data-nav="is-active">utilitytest06</a>
     </li>
   </ul>
     </div>
@@ -182,11 +182,11 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >@get-sinister/sass</a> »
-    <strong>setup</strong>
+    <strong>utilitytest06</strong>
   </nav>
 
 
-        <div data-page="setup">
+        <div data-page="utilitytest06">
           
   
     
@@ -201,365 +201,7 @@
 
 
 
-<section class="item" id="variable--sinister-default-configuration">
-  
-    
-  
-  
-
-  
-  
-  
-  
-
-  <div data-item-section="header">
-    <h2 class="item-title">
-      
-        <span class="item-type"></span>
-      
-
-      
-        <a href="#variable--sinister-default-configuration" class="item-name">$sinister-default-configuration</a>
-      
-
-      
-
-      
-    </h2>
-
-    
-  
-
-
-    
-    
-    
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            scss
-          </span>
-
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">$sinister-default-configuration: (
-  colors: (
-    sinister-purple: #602d82
-  ),
-  breakpoints: (
-    // $desktopLarge
-    xxl: 2560px,
-    // $desktopMedium
-    xl: 1980px,
-    // $desktop-small
-    lg: 1460px,
-    // $tabletLarge
-    md: 1200px,
-    // $tabletSmall
-    sm: 768px,
-    // $smartphone
-    xs: 576px,
-    // UIKit Breakpoints
-    uk-breakpoint-s: 640px,
-    uk-breakpoint-m: 960px,
-    uk-breakpoint-l: 1200px,
-    uk-breakpoint-xl: 1600px
-  ),
-  typography: (
-    disable-list-style: false,
-    font-families: (),
-    responsive-fonts: false,
-    base-font-size: 16px,
-    root-font-size: 16px,
-    // Functionality is missing.
-    font-sizes: (
-      xxl: 1.6rem,
-      xl: 1.4rem,
-      md: 1rem,
-      sm: 0.9rem,
-      xs: 0.7rem,
-    ),
-    font-weights: (
-      // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
-      // Note Not all fonts support all font weights
-      thin-hairline: 100,
-      extra-light: 200,
-      ultra-light: 200,
-      light: 300,
-      normal: 400,
-      regular: 400,
-      medium: 500,
-      semi-bold: 600,
-      demi-bold: 600,
-      bold: 700,
-      extra-bold: 800,
-      ultra-bold: 800,
-      black: 900,
-      heavy: 900,
-      extra-black: 950,
-      ultra-black: 950,
-    ),
-
-    default-font-sizes: (
-      h1: null,
-      h2: null,
-      h3: null,
-      h4: null,
-      h5: null,
-      h6: null,
-      span: null,
-      p: null,
-      a: null,
-      button: null,
-      em: null,
-      small: null,
-      strong: null,
-      q: null,
-      ul: null,
-      ol: null,
-      li: null,
-      hr: null,
-      wbr: null,
-      div: null,
-      section: null,
-    ),
-
-    responsive-font-sizes: (
-      generic: 0.8vw,
-      xxl: 1vw,
-      xl: 1vw,
-      md: 2vw,
-      sm: 4.3vw,
-      xs: 4.6vw,
-    ),
-
-),
-
-  spacing: (
-    0: 0rem,
-    1: 1.5rem,
-    2: 2rem,
-    3: 2.5rem,
-    4: 3rem,
-    5: 4rem,
-    6: 5rem,
-    auto: auto,
-    inherit: inherit,
-    unset: unset
-  ),
-global: (
-  production: false,
-
-  warning-messages-toggle: false,
-  development-url: &#39;../../../..&#39;,
-  production-url: &#39;#&#39;,
-),
-
-
-generate-classes: (
-    spacing: false,
-    display: false,
-    fonts: false,
-    flex: false,
-    utility: false
-  ),
-   // Experimental - &gt; Bootstrap overide
-   bootstrap:
-   (
-     // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
-     bootstrap-color:
-       (
-         bs-blue: #0d6efd,
-         bs-indigo: #6610f2,
-         bs-purple: #6f42c1,
-         bs-pink: #d63384,
-         bs-red: #dc3545,
-         bs-orange: #fd7e14,
-         bs-yellow: #ffc107,
-         bs-green: #198754,
-         bs-teal: #20c997,
-         bs-cyan: #0dcaf0,
-         bs-white: #fff,
-         bs-gray: #6c757d,
-         bs-gray-dark: #343a40,
-         bs-primary: #0d6efd,
-         bs-secondary: #6c757d,
-         bs-success: #198754,
-         bs-info: #0dcaf0,
-         bs-warning: #ffc107,
-         bs-danger: #dc3545,
-         bs-light: #f8f9fa,
-         bs-dark: #212529,
-       ),
-   ),
-   image-wrapper: (
-  img-box-default-height: 80,
-  img-box-default-width: 100,
-  img-default-preload-background: none,
-),
-
-);</code></pre>
-    </div>
-  
-
-    
-  
-  
-  
-  
-
-  
-
-  </div>
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-
-  
-  
-
-
-  
-
-    
-  <div data-item-section="related">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Related</span>
-        
-      </h3>
-    
-
-    
-      
-
-      
-        
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  setup.html#function--set-config" class="item-name">set-config()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-      
-    
-  </div>
-
-  
-  
-  
-  
-    
-    
-  
-    
-  <div data-item-section="used-by">
-    
-      <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Used By</span>
-        
-      </h3>
-    
-
-    
-      
-      
-        
-
-        
-          
-          
-  
-  
-  
-  
-  
-  
-
-  
-  <div class="param-list">
-    <h4 class="param-title">
-      <span class="item-type">@function</span>
-      
-        <a href="
-  setup.html#function--set-config" class="item-name">set-config()</a>
-      
-      
-      
-      
-    </h4>
-
-    
-  </div>
-
-
-        
-      
-    
-  </div>
-
-  
-
-  
-
-  
-  
-
-
-  
-  
-
-  
-  
-
-</section>
-
-  
-    
-    
-
-
-
-
-
-
-
-
-
-
-<section class="item" id="function--set-config">
+<section class="item" id="function--help">
   
     
   
@@ -577,7 +219,7 @@ generate-classes: (
       
 
       
-        <a href="#function--set-config" class="item-name">set-config()</a>
+        <a href="#function--help" class="item-name">help()</a>
       
 
       
@@ -596,34 +238,6 @@ generate-classes: (
   
   
 
-  
-    <div class="text-block">
-      <p>The <code>set.config()</code> creates the configuration for the project. Through this function you can update the Sinister configuration map. For example you can update breakpoints, colors, font-sizes, or set new<span class="widont">&nbsp;</span>ones.</p>
-<blockquote>
-<p>Each time you update <code>_sin.config.scss</code> you have to restart your sass server in order for the changes to take<span class="widont">&nbsp;</span>effect.</p>
-</blockquote>
-
-      
-  
-
-      
-  
-    
-    <section class="summary-subsection">
-      <h3 class="summary-subtitle">Author:</h3>
-      <ul class="subsection-details">
-        
-          <li><p>Theodoros Kondakos</p>
-</li>
-        
-      </ul>
-    </section>
-  
-
-      
-  
-
-    </div>
   
 
   </div>
@@ -658,7 +272,34 @@ generate-classes: (
     <h4 class="param-title">
       
       
-        <span class="item-name">$new-config:</span>
+        <span class="item-name">$config-sub-key:</span>
+      
+      
+      <span class="value-type">(string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>A key that you want it’s values<span class="widont">&nbsp;</span>returned</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$config-map:</span>
       
       
       <span class="value-type">(map)</span>
@@ -668,7 +309,34 @@ generate-classes: (
     
       
       <div class="param-details text-block">
-        <p>A map that contains setting values to update or add new data to the<span class="widont">&nbsp;</span>configuration</p>
+        <p>An optional parameter to set a different map instead of<span class="widont">&nbsp;</span>configuration</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$intro-msg:</span>
+      
+      
+      <span class="value-type">(string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>A string that will work as a title, or intro text for the help<span class="widont">&nbsp;</span>context</p>
 
       </div>
     
@@ -690,14 +358,14 @@ generate-classes: (
         <span class="item-name">@return</span>
       
       
-      <span class="value-type">(map)</span>
+      <span class="value-type">(string)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Returns an updated map that is a merge of $new-config and<span class="widont">&nbsp;</span>$original-map.</p>
+        <p>If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list<span class="widont">&nbsp;</span>only</p>
 
       </div>
     
@@ -726,7 +394,7 @@ generate-classes: (
     
       
       <div class="param-details text-block">
-        <p>set-config function was called with invalid input. Was expecting a map but instead received:<span class="widont">&nbsp;</span>#{type-of($new-map)}</p>
+        <p>help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of<span class="widont">&nbsp;</span>#{length($config-map)}.</p>
 
       </div>
     
@@ -774,12 +442,12 @@ generate-classes: (
       
         <div class="code-header">
           <span class="code-language">
-            scss
+            sass
           </span>
 
           
             <span class='code-description'>
-              See available properties and values
+              See available colors
             </span>
           
         </div>
@@ -787,14 +455,10 @@ generate-classes: (
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">@use &#39;sin&#39; as *;
-  $configuration: set-config(
-   (
-    colors: (
-       test-color: #ffa,
-     ),
-   )
-  );</code></pre>
+      <pre class="hljs-pre"><code class="lang-sass">@use &#39;sin&#39; as *;
+  .sin{
+    @debug help(colors);
+  }</code></pre>
     </div>
   
 
@@ -812,7 +476,8 @@ generate-classes: (
   
   
   
-    
+    <div class="requires-wrapper">
+      
     
   <div data-item-section="requires">
     
@@ -888,7 +553,7 @@ generate-classes: (
       <span class="item-type">@function</span>
       
         <a href="
-  dev.html#function--set" class="item-name">set()</a>
+  devget.html#function--get" class="item-name">get()</a>
       
       
       
@@ -912,10 +577,33 @@ generate-classes: (
         
 
         
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
       
-        
-        
-        
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
 
         
       
@@ -968,10 +656,293 @@ generate-classes: (
   
   <div class="param-list">
     <h4 class="param-title">
-      
+      <span class="item-type">@function</span>
       
         <a href="
-  setup.html#variable--sinister-default-configuration" class="item-name">$sinister-default-configuration</a>
+  devgetmap.html#function--getMap" class="item-name">getMap()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  design.html#function--color" class="item-name">color()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  experimental.html#mixin--flex-beta" class="item-name">flex-beta()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  experimental.html#mixin--spacing-beta" class="item-name">spacing-beta()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--flex" class="item-name">flex()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--spacing" class="item-name">spacing()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  typography.html#function--fs" class="item-name">fs()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  utility.html#function--box-shadow" class="item-name">box-shadow()</a>
       
       
       
@@ -988,9 +959,8 @@ generate-classes: (
   </div>
 
   
-    
-  
 
+    </div>
   
 
   
