@@ -1,12 +1,12 @@
 @use './get-func' as *;
 @use 'sass:string';
 
-/// This function checks if a `list` or `map` contains an arguement. If the arguement is present either as `key` or `value`, the function returns true
-/// @group dev
-/// @access private
-/// @arg { list | map } $data - Takes a list or a map.
-/// @arg { map } $val - Takes a value of any type and checks if it exists in the current list or map.
-/// @return { bool } - Returns a true if the value is contained in the list or map.
+// @group devContainsFunc
+// This function checks if a `list` or `map` contains an arguement. If the arguement is present either as `key` or `value`, the function returns true
+// @access private
+// @param { list | map } $data - Takes a list or a map.
+// @param { map } $val - Takes a value of any type and checks if it exists in the current list or map.
+// @return { bool } - Returns a true if the value is contained in the list or map.
 @function contains($data, $val) {
   $isTrue: false;
   @each $key, $value in $data {

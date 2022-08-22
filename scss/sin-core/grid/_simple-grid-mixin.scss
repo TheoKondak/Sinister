@@ -9,6 +9,7 @@
 /// @param {number} $template-columns [12] - Breakpoint will work up to `$max`
 /// @content
 /// @example scss A layout with three columns
+///   @use 'sin' as *;
 ///     .grid-example {
 ///       @include simple-grid(3){
 ///         background-color: purple;
@@ -17,6 +18,7 @@
 ///     }
 ///
 /// @example scss A layout with three columns
+///   @use 'sin' as *;
 ///     .grid-example {
 ///       @include simple-grid(3, ".grid-example-item"){
 ///         background-color: purple;
