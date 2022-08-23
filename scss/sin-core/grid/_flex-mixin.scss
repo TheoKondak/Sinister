@@ -87,12 +87,10 @@
 /// @group grid
 /// @param  {arglist}  $args... - An arglist of lists.
 /// @example scss See available properties and values
-///   @use 'sin' as *;
 ///     .sin{
 ///       @debug flex();
 ///     }
 /// @example scss Examples
-///   @use 'sin' as *;
 ///    .sin{
 ///     @include flex(
 ///      (fd-cl, ai-c), // Flex direction column, align items center

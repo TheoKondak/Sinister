@@ -16,16 +16,15 @@
 /// @param  {string}  $key - A key from `font-sizes` map that exists in `_sin.config.scss`.
 /// @return {number}  - Returns the font size value
 /// @example sass See available properties and values
-///   @use 'sin' as *;
 ///    .sin{
 ///      font-size: fs();
 ///    }
+///
 /// @example sass Usecase, will return the xs font size from the configuration
-///   @use 'sin' as *;
 ///     .sin{
 ///       font-size: fs(xs);
 ///     }
-
+///
 @function fs($key: null) {
   // Check if input is null.
   @if (type-of($key) == 'null') {

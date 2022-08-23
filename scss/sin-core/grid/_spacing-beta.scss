@@ -30,7 +30,7 @@
 
 /// The `spacing` mixin allows you to add consistent spacing using values form `_sin.config` or the `default-configuration`.
 /// It accepts an `arglist` of lists. Each list can contain one of the following.
-/// > At this stage, there is no error handling, so you need to
+/// > At this stage, there is no error handling, so be aware of that.
 ///
 /// - `{string}` `$debug` - If the first arg of an arguement list is 'debug' then a debug log will be printed for the specific arguement list. If its the first arguement of spacing mixin, then it will print debug log of all lists
 /// - `{string}` `$breakpoint` - A breakpoint from breakpoints in Sinister configuration.
@@ -43,12 +43,10 @@
 /// @group experimental
 /// @link https://utopia.fyi/space/calculator
 /// @example scss See available properties and values
-///   @use 'sin' as *;
 ///     .sin{
 ///       @debug spacing-beta();
 ///     }
 /// @example scss Common use case
-///   @use 'sin' as *;
 ///     .sin{
 ///      @include spacing-beta(
 ///       (m, g, 1), // Margin, general (all directions), distance 1 (from sinister configuration)
@@ -59,7 +57,6 @@
 ///      );
 ///     }
 /// @example scss Common use case
-///   @use 'sin' as *;
 ///       .sin{
 ///        @include spacing-beta(
 ///           debug, // Will print debug log for both list items
@@ -68,7 +65,6 @@
 ///         );
 ///       }
 /// @example scss Common use case
-///   @use 'sin' as *;
 ///     .sin{
 ///      @include spacing-beta(
 ///       (debug, m, g, 1),  // Will print debug log for this item
@@ -76,12 +72,12 @@
 ///       (g, t, 2) // property gap, direction is top, but gap works on x and y axis so in that case top is translated to top and bottom, or y axis
 ///      );
 ///     }
-
 @mixin spacing-beta($args...) {
   // Check that there are arguements
   @if type($args, (arglist)) and (length($args) > 0) {
     // For each arguement
     $debug: false;
+    $valid-arguement: false;
     @each $arg in $args {
       $breakpoint: null;
       $property: null;
@@ -106,8 +102,9 @@
 
       // Check if important is present
       @each $prop in $arg {
-        // Check if Debug Is enabled
+        $valid-arguement: true;
 
+        // Check if Debug Is enabled
         @if $prop == 'debug' {
           $debug: true;
           @debug '======';
@@ -126,6 +123,7 @@
             $valic-css-value: true;
             $valid-distance: true;
             $value: $prop;
+            $valid-arguement: true;
 
             @if $debug {
               @debug unquote('Arguement is a valid spacing distance from _sin.config.scss | Value: #{$value}');
@@ -134,8 +132,8 @@
             // Check if is a distance, number that is contained in _sin.config.scss
           } @else if contains(get(spacing), $prop) {
             $valid-distance: true;
-
             $value: get(spacing, $prop);
+            $valid-arguement: true;
 
             @if $debug {
               @debug unquote('Arguement is a css spacing distance (number with unit ex 2rem) | Value: #{$value}');
@@ -147,6 +145,7 @@
           @if not contains(get(spacing), $prop) and unitless($prop) {
             $has-scale: true;
             $scale: $prop;
+            $valid-arguement: true;
 
             @if $debug {
               @debug unquote('Arguement is a scale arguement | Value: #{$scale}');
@@ -157,6 +156,7 @@
         } @else if map-get(getMap($css-properties, spacing, global-spacing-values), $prop) != null {
           $valid-distance: true;
           $value: $prop;
+          $valid-arguement: true;
 
           @if $debug {
             @debug unquote('Arguement is a global spacing value | Value: #{$value}');
@@ -167,6 +167,7 @@
         // If has Important
         @if $prop == '!i' {
           $is-important: true;
+          $valid-arguement: true;
 
           @if $debug {
             @debug unquote('Is Important | Value: #{$is-important}');
@@ -178,6 +179,7 @@
         @if contains(get(breakpoints), $prop) {
           $valid-breakpoint: true;
           $breakpoint: $prop;
+          $valid-arguement: true;
           @if $debug {
             @debug unquote('The arguement is a valid breakpoint | Value: #{$breakpoint}');
             @debug '---';
@@ -187,6 +189,7 @@
         // Direction
         @if (contains(getMap($css-properties, spacing, spacing-direction), $prop)) and $valid-direction == false and $valid-property == true {
           $valid-direction: true;
+          $valid-arguement: true;
           // If the spacing property is gap
 
           @if $property == 'g' {
@@ -218,11 +221,16 @@
         @if contains(getMap($css-properties, spacing, spacing-properties), $prop) and $valid-property == false {
           $valid-property: true;
           $property: $prop;
+          $valid-arguement: true;
 
           @if $debug {
             @debug unquote('Valid Property | Value: #{$property}');
             @debug '---';
           }
+        }
+
+        @if not $valid-arguement {
+          @error unquote('Invalid arguement detected. Arguement (#{type-of($prop)}) "#{$prop}" is not a valid arguement');
         }
       }
 
