@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <title>design | @get-sinister/sass Documentation</title>
+  <title>utilitytest06 | @get-sinister/sass Documentation</title>
 
   <link href="assets/img/sinister-logo.svg" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
@@ -79,7 +79,7 @@
   
   
     <li class="nav-item">
-      <a href="design.html" data-nav="is-active">design</a>
+      <a href="design.html" data-nav="is-not-active">design</a>
     </li>
   
   
@@ -144,7 +144,7 @@
   
   
     <li class="nav-item">
-      <a href="utilitytest06.html" data-nav="is-not-active">utilitytest06</a>
+      <a href="utilitytest06.html" data-nav="is-active">utilitytest06</a>
     </li>
   </ul>
     </div>
@@ -182,11 +182,11 @@
   <nav class="breadcrumb">
     
     <a href="index.html" >@get-sinister/sass</a> »
-    <strong>design</strong>
+    <strong>utilitytest06</strong>
   </nav>
 
 
-        <div data-page="design">
+        <div data-page="utilitytest06">
           
   
     
@@ -201,7 +201,7 @@
 
 
 
-<section class="item" id="function--color">
+<section class="item" id="function--help">
   
     
   
@@ -219,7 +219,7 @@
       
 
       
-        <a href="#function--color" class="item-name">color()</a>
+        <a href="#function--help" class="item-name">help()</a>
       
 
       
@@ -228,19 +228,6 @@
     </h2>
 
     
-  
-    
-    
-    
-
-    <p class="alias">
-      aliased as
-
-      
-        <span class="alias-title">cl()</span>
-        
-      
-    </p>
   
 
 
@@ -285,17 +272,17 @@
     <h4 class="param-title">
       
       
-        <span class="item-name">$key:</span>
+        <span class="item-name">$config-sub-key:</span>
       
       
-      <span class="value-type">(color)</span>
+      <span class="value-type">(string)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>A key from <code>colors</code> map that exists in <code>_sin.config.scss</code></p>
+        <p>A key that you want it’s values<span class="widont">&nbsp;</span>returned</p>
 
       </div>
     
@@ -312,17 +299,17 @@
     <h4 class="param-title">
       
       
-        <span class="item-name">$brightness:</span>
+        <span class="item-name">$config-map:</span>
       
-      <span class="item-value">0</span>
-      <span class="value-type">(color)</span>
+      
+      <span class="value-type">(map)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>If it is a negative value, it will apply <code>sass darken()</code>, if it is a positive value, it will apply <code>sass lighten()</code>. If it is zero, it will render the normal<span class="widont">&nbsp;</span>color</p>
+        <p>An optional parameter to set a different map instead of<span class="widont">&nbsp;</span>configuration</p>
 
       </div>
     
@@ -339,17 +326,17 @@
     <h4 class="param-title">
       
       
-        <span class="item-name">$step:</span>
+        <span class="item-name">$intro-msg:</span>
       
-      <span class="item-value">4</span>
-      <span class="value-type">(color)</span>
+      
+      <span class="value-type">(string)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>How prominent the effect will<span class="widont">&nbsp;</span>be</p>
+        <p>A string that will work as a title, or intro text for the help<span class="widont">&nbsp;</span>context</p>
 
       </div>
     
@@ -371,14 +358,14 @@
         <span class="item-name">@return</span>
       
       
-      <span class="value-type">(color)</span>
+      <span class="value-type">(string)</span>
       
     </h4>
 
     
       
       <div class="param-details text-block">
-        <p>Returns a CSS color from <code>_sin.config.scss</code>, and can brighten or darken a<span class="widont">&nbsp;</span>color.</p>
+        <p>If $config-sub-key is null, then it will return the whole list of key value pairs, otherwise if a specific key is placed as input, it will return the list of key value pairs of this list<span class="widont">&nbsp;</span>only</p>
 
       </div>
     
@@ -407,7 +394,7 @@
     
       
       <div class="param-details text-block">
-        <p>Color function needs a valid input. It requires a color key from <code>_sin.config.scss</code>. The current value is: <code>#{$key}</code>. See bellow for available<span class="widont">&nbsp;</span>colors</p>
+        <p>help() called, with an invalid arguement. $config-map must be a type of map and with length larger than 1, recieved: #{type-of($config-map)} and a length of<span class="widont">&nbsp;</span>#{length($config-map)}.</p>
 
       </div>
     
@@ -428,7 +415,7 @@
 
     <div data-item-section="examples">
       <h3 class="item-subtitle">
-        <span class="item-subtitle-main">Examples</span>
+        <span class="item-subtitle-main">Example</span>
       </h3>
 
       
@@ -455,12 +442,12 @@
       
         <div class="code-header">
           <span class="code-language">
-            scss
+            sass
           </span>
 
           
             <span class='code-description'>
-              color()
+              See available colors
             </span>
           
         </div>
@@ -468,104 +455,8 @@
 
       
       
-      <pre class="hljs-pre"><code class="lang-scss">.sin{
-  color: color(test-color, 3);
-}</code></pre>
-    </div>
-  
-
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            css
-          </span>
-
-          
-            <span class='code-description'>
-              compiled
-            </span>
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-css">.sin {
-  color: #ffb01f;
-}</code></pre>
-    </div>
-  
-
-    </div>
-
-    
-  </div>
-
-      
-        
-  
-  
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  <div class="example">
-    <div class="example-code">
-      
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            scss
-          </span>
-
-          
-            <span class='code-description'>
-              You use color function in places like rgba
-            </span>
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-scss">.sin{
-  color: rgba(color(test-color), .4);
- }</code></pre>
-    </div>
-  
-
-  
-    <div class="code-block">
-      
-        <div class="code-header">
-          <span class="code-language">
-            css
-          </span>
-
-          
-            <span class='code-description'>
-              compiled
-            </span>
-          
-        </div>
-      
-
-      
-      
-      <pre class="hljs-pre"><code class="lang-css">.sin {
-  color: rgba(255, 165, 0, 0.4);
+      <pre class="hljs-pre"><code class="lang-sass">.sin{
+  @debug help(colors);
 }</code></pre>
     </div>
   
@@ -620,16 +511,22 @@
       <span class="item-type">@function</span>
       
         <a href="
-  utilitytest06.html#function--help" class="item-name">help()</a>
+  deverror.html#function--type" class="item-name">type()</a>
       
       
       
-      
+      <span class="item-note">[private]</span>
     </h4>
 
     
   </div>
 
+
+        
+      
+        
+        
+        
 
         
       
@@ -679,10 +576,98 @@
         
 
         
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
       
         
         
         
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devgetmap.html#function--getMap" class="item-name">getMap()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
 
         
       
@@ -733,7 +718,230 @@
     <h4 class="param-title">
       <span class="item-type">@function</span>
       
-        <span class="item-name">cl()</span>
+        <a href="
+  design.html#function--color" class="item-name">color()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  experimental.html#mixin--flex-beta" class="item-name">flex-beta()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  experimental.html#mixin--spacing-beta" class="item-name">spacing-beta()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--flex" class="item-name">flex()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--spacing" class="item-name">spacing()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  typography.html#function--fs" class="item-name">fs()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  utility.html#function--box-shadow" class="item-name">box-shadow()</a>
       
       
       

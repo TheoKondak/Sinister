@@ -28,7 +28,6 @@
 /// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
 /// @example scss Examples
-///   @use 'sin' as *;
 ///     .sin{
 ///       @include flex-beta(
 ///         (fd-cl, ai-c, '!i'), // Flex direction column, align items center, and every css property will become !important
