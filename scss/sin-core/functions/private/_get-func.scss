@@ -6,7 +6,7 @@
 /// You can access the config data with the `get()` function.
 /// `get()` function will only retrieve data from sinister configuration. This way the syntax is simpler and thus retrieving data is quicker.
 /// @access private
-/// @group devGet
+/// @group dev
 /// @param  { string }  $key - Takes a key and if it exists in configuration
 /// @return { * }  - Returns the value/es that exist in the key.
 @function get($keys...) {
