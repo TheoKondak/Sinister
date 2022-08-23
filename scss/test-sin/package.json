@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@get-sinister/sass": "^0.6.59-beta.0",
+    "sass": "^1.50.1"
+  }
+}

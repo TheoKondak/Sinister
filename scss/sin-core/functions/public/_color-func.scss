@@ -6,22 +6,17 @@
 @use './../private/get-func' as *;
 @use './help-func' as *;
 
-/// @name color
 /// @group design
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
 /// @param  {color}  $key - A key from `colors` map that exists in `_sin.config.scss`
 /// @param {color} $brightness [0] - If it is a negative value, it will apply `sass darken()`, if it is a positive value, it will apply `sass lighten()`. If it is zero, it will render the normal color
 /// @param {color} $step [4] - How prominent the effect will be
 /// @return {color} - Returns a CSS color from `_sin.config.scss`, and can brighten or darken a color.
 /// @example scss - color()
-///   @use 'sin' as *;
 ///     .sin{
 ///       color: color(test-color, 3);
 ///     }
 ///
 /// @example scss - You use color function in places like rgba
-///   @use 'sin' as *;
 ///     .sin{
 ///       color: rgba(color(test-color), .4);
 ///      }
@@ -54,6 +49,9 @@
   }
 }
 
+/// Alias function for `color()`
+/// @group design
+/// @alias color
 @function cl($key: null, $brightness: 0, $step: 4) {
   @return color($key, $brightness, $step);
 }

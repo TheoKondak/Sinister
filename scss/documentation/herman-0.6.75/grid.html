@@ -1,0 +1,4435 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-herman="root">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>grid | @get-sinister/sass Documentation</title>
+
+  <link href="assets/img/sinister-logo.svg" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/webpack/app_styles.min.css" />
+
+  
+
+  
+</head>
+<body data-herman="body">
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+  <symbol id="icon-logo" viewBox="0 0 16 16">
+    <path d="M.2 8 0 7.8v-.2C.8 6.9 1.9 5.9 2.7 5l.4.3c-.5.8-1.1 1.6-1.8 2.3 1 1.2 1 1.3 1.7 2.4l-.4.3c-.4-.4-.5-.6-1-1C1 8.6 1.1 8.7.2 8zM13 10c.6-1.1.7-1.1 1.7-2.4-.6-.6-1.3-1.5-1.7-2.3l.3-.3c.8.8 1.8 1.8 2.7 2.6v.2l-.8.7c-.3.3-1.2 1.1-1.8 1.7L13 10z"/><path d="M2.6 13.1H3c.9 0 1.1-.2 1.1-1.4V4.2c0-1.1-.2-1.4-1.1-1.4h-.4v-.6h4.5v.7h-.3c-.9 0-1.1.2-1.1 1.4v3.2h4.6V4.2c0-1.1-.2-1.4-1.1-1.4h-.3v-.6h4.5v.7H13c-.9 0-1.1.2-1.1 1.4v7.5c0 1.1.2 1.4 1.1 1.4h.4v.7H8.9v-.7h.3c.9 0 1.1-.2 1.1-1.4V8.2H5.7v3.5c0 1.1.2 1.4 1.1 1.4h.3v.7H2.6v-.7z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 28">
+    <path d="M24 21v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1v-2c0-.547.453-1 1-1h22c.547 0 1 .453 1 1zm0-8v2c0 .547-.453 1-1 1H1c-.547 0-1-.453-1-1V5c0-.547.453-1 1-1h22c.547 0 1 .453 1 1z"/>
+  </symbol>
+</svg>
+
+  <div data-region="app">
+    <header data-region="banner">
+      
+  <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
+    
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
+  </svg>
+
+  </button>
+
+
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">@get-sinister/sass</a>
+        
+          <span class="project-version">0.6.75</span>
+        
+      </div>
+    </header>
+
+    <div data-region="container">
+      
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+    <form action="search.html">
+      <input type="text" name="q" placeholder="Search…" required minlength="3">
+    </form>
+
+    <div class="nav-subsection">
+      <h3 class="nav-home">
+        
+        <a href="index.html" data-nav="is-not-active">@get-sinister/sass</a>
+      </h3>
+
+      
+      
+    </div>
+
+    
+    <div class="nav-subsection">
+      <ul>
+  
+    <li class="nav-item">
+      <a href="undefined.html" data-nav="is-not-active">General</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="classes.html" data-nav="is-not-active">classes</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="design.html" data-nav="is-not-active">design</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="dev.html" data-nav="is-not-active">dev</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="devcontainsfunc.html" data-nav="is-not-active">devcontainsfunc</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="deverror.html" data-nav="is-not-active">deverror</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="devflexpropertiesbeta.html" data-nav="is-not-active">devflexpropertiesbeta</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="devget.html" data-nav="is-not-active">devget</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="devgetmap.html" data-nav="is-not-active">devgetmap</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="experimental.html" data-nav="is-not-active">experimental</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="grid.html" data-nav="is-active">grid</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="setup.html" data-nav="is-not-active">setup</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="typography.html" data-nav="is-not-active">typography</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="unit-conversion.html" data-nav="is-not-active">unit-conversion</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="utility.html" data-nav="is-not-active">utility</a>
+    </li>
+  
+  
+    <li class="nav-item">
+      <a href="utilitytest06.html" data-nav="is-not-active">utilitytest06</a>
+    </li>
+  </ul>
+    </div>
+
+    
+    
+
+    
+      <aside class="footer-credit">
+        <a href="https://www.oddbird.net/herman/" class="footer-icon">
+          
+  <svg data-icon="logo" data-icon-size="footer-logo" ><use xlink:href="#icon-logo" />
+  </svg>
+
+        </a>
+        <span>
+          Documented with
+          <a href="https://www.oddbird.net/herman/" class="footer-link">
+            Herman
+          </a>
+        </span>
+        <span>
+          by
+          <a href="https://www.oddbird.net/" class="footer-link">
+            OddBird
+          </a>
+        </span>
+      </aside>
+    
+  </nav>
+
+
+      <main data-region="main">
+        
+  <nav class="breadcrumb">
+    
+    <a href="index.html" >@get-sinister/sass</a> »
+    <strong>grid</strong>
+  </nav>
+
+
+        <div data-page="grid">
+          
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--grid-template">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--grid-template" class="item-name">grid-template()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Grid mixin is an attempt to make responsive design more straightforward by organizing the grid for various media queries.
+It is a mixin that receives as an input list of arguments. The first argument is a media query breakpoint from <code>_sinConfig</code> , then the mixin expects a list of grid columns and optionally a list of grid<span class="widont">&nbsp;</span>rows.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$args:</span>
+      
+      
+      <span class="value-type">(arglist)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Takes an <code>arglist</code> of <code>lists</code>.</p>
+<blockquote>
+<p>Each <code>list</code> contains:</p>
+</blockquote>
+<ul>
+<li><code>$min-width-query</code>: <code>{string}</code>   - Min width, breakpoint from <code>_sin.config.scss</code></li>
+<li><code>$grid-template-columns</code>: <code>{list}</code> - A list of grid template<span class="widont">&nbsp;</span>columns</li>
+<li><code>$grid-template-rows</code>: <code>{list}</code> - A list of grid template rows<span class="widont">&nbsp;</span>(optional)</li>
+</ul>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Systax example
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include grid-template((&#39;&#39;, 1fr), (&#39;xs&#39;, 1fr), (&#39;md&#39;, (1fr 1fr), (1fr 1fr)), (&#39;lg&#39;, 1fr 1fr 1fr));
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.sin {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 576px) {
+  .sin {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 1200px) {
+  .sin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+@media (min-width: 1460px) {
+  .sin {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--flex">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--flex" class="item-name">flex()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>Use flex in one line! With this mixin, you can achieve most flex functionality just in one line. Each set of rules sits within a sass list. Each list can take a breakpoint, and abreviations of flex properties. Each list, should be 1 breakpoint.
+Each <code>list</code> contains:
+A breakpoint from <code>sin.config</code>. This is optional.
+Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and<span class="widont">&nbsp;</span>flex-basis.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$args...:</span>
+      
+      
+      <span class="value-type">(arglist)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>An arglist of<span class="widont">&nbsp;</span>lists.</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              See available properties and values
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @debug flex();
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Examples
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include flex(
+  (fd-cl, ai-c), // Flex direction column, align items center
+  (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
+  (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+  (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+  (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+ );
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.sin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 576px) {
+  .sin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (min-width: 1200px) {
+  .sin {
+    display: flex;
+    gap: calc(1.5rem * 0.5);
+  }
+}
+@media (min-width: 1460px) {
+  .sin {
+    display: flex;
+  }
+}
+@media (min-width: 1980px) {
+  .sin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    column-gap: calc(2rem * 1);
+  }
+  .sin &gt; * {
+    flex: 1 1 43%;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  dev.html#mixin--flex-properties" class="item-name">flex-properties()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  deverror.html#function--type" class="item-name">type()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devget.html#function--get" class="item-name">get()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  utilitytest06.html#function--help" class="item-name">help()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devgetmap.html#function--getMap" class="item-name">getMap()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+    
+  </div>
+
+  
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--mq">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--mq" class="item-name">mq()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$min:</span>
+      
+      <span class="item-value">120px</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint from which the query will kick<span class="widont">&nbsp;</span>in</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$max:</span>
+      
+      <span class="item-value">4096px</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint will work up to <code>$max</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include mq(xs, xxl){
+   display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (min-width: 576px) and (max-width: 2560px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config as well as some custom number
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+    @include mq(xs, 1920px){
+      display: block;
+    }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (min-width: 576px) and (max-width: 1920px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  dev.html#function--too-large-min-width" class="item-name">too-large-min-width()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devget.html#function--get" class="item-name">get()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+    
+  </div>
+
+  
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--mq-min">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--mq-min" class="item-name">mq-min()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$min:</span>
+      
+      <span class="item-value">120px</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint from which the query will kick<span class="widont">&nbsp;</span>in</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include min(xs){
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (min-width: 576px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="https://theokondak.github.io/Sinister/#grid-mixin-mqMix" class="item-name">Works the same as mqMix</a>
+      
+      
+      
+      <span class="item-note">[external]</span>
+    </h4>
+
+    
+  </div>
+
+
+      
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--min">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--min" class="item-name">min()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$min:</span>
+      
+      <span class="item-value">120px</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint from which the query will kick<span class="widont">&nbsp;</span>in</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include min(xs){
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (min-width: 576px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="https://theokondak.github.io/Sinister/#grid-mixin-mqMix" class="item-name">Works the same as mqMix</a>
+      
+      
+      
+      <span class="item-note">[external]</span>
+    </h4>
+
+    
+  </div>
+
+
+      
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--mqMax">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--mqMax" class="item-name">mqMax()</a>
+      
+
+      
+
+      
+        <span class="item-note">[deprecated]</span>
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      
+      
+  
+
+      
+  
+
+      
+  
+    <section class="summary-subsection">
+      <h3 class="summary-subtitle">DEPRECATED:</h3>
+      <div class="subsection-details"><p>mixin to be deprecated in sinister 0.6.73 and replaced my mixin mq-max and<span class="widont">&nbsp;</span>max</p>
+</div>
+    </section>
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$max:</span>
+      
+      <span class="item-value">4096px</span>
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint will work up to $max. Accepts breakpoints from <code>sin.config</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">  .sin{
+@include mqMax(xxl){
+  display: block;
+    }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (max-width: 2560px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devget.html#function--get" class="item-name">get()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--mq-max" class="item-name">mq-max()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--mq-max">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--mq-max" class="item-name">mq-max()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$max:</span>
+      
+      <span class="item-value">4096px</span>
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint will work up to $max. Accepts breakpoints from <code>sin.config</code>
+@link <a href="https://theokondak.github.io/Sinister/#grid-mixin-mqMax">https://theokondak.github.io/Sinister/#grid-mixin-mqMax</a> Works the same as<span class="widont">&nbsp;</span>mqMax</p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include mq-max(xxl){
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (max-width: 2560px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--mqMax" class="item-name">mqMax()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--max">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--max" class="item-name">max()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$max:</span>
+      
+      <span class="item-value">4096px</span>
+      <span class="value-type">(number |<span class="widont">&nbsp;</span>string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint will work up to $max. Accepts breakpoints from <code>sin.config</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Accepting a breakpoint from sin.config
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+  @include max(xxl){
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">@media (max-width: 2560px) {
+  .sin {
+    display: block;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="https://theokondak.github.io/Sinister/#grid-mixin-mqMax" class="item-name">Works the same as mqMax</a>
+      
+      
+      
+      <span class="item-note">[external]</span>
+    </h4>
+
+    
+  </div>
+
+
+      
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  grid.html#mixin--mqMax" class="item-name">mqMax()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+    
+  </div>
+
+  
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--simple-grid">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--simple-grid" class="item-name">simple-grid()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="parameter">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Parameters</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$item-per-column:</span>
+      
+      <span class="item-value">4</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>The number of columns of the<span class="widont">&nbsp;</span>grid</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$element-type:</span>
+      
+      <span class="item-value">*</span>
+      <span class="value-type">(string)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>The number of columns of the<span class="widont">&nbsp;</span>grid</p>
+
+      </div>
+    
+  </div>
+
+
+      
+        
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">$template-columns:</span>
+      
+      <span class="item-value">12</span>
+      <span class="value-type">(number)</span>
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Breakpoint will work up to <code>$max</code></p>
+
+      </div>
+    
+  </div>
+
+
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Examples</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              A layout with three columns
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.grid-example {
+  @include simple-grid(3){
+    background-color: purple;
+    padding: 1rem;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.grid-example {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  background-color: purple;
+  padding: 1rem;
+}
+.grid-example &gt; * {
+  grid-column: span 4;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              A layout with three columns
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.grid-example {
+  @include simple-grid(3, &quot;.grid-example-item&quot;){
+    background-color: purple;
+    padding: 1rem;
+  }
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.grid-example {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  background-color: purple;
+  padding: 1rem;
+}
+.grid-example &gt; .grid-example-item {
+  grid-column: span 4;
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+  
+  
+  
+    
+    
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+<section class="item" id="mixin--spacing">
+  
+    
+  
+  
+
+  
+  
+  
+  
+
+  <div data-item-section="header">
+    <h2 class="item-title">
+      
+        <span class="item-type">@mixin</span>
+      
+
+      
+        <a href="#mixin--spacing" class="item-name">spacing()</a>
+      
+
+      
+
+      
+    </h2>
+
+    
+  
+
+
+    
+    
+  
+  
+  
+  
+
+  
+    <div class="text-block">
+      <p>The <code>spacing</code> mixin allows you to add consistent spacing using values form <code>_sin.config</code> or the <code>default-configuration</code>.
+<code>{string}</code> <code>$breakpoint</code> - A breakpoint from breakpoints in Sinister configuration.
+<code>{string}</code> <code>$property</code> - The first letter of a spacing property, m for margin, p for padding, g for gap.
+<code>{string}</code> <code>$direction</code> - The first letter of a spacing property direction. For margin and padding, t for top, r for right, b for bottom, l for left. Gap property has only generic, column and gap, so if any of t,b is selected row-gap will be applied and similar for column-gap.
+<code>{string}</code> <code>$value</code> - A spacing value from spacing in Sinister configuration
+<code>{number}</code> <code>$scale</code> - A number that will be multiplied with the spacing value selected. Tuning this is not suggested. Default value is 1.
+<code>{string}</code> <code>$important</code> - If <code>!i</code> is present, the style will get <code>!important</code>.</p>
+
+      
+  
+
+      
+  
+
+      
+  
+
+    </div>
+  
+
+  </div>
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    
+  <div data-item-section="property">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Map Properties &amp;<span class="widont">&nbsp;</span>Return</span>
+        
+      </h3>
+    
+
+    
+      
+
+      
+  
+
+      
+  
+
+      
+  
+
+      
+  
+    
+      
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <span class="item-name">@error</span>
+      
+      
+      
+      
+    </h4>
+
+    
+      
+      <div class="param-details text-block">
+        <p>Invalid input in spacing mixin. See documentation for<span class="widont">&nbsp;</span>more.</p>
+
+      </div>
+    
+  </div>
+
+    
+  
+
+    
+  </div>
+
+  
+
+
+  
+  
+    
+
+    <div data-item-section="examples">
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Example</span>
+      </h3>
+
+      
+        
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <div class="example">
+    <div class="example-code">
+      
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            scss
+          </span>
+
+          
+            <span class='code-description'>
+              Common use case
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-scss">.sin{
+ @include spacing(
+  (m, g, 1), // Margin, general (all directions), 1 (from default-config)
+  (xs, m, g, 2), // From breakpoint xs from default sin config, distance 2
+  (md, m, y, 2, 1.4), // From breakpoint md, y axis, distance 2, and scale 1.4
+  (xl, m, t, 2, &#39;!i&#39;) // From breakpoint xl, direction top, distance 2, !important is true, scale is default
+ );
+}</code></pre>
+    </div>
+  
+
+  
+    <div class="code-block">
+      
+        <div class="code-header">
+          <span class="code-language">
+            css
+          </span>
+
+          
+            <span class='code-description'>
+              compiled
+            </span>
+          
+        </div>
+      
+
+      
+      
+      <pre class="hljs-pre"><code class="lang-css">.sin {
+  margin-top: calc(1.5rem * 1);
+  margin-right: calc(1.5rem * 1);
+  margin-bottom: calc(1.5rem * 1);
+  margin-left: calc(1.5rem * 1);
+}
+@media (min-width: 576px) {
+  .sin {
+    margin-top: calc(2rem * 1);
+    margin-right: calc(2rem * 1);
+    margin-bottom: calc(2rem * 1);
+    margin-left: calc(2rem * 1);
+  }
+}
+@media (min-width: 1200px) {
+  .sin {
+    margin-top: calc(2rem * 1.4);
+    margin-bottom: calc(2rem * 1.4);
+  }
+}
+@media (min-width: 1980px) {
+  .sin {
+    margin-top: calc(2rem * 1.4) !important;
+  }
+}</code></pre>
+    </div>
+  
+
+    </div>
+
+    
+  </div>
+
+      
+    </div>
+  
+
+
+  
+
+    
+  <div data-item-section="related">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Related</span>
+        
+      </h3>
+    
+
+    
+      
+        
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      
+      
+        <a href="https://utopia.fyi/space/calculator" class="item-name">https://utopia.fyi/space/calculator</a>
+      
+      
+      
+      <span class="item-note">[external]</span>
+    </h4>
+
+    
+  </div>
+
+
+      
+
+      
+    
+  </div>
+
+  
+  
+  
+  
+    <div class="requires-wrapper">
+      
+    
+  <div data-item-section="requires">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Requires</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devcontainsfunc.html#function--contains" class="item-name">contains()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devget.html#function--get" class="item-name">get()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  devgetmap.html#function--getMap" class="item-name">getMap()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@function</span>
+      
+        <a href="
+  utilitytest06.html#function--help" class="item-name">help()</a>
+      
+      
+      
+      
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+      
+    
+  </div>
+
+  
+      
+  
+    
+  <div data-item-section="used-by">
+    
+      <h3 class="item-subtitle">
+        <span class="item-subtitle-main">Used By</span>
+        
+      </h3>
+    
+
+    
+      
+      
+        
+
+        
+          
+          
+  
+  
+  
+  
+  
+  
+
+  
+  <div class="param-list">
+    <h4 class="param-title">
+      <span class="item-type">@mixin</span>
+      
+        <a href="
+  dev.html#mixin--flex-properties" class="item-name">flex-properties()</a>
+      
+      
+      
+      <span class="item-note">[private]</span>
+    </h4>
+
+    
+  </div>
+
+
+        
+      
+        
+
+        
+      
+    
+  </div>
+
+  
+
+    </div>
+  
+
+  
+  
+
+
+  
+  
+
+  
+  
+
+</section>
+
+  
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="assets/webpack/runtime.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/common.min.js"></script>
+  <script type="text/javascript" src="assets/webpack/app.min.js"></script>
+  
+</body>
+</html>
