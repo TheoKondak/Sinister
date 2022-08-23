@@ -7,12 +7,12 @@
 @use '../../grid/spacing-beta' as *;
 @use '../../../../../../sin.config' as *;
 
-// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
-// @ignore @author Theodoros Kondakos
-// @ignore @link   https:/github.com/TheoKondak
-// @access private
-// @group dev
-// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
+/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
+/// @ignore @author Theodoros Kondakos
+/// @ignore @link   https:/github.com/TheoKondak
+/// @access private
+/// @group dev
+/// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
 @mixin flex-properties-beta($has-breakpoint, $breakpoint-value, $has-flex-direction, $flex-direction-value, $has-wrap, $wrap-value, $has-justify-content, $justify-content-value, $has-align-content, $align-content-value, $has-align-items, $align-items-value, $has-gap, $gap-value, $has-flex, $flex-value, $has-flex-basis, $flex-basis-value, $has-align-self, $align-self-value, $is-important, $has-auto-gap) {
   $calculated-gap-value: null;
 

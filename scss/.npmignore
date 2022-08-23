@@ -1,10 +1,8 @@
 //Workspace
 *.code-workspace
-gitignored/
-<<<<<<< HEAD
+gitIgnored/
 test-sin/
-=======
 documentation/
 test-sin/
 .gitignore
->>>>>>> 8a4e828142630d66f685cba82bef7eb652eaa73b
+

@@ -23,13 +23,11 @@
 /// - **debug**: pass 'debug' as a parameter to a list to see a debug log about the current list of properties.
 /// - **auto-gap**: with Sinister, you can automatically negate gap values from flex and flex-basis properties for the x axis, so gap becomes even easier to use. Note that only gap that is nested in the current list can be calculated for now. Use with caution though, because there might be some side effects.
 /// - **!i**: pass '!i' string as a parameter to add important to every parameter of the current list. Note that you must add the single quotes in the parameter, otherwise it will not work.
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+///
 /// @access public
 /// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
 /// @example scss Examples
-///   @use 'sin' as *;
 ///     .sin{
 ///       @include flex-beta(
 ///         (fd-cl, ai-c, '!i'), // Flex direction column, align items center, and every css property will become !important
@@ -40,8 +38,6 @@
 ///         (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
 ///       );
 ///       }
-///
-
 @mixin flex-beta($args...) {
   // It takes a list of Sins
   // Itterate / check first level map

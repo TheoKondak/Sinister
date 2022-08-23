@@ -5,7 +5,6 @@
 /// @arg {number} $height [100%] - Background height
 /// @since 0.6.67-beta.2
 /// @example sass Simple Usecase
-///   @use 'sin' as *;
 ///     .sin{
 ///         @include overlay(rgba(black, .2));
 ///     }
