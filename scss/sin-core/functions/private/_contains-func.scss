@@ -1,7 +1,7 @@
 @use './get-func' as *;
 @use 'sass:string';
 
-/// @group devContainsFunc
+/// @group dev
 /// This function checks if a `list` or `map` contains an arguement. If the arguement is present either as `key` or `value`, the function returns true
 /// @access private
 /// @param { list | map } $data - Takes a list or a map.
