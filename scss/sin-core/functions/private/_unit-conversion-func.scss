@@ -74,7 +74,6 @@
 /// @group unit-conversion
 /// @arg {number} $input - the input value with units to be converted
 /// @example scss Convert `rem` to `cm`
-///   @use 'sin' as *;
 ///     .sin{
 ///       font-size: cm(4rem);
 ///     }
@@ -275,7 +274,7 @@
       pct: 0%,
       percent: 0%,
       num: 0,
-      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+      number: 0 // percent or number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     ),
     $unit
   );
@@ -326,7 +325,7 @@
 }
 
 /// Convert number to ratio (fraction)
-/// ratio(1.7777778) =>   16/9
+/// ratio(1.7777778) => 16/9
 @function ratio($x, $y: null) {
   @if not $y {
     $n: $x;

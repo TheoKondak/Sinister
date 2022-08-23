@@ -131,14 +131,3 @@ DEFAULTindex.html
 src/js/custom.js
 /src/compiled/
 gitignored/
-<<<<<<< HEAD
-test-sin/
-=======
-
-# Test Sin
- test-sin/node_modules/
- test-sin/_sin.scss
- test-sin/_custom.scss
- test-sin/pages/_index.scss
- test-sin/compilled.css.map
->>>>>>> 8a4e828142630d66f685cba82bef7eb652eaa73b

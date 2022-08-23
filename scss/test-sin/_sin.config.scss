@@ -1,0 +1,19 @@
+@use './node_modules/@get-sinister/sass/sin-core/functions/public/set-config-func' as sin;
+// @use '@get-sinister/sass/sincore/modules/set-config-func' as sin;
+
+$configuration: sin.set-config(
+  (
+    colors: (
+      bg: #030d22,
+      comment: #0086a8,
+      mixin: #ff23bb,
+      value: #ff2e88,
+      function: #efd400,
+      property: #0eceb2,
+      test-color: orange,
+    ),
+    breakpoints: (
+      test-breakpoint: 1270px,
+    ),
+  )
+);
