@@ -1,7 +1,9 @@
 // @use '../../../../../sin.config' as *;
 @use 'sass:string';
 @use 'sass:math';
+@use 'sass:list';
 @use '../functions/private' as *;
+@use '../misc/css-properties' as *;
 
 /// Create a simple css grid with a fixed number of columns
 /// @group grid
@@ -27,6 +29,8 @@
 ///
 @mixin simple-grid($args...) {
   @if type($args, 'arglist') and length($args) >= 1 {
+    $debug: false;
+
     // Loop for debug only if it is present in the arguements
     @each $arg in $args {
       @if $arg == 'debug' {
@@ -34,86 +38,41 @@
       }
     }
 
-    $debug: false;
-    $valid-arguement: false;
-    $is-list-of-arguements: false;
-    $has-items-per-column: false;
-    $items-per-column: null;
-    $has-element-type: false;
-    $element-type: '*';
-    $has-template-columns: false;
-    $template-columns: 12;
+    @if $debug {
+      @debug '======';
+      @debug 'STARTING @mixin simple-grid DEBUGGING';
+      @debug '---';
+    }
 
     @each $arg in $args {
+      // If debug is an arguement, enable debugging
+
       @if type($arg, (list)) {
+        @if $arg == 'debug' {
+          @debug unquote('debuging #{index($args, $arg)}');
+        }
+
         @each $cur-arg in $arg {
-          $debug: false;
+          // Reinitialize in every itteration
           $valid-arguement: false;
-          $list-of-arguements: true;
-          $has-breakpoint: false;
+          $is-list-of-arguements: false;
+          $has-valid-breakpoint: false;
           $breakpoint: null;
           $has-items-per-column: false;
           $items-per-column: null;
           $has-element-type: false;
-          $element-type: null;
+          $element-type: '*';
           $has-template-columns: false;
-          $template-columns: null;
+          $template-columns: 12;
 
-          // If debug is part of list arguement
-          @if $cur-arg == 'debug' {
-            $debug: true;
-            @debug '======';
-            @debug 'STARTING @mixin simple-grid DEBUGGING for a list of arguements';
-            @debug '---';
-          }
-
-          @if type($cur-arg, (number)) {
-            $has-items-per-column: true;
-            $items-per-column: $cur-arg;
+          @if contains(get(breakpoints), $cur-arg) {
+            $has-valid-breakpoint: true;
+            $breakpoint: $cur-arg;
             $valid-arguement: true;
 
             @if $debug {
-              @debug unquote('$has-items-per-column: #{$has-items-per-column}');
-              @debug unquote('$items-per-column: #{$items-per-column}');
-              @debug unquote('Is valid arguement: #{$valid-arguement}');
-              @debug unquote('---');
+              @debug unquote('$breakpoint: #{$breakpoint}');
             }
-          }
-
-          @if type($cur-arg, (string)) {
-            $has-element-type: true;
-            $element-type: $cur-arg;
-            $valid-arguement: true;
-
-            @if $debug {
-              @debug unquote('$has-element-type: #{$has-element-type}');
-              @debug unquote('$element-type: #{$element-type}');
-              @debug unquote('Is valid arguement: #{$valid-arguement}');
-              @debug unquote('---');
-            }
-          }
-
-          @if type($cur-arg, (number)) and $has-items-per-column == true {
-            $has-template-columns: true;
-            $template-columns: $cur-arg;
-            $valid-arguement: true;
-
-            @if $debug {
-              @debug unquote('$has-template-columns: #{$has-template-columns}');
-              @debug unquote('$template-columns: #{$template-columns}');
-              @debug unquote('Is valid arguement: #{$valid-arguement}');
-              @debug unquote('---');
-            }
-          }
-        }
-      } @else if type($arg, (number, string)) {
-        @each $cur-arg in $arg {
-          // If debug is an arguement, enable debugging
-          @if $cur-arg == 'debug' {
-            $debug: true;
-            @debug '======';
-            @debug 'STARTING @mixin simple-grid DEBUGGING';
-            @debug '---';
           }
 
           // Calculate $template-columns
@@ -125,7 +84,6 @@
 
             @if $debug {
               @debug unquote('$template-columns: #{$template-columns}');
-              @debug unquote('---');
             }
           }
 
@@ -137,32 +95,33 @@
 
             @if $debug {
               @debug unquote('$items-per-column: #{$items-per-column}');
-              @debug unquote('---');
             }
           }
 
-          // Calculate element type.
-          @if type($cur-arg, (string)) and $cur-arg != 'debug' {
-            $has-element-type: true;
-            $element-type: $cur-arg;
-            $valid-arguement: true;
+          @if $debug {
+          }
+        }
+        @debug '---';
+      } @else if type($arg, (number, string)) {
+        // Calculate element type.
+        @if type($arg, (string)) and $arg != 'debug' and not contains(get(breakpoints), $arg) {
+          $has-element-type: true;
+          $element-type: $arg;
+          $valid-arguement: true;
 
-            @if $debug {
-              @debug unquote('$element-type: #{$element-type}');
-
-              @debug unquote('---');
-            }
+          @if $debug {
+            @debug unquote('$element-type: #{$element-type}');
           }
         }
       }
     }
 
-    @if not $is-list-of-arguements {
-      // @debug unquote('$has-items-per-column: #{$items-per-column}');
-      // @debug unquote('$element-type: #{$element-type}');
-      // @debug unquote('$has-template-columns:  #{$template-columns}');
-      @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
-    }
+    // @if not $is-list-of-arguements {
+    //   // @debug unquote('$has-items-per-column: #{$items-per-column}');
+    //   // @debug unquote('$element-type: #{$element-type}');
+    //   // @debug unquote('$has-template-columns:  #{$template-columns}');
+    //   @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
+    // }
   }
 
   // $item-per-column: 4, $element-type: '*', $template-columns: 12;
