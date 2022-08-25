@@ -10,3 +10,6 @@ herman:
   sass:
     includePaths:
       - 'test-sin/scss'
+    use:
+      - file: 'sin'
+        namespace: '*'

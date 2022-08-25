@@ -74,7 +74,6 @@
 /// @group unit-conversion
 /// @arg {number} $input - the input value with units to be converted
 /// @example scss Convert `rem` to `cm`
-///   @use 'sin' as *;
 ///     .sin{
 ///       font-size: cm(4rem);
 ///     }

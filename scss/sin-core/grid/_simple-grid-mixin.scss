@@ -1,48 +1,184 @@
 // @use '../../../../../sin.config' as *;
 @use 'sass:string';
 @use 'sass:math';
+@use 'sass:list';
+@use '../functions/private' as *;
+@use '../misc/css-properties' as *;
+@use '../grid/responsive' as *;
 
+/// Create a simple css grid with a fixed number of columns.
+/// The `simple-grid` mixin works in a similar way with the `flex` and `spacing` mixins.
+/// It takes an `arglist` of arguements that can be either a string or a list.
+/// - `{string} $debug` - If `'debug'` string is passed as an arguement, you will get a debug log for the inputed parameters. It is using `@debug` so this might not work for all workflows.
+/// - `{string} $element-type [*]` - Optionaly select a direct child element. By default `'*'` selector is chosen.
+/// - `{arg} $template-columns [12]` - Optionaly you can set a different number of columns for a custom grid. This might have some wild effects on the behavior of the mixin, so use only in advanced cases.
 /// @group grid
 /// @ignore @author Theodoros Kondakos
-/// @param {number} $item-per-column [4] - The number of columns of the grid
-/// @param {string} $element-type [*] - The number of columns of the grid
-/// @param {number} $template-columns [12] - Breakpoint will work up to `$max`
+/// @param {arglist} - An arguement list that contains strings and lists.
 /// @content
-/// @example scss A layout with three columns
-///   @use 'sin' as *;
-///     .grid-example {
-///       @include simple-grid(3){
-///         background-color: purple;
-///         padding: 1rem;
-///       }
-///     }
+/// @todo - Add help when no arguements passed, more testing
+/// @example scss A responsive layout with 2 columns in smaller screens, 4 in tablet screens, and 6 at small laptop and higher screens.
+///   .grid-example{
+///     @include simple-grid(debug, '.grid-item',(2), (xs, 4), (md, 6));
+///   }
+/// @example scss A responsive layout with 1 column in smaller screens, 2 in tablet screens, and 4 at larger tablet and higher screens.
+///   .grid-example{
+///     @include simple-grid((1),(xs, 2),(sm, 4));
+///   }
 ///
-/// @example scss A layout with three columns
-///   @use 'sin' as *;
-///     .grid-example {
-///       @include simple-grid(3, ".grid-example-item"){
-///         background-color: purple;
-///         padding: 1rem;
-///       }
-///     }
-@mixin simple-grid($item-per-column: 4, $element-type: '*', $template-columns: 12) {
-  @if type-of($template-columns) == 'number' and type-of($item-per-column) == 'number' and $item-per-column != 0 {
-    @if ($template-columns >= $item-per-column) {
-      $items-per-column-calculated: math.round(math.div($template-columns, $item-per-column));
-      display: grid;
+@mixin simple-grid($args...) {
+  display: grid;
+  grid-auto-flow: dense;
+
+  @if type($args, 'arglist') and length($args) >= 1 {
+    $debug: false;
+    $is-list-of-arguements: false;
+
+    // Loop for debug only if it is present in the arguements
+    @each $arg in $args {
+      @if $arg == 'debug' {
+        $debug: true;
+      }
+    }
+
+    @if $debug {
+      @debug '======';
+      @debug 'STARTING @mixin simple-grid DEBUGGING';
+      @debug '---';
+    }
+
+    $has-element-type: false;
+    $element-type: '*';
+
+    // Itterate seperattely, since this is declared only once per mixin.
+    @each $arg in $args {
+      @if type($arg, (string)) {
+        $is-list-of-arguements: false;
+        // Calculate element type.
+        @if type($arg, (string)) and $arg != 'debug' and not contains(get(breakpoints), $arg) {
+          $has-element-type: true;
+          $element-type: $arg;
+          $valid-arguement: true;
+
+          @if $debug {
+            @debug unquote('Arguement \##{calc(index($args, $arg) - 1)}');
+            @debug unquote('$element-type: #{$element-type}');
+            @debug '---';
+          }
+        }
+      }
+    }
+
+    // Itterate for list of arguements
+    @each $arg in $args {
+      $valid-arguement: false;
+
+      $has-valid-breakpoint: false;
+      $breakpoint: null;
+      $has-items-per-column: false;
+      $items-per-column: 3;
+
+      $has-template-columns: false;
+      $template-columns: 12;
+
+      @if type($arg, (list)) {
+        $is-list-of-arguements: true;
+        @if $debug {
+          @debug unquote('Arguement list \##{calc(index($args, $arg) - 1)}');
+        }
+        @each $cur-arg in $arg {
+          // Reinitialize in every itteration
+
+          @if contains(get(breakpoints), $cur-arg) {
+            $has-valid-breakpoint: true;
+            $breakpoint: $cur-arg;
+            $valid-arguement: true;
+
+            @if $debug {
+              @debug unquote('$breakpoint: #{$breakpoint}');
+            }
+          }
+
+          // Calculate $template-columns
+          // This must be before $has-items-per-column check, otherwise, $template-columns will be overwritten
+          @if type($cur-arg, (number)) and $has-items-per-column == true {
+            $has-template-columns: true;
+            $template-columns: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Calculate $items-per-column for items belonging in a list
+          @if type($cur-arg, (number)) and $has-items-per-column == false {
+            $has-items-per-column: true;
+            $items-per-column: $cur-arg;
+            $valid-arguement: true;
+          }
+          @if $debug {
+          }
+        }
+        @if $debug {
+          @debug unquote('$items-per-column: #{$items-per-column}');
+          @debug unquote('$template-columns: #{$template-columns}');
+          @debug '---';
+        }
+
+        @if $has-valid-breakpoint {
+          @include min($breakpoint) {
+            @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
+          }
+        } @else if type($arg, (number)) {
+          @if $debug {
+            @debug unquote('Arguement list \##{calc(index($args, $arg) - 1)}');
+            @debug unquote('$items-per-column: #{$items-per-column}');
+            @debug unquote('$template-columns: #{$template-columns}');
+            @debug '---';
+          }
+
+          @include calculate-simple-grid($items-per-column, $element-type);
+        } @else {
+          @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
+        }
+      } @else if type($arg, (number)) {
+        // @debug $arg;
+        $items-per-column: $arg;
+        @if $debug {
+          @debug unquote('Arguement list \##{calc(index($args, $arg) - 1)}');
+          @debug unquote('$items-per-column: #{$items-per-column}');
+          @debug unquote('$template-columns: #{$template-columns}');
+          @debug '---';
+        }
+
+        @include calculate-simple-grid($items-per-column, $element-type);
+      }
+    }
+
+    // @if not $is-list-of-arguements {
+    //   // @debug unquote('$has-items-per-column: #{$items-per-column}');
+    //   // @debug unquote('$element-type: #{$element-type}');
+    //   // @debug unquote('$has-template-columns:  #{$template-columns}');
+    //   @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
+    // }
+  }
+}
+
+@mixin calculate-simple-grid($items-per-column: 4, $element-type: '*', $template-columns: 12) {
+  @if type-of($template-columns) == 'number' and type-of($items-per-column) == 'number' and $items-per-column != 0 {
+    @if ($template-columns >= $items-per-column) {
+      $items-per-column-calculated: math.round(math.div($template-columns, $items-per-column));
 
       grid-template-columns: repeat($template-columns, 1fr);
-      grid-auto-flow: dense;
 
-      @content;
+      @if not type($element-type, (null)) {
+        // @debug 'not null';
+      }
 
       > #{$element-type} {
         grid-column: span $items-per-column-calculated;
       }
     } @else {
-      @error unquote('Grid $template-columns (#{$template-columns}) cannot be smaller than $items-per-column (#{$item-per-column})');
+      @error unquote('Grid $template-columns (#{$template-columns}) cannot be smaller than $items-per-column (#{$items-per-column})');
     }
   } @else {
-    @error unquote('Grid $template-columns and $items-per-column must be type of number');
+    @error unquote('Grid $template-columns (#{type-of($template-columns)}) and $items-per-column (#{type-of($items-per-column)}) must be type of number');
   }
 }

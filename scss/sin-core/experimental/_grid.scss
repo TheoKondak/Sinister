@@ -14,7 +14,6 @@
 /// - `$grid-template-columns`: `{list}` - A list of grid template columns
 /// - `$grid-template-rows`: `{list}` - A list of grid template rows (optional)
 /// @example scss Systax example
-///   @use 'sin' as *;
 ///     .sin{
 ///       @include grid-template(('', 1fr), ('xs', 1fr), ('md', (1fr 1fr), (1fr 1fr)), ('lg', 1fr 1fr 1fr));
 ///     }

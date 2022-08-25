@@ -3,65 +3,195 @@
 @use '../test-sin/scss/sin' as *;
 
 @include true.describe('simple-grid [mixin]') {
-  @include true.it('should return a custom simple-grid with') {
+  @include true.it('should return a custom simple-grid with 4 items per column in a 16 column grid, from breakpoint xs 4 items per column in a default 12 columns layout, from md 6 items in 12 column layout') {
     @include true.assert {
       @include true.output {
-        .grid-example {
-          @include simple-grid(6);
+        .grid {
+          @include simple-grid((4, 16), (xs, 4), (md, 6), '.grid-item');
         }
       }
       @include true.expect {
-        .grid-example {
+        .grid {
           display: grid;
-          grid-template-columns: repeat(12, 1fr);
           grid-auto-flow: dense;
+          grid-template-columns: repeat(16, 1fr);
         }
-        .grid-example > * {
-          grid-column: span 2;
-        }
-      }
-    }
-  }
-}
-
-@include true.describe('simple-grid [mixin]') {
-  @include true.it('should return simple-grid with a specific number of columns') {
-    @include true.assert {
-      @include true.output {
-        .grid-example {
-          @include simple-grid(3, '.grid-example-item');
-        }
-      }
-      @include true.expect {
-        .grid-example {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          grid-auto-flow: dense;
-        }
-        .grid-example > .grid-example-item {
-          grid-column: span calc(12 / 3);
-        }
-      }
-    }
-  }
-}
-
-@include true.describe('simple-grid [mixin]') {
-  @include true.it('should return simple-grid with a specific number of columns') {
-    @include true.assert {
-      @include true.output {
-        .grid-example {
-          @include simple-grid(3, '.grid-example-item');
-        }
-      }
-      @include true.expect {
-        .grid-example {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          grid-auto-flow: dense;
-        }
-        .grid-example > .grid-example-item {
+        .grid > .grid-item {
           grid-column: span 4;
+        }
+        @media (min-width: 576px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 3;
+          }
+        }
+        @media (min-width: 1200px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with a 1 item per column 12 grid layout, from xs 2 items, from sm 4 items') {
+    @include true.assert {
+      @include true.output {
+        .grid {
+          @include simple-grid((1), (xs, 2), (sm, 4));
+        }
+      }
+      @include true.expect {
+        .grid {
+          display: grid;
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(12, 1fr);
+        }
+        .grid > * {
+          grid-column: span 12;
+        }
+        @media (min-width: 576px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > * {
+            grid-column: span 6;
+          }
+        }
+        @media (min-width: 768px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > * {
+            grid-column: span 3;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with 3 items in 12 column grid') {
+    @include true.assert {
+      @include true.output {
+        .grid {
+          @include simple-grid((3));
+        }
+      }
+      @include true.expect {
+        .grid {
+          display: grid;
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(12, 1fr);
+        }
+        .grid > * {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with 3 items in 12 column layout , and direct child element has a class of .grid-item') {
+    @include true.assert {
+      @include true.output {
+        .grid {
+          @include simple-grid((3), '.grid-item');
+        }
+      }
+      @include true.expect {
+        .grid {
+          display: grid;
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(12, 1fr);
+        }
+        .grid > .grid-item {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with a 1 item per column 12 grid layout, from xs 2 items, from sm 4 items') {
+    @include true.assert {
+      @include true.output {
+        .grid {
+          @include simple-grid((1), (xs, 2), (sm, 4), '.grid-item');
+        }
+      }
+      @include true.expect {
+        .grid {
+          display: grid;
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(12, 1fr);
+        }
+        .grid > .grid-item {
+          grid-column: span 12;
+        }
+        @media (min-width: 576px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 6;
+          }
+        }
+        @media (min-width: 768px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 3;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include true.describe('simple-grid [mixin]') {
+  @include true.it('should return simple-grid with a 1 item per column 12 grid layout, from xs 2 items, from sm 4 items') {
+    @include true.assert {
+      @include true.output {
+        .grid {
+          @include simple-grid((4, 16), (xs, 2), (sm, 4), '.grid-item');
+        }
+      }
+      @include true.expect {
+        .grid {
+          display: grid;
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(16, 1fr);
+        }
+        .grid > .grid-item {
+          grid-column: span 4;
+        }
+        @media (min-width: 576px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 6;
+          }
+        }
+        @media (min-width: 768px) {
+          .grid {
+            grid-template-columns: repeat(12, 1fr);
+          }
+          .grid > .grid-item {
+            grid-column: span 3;
+          }
         }
       }
     }

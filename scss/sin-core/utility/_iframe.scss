@@ -4,7 +4,6 @@
 /// @group utility
 /// @arg {number} $height [55%] - Sets the height of the iframe. Should be`%`
 /// @example sass Youtube iframe or embed google maps.
-///   @use 'sin' as *;
 ///     .sin{
 ///      @include responsive-iframe(65%);
 ///     }

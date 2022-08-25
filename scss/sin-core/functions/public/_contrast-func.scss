@@ -18,7 +18,6 @@
 /// @param {number} $threshold [450] - Set the threshold for the contrast. The higher the value, the more contrast is required in order for the function to return true
 /// @return {bool} - Returns true if enough contrast is detected between the colors.
 /// @example scss will check if there is sufficient contrast, if yes, color will become white, otherwise will become random color from `_sin.config.scss`
-///   @use 'sin' as *;
 ///     .sin{
 ///         @if contrast(#fff, #faa){
 ///            color: #fff;
