@@ -16,6 +16,7 @@
 /// @ignore @author Theodoros Kondakos
 /// @param {arglist} - An arguement list that contains strings and lists.
 /// @content
+/// @todo - Add help when no arguements passed, more testing
 /// @example scss A responsive layout with 2 columns in smaller screens, 4 in tablet screens, and 6 at small laptop and higher screens.
 ///   .grid-example{
 ///     @include simple-grid(debug, '.grid-item',(2), (xs, 4), (md, 6));
