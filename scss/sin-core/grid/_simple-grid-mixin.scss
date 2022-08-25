@@ -47,23 +47,23 @@
     @each $arg in $args {
       // If debug is an arguement, enable debugging
 
-      @if type($arg, (list)) {
-        @if $arg == 'debug' {
-          @debug unquote('debuging #{index($args, $arg)}');
-        }
+      $valid-arguement: false;
+      $is-list-of-arguements: false;
+      $has-valid-breakpoint: false;
+      $breakpoint: null;
+      $has-items-per-column: false;
+      $items-per-column: null;
+      $has-element-type: false;
+      $element-type: '*';
+      $has-template-columns: false;
+      $template-columns: 12;
 
+      @if type($arg, (list)) {
+        @if $debug {
+          @debug unquote('Arguement list \##{calc(index($args, $arg) - 1)}');
+        }
         @each $cur-arg in $arg {
           // Reinitialize in every itteration
-          $valid-arguement: false;
-          $is-list-of-arguements: false;
-          $has-valid-breakpoint: false;
-          $breakpoint: null;
-          $has-items-per-column: false;
-          $items-per-column: null;
-          $has-element-type: false;
-          $element-type: '*';
-          $has-template-columns: false;
-          $template-columns: 12;
 
           @if contains(get(breakpoints), $cur-arg) {
             $has-valid-breakpoint: true;
@@ -97,22 +97,37 @@
               @debug unquote('$items-per-column: #{$items-per-column}');
             }
           }
-
-          @if $debug {
-          }
         }
-        @debug '---';
+        @if $debug {
+          @debug '---';
+        }
       } @else if type($arg, (number, string)) {
         // Calculate element type.
         @if type($arg, (string)) and $arg != 'debug' and not contains(get(breakpoints), $arg) {
+          @if $debug {
+            @debug unquote('Arguement \##{calc(index($args, $arg) - 1)}');
+          }
           $has-element-type: true;
           $element-type: $arg;
           $valid-arguement: true;
 
           @if $debug {
             @debug unquote('$element-type: #{$element-type}');
+            @debug '---';
           }
         }
+      }
+
+      // @debug $breakpoint;
+      // @debug $items-per-column;
+      // @debug $element-type;
+      // @debug $template-columns;
+      // @debug '-';
+
+      @if $has-valid-breakpoint {
+        // @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
+      } @else {
+        // @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
       }
     }
 
@@ -123,28 +138,6 @@
     //   @include calculate-simple-grid($items-per-column, $element-type, $template-columns);
     // }
   }
-
-  // $item-per-column: 4, $element-type: '*', $template-columns: 12;
-
-  //   @if type-of($template-columns) == 'number' and type-of($item-per-column) == 'number' and $item-per-column != 0 {
-  //     @if ($template-columns >= $item-per-column) {
-  //       $items-per-column-calculated: math.round(math.div($template-columns, $item-per-column));
-  //       display: grid;
-
-  //       grid-template-columns: repeat($template-columns, 1fr);
-  //       grid-auto-flow: dense;
-
-  //       @content;
-
-  //       > #{$element-type} {
-  //         grid-column: span $items-per-column-calculated;
-  //       }
-  //     } @else {
-  //       @error unquote('Grid $template-columns (#{$template-columns}) cannot be smaller than $items-per-column (#{$item-per-column})');
-  //     }
-  //   } @else {
-  //     @error unquote('Grid $template-columns and $items-per-column must be type of number');
-  //   }
 }
 
 @mixin calculate-simple-grid($items-per-column: 4, $element-type: '*', $template-columns: 12) {
