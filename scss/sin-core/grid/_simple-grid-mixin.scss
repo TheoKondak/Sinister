@@ -6,26 +6,23 @@
 @use '../misc/css-properties' as *;
 @use '../grid/responsive' as *;
 
-/// Create a simple css grid with a fixed number of columns
+/// Create a simple css grid with a fixed number of columns.
+/// The `simple-grid` mixin works in a similar way with the `flex` and `spacing` mixins.
+/// It takes an `arglist` of arguements that can be either a string or a list.
+/// - `{string} $debug` - If `'debug'` string is passed as an arguement, you will get a debug log for the inputed parameters. It is using `@debug` so this might not work for all workflows.
+/// - `{string} $element-type [*]` - Optionaly select a direct child element. By default `'*'` selector is chosen.
+/// - `{arg} $template-columns [12]` - Optionaly you can set a different number of columns for a custom grid. This might have some wild effects on the behavior of the mixin, so use only in advanced cases.
 /// @group grid
 /// @ignore @author Theodoros Kondakos
-/// @param  {number}  $item-per-column [4] - The number of columns of the grid
-/// @param  {string}  $element-type [*] - The number of columns of the grid
-/// @param  {number}  $template-columns [12] - Breakpoint will work up to `$max`
+/// @param {arglist} - An arguement list that contains strings and lists.
 /// @content
-/// @example scss A layout with three columns
+/// @example scss A responsive layout with 2 columns in smaller screens, 4 in tablet screens, and 6 at small laptop and higher screens.
 ///   .grid-example{
-///     @include simple-grid(3){
-///       background-color: purple;
-///       padding: 1rem;
-///     }
+///     @include simple-grid(debug, '.grid-item',(2), (xs, 4), (md, 6));
 ///   }
-/// @example scss A layout with three columns
+/// @example scss A responsive layout with 1 column in smaller screens, 2 in tablet screens, and 4 at larger tablet and higher screens.
 ///   .grid-example{
-///     @include simple-grid(3, ".grid-example-item"){
-///       background-color: purple;
-///       padding: 1rem;
-///     }
+///     @include simple-grid((1),(xs, 2),(sm, 4));
 ///   }
 ///
 @mixin simple-grid($args...) {
