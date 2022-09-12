@@ -1,7 +1,7 @@
 /// @group setup
 /// This is the default configuration map that contains all the default values.
 /// You can add or update the configuration by using the `_sin-config().scss` file.
-/// 
+///
 /// - `colors` [] color palette of the project
 /// - `breakpoints` [] available breakpoints
 /// - `typography`
@@ -27,17 +27,17 @@
 ///     - `bool` | `utility` [false] generate utility classes
 /// - `map` | `bootstrap` [] override bootstrap variables
 ///     - `map` | `bootstrap-color` [] override default bootstrap colors
-/// 
+///
 /// @see {function} set-config
 $sinister-default-configuration: (
   colors: (
-    sinister-purple: #602d82
+    sinister-purple: #602d82,
   ),
   breakpoints: (
     // $desktopLarge
     xxl: 2560px,
     // $desktopMedium
-    xl: 1980px,
+    xl: 1920px,
     // $desktop-small
     lg: 1460px,
     // $tabletLarge
@@ -50,7 +50,7 @@ $sinister-default-configuration: (
     uk-breakpoint-s: 640px,
     uk-breakpoint-m: 960px,
     uk-breakpoint-l: 1200px,
-    uk-breakpoint-xl: 1600px
+    uk-breakpoint-xl: 1600px,
   ),
   typography: (
     disable-list-style: false,
@@ -59,13 +59,14 @@ $sinister-default-configuration: (
     base-font-size: 16px,
     root-font-size: 16px,
     // Functionality is missing.
-    font-sizes: (
-      xxl: 1.6rem,
-      xl: 1.4rem,
-      md: 1rem,
-      sm: 0.9rem,
-      xs: 0.7rem,
-    ),
+    font-sizes:
+      (
+        xxl: 1.6rem,
+        xl: 1.4rem,
+        md: 1rem,
+        sm: 0.9rem,
+        xs: 0.7rem,
+      ),
     font-weights: (
       // source: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
       // Note Not all fonts support all font weights
@@ -86,7 +87,6 @@ $sinister-default-configuration: (
       extra-black: 950,
       ultra-black: 950,
     ),
-
     default-font-sizes: (
       h1: null,
       h2: null,
@@ -110,7 +110,6 @@ $sinister-default-configuration: (
       div: null,
       section: null,
     ),
-
     responsive-font-sizes: (
       generic: 0.8vw,
       xxl: 1vw,
@@ -119,9 +118,7 @@ $sinister-default-configuration: (
       sm: 4.3vw,
       xs: 4.6vw,
     ),
-
-),
-
+  ),
   spacing: (
     0: 0rem,
     1: 1.5rem,
@@ -132,57 +129,54 @@ $sinister-default-configuration: (
     6: 5rem,
     auto: auto,
     inherit: inherit,
-    unset: unset
+    unset: unset,
   ),
-global: (
-  production: false,
+  global: (
+    production: false,
 
-  warning-messages-toggle: false,
-  development-url: '../../../..',
-  production-url: '#',
-),
-
-
-generate-classes: (
+    warning-messages-toggle: false,
+    development-url: '../../../..',
+    production-url: '#',
+  ),
+  generate-classes: (
     spacing: false,
     display: false,
     fonts: false,
     flex: false,
-    utility: false
+    utility: false,
   ),
-   // Experimental - > Bootstrap overide
-   bootstrap:
-   (
-     // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
-     bootstrap-color:
-       (
-         bs-blue: #0d6efd,
-         bs-indigo: #6610f2,
-         bs-purple: #6f42c1,
-         bs-pink: #d63384,
-         bs-red: #dc3545,
-         bs-orange: #fd7e14,
-         bs-yellow: #ffc107,
-         bs-green: #198754,
-         bs-teal: #20c997,
-         bs-cyan: #0dcaf0,
-         bs-white: #fff,
-         bs-gray: #6c757d,
-         bs-gray-dark: #343a40,
-         bs-primary: #0d6efd,
-         bs-secondary: #6c757d,
-         bs-success: #198754,
-         bs-info: #0dcaf0,
-         bs-warning: #ffc107,
-         bs-danger: #dc3545,
-         bs-light: #f8f9fa,
-         bs-dark: #212529,
-       ),
-   ),
-   image-wrapper: (
-  img-box-default-height: 80,
-  img-box-default-width: 100,
-  img-default-preload-background: none,
-),
-
+  // Experimental - > Bootstrap overide
+  bootstrap:
+    (
+      // if bootstrap is used, use the palette bellow to overide the default bootstrap colors
+      bootstrap-color:
+        (
+          bs-blue: #0d6efd,
+          bs-indigo: #6610f2,
+          bs-purple: #6f42c1,
+          bs-pink: #d63384,
+          bs-red: #dc3545,
+          bs-orange: #fd7e14,
+          bs-yellow: #ffc107,
+          bs-green: #198754,
+          bs-teal: #20c997,
+          bs-cyan: #0dcaf0,
+          bs-white: #fff,
+          bs-gray: #6c757d,
+          bs-gray-dark: #343a40,
+          bs-primary: #0d6efd,
+          bs-secondary: #6c757d,
+          bs-success: #198754,
+          bs-info: #0dcaf0,
+          bs-warning: #ffc107,
+          bs-danger: #dc3545,
+          bs-light: #f8f9fa,
+          bs-dark: #212529,
+        ),
+    ),
+  image-wrapper: (
+    img-box-default-height: 80,
+    img-box-default-width: 100,
+    img-default-preload-background: none,
+  ),
 );
