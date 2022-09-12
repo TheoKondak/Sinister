@@ -1,8 +1,9 @@
 # .sassdocrc (yaml)
 
-dest: './documentation/herman-0.6.75'
+dest: './documentation/0.6.75'
 descriptionPath: './README.md'
 shortcutIcon: '../sinister-logo.svg'
+googleAnalytics: G-3EEL4L8PHG
 herman:
   # extraDocs:
   # - 'documentation/extradoc.md'
