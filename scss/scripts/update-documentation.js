@@ -7,7 +7,7 @@ const fs = require('fs');
 // Then run `npm run doc` to generate the documentation and copy it to the root directory
 
 // Assets Folder
-const srcDir = `documentation/0.7.0`;
+const srcDir = `documentation/0.7.1`;
 const destDir = `../`;
 
 fse.copySync(
@@ -26,7 +26,7 @@ fse.copySync(
 );
 
 // index.html file
-fs.copyFile('documentation/0.7.0/index.html', '../index.html', (err) => {
+fs.copyFile('documentation/0.7.1/index.html', '../index.html', (err) => {
   if (err) throw err;
   console.log('source.txt was copied to destination.txt');
 });
