@@ -1,6 +1,6 @@
 @use 'sass:list';
 @use '../../../../../sin.config' as *;
-@use '../grid/spacing-beta' as *;
+@use '../grid/spacing' as *;
 
 @mixin massonry(
   $column-count: 12,
@@ -17,7 +17,7 @@
 ) {
   // Source https://www.youtube.com/watch?v=xMsckmmd5Dw&ab_channel=WesBos
   display: grid;
-  @include spacing-beta((g, list.nth($gap, 1), list.nth($gap, 2)));
+  @include spacing((g, list.nth($gap, 1), list.nth($gap, 2)));
 
   grid-template-columns: repeat(#{$column-count}, 1fr);
   grid-auto-flow: dense;

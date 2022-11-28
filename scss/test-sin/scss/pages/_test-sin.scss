@@ -134,18 +134,18 @@
 // }
 
 .test-spacing {
-  // @include spacing-beta(debug, (g, g, 3.23rem, 1.2, '!i'), (xs, g, b, 3, 1.2, '!i'), (md, m, x, auto), (m, l, 2rem), (xs, m, g, 2, 2.1));
+  // @include spacing(debug, (g, g, 3.23rem, 1.2, '!i'), (xs, g, b, 3, 1.2, '!i'), (md, m, x, auto), (m, l, 2rem), (xs, m, g, 2, 2.1));
 
-  // @include spacing-beta((xs, p, b, 4.5rem, 1.242), (md, p, x, 124px));
-  // @include flex-beta((jc-c, ai-c, (g, 3, 1.2), (0 0 300px)));
-  // @include flex-beta(debug, (fd-cl, jc-c, ai-c, ac-c, (g, 1, 2), (50%)), ('!i', xs, fd-r, w-w, jc-c, ai-c, ac-c, (g, 2, 1.2), (0 0 42%), as-str));
+  // @include spacing((xs, p, b, 4.5rem, 1.242), (md, p, x, 124px));
+  // @include flex((jc-c, ai-c, (g, 3, 1.2), (0 0 300px)));
+  // @include flex(debug, (fd-cl, jc-c, ai-c, ac-c, (g, 1, 2), (50%)), ('!i', xs, fd-r, w-w, jc-c, ai-c, ac-c, (g, 2, 1.2), (0 0 42%), as-str));
 
-  // @include flex-beta(((g, 1, 1.2), (0 0 43%), '!i', auto-gap, as-str));
-  // @include flex-beta((debug, ai-c));
+  // @include flex(((g, 1, 1.2), (0 0 43%), '!i', auto-gap, as-str));
+  // @include flex((debug, ai-c));
 }
 
 .test {
-  // @include flex-beta((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
+  // @include flex((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
 }
 
 .grid {
@@ -211,7 +211,7 @@
 // }
 
 .test {
-  // @include spacing-beta((m, g, 1), (xs, m, g, 2), (md, p, y, 2, 1.4), (lg, m, x, auto), (xl, m, t, 2, '!i'));
+  // @include spacing((m, g, 1), (xs, m, g, 2), (md, p, y, 2, 1.4), (lg, m, x, auto), (xl, m, t, 2, '!i'));
 
   @include mq(40rem) {
     color: purple;
@@ -223,9 +223,9 @@
   // $md: (md, g, g, 3, '!i');
   // $all: (xs, g, t, 2, 1.2), (xl, g, x, 1), (md, g, g, 3, '!i');
 
-  // @include spacing-beta(hello);
-  // @include spacing-beta(#{$all});
-  // @include flex-beta((xs, fd-r, w-w, (g, 1)));
+  // @include spacing(hello);
+  // @include spacing(#{$all});
+  // @include flex((xs, fd-r, w-w, (g, 1)));
 }
 
 $base: (fd-cl, jc-c, ai-c, ac-c, (g, 1, 0.5), (1 0 100%), auto-gap);
@@ -242,11 +242,5 @@ $xs: (xs, fd-r, w-w, (g, 1), (0 0 33%), auto-gap);
 // }
 
 .grid {
-  @include simple-grid(12) {
-    // gap: 1rem;
-    // div {
-    //   background-color: purple;
-    //   padding-top: 4rem;
-    // }
-  }
+  @include simple-grid(12);
 }

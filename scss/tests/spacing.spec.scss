@@ -2,12 +2,12 @@
 @use '../node_modules/sass-true/sass/true' as true;
 @use '../test-sin/scss/sin' as *;
 
-@include true.describe('spacing-beta [mixin]') {
+@include true.describe('spacing [mixin]') {
   @include true.it('should return justify-content: center;') {
     @include true.assert {
       @include true.output {
         .test {
-          @include spacing-beta((m, g, 1), (xs, m, g, 2));
+          @include spacing((m, g, 1), (xs, m, g, 2));
         }
       }
       @include true.expect {
@@ -30,12 +30,12 @@
   }
 }
 
-@include true.describe('spacing-beta [mixin]') {
+@include true.describe('spacing [mixin]') {
   @include true.it('should return padding-top 1, from xs breakpoint, gap, top (row-gap) 2') {
     @include true.assert {
       @include true.output {
         .test {
-          @include spacing-beta((p, t, 1), (xs, g, t, 2));
+          @include spacing((p, t, 1), (xs, g, t, 2));
         }
       }
       @include true.expect {
@@ -52,12 +52,12 @@
   }
 }
 
-@include true.describe('spacing-beta [mixin]') {
+@include true.describe('spacing [mixin]') {
   @include true.it('should return padding-top 1, from xs breakpoint gap, top (row-gap), distance 2, scale 0.4') {
     @include true.assert {
       @include true.output {
         .test {
-          @include spacing-beta((p, t, 1), (xs, g, t, 2, 0.4));
+          @include spacing((p, t, 1), (xs, g, t, 2, 0.4));
         }
       }
       @include true.expect {
@@ -73,12 +73,12 @@
     }
   }
 }
-@include true.describe('spacing-beta [mixin]') {
+@include true.describe('spacing [mixin]') {
   @include true.it('should return margin all directions distance 1, from xs, margin all directions, distance 2, from md, padding top, bottom, dist 2, scale 1.4, from lg margin, left right auto, from xl margin top dist 2, important') {
     @include true.assert {
       @include true.output {
         .test {
-          @include spacing-beta((m, g, 1), (xs, m, g, 2), (md, p, y, 2, 1.4), (lg, m, x, auto), (xl, m, t, 2, '!i'));
+          @include spacing((m, g, 1), (xs, m, g, 2), (md, p, y, 2, 1.4), (lg, m, x, auto), (xl, m, t, 2, '!i'));
         }
       }
       @include true.expect {
@@ -108,7 +108,7 @@
             margin-right: auto;
           }
         }
-        @media (min-width: 1980px) {
+        @media (min-width: 1920px) {
           .test {
             margin-top: 2rem !important;
           }
@@ -118,16 +118,16 @@
   }
 }
 
-@include true.describe('spacing-beta [mixin]') {
+@include true.describe('spacing [mixin]') {
   @include true.it('should return xl screens and above, gap x (column-gap) dist 1, xs screens, gap top (row-gap), dist 2, scale 1.2, md screens and above, gap all directions, dist 3 !important') {
     @include true.assert {
       @include true.output {
         .test {
-          @include spacing-beta((xl, g, x, 1), (xs, g, t, 2, 1.2), (md, g, g, 3, '!i'));
+          @include spacing((xl, g, x, 1), (xs, g, t, 2, 1.2), (md, g, g, 3, '!i'));
         }
       }
       @include true.expect {
-        @media (min-width: 1980px) {
+        @media (min-width: 1920px) {
           .test {
             column-gap: 1.5rem;
           }

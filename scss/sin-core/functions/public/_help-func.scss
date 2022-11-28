@@ -10,7 +10,7 @@
 @use '../../misc/css-properties' as *;
 
 /// @name help
-/// @group utilityTest06
+/// @group utility
 /// @param {string} $config-sub-key - A key that you want it's values returned
 /// @param {map} $config-map - An optional parameter to set a different map instead of configuration
 /// @param {string} $intro-msg - A string that will work as a title, or intro text for the help context

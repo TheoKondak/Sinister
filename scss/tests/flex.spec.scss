@@ -2,12 +2,12 @@
 @use '../node_modules/sass-true/sass/true' as true;
 @use '../test-sin/scss/sin' as *;
 
-@include true.describe('flex-beta [mixin]') {
+@include true.describe('flex [mixin]') {
   @include true.it('should return justify-content: center;') {
     @include true.assert {
       @include true.output {
         .test {
-          @include flex-beta((jc-c));
+          @include flex((jc-c));
         }
       }
       @include true.expect {
@@ -20,12 +20,12 @@
   }
 }
 
-@include true.describe('flex-beta [mixin]') {
+@include true.describe('flex [mixin]') {
   @include true.it('should return justify-content: center for screens larger than xs') {
     @include true.assert {
       @include true.output {
         .test {
-          @include flex-beta((xs, jc-c));
+          @include flex((xs, jc-c));
         }
       }
       @include true.expect {
@@ -39,12 +39,12 @@
     }
   }
 }
-@include true.describe('flex-beta [mixin]') {
+@include true.describe('flex [mixin]') {
   @include true.it('should return flex-direction: column, justify-content: center, align-items: center, align-content: center, child align-self: stretch, gap all directions spacing 1 scale 1,3, child flex-basis: 94% | from breakpoint xs and above, flex-direction: row, wrap: wrap, gap general distance 2, flex: 0 0 50%, must calculate auto-gap | from breakpoint md and above, justify-content: space-between !important') {
     @include true.assert {
       @include true.output {
         .test {
-          @include flex-beta((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
+          @include flex((fd-cl, jc-c, ai-c, ac-c, as-str, (g, 1, 1.3), (94%)), (xs, fd-r, w-w, (g, 2), (0 0 50%), auto-gap), (md, jc-sb, '!i'));
         }
       }
       @include true.expect {

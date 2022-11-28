@@ -1,132 +1,247 @@
 @use 'sass:list';
+@use 'sass:string';
 @use 'sass:map';
 @use 'sass:math';
+
 @use '../functions' as *;
+@use '../mixins/private/flex-properties' as *;
 @use '../misc/css-properties' as *;
+
 @use './spacing' as *;
 // @use '../../../../../sin.config' as *;
 
-/// This mixin acts like a function so I don't have to write the same code twice. So it works for both with and without breakpoints.
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
-/// @access private
-/// @group dev
-/// @param  {string | list}  $cur-arg - The currect arguement passed from flex mixin
-@mixin flex-properties($cur-arg) {
-  // Flex Direction
-  // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
-  @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
-    flex-direction: #{map-get(getMap($css-properties, flex, flex-direction), $cur-arg)};
-  }
-
-  // Flex Wrap
-  @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
-    flex-wrap: #{map-get(getMap($css-properties, flex, wrap), $cur-arg)};
-  }
-
-  // Justify Content
-  @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
-    justify-content: #{map-get(getMap($css-properties, flex, justify-content), $cur-arg)};
-  }
-
-  // Align Content
-  @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
-    align-content: #{map-get(getMap($css-properties, flex, align-content), $cur-arg)};
-  }
-  // Align Items
-  @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
-    align-items: #{map-get(getMap($css-properties, flex, align-items), $cur-arg)};
-  }
-
-  // Gap
-  @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
-    @if length($cur-arg) == 2 {
-      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2)));
-    } @else if length($cur-arg) == 3 {
-      @include spacing((g, list.nth($cur-arg, 1), list.nth($cur-arg, 2), list.nth($cur-arg, 3)));
-    }
-  }
-
-  /// Flex | Flex Basis
-  /// If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
-  @else if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
-    @if type(list.nth($cur-arg, 2), (number)) {
-      @if math.is-unitless(list.nth($cur-arg, 2)) {
-        @if type(list.nth($cur-arg, 3), (number)) or contains(getMap($css-properties, flex, width), list.nth($cur-arg, 3)) {
-          > * {
-            flex: #{list.nth($cur-arg, 1)} #{list.nth($cur-arg, 2)} #{list.nth($cur-arg, 3)};
-          }
-        }
-      } @else {
-        @warn 'Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px) instead received: ' $cur-arg;
-      }
-    } @else {
-      @warn unquote('Wrong properties in flex child list. Expected a list of 2 unitless numbers and a flex basis property (0 0 20px). Instead received: ') $cur-arg;
-    }
-  }
-  // If the list has a single arguement, it is flex-basis
-  @else if length($cur-arg) == 1 {
-    @if (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
-      > * {
-        flex: #{$cur-arg};
-      }
-    }
-  } @else {
-    @warn unquote('Invalid input. Please check the syntax of your list properties. ');
-  }
-}
-
 /// Use flex in one line! With this mixin, you can achieve most flex functionality just in one line. Each set of rules sits within a sass list. Each list can take a breakpoint, and abreviations of flex properties. Each list, should be 1 breakpoint.
-/// Each `list` contains:
-/// A breakpoint from `sin.config`. This is optional.
-/// Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
-/// All parent properties are supported. For child elements flex-basis, which should be a list containing one element, or flex are supported, which takes 3 properties, flex-grow, flex-shring and flex-basis.
-/// @ignore @author Theodoros Kondakos
-/// @ignore @link   https://github.com/TheoKondak
+/// <hr/>
+/// <h3>Each `list` contains:</h3> <br/>
+///
+/// - A breakpoint from `sin.config`. This is optional. If there is no breakpoint, the rules will be applied to all screen sizes
+/// - Abreviations of flex properties. To see a list of supported properties, call the mixin without passing parameters.
+/// <br/> All parent properties are supported.
+/// - Gap uses spacing mixin to calculatee the values, so use the same syntax. The difference though is that this times it only takes two parameters, since spacing property is always gap.
+/// - For child elements flex-basis, flex, and align-self properties are supported. <br>
+///   - **flex-basis**: is an scss list containing one element, for example `(45%)`
+///   - **flex**: takes 3 properties, flex-grow, flex-shring and flex-basis
+///   - **align-self**: takes abreviations of align-self property.
+/// - **debug**: pass 'debug' as a parameter to a list to see a debug log about the current list of properties.
+/// - **auto-gap**: with Sinister, you can automatically negate gap values from flex and flex-basis properties for the x axis, so gap becomes even easier to use. Note that only gap that is nested in the current list can be calculated for now. Use with caution though, because there might be some side effects.
+/// - **!i**: pass '!i' string as a parameter to add important to every parameter of the current list. Note that you must add the single quotes in the parameter, otherwise it will not work.
+///
 /// @access public
-/// @group grid
+/// @group experimental
 /// @param  {arglist}  $args... - An arglist of lists.
-/// @example scss See available properties and values
-///     .sin{
-///       @debug flex();
-///     }
 /// @example scss Examples
-///    .sin{
-///     @include flex(
-///      (fd-cl, ai-c), // Flex direction column, align items center
-///      (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
-///      (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
-///      (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
-///      (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)) // From breakpoint xl, direction top, distance 2, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
-///     );
-///    }
+///     .sin{
+///       @include flex(
+///         (fd-cl, ai-c, '!i'), // Flex direction column, align items center, and every css property will become !important
+///         (xs, fd-r, w-w, jc-c), // From breakpoint xs flex direction row, wrap: wrap, justify content center.
+///         (md, (g,1,.5)), // From breakpoint md, gap general direction (all directions), distance 1 from `_sin.config.scss`, with 0.5 scale
+///         (lg, (1 0 auto)), // From breakpoint lg, flex-basis for all first level child elements, flex grow 1, flex shring 0, flex auto
+///         (xl, fd-r, w-w, jc-c, ai-fs, ac-c, (x,2), (1 1 43%)), // From breakpoint xl, gap on x axis only (left, right) distance 2 from `_sin.config.scss`, and lastly flex-basis property.
+///         (debug, (g, 1, 1.2), (0 0 43%),  auto-gap) // Debug will print a log, will add gap in all directions, distance 1, scale 1.2, flex-grow 1, flex shrink 0, flex-basis 43, and has auto gap, which will be translated to `flex: 0 0 calc(43% - 1.8rem)`
+///       );
+///       }
 @mixin flex($args...) {
   // It takes a list of Sins
   // Itterate / check first level map
   @if (length($args) > 0) and type($args, 'arglist') {
     @each $sin-arg in $args {
+      $debug: false;
+      $valid-arguement: false;
+      $has-auto-gap: false;
+      $is-important: false;
+      $has-breakpoint: false;
+      $breakpoint-value: null;
+      $has-flex-direction: false;
+      $flex-direction-value: null;
+      $has-wrap: false;
+      $wrap-value: null;
+      $has-justify-content: false;
+      $justify-content-value: null;
+      $has-align-content: false;
+      $align-content-value: null;
+      $has-align-items: false;
+      $align-items-value: null;
+      $has-gap: false;
+      $gap-value: null;
+      $has-flex: false; // flex property ex flex: 0 0 100%;
+      $flex-value: null;
+      $has-flex-basis: false;
+      $flex-basis-value: null;
+      $has-align-self: false;
+      $align-self-value: null;
+
       @if (length($sin-arg) > 0) and type($args, 'arglist') {
+        // For each arguement of the list
+        @each $cur-arg in $sin-arg {
+          $valid-arguement: false;
+          // @debug $cur-arg;
+
+          @if $cur-arg == 'debug' {
+            $debug: true;
+            $valid-arguement: true;
+            @debug '=====';
+            @debug 'Starting Flex Debug';
+          }
+
+          @if $debug {
+            @debug '----';
+            $valid-arguement: true;
+            @debug unquote('Current Arguement: #{$cur-arg}');
+          }
+
+          @if $cur-arg == '!i' {
+            $is-important: true;
+            $valid-arguement: true;
+          }
+
+          // If contains Breakpoint
+          @if contains(get(breakpoints), list.nth($cur-arg, 1)) {
+            $has-breakpoint: true;
+            $breakpoint-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // @debug getMap($css-properties, flex, flex-direction);
+          // @debug $cur-arg;
+
+          // Flex Direction
+          // @debug contains(getMap($css-properties, flex, flex-direction), $cur-arg);
+          @if contains(getMap($css-properties, flex, flex-direction), $cur-arg) {
+            $has-flex-direction: true;
+            $flex-direction-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Flex Wrap
+          @if contains(getMap($css-properties, flex, wrap), $cur-arg) {
+            $has-wrap: true;
+            $wrap-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Justify Content
+          @if contains(getMap($css-properties, flex, justify-content), $cur-arg) {
+            $has-justify-content: true;
+            $justify-content-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Align Content
+          @if contains(getMap($css-properties, flex, align-content), $cur-arg) {
+            $has-align-content: true;
+            $align-content-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Align Items
+          @if contains(getMap($css-properties, flex, align-items), $cur-arg) {
+            $has-align-items: true;
+            $align-items-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // Gap
+          @if type($cur-arg, (list)) and contains(getMap($css-properties, spacing, spacing-direction), list.nth($cur-arg, 1)) {
+            $has-gap: true;
+            $gap-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          /// Flex | Flex Basis
+          /// If its flex property, the list has 3 items, flex-grow, flex-shrink, flex-basis
+          @if type($cur-arg, (list)) and length($cur-arg) == 3 and type(list.nth($cur-arg, 1), (number)) {
+            $has-flex: true;
+            $flex-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          // If the list has a single arguement, it is flex-basis
+          @if length($cur-arg) == 1 and (type($cur-arg, (number)) and not unitless($cur-arg)) or contains(getMap($css-properties, width), $cur-arg) {
+            $has-flex-basis: true;
+            $flex-basis-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          /// Child Stretch for equal height columns
+          @if contains(getMap($css-properties, flex, align-self), $cur-arg) {
+            $has-align-self: true;
+            $align-self-value: $cur-arg;
+            $valid-arguement: true;
+          }
+
+          @if $cur-arg == auto-gap {
+            $has-auto-gap: true;
+            $valid-arguement: true;
+          }
+
+          @if not $valid-arguement {
+            @error unquote('Invalid arguement detected. Arguement (#{type-of($cur-arg)}) "#{$cur-arg}" is not a valid arguement');
+          }
+        }
+
+        @if $debug {
+          @debug '----';
+          @debug unquote('Has Breakpoint: #{$has-breakpoint}');
+          @debug unquote('Breakpoint Value: #{$breakpoint-value}');
+          @debug '';
+          @debug unquote('Has direction: #{$has-flex-direction}');
+          @debug unquote('Direction Value: #{$flex-direction-value}');
+          @debug '';
+          @debug unquote('Has wrap: #{$has-wrap}');
+          @debug unquote('Wrap Value: #{$wrap-value}');
+          @debug '';
+          @debug unquote('Has Justify Content: #{$has-justify-content}');
+          @debug unquote('Justify Content Value: #{$justify-content-value}');
+          @debug '';
+          @debug unquote('Has Align Content: #{$has-align-content}');
+          @debug unquote('Align Content Value: #{$align-content-value}');
+          @debug '';
+          @debug unquote('Has Align Items: #{$has-align-items}');
+          @debug unquote('Align Items Value: #{$align-items-value}');
+          @debug '';
+          @debug unquote('Has Gap: #{$has-gap}');
+          @debug unquote('Gap Value: #{$gap-value}');
+          @debug '';
+          @debug unquote('Has Auto-gap: #{$has-auto-gap}');
+          @debug '';
+          @debug unquote('Has Flex: #{$has-flex}');
+          @debug unquote('Flex Value: #{$flex-value}');
+          @debug '';
+          @debug unquote('Has Flex-Basis: #{$has-flex-basis}');
+          @debug unquote('Flex-Basis Value: #{$flex-basis-value}');
+          @debug '';
+          @debug unquote('Has Align-Self: #{$has-align-self}');
+          @debug unquote('Align-Self Value: #{$align-self-value}');
+          @debug '';
+          @debug unquote('Is Important: #{$is-important}');
+          @debug '----';
+        }
+
         // If the Sin contains an existing breakpoint
-        @if contains(get(breakpoints), list.nth($sin-arg, 1)) {
-          @media (min-width: get(breakpoints, list.nth($sin-arg,1))) {
-            display: flex;
+        @if $has-breakpoint {
+          @media (min-width: get(breakpoints, $breakpoint-value)) {
+            @if $is-important {
+              display: flex !important;
+            } @else {
+              display: flex;
+            }
+            @include flex-properties($has-breakpoint: $has-breakpoint, $breakpoint-value: $breakpoint-value, $has-flex-direction: $has-flex-direction, $flex-direction-value: $flex-direction-value, $has-wrap: $has-wrap, $wrap-value: $wrap-value, $has-justify-content: $has-justify-content, $justify-content-value: $justify-content-value, $has-align-content: $has-align-content, $align-content-value: $align-content-value, $has-align-items: $has-align-items, $align-items-value: $align-items-value, $has-gap: $has-gap, $gap-value: $gap-value, $has-flex: $has-flex, $flex-value: $flex-value, $has-flex-basis: $has-flex-basis, $flex-basis-value: $flex-basis-value, $has-align-self: $has-align-self, $align-self-value: $align-self-value, $is-important: $is-important, $has-auto-gap: $has-auto-gap);
+
             // For each list, check the input properties
             @each $cur-arg in $sin-arg {
+              // @debug $cur-arg;
               // Load All the properties from flex properties mixin
-              @include flex-properties($cur-arg);
             }
           }
         } @else {
-          display: flex;
-          // For each list, check the input properties
-          @each $cur-arg in $sin-arg {
-            @include flex-properties($cur-arg);
-          }
+          display: flex #{css-property($is-important, '!important')};
+
+          @include flex-properties($has-breakpoint: $has-breakpoint, $breakpoint-value: $breakpoint-value, $has-flex-direction: $has-flex-direction, $flex-direction-value: $flex-direction-value, $has-wrap: $has-wrap, $wrap-value: $wrap-value, $has-justify-content: $has-justify-content, $justify-content-value: $justify-content-value, $has-align-content: $has-align-content, $align-content-value: $align-content-value, $has-align-items: $has-align-items, $align-items-value: $align-items-value, $has-gap: $has-gap, $gap-value: $gap-value, $has-flex: $has-flex, $flex-value: $flex-value, $has-flex-basis: $has-flex-basis, $flex-basis-value: $flex-basis-value, $has-align-self: $has-align-self, $align-self-value: $align-self-value, $is-important: $is-important, $has-auto-gap: $has-auto-gap);
         }
       }
     }
   } @else {
-    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#grid-mixin-flex-beta');
+    @debug help($config-map: getMap($css-properties, flex), $intro-msg: 'Printing available Flex Properties:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#experimental-mixin-flex');
     @debug help(spacing, $intro-msg: 'Printing available Spacing values:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
     @debug help(breakpoints, $intro-msg: 'Printing available breakpoints:', $msg: 'Documentation: https://theokondak.github.io/Sinister/#variable-sinister-default-configuration');
   }
