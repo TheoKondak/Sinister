@@ -7,7 +7,7 @@ const fs = require('fs');
 // Then run `npm run doc` to generate the documentation and copy it to the root directory
 
 // Assets Folder
-const srcDir = `documentation/0.7.1`;
+const srcDir = `documentation/0.7.12`;
 const destDir = `../`;
 
 fse.copySync(
